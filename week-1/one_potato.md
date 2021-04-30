@@ -17,11 +17,11 @@ More!
 
 ## Building a Counter
 
+## When in Doubt, console.log it out!
+
 ## Dealing with Edge Cases
 
 ## Dealing with the Base Case
-
-## When in Doubt, console.log it out!
 
 ## Running the Program
 
