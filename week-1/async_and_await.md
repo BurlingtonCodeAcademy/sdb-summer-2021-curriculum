@@ -75,8 +75,6 @@ function ask(questionText) {
   });
 }
 
-start();
-
 async function start() {
   let name = await ask('What is your name? ');
   let quest = await ask('What is your quest? ');
@@ -86,6 +84,9 @@ async function start() {
     'and here is a ' + color + ' flower for you.');
   process.exit();
 }
+
+
+start();
 ```
 
 * run it from the command line using `node quest.js`
