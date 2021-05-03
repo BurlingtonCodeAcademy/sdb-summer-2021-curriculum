@@ -135,65 +135,6 @@ function supplyCalc(age, amountPerDay, item) {
 </div>
 </details>
 
-# Titleize - Functional Labs
-
-Write a function that:
-
-* accepts a string as an argument
-* splits apart the words in the string
-* capitalizes each word
-* returns a string with the first letter of each word capitalized e.g.
-
-```js
-titilize("all dogs are good dogs") // => "All Dogs Are Good Dogs"
-titilize("eveRY green bus drives fAst") // => "Every Green Bus Drives Fast"
-titilize("FRIDAY IS THE LONGEST DAY") // => "Friday Is The Longest Day"
-```
-
-# Titilize solution
-
-<details>
-<summary>Hint 1</summary>
-<div>
-
-```js
-function capitalize(word) {
-  return word[0].toUpperCase() + word.slice(1).toLowerCase()
-}
-```
-
-</div>
-</details>
-
-<details>
-<summary>Hint 2</summary>
-<div>
-
-```js
-let wordArray = string.split(" ")
-```
-
-</div>
-</details>
-
-<details>
-<summary>Solution</summary>
-<div>
-
-```js
-function titilize(string){
-  let wordArray = string.split(" ")
-  let newArray = wordArray.map(function(word){
-    return word[0].toUpperCase() + word.slice(1).toLowerCase()
-  })
-
-  return newArray.join(" ")
-}
-```
-
-</div>
-</details>
-
 # MadLibs - Functional Labs
 
 Write a function that:
