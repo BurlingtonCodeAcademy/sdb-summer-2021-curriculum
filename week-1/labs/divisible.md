@@ -79,7 +79,7 @@ function divisible(dividend, divisor) {
 
 function divisible(dividend, divisor) {
   let division = dividend / divisor
-  if(division === division.floor()) {
+  if(division === Math.floor(division)) {
     return true
   } else {
     return false

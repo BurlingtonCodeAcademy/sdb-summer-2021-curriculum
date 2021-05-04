@@ -25,7 +25,11 @@ In JavaScript we've got all the usual suspects for arithmetic operators:
 - modulus`%`
 - exponent `**`
 
-Go ahead and try and use each of these in n operation.
+Go ahead and try and use each of these in an operation.
+
+- Were the results what you expected?
+- Can we build more complex operations using multiple operators?
+- Does JavaScript follow order of operations (PEMDAS)?
 
 ## Integers and Decimals
 
