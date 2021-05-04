@@ -203,7 +203,7 @@ Like data there are several different *types* of operators
 - Arithmetic
 - Logical
 - Conditional
-- and some [less frequently ones](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
+- and some [less frequently used ones](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators)
 
 ---
 
@@ -338,4 +338,3 @@ undefined
 
 
 Read more here: (https://medium.com/launch-school/javascript-expressions-and-statements-4d32ac9c0e74)
-    

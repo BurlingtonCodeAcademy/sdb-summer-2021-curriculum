@@ -171,6 +171,14 @@ TypeError: Assignment to constant variable.
 
 ---
 
+# Scope
+
+All variables are defined within a certain scope. The easiest way to recognize something is in a different scope is to pay attention to the levels of indentation.
+
+An item that is indented, when your code is properly formatted, is in an *interior* scope. Any time you open a set of curly braces it opens a new scope, and code written inside it should be indented. Remember to format your documents often!
+
+Scope is like a one way mirror; you can always look out, to exterior scopes, but you can never look into interior scopes.
+
 # Summary: Variables
 
 * variables are names for memory locations, which hold values
