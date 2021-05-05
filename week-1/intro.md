@@ -102,6 +102,8 @@ Software
 - GitHub 
   - **Sign up** for an account at <https://github.com/>
 
+---
+
 # Technical Requirements cont.
 
 - Heroku
