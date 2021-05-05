@@ -28,7 +28,7 @@ In 2016 promises were introduced to JavaScript. We'll discuss promises in more d
 
 ---
 
-# using readline
+# Using readline
 
 > Warning: this code uses features we have not yet covered! Don't worry if it doesn't make much sense yet, all will be revealed in time.
 
