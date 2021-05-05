@@ -96,16 +96,16 @@ See the [Installfest](/projects/installfest) project for more instructions.
 
 Software:
 
-* a text editor - VS Code from Microsoft <https://code.visualstudio.com>
-* JavaScript - a live node.js installation
-* Git - version 2.x
-* GitHub 
-  * **Sign up** for an account at <https://github.com/>
-* Heroku
-  * **Sign up** for an account at <https://signup.heroku.com>
-  * **Install** the Heroku Command Line Interface (CLI) at <https://devcenter.heroku.com/articles/heroku-cli>
-* Postman
-* MongoDB, and Compass
+- a text editor - VS Code from Microsoft <https://code.visualstudio.com>
+- JavaScript - a live node.js installation
+- Git - version 2.x
+- GitHub 
+  - **Sign up** for an account at <https://github.com/>
+- Heroku
+  - **Sign up** for an account at <https://signup.heroku.com>
+  - **Install** the Heroku Command Line Interface (CLI) at <https://devcenter.heroku.com/articles/heroku-cli>
+- Postman
+- MongoDB, and Compass
 
-* Please stop right now and check
-  * If you do not have these, RAISE YOUR HAND
+- Please stop right now and check
+  - If you do not have these, RAISE YOUR HAND
