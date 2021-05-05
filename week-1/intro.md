@@ -90,17 +90,20 @@ See also: [What went wrong?](https://developer.mozilla.org/en-US/docs/Learn/Java
 
 ---
 
-# Technical requirements
+# Technical Requirements
 
 See the [Installfest](/projects/installfest) project for more instructions.
 
-Software:
+Software
 
 - a text editor - VS Code from Microsoft <https://code.visualstudio.com>
 - JavaScript - a live node.js installation
 - Git - version 2.x
 - GitHub 
   - **Sign up** for an account at <https://github.com/>
+
+# Technical Requirements cont.
+
 - Heroku
   - **Sign up** for an account at <https://signup.heroku.com>
   - **Install** the Heroku Command Line Interface (CLI) at <https://devcenter.heroku.com/articles/heroku-cli>
@@ -108,4 +111,4 @@ Software:
 - MongoDB, and Compass
 
 - Please stop right now and check
-  - If you do not have these, RAISE YOUR HAND
+  - If you do not have these, let us know!
