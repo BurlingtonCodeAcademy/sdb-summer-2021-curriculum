@@ -1,6 +1,4 @@
-# Intro
-
-## Welcome to the Burlington Code Academy!
+# Welcome to the Burlington Code Academy!
 
 ---
 
