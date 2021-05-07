@@ -29,7 +29,7 @@ Open up your terminal and follow along. Let's play with some data!
 
 # A Programmer's Best Friend
 
-- You will often run into problems your not sure how to solve
+- You will often run into problems you're not sure how to solve
 - Don't be afraid to Google things, we all do it!
 - Try to explain the problem with regular words
   - put the question you ask directly into google
