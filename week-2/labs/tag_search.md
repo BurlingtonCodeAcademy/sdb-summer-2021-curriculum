@@ -78,12 +78,26 @@ let tags = firstBook.tags
 
 ## Define the Function
 
+Create a function that will take a single argument. The argument will represent the tag you are searching for, and the function will return a new array of each book with the matching tag. I'm going to refer to the function as `search` from here on out.
+
 ## Iterating Over an Array
+
+Our `search` function will need to iterate over an array, and filter out the results with matching tags. Conveniently enough there's a [`.filter` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) that can do just that!
 
 ## Accessing Each Item
 
-## Filtering the Results
+To create the check for our `.filter` we need to access the properties on the current item, and see if our `tags` array contains our search term. We can get our `tags` from inside our filter iterator by accessing the `tags` array on the current item: `item.tags`
 
-## Test it Out
+Once we have the `tags` array we can call the `.includes` method on it passing in our search term as the argument. This should work nicely as the check for `.filter`
 
-## Adding Interactivity
+## Try it Out
+
+Given our starting array, if we called `search` and passed in `"fantasy"` as the argument we should see the objects for The Silmarillion, The Fellowship of the Ring, and A Wizard of Earthsea.
+
+Call `search` passing in a tag of your choice, and run the program to see your results.
+
+## Going Further
+
+- How could we modify the program to only print the titles of our search results?
+- How could we make this program interactive, so that when you run it in the command line and it would allow you to type in your search term?
+- How could we filter by multiple tags at once?

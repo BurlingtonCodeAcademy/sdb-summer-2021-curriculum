@@ -32,11 +32,39 @@ let someObject = {
 
 ## Define a Method
 
+Let's create a method called `order` on our `menu` object that will take a single array as its argument. This array will be used to pass in an order, and then we will return the total price of the order.
+
+Methods are just *functions attached to objects* and can be defined like any other property on an object. The key is the name of the method, and value of the property is just a function. e.g.
+
+```js
+let someObject = {
+  stringKey: "value",
+  numberKey: 3.57,
+  someMethod: function(argument) {
+
+  }
+}
+```
+
+`someObject` now has a method named `someMethod` attached to it.
+
 ## Accessing `this`
+
+To access properties on the object the method is defined in we can use the `this` keyword to reference the object, and then square bracket, or dot notation to access the properties we need.
+
+In the case of this program the "properties we need" will be coming into the method as an array of values, so we will need to iterate over the array, and tracking the sum total of the values for our order.
+
+Remember, when using a variable as a key you **have to use square bracket notation**
 
 ## Try It Out
 
+Test out your method by calling it, and `console.log`ing the results. Try passing in a few different orders to make sure it's operating as expected.
+
 ## Precise Decimals
+
+When getting a total price for something the number is almost always presented with two decimal places representing te cents. Let's add that bit of functionality to our program.
+
+Take a look at the documentation for the methods on [numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) to find out how to do this.
 
 ## Going Further
 
