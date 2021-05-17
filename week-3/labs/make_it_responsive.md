@@ -1,13 +1,40 @@
 # Shift It Around
 
-Remember our old friend example-html? Let's bring it back for one final lab.
+## Welcome!
 
-Here we have a page that is starting to look somewhat decent, but what happens when you squish the screen down?
+In this lab we will be going back to the code we wrote for our Floating Images lab, and modifying it so our site will be fully mobile responsive
 
-In this lab we are going to make the `index.html` page look good at any size. Feel free to use flexbox, and/or grid while you complete the following tasks for mobile view (screen width < 450px)
+We have a page that is starting to look somewhat decent, but what happens when you squish the screen down?
 
-* Lay your nav bar out vertically
+## Using Media Queries
+
+Media queries are used to specify different styles to apply under certain conditions such as different screen sizes, or views.
+
+You can set up a media query with the `@media` expression followed by a condition in parentheses, and a new style-set between curly braces:
+
+```css
+@media (some_condition) {
+  p {
+    /*Some style changes*/
+  }
+
+  .some-class-name {
+    /*More style adjustments*/
+  }
+}
+```
+
+The new style sets inside your media query will *overwrite* any matching styles assigned in your main CSS, but will preserve all of the other CSS styles.
+
+## Before you Start
+
+Try drawing out a simple wireframe for your mobile view. Think about how your content can be presented so it still feels familiar, but is viewable on a mobile device.
+
+## Change the Styles
+
+Feel free to alter your layout to use flexbox and/or grid instead of floats while you complete the following tasks for mobile view (screen width < 450px). Here are a few guidelines for laying out your content in a mobile view:
+
 * Don't wrap the text around the images
+* Stack the articles rather than laying them out side-by-side
 * Decrease the space between elements
-* Resize the images, and iframes so they fit the page.
-* Remove the background image, or use a different (smaller) background image
+* Resize the images so they fit the page.
