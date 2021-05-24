@@ -131,7 +131,7 @@ let snack = fruit.toUpperCase()
 
 ![fruit-banana-snack-banana](https://res.cloudinary.com/btvca/image/upload/v1574445175/curriculum/fruit-banana-snack-banana_fbbd8h.svg)
 
-`"banana"` and `"BANANA"` are two *different values* in memory. The original value is still sitting around and still pointed to by `fruit`.
+`"banana"` and `"BANANA"` are two *different values* in memory. The value of `fruit` is still "banana".
 
 ---
 
@@ -178,6 +178,8 @@ All variables are defined within a certain scope. The easiest way to recognize s
 An item that is indented, when your code is properly formatted, is in an *interior* scope. Any time you open a set of curly braces it opens a new scope, and code written inside it should be indented. Remember to format your documents often!
 
 Scope is like a one way mirror; you can always look out, to exterior scopes, but you can never look into interior scopes.
+
+---
 
 # Summary: Variables
 
