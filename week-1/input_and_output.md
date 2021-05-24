@@ -55,14 +55,11 @@ process.stdin.once('data', (chunk) => {
 > `once` is a special type of function, called an event listener, that takes two parameters,
 > and its second parameter is **another function**
 
-|phrase|meaning|
-|---|---|
-| `process.stdin`        | hey terminal input, |
-| `.once('data',` ... `)`  | when you get some data, |
-| `(chunk)`              | please name it `chunk` |
-| ` => `                 | and send it to |
-| ` { ` ... ` }`         | this block of code |
-| `console.log(chunk.toString())`   | convert it to a string and print it to the terminal |
+* `process.stdin` means "hey terminal input," 
+* `.once('data',` ... `)`   when you get some data, 
+* `(chunk)`               please name it `chunk` 
+* ` => ` and send it to this block of code `{console.log(chunk.toString())}`
+* which says "convert it to a string and print it to the terminal"
 
 ---
 

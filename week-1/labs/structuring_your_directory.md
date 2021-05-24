@@ -64,7 +64,7 @@ When you open VSCode from inside your "code" directory you should see a single e
 
 ## Your First Program
 
-Click on the file "hello.js" in the file explorer and add the following line of code to it:
+Click on the file "hello.js" in the file explorer on the left-hand side of VSCode, and add the following line of code to it:
 
 ```js
 console.log("Hello, world!")

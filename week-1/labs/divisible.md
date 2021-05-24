@@ -68,6 +68,9 @@ function divisible(dividend, divisor) {
   return true
 }
 
+```
+
+```js
 function divisible(dividend, divisor) {
   let remainder = dividend % divisor
   if(remainder === 0) {
@@ -77,6 +80,9 @@ function divisible(dividend, divisor) {
   }
 }
 
+```
+
+```js
 function divisible(dividend, divisor) {
   let division = dividend / divisor
   if(division === Math.floor(division)) {
@@ -87,9 +93,13 @@ function divisible(dividend, divisor) {
   
 }
 
+```
+
+```js
 function divisible(dividend, divisor) {
   return ! dividend % divisor
 }
+
 ```
 
 Which of these makes the most sense to you?

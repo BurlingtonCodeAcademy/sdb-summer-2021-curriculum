@@ -65,7 +65,7 @@ There are also many methods for more complex operations. For a complete list you
 
 We can use our `Math` methods, and our arithmetic operators together to create more powerful functions.
 
-The function defined below can generate a random integer within a range.
+The function defined below can generate a random integer within a range. We'll be covering functions in much more depth in a little bit. For now feel free to type the function definition below into your terminal *exactly as it appears*
 
 ```js
 function randomNum(min, max) {
@@ -77,7 +77,7 @@ function randomNum(min, max) {
 
 `Math.random()` returns a number between 0 and 1 *inclusive* on the low end, but *exclusive* on the high end. So when we generate the range we have to add 1 to it ot bring our upper bound back in. We multiply that range by `Math.random()` to give us a random number. Then we `Math.floor` that equation to remove the decimal points, and get an integer between 0 and th range. Finally we add the minimum value back on so that it's a random number between the `max` and `min` values.
 
-The function can be used like so:
+After it's been defined the function can be used like so:
 
 ```js
 randomNum(1, 10) // will return a random number between 1 and 10 inclusive on both ends

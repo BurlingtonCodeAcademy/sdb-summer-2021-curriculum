@@ -2,16 +2,14 @@
 
 In 2016 promises were introduced to JavaScript. We'll discuss promises in more depth later in the course, but for now know that they make handling asynchronous actions much easier
 
-- A promise is a placeholder for data that doesn't exist yet
-- We can deal with promises by using `async` functions
-- Any function can be made into an async function by putting the `async` keyweord in front of the function definition
-  - `async function waitsForSomething(){...}`
-- When using `async` and `await`:
-
-    1. `await` means "wait for the following thing to happen"
-    2. when you use `await` inside a function, you must use `async` to define that function
-
-- Async functions make it so we don't have to use callback functions
+* A promise is a placeholder for data that doesn't exist yet
+* We can deal with promises by using `async` functions
+* Any function can be made into an async function by putting the `async` keyweord in front of the function definition
+  * `async function waitsForSomething(){...}`
+* When using `async` and `await`:
+  * `await` means "wait for the following thing to happen"
+  * when you use `await` inside a function, you must use `async` to define that function
+* Async functions make it so we don't have to use callback functions
 
 > WARNING: `async` functions don't play nicely with `for` loops! (Fortunately, there are other ways to loop that do work well.)
 
@@ -61,9 +59,15 @@ function ask(questionText) {
 
 ---
 
-# Code-Along: using readline and await
+# Code-Along: Converting Hello Frenemy Input to async/await
 
-Please follow along with the instructor and create a file named `quest.js`:
+Open up your `hello_frenemy_input.js` file, and follow along with your instructor while they convert Hello Frenemy to use an async function.
+
+---
+
+# Code-Along: using readline and await some more
+
+Please follow along with the instructor and create a file named `quest.js`. Add in the ask function:
 
 ```javascript
 const readline = require('readline');
@@ -75,6 +79,15 @@ function ask(questionText) {
   });
 }
 
+```
+
+---
+
+# Adding functionality
+
+Let's accept a few different inputs, and use them to construct our output
+
+```js
 async function start() {
   let name = await ask('What is your name? ');
   let quest = await ask('What is your quest? ');

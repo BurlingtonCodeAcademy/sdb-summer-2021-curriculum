@@ -72,7 +72,7 @@ The variable `loudString` is called a **local variable** and can only be used **
 
 When you pass a *variable* to a function, that variable's *value* is assigned to a *parameter*.
 
-> The variable and parameter names **do not** need to match!
+The variable and parameter names **do not** need to match!
 
 ```js
 function shouter(someString) {
@@ -90,6 +90,8 @@ let strongFeeling = shouter(feeling);
 | `feeling`            | `someString`           | `"I feel great"`    |
 |                      | `loudString`     | `"I FEEL GREAT"`    |
 | `strongFeeling`      |                     | `"I FEEL GREAT!!!"` |
+
+---
 
 # Four Function Syntaxes
 
@@ -123,3 +125,16 @@ let add = (x,y) => x + y;
 
 * Note that these new forms are *anonymous*, meaning there is **no name** between `function` and `(x,y)`
     * the name of the function **is** the name of the variable that points to it
+
+---
+
+# Variables and Scope
+
+In JavaScript variables are always in a specific *scope*.
+
+* "Scope" determines where we can use certain variables
+* Any variable defined at the *root level* of your file is in the *global scope*
+  * Global scope is useful, but dangerous!
+* In general, sets of curly braces `{}` create a *new scope*
+  * New scopes can always look outside of themselves
+  * But **nothing** can look into a different interior scope

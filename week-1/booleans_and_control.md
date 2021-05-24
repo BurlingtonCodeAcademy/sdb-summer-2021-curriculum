@@ -41,12 +41,14 @@ if (account.profilePic === null) {
 
 # Null is dangerous
 
+Let's try the following code snippet in the terminal
+
 ```js
 let fruit = null
 fruit.toUpperCase()
 ```
 
-> Let's *Read the error!*
+> *Read the error!*
 
 ---
 
@@ -64,6 +66,8 @@ Please try to interpret this error:
 fruit.toUpperCase()
 TypeError: Cannot read property 'toUpperCase' of null
 ```
+
+---
 
 # TypeError explained
 
@@ -108,9 +112,9 @@ Two failure recovery philosophies:
 * fail fast, fail hard
 * keep calm and carry on
 
-Which idea is better?
+> Which idea do you think is better?
 
-Why or why not?
+> Why?
 
 ---
 
@@ -167,9 +171,7 @@ To a computer **everything** is one or the other.
 | `===` | *really* equal to |
 | `!==` | *really* not equal to |
 
-[MDN: comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators)
-
-These are also called "Boolean operators" after *[George Boole](https://en.wikipedia.org/wiki/George_Boole)*,
+[Comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) are also called "Boolean operators" after *[George Boole](https://en.wikipedia.org/wiki/George_Boole)*,
 a 19th-century mathematician who invented [Boolean algebra](https://en.wikipedia.org/wiki/Boolean_algebra).)
 
 ---
@@ -201,9 +203,9 @@ Wait a second. "Truthy?"
 
 ![Truthiness](https://res.cloudinary.com/btvca/image/upload/v1574445211/curriculum/truthiness_jhdubk.png)
 
-* in the Colbert Report, [truthiness](https://en.wikipedia.org/wiki/Truthiness) means things we *feel* to be true, even though we know they're probably not
+* in the Colbert Report [truthiness](https://en.wikipedia.org/wiki/Truthiness) means things we *feel* to be true, even though we know they probably aren't
 
-* In JavaScript, **all** values have truthiness **unless** they are defined as falsy.
+* In JavaScript, **most** values are truthy **unless** they are explicitly falsy.
 
 * [MDN: Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
 
@@ -217,7 +219,7 @@ These are also the *only* falsy values in JavaScript.
 
 Fortunately, `true` is truthy and `false` is falsy.
 
-Unfortunately, the string `"false"` is truthy, and the string `"0"` is truthy, even though the number `0` is falsy. This is because the string contains a character, and, even though the character is `0`, any string with at least one character is truthy.
+Unfortunately, the string `"false"` is truthy, and the string `"0"` is truthy, even though the number `0` is falsy. This is because the string contains a character, and, even though the character is `0`, *any string with at least one character is truthy*.
 
 [MDN: Falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
 
@@ -271,9 +273,13 @@ That's three equal signs in a row.
 
 `==` means "does X equal Y, or if not, can Y be *converted* into something that equals X?"
 
+---
+
+# When Should I Use `===`?
+
 Since the rules for type conversion are confusing, most JavaScript experts recommend:
 
-> always use `===`, never use `==`
+> **always use `===`, never use `==`**
 
 > Using `==` can have some very interesting side effects, see [Stackoverflow](https://stackoverflow.com/questions/359494/which-equals-operator-vs-should-be-used-in-javascript-comparisons)
 
@@ -307,7 +313,6 @@ You can make more complicated logical expressions using conjunctions:
 | OR | <code>&#124;&#124;</code> | <code>X &#124;&#124; Y</code> | "is either X or Y (or both) true?" |
 | NOT | `!`  | `!X` | "is X false?" |
 
-For example:
 
 ```js
 if (age >= 18 || hasPermissionSlip()) {

@@ -89,6 +89,8 @@ A **string** is an object that's a collection of characters, like a word or a se
 "Cherry Pie"
 ```
 
+---
+
 # Slicing and Dicing
 
 Every string is made of lots of other strings.
@@ -155,13 +157,17 @@ Don't worry too much about how conditionals work right now, we'll go into a lot 
 
 Given this conditional answer the following questions. If the check (currently the boolean `true`) is true it will print `It is truthy` to the console, otherwise nothing will print.
 
-Give me your best guesses to the questions below!
+Give me your best guesses to the questions on the next slide!
 
 ```js
 if(true) {
     console.log('It is truthy')
 }
 ```
+
+---
+
+# Is it True?
 
 * Is the boolean `true` truthy?
     * how about `false`?
@@ -224,7 +230,11 @@ In these lessons, we often use comments to explain the *result* of executing the
 3 + 5 // -> 8
 ```
 
-> JavaScript also has multi-line comments via `/* ... */` but those are less common. They can also be used to comment out a section within a line:  
+---
+
+# Multi Line Comments
+
+JavaScript also has multi-line comments via `/* ... */` but those are less common. They can also be used to comment out a section within a line:  
 
 ```javascript
 /* This is
@@ -287,6 +297,10 @@ Sometimes the return value is a different value *and* a different type.
 "banana".length  // return value: 6
 ```
 
+---
+
+# Special Values
+
 Sometimes the return value is a special value!
 
 ```js
@@ -297,32 +311,40 @@ Sometimes the return value is a special value!
 
 ---
 
-# Sidebar: Expressions vs. Statements
+# Expressions vs. Statements
 
 JavaScript (like most languages derived from C) makes a distinction between *expressions* and *statements*.
 
 *expression* means "code that can be evaluated" or "code that has a value", e.g.:
 
-    1 + 1
+```js
+1 + 1
+```
 
-*statement* means "code that does something", e.g.:
+*statement* means "code that does something", e.g.
 
-    console.log("hello");
+```js
+console.log("hello")
+```
+
+---
+
+# Values
 
 Some statements have values, so `node` will *evaluate* them and *print* those values...
 
 ```javascript
-> 1 + 1
-2
+1 + 1
+// evaluates to 2
 ```
 
 ...but *some statements have no value* (even though they contain expressions that *do* have value), and this can cause some surprising effects, e.g.:
 
 ```javascript
-> x = 10
-10
-> let x = 20
-undefined
+x = 10
+// evaluates to 10
+let x = 20
+// evaluates to undefined
 ```
 
 ---

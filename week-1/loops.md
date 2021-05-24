@@ -34,6 +34,8 @@ This means "While true is true, say 'Hello'". Obviously `true` will always be tr
 
 To stop an operation in your terminal, hold down the CONTROL key and press the C key.
 
+---
+
 # Infinite Loops
 
 Loops that run forever are called infinite loops. They most often happen when you set a condition for your loop that is always true. There are several common ways people create infinite loops
@@ -49,19 +51,6 @@ Loops that run forever are called infinite loops. They most often happen when yo
 **Note well!** The lines between `{` and `}` are INDENTED. Indentation is very important to you and other humans. It lets our eyes follow the patterns and helps us quickly see what parts of the program go with each other.
 
 **Always make sure your code is formatted**
-
----
-
-# One Infinite Loop
-
-![One Infinite Loop](https://res.cloudinary.com/btvca/image/upload/v1574445194/curriculum/one-infinite-loop_eful1h.jpg)
-
-*Fun Fact:* The address of Apple HQ is
-
-    1 Infinite Loop
-    Cupertino, CA 95014
-
-*Image from the Wikimedia Commons, licensed under the Creative Commons Attribution-Share Alike 3.0 Unported license. Attribution: Joe Ravi*
 
 ---
 
@@ -203,10 +192,8 @@ async function copyCat() {
   while(answer.toLowerCase() !== "stop copying me!") {
     answer = await ask(answer + " >_")
   }
-
   process.exit()
 }
-
 copyCat()
 ```
 
@@ -228,4 +215,4 @@ for (let count=0; count < 100; count++) {
 
 # Flavors of For
 
-There are also a couple variations on the `for` loop that can be used to iterate over different data structures. These types of loops are known collectively as iterators, the most common of which are the `for ...in` loop, and the `for ...of` loop. More on those later when we talk about data structures next week!
+There are also a couple variations on the `for` loop that can be used to iterate over different data structures. These types of loops are known collectively as iterators, the most common of which are the `for ...in` loop, and the `for ...of` loop. More on those when we talk about data structures next week!

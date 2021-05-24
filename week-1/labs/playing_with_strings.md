@@ -59,7 +59,7 @@ When you add two or more strings together they become a single string. This is k
 
 ## Template Strings
 
-If you use backticks as your quotations you have created a template string. One of the benefits of template strings is that you can use special characters to escape back to code so that you can insert expressions directly into your strings.
+If you use backticks as your quotations you have created a template string. One of the benefits of template strings is that you can use special characters `${}` to escape back to JavaScript so that you can insert expressions directly into your strings.
 
 ```js
 `Two plus two is ${2 + 2}`
