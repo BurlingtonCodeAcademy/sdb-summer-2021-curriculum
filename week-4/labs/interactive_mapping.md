@@ -180,6 +180,16 @@ someLayer.addTo(mymap);
 <script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>
 ```
 
+**Or**
+
+`npm install leaflet-pip`
+
+then
+
+```js
+
+```
+
 ### Usage
 
 ```js
