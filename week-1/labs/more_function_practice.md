@@ -1,3 +1,22 @@
+# More Functional Labs
+
+Try to solve the following labs by writing a function which returns output(s) for the given input(s)
+
+### For Example
+
+Write a function that:
+
+* accepts a number as input
+* returns the input number plus the number positive one
+
+```js
+addOne(1)   // => 2
+addOne(2)   // => 3
+addOne(41)  // => 42
+addOne(-2)  // => -1
+addOne(-43) // => -42
+```
+
 # Lab: Age Calculator
 
 Write a function that calculates the number of seconds old you are when given your age
@@ -29,10 +48,6 @@ You can get the current date by calling `Date.now()` which will give you a time 
 
 Here's one solution for the age calculator:
 
-<details>
-<summary>Answer</summary>
-<div>
-
 ```js
 let age = 27
 
@@ -55,29 +70,7 @@ console.log(ageCalc(age))
 
 To flip it you could simply divide the `num` variable by `secInYr` rather than multiplying to get years in a number of seconds.
 
-</div>
-</details>
-
-# Functional Labs
-
-Try to solve the following labs by writing a function which returns output(s) given input(s)
-
-### For Example
-
-Write a function that:
-
-* accepts a number as input
-* returns the input number plus the number positive one
-
-```js
-addOne(1)   // => 2
-addOne(2)   // => 3
-addOne(41)  // => 42
-addOne(-2)  // => -1
-addOne(-43) // => -42
-```
-
-# Supply Calculator - Functional Labs
+# Supply Calculator
 
 Write a function that:
 
@@ -96,32 +89,6 @@ supplyCal(0, 3, "cookie") // => "You will need 109500 cookies to last the rest o
 
 # Supply Calculator Solution
 
-<details>
-<summary>Hint 1</summary>
-<div>
-
-```js
-let amountPerYear = amountPerDay * 365
-```
-
-</div>
-</details>
-
-<details>
-<summary>Hint 2</summary>
-<div>
-
-```js
-let numberOfYears = 100 - age
-```
-
-</div>
-</details>
-
-<details>
-<summary>Solution</summary>
-<div>
-
 ```js
 function supplyCalc(age, amountPerDay, item) {
   let amountPerYear = amountPerDay * 365
@@ -131,9 +98,6 @@ function supplyCalc(age, amountPerDay, item) {
   let message = "You will need" + totalNeeded + " " + item + "s to last the rest of your life"
 }
 ```
-
-</div>
-</details>
 
 # MadLibs - Functional Labs
 
@@ -152,15 +116,8 @@ madLib('Bill', 'jump', 'dog') // => "Bill jumped the dog!"
 
 # MadLibs solution
 
-<details>
-<summary>Solution</summary>
-<div>
-
 ```js
 function madLib(noun, verb, directObject) {
   return noun + " " + verb + "ed the " + directObject + "!"
 }
 ```
-
-</div>
-</summary>
