@@ -1,13 +1,13 @@
 # Arrays
 
-* An array is a *container*
-  * an object that contains other objects
+* An array is a *collection*
+  * an object that contains any type of value
 * It's a list of items
 * An array is a *data structure*
 
 ---
 
-# What makes an array an array
+# What Makes an Array an Array
 
 * You can put any values inside it
 * In any order
@@ -16,15 +16,14 @@
 
 ---
 
-# Creating an array
+# Creating an Array
 
 ```js
-["apple", "banana", "cherry"]
+let fruits = ["apple", "banana", "cherry"]
 ```
 
-square brackets on their own mean "please go *create* an array now"
-
-and put these 3 other values inside it
+* square brackets on their own mean "please go *create* an array now"
+* and put these 3 other values inside it
 
 ---
 
@@ -47,13 +46,11 @@ fruits[1]
 
 # Start At Zero
 
-When counting,
-
-humans start at one,
-
-but **computers start at zero**.
-
-So the first item in an array is number zero, not number one.
+* When counting,
+* humans start at one,
+* but **computers start at zero**.
+* So the first item in an array is the number `0`, 
+  * not the number `1`.
 
 ---
 
@@ -72,10 +69,17 @@ Q: How can you get the last item in an array... even if you don't know its index
 
 # The End
 
+You usually won't know how long an array is when you're writing functions, or programs that deal with user input. In these cases we'll have to figure out the length of the array programmatically and count backwards from there
+
 ```js
 let fruits = ["apple", "banana", "cherry"]
 fruits[fruits.length - 1]
 ```
+
+* `fruits.length` evaluates to the number `3`
+* then we subtract 1 to get the last index of the array (`2`) because arrays are 0 indexed
+* Using an expression as value is not particular to arrays
+  * Because JavaScript evaluates expressions *first* it's a common pattern
 
 ---
 
@@ -95,21 +99,13 @@ Why or why not?
 
 # Undefined Means 🤷
 
-by returning *undefined*, the computer is answering the question
+By returning *undefined*, the computer is answering the question
 
 > "What is the 99th item?"
 
 with the answer
 
-> "There is no 99th item yet."
-
----
-
-# Array Methods
-
-There are many useful methods on arrays. We'll cover many of them in more depth later today.
-
-For now let's look at some of the most common array methods
+> "I don't know what the 99th item is."
 
 ---
 
@@ -119,7 +115,24 @@ The `[]` operator works for assignment as well.
 
 `fruits[0] = 'apricot'` will set the `0`th item of the array to the string `'apricot'`
 
-# Adding Items with .push
+---
+
+# Array Methods
+
+There are many useful methods on arrays. We'll cover many of them in more depth later today.
+
+For now let's look at some of the most common array methods:
+
+* `push`/`shift`
+* `pop`/`unshift`
+* `reverse`
+* `slice`
+* `join`
+* `split`
+
+---
+
+# Adding Items
 
 * `.push` adds a value to the end of an array
 
@@ -135,6 +148,8 @@ fruits //=> ["apple", "banana", "cherry", "pineapple"]
 fruits.push("nectarine", "strawberry")
 fruits //=> ["apple", "banana", "cherry", "pineapple", "nectarine", "strawberry"]
 ```
+
+> `.push` returns the new length of the array
 
 ---
 
@@ -183,6 +198,8 @@ fruits.slice(2) //=> [ 'cherry', 'date', 'elderberry' ]
 
 These start and end numbers are called *indexes* (or *indices* if you're feeling fancy).
 
+If you need an item from a middle index you can use `.slice` to access it.
+
 [MDN: slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
 
 ---
@@ -193,10 +210,11 @@ Array indexing works in the same way as string indexing.
 
 Think of the indexes as pointing at the *spaces between* items, as in this diagram:
 
-    ['B', 'L', 'U', 'E']
-
-    | B | L | U | E |
-    0   1   2   3   4
+```js
+0   1   2   3   4
+| B | L | U | E |
+['B','L','U','E']
+```
 
 So with this picture in your mind, imagine that `.slice`...
 
@@ -204,15 +222,19 @@ So with this picture in your mind, imagine that `.slice`...
    * includes the item to the *left* of the end index...
    * ...but *excludes* the item to the *right* of the end index
 
-```javascript
-['B', 'L', 'U', 'E'].slice(1, 3) //=> [ 'L', 'U' ]
-```
-
 ---
 
 # Array to String
 
 There are a few easy ways to turn an array into a string.
+
+So we could take the following array:
+
+```js
+let fruits = []
+```
+
+and 
 
 ```js
 fruits.join()           // 'apple,banana,cherry'
@@ -224,9 +246,17 @@ fruits.toString()       // 'apple,banana,cherry'
 
 # String to Array
 
-You can also easily turn a string into an array with the `.split` method. This method will give you an array of strings split on whatever character you passed to `.split`. Note also that the character you're splitting on gets removed.
+You can also easily turn a string into an array with the `.split` method.
+
+This method will give you an array of strings split on whatever character you passed to `.split`.
+
+So if we use the string we got from `.join` on the previous slide we could turn it *back* into an array
 
 ```javascript
 'dog'.split('') //=> ['d', 'o', 'g']
 'my dog has fleas'.split(' ') //=> [ 'my', 'dog', 'has', 'fleas' ]
 ```
+
+This will work with any string.
+
+> Note also that the character you're splitting on gets removed.

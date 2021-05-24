@@ -1,8 +1,14 @@
 # Arrays In Depth
 
-Arrays are very useful data structores. They can contain any type of data, they're ordered, and they have many inherent methods for manipulating the data the contain.
+Arrays are very useful data structures.
 
-Let's take a closer look at a few of these methods.
+* They can contain any type of data
+* They're ordered
+* They have many inherent methods for manipulating the data they contain.
+
+Let's take a closer look at a few of these iteration methods!
+
+---
 
 # Looping Through an Array with for-of
 
@@ -48,27 +54,19 @@ that let you *apply a function* to its contents.
 Given this array of names...
 
 ```javascript
-let names = ['Alice', 'Bob', 'Carol', 'Charlie', 'David']
+let names = ['Alice', 'Bob', 'Carol', 'Charlie']
 ```
-this code...
-
-```js
-for (let name of names) {
-  console.log(name.toUpperCase())
-}
-```
-
-and this code ...
+This code...
 
 ```js
 function printUpper(name) {
   console.log(name.toUpperCase())
-}
+};
 
 names.forEach(name => printUpper)
 ```
 
-both print the same thing:
+prints:
 
 ```text
 ALICE
@@ -82,20 +80,23 @@ DAVID
 
 # Find
 
-to find the first item that matches the condition...
+To find the first item that matches the condition...
 
 ```javascript
-let names = ['Alice', 'Bob', 'Carol', 'Charlie', 'David'];
+let names = ['Alice', 'Bob', 'Carol', 'Charlie'];
+
 let beginsWithC = function(word) {
-    return word.charAt(0).toUpperCase() === 'C';
+  return word.charAt(0).toUpperCase() === 'C';
 };
-let cName = names.find(beginsWithC) //=> 'Carol'
+
+let cName = names.find(beginsWithC); //=> 'Carol'
 ```
 
 Note that:
 
 * the `beginsWithC` function returns `true` or `false`
 * the `.find` method returns an item (from the array)
+  * that causes `beginsWithC` to return `true`
 
 ---
 
@@ -104,7 +105,10 @@ Note that:
 For conciseness, people often define the filter function *inline*, like this:
 
 ```javascript
-names.find((word) => word.charAt(0).toUpperCase() === 'C')
+let cName = names.find(function (word) {
+    return word.charAt(0).toUpperCase() === 'C'
+  }
+);
 ```
 
 Is this more or less clear than the previous slide?
@@ -116,11 +120,13 @@ Is this more or less clear than the previous slide?
 the `.filter` iteration method returns *all* matching values, in a *new array*
 
 ```javascript
-let names = ['Alice', 'Bob', 'Charlie', 'Carol', 'David'];
+let names = ['Alice', 'Bob', 'Charlie', 'Carol'];
+
 let beginsWithC = function(word) {
-    return word.charAt(0).toUpperCase() === 'C';
-}
-let cNames = names.filter(beginsWithC) //=> [ 'Charlie', 'Carol' ]
+  return word.charAt(0).toUpperCase() === 'C';
+};
+
+let cNames = names.filter(beginsWithC); //=> [ 'Charlie', 'Carol' ]
 ```
 
 ---
@@ -130,11 +136,11 @@ let cNames = names.filter(beginsWithC) //=> [ 'Charlie', 'Carol' ]
 The `.map` iteration method returns a *new array* whose elements correspond to the elements of the original array.
 
 ```javascript
-let names = ['Alice', 'Bob', 'Charlie', 'Carol', 'David'];
+let names = ['Alice', 'Bob', 'Charlie', 'Carol'];
 let upper = function(word) {
-    return word.toUpperCase();
+  return word.toUpperCase();
 }
-let bigNames = names.map(upper) //=> [ 'ALICE', 'BOB', 'CHARLIE', 'CAROL', 'DAVID' ]
+let bigNames = names.map(upper) //=> [ 'ALICE', 'BOB', 'CHARLIE', 'CAROL']
 ```
 
 It's called "map" because in a mathematical sense, it defines a *mapping* from one collection to another.
@@ -145,58 +151,15 @@ It's called "map" because in a mathematical sense, it defines a *mapping* from o
 | 'Bob'| 'BOB' |
 | 'Charlie' | 'CHARLIE' |
 | 'Carol' | 'CAROL' |
-| 'David' | 'DAVID' |
 
 ---
 
-# Code Along: Titleize with Map
-
-Remember the [capitalize function](/lessons/javascript-track/functions#anchor/capitalize)? It capitalizes the first letter of a string and makes the whole rest of the string lowercase.
-
-```javascript
-function capitalize(word) {
-  let firstLetter = word[0];
-  let restOfWord = word.slice(1);
-  return firstLetter.toUpperCase() + restOfWord.toLowerCase();
-}
-```
-
----
-
-Let's write a function that capitalizes *each word* in a string.
-
-```javascript
-titleize("the rain in spain falls MAINLY on the PLAIN")
-  //=> 'The Rain In Spain Falls Mainly On The Plain'
-```
-
----
-
-# Solution: Titleize
-
-```javascript
-function capitalize(word) {
-  let firstLetter = word[0];
-  let restOfWord = word.slice(1);
-  return firstLetter.toUpperCase() + restOfWord.toLowerCase();
-}
-
-function titleize(phrase) {
-    let words = [];
-    phrase.split(' ').forEach((word) => {
-        words.push(capitalize(word))
-    });
-    return words.join(' ');
-}
-```
-
----
-
-# Aside: Method Chaining
+# Method Chaining
 
 * **method chaining** is the practice of taking the **result** of one method, and immediately calling a method on that result **without assigning it to a variable**, again and again until you get a final result.
 * Method chaining can be very elegant, but it can also be very dense, making the code harder to understand, test, and debug.
 * "Unspooling" a method chain into intermediate variables can make the code easier to follow, but it can also make it much more verbose and obscure the algorithm.
+* For example; we could take the results of a `filter` method, and *chain* a `map` method off it to return a modified subset of an array.
 
 ---
 
@@ -207,12 +170,18 @@ The `reduce` method keeps track of a *running total* (aka *accumulator* or *memo
 Here's some code that counts the total number of letters across all words in an array:
 
 ```javascript
-let names = ['Alice', 'Bob', 'Charlie', 'Carol', 'David'];
-const reducer = function(accumulator, word) {
-    return accumulator + word.length;
+let numbers = [17, 3, 2, 20];
+
+const reducer = function(accumulator, nextNum) {
+  return accumulator +nextNum;
 };
-let totalCount = names.reduce(reducer, 0); //=> 25
+
+let totalCount = numbers.reduce(reducer, 0); //=> 42
 ```
+
+---
+
+# Reduce Explained
 
 The `reduce` algorithm can be difficult to follow at first; here's a walkthrough:
 
@@ -224,7 +193,7 @@ The `reduce` algorithm can be difficult to follow at first; here's a walkthrough
 | 4 | 15 | 'Carol'   | 5 | 15 + 5 = 20 |
 | 5 | 20 | 'David'   | 5 | 20 + 5 = 25 |
 
-See how the accumulator is used to pass information from one iteration to the next?
+The accumulator is used to pass information from one iteration to the next.
 
 ---
 
@@ -232,4 +201,4 @@ See how the accumulator is used to pass information from one iteration to the ne
 
 Refactoring is changing existing code so that it *works* the same, but is cleaner and easier to read.
 
-Let's go back to the old frenemy lab, and use arrays to make it a little bit cleaner!
+Let's go back to the old Hello Frenemy Input lab, and use arrays to make it a little bit cleaner!

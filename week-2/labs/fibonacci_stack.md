@@ -35,3 +35,5 @@ After the loop `console.log` the value of our `series` array. Feel free to mess 
 - How could we extend this program so it prints the first 100 numbers of the fibonacci sequence?
 
 - How could we print the sequence in a nicer format?
+
+- What if we wanted to allow the *user* do determine how many fibonacci numbers to calculate?

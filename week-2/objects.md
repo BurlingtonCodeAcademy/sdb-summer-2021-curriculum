@@ -93,24 +93,24 @@ Dots are prettier than square brackets, but less versatile, since some keys simp
 The bracket `[]` syntax is less common but covers more uses (e.g., if the key contains spaces, or is inside a variable).
 
 ```javascript
-> let capitals = {}
-{}
+let capitals = {}
 
-> capitals.New York = 'Albany'
+capitals["New York"] = 'Albany'
 capitals.New York = 'Albany'
              ^^^^
 SyntaxError: Unexpected identifier
-
-> capitals.'New York' = 'Albany'
-capitals.'New York' = 'Albany'
-         ^^^^^^^^^^
-SyntaxError: Unexpected string
 ```
 
-If you get those errors, revert to brackets, which is more reliable:
+---
+
+# Which to Use
+
+In general using the dot operator is much more common. It looks nicer, and takes a few less characters to set up.
+
+But if you get the errors from the previous slide, revert to brackets, which is more flexible:
 
 ```javascript
-> capitals['New York'] = 'Albany'
+> capitals['New York']
 'Albany'
 > capitals
 { 'New York': 'Albany' }
