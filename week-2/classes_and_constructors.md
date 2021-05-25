@@ -20,15 +20,18 @@ class Circle {
 # Use it like this:
 
 ```javascript
-let circle = new Circle();  // create a new Circle instance
-circle.radius = 2;          // set its radius to 2
-circle.area();              // call the area method, which
+let circleInstance = new Circle();  // create a new Circle instance
+circleInstance.radius = 2;          // set its radius to 2
+circleInstance.area();              // call the area method, which
                             // returns 12.566370614359172 
 ```
 
 * A Note On Spelling:
   * "Circle" with a capital C is the constructor
-  * "circle" with a lowercase C is the object (instance)
+  * In JavaScript class names are generally capitalized
+  * All other variable names are camel cased
+  * This makes it easier for us as the programmer, but the computer doesn't care
+  * It's the standard naming convention, so always capitalize your class names
 
 [MDN: classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
@@ -36,13 +39,13 @@ circle.area();              // call the area method, which
 
 # Stay classy, JavaScript
 
-This is the first time we've seen **classes** in JavaScript
+This is the first time we've seen classes in JavaScript
 
 Classes are for making lots of objects with the same methods, but different data
 
-A *class* defines a **type** of object.
-
-An *instance* is an **individual** object of that type.
+* A *class* defines a **type** of object.
+* An *instance* is an **individual** object of that type.
+* Each instance has *it's own* state
 
 > For example, there are many houses, but my house is yellow.
 
@@ -58,7 +61,7 @@ An *instance* is an **individual** object of that type.
 
 # Constructors and "new"
 
-* A constructor is a **function** that's called when you use the **new** keyword
+* A constructor is a **method on a class** that's called when you use the *new* keyword
 * It's the very first method that's ever called on that particular instance
 
 ---
@@ -111,11 +114,17 @@ circle.area(); // call the area method, which returns 12.566370614359172
 
 A: because it preserves *encapsulation* -- the idea that an object should be responsible for setting its own properties
 
+Encapsulation:
+
+  * Prevents accidental reassignment
+  * Allows consistent and predictable outcomes
+  * Preserves the state of the data
+
 ---
 
 # Constructors are for Validation
 
-constructors are a great place to *validate* your values
+constructors are a great place to *validate* your values, and 
 
 ```javascript
 class Circle {
@@ -127,11 +136,15 @@ class Circle {
     }
 ```
 
+---
+
+# Guard Clauses
+
 * that `if` statement is known as a "guard clause"
   * it guards against bad values entering your algorithm
-  * also known as "asserting your arguments" or "design by contract"
-* validation is one of the most valuable features of object-oriented programming
+* validation is a valuable feature in program designs
   * it lets you *write less code* in other methods, confident that you don't have to check for bad data or boundary conditions
+  * You can catch bugs when they are introduced rather than waiting for something to go wrong
 
 ---
 
@@ -168,7 +181,7 @@ The factory method works *exactly the same way* as the factory function, but
  
 # Static Factory Methods 
 
-To make a *factory method* in JavaScript, use the [`static`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static) keyword:
+To make a *factory method* attached to a class in JavaScript, use the [`static`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static) keyword:
 
 ```javascript
 class Circle {
@@ -183,20 +196,26 @@ class Circle {
     this.radius = radius;
   }
   
-  circumference() {
-    return Math.PI * this.radius * 2;
-  }
-  
   area() {
     return Math.PI * this.radius * this.radius;
   }
 }
 ```
 
-and call it like this:
+# Using Factory Methods
+
+Factory methods are useful for when you want to be able to generate an object based on different parameters, or if you want to create a default instance if no data is supplied.
+
+We could use the factory method we defined before to generate circles from their diameter, rather than the radius, and call it like this:
 
 ```javascript
-let circle = Circle.fromDiameter(4)
+let diameterCircle = Circle.fromDiameter(4)
 ```
 
 > Note that (lowercase "c") `circle.fromDiameter()` does **not** work. **Static methods are attached to classes**, not instances.
+
+---
+
+# Class Inheritance
+
+

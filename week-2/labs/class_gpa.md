@@ -25,9 +25,11 @@ function gpa(object) {
 }
 ```
 
-For now we can assume the properties of that object are `midterm`, `project`, and `final`. Use the `object` to get the average of those three values and `return` it.
+For now we can assume the properties of that object are `midterm`, `project`, and `final`. Use the `object` to get the average of those three values and `console.log` it.
 
-Test out the function by running `node gpa.js` in the console.
+Test out the function by calling it, passing in your `grades` object as the argument, and running `node gpa.js` in the console.
+
+The average grade should come out to 3.5
 
 ## Weight the Grades
 

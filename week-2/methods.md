@@ -1,20 +1,26 @@
 # Object Instance Methods
 
-A method is a *function* attached to an *object* as a *property*.
+A method is a *function* attached to an *object* as a *property*. One of the main benefits of using objects is to create a predictable abstraction
 
-```js
-let stringUtils = {
-  capitalize: function(word) {
-    return word.charAt(0).toUpperCase() +
-      word.slice(1).toLowerCase();
-  },
-  rant: function(opinion) {
-    return option.toUpperCase() + '!!!';
-  }
-}
+---
 
-stringUtils.rant('i love pizza') //=> 'I LOVE PIZZA!!!'
-```
+# You've Already Used some Methods!
+
+---
+
+# Speaking Dog
+
+---
+
+# Passing Arguments to Methods
+
+---
+
+# Using Properties
+
+---
+
+# Using `this`
 
 ---
 
@@ -24,11 +30,11 @@ stringUtils.rant('i love pizza') //=> 'I LOVE PIZZA!!!'
 
 ```js
 let rectangle = {
-    height: 10,
-    width: 8,
-    area: function() {
-        return this.height * this.width;
-    }
+  height: 10,
+  width: 8,
+  area: function() {
+    return this.height * this.width;
+  }
 }
 
 rectangle.height   //=> 10
@@ -68,4 +74,3 @@ rectangle.area()   //=> 80
 
 * remember, `this` means "this object I'm in *right now*" which in this case is the rectangle
 * `this.height` on the *inside* of the object means the same as `rectangle.height` on the *outside*
-
