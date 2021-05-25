@@ -68,12 +68,12 @@ Classes are for making lots of objects with the same methods, but different data
 
 ## What `new` does, in detail:
 
-  * make a new empty object
-  * set the object's class
-  * set `this` to point to the object
-  * call the constructor function
-  * set `this` back to whatever it was before
-  * return a reference to the object
+  * makes a new empty object
+  * sets the object's class
+  * sets `this` to point to the object
+  * calls the constructor function
+  * sets `this` back to whatever it was before
+  * returns a new object instance
 
 ---
 
