@@ -30,8 +30,6 @@ function printTitle(userInput) {
 };
 ```
 
-> Note that we *have* to use square bracket notation to access our object, because we're using a variable `userInput` to determine the key.
-
 ---
 
 # State Machines
@@ -40,7 +38,7 @@ A state machine is a system with a number of defined 'states'. The system can on
 
 At their simplest a state machine is an object, with the top level keys referencing the current state, and the values of those keys being an array of allowable transitions.
 
-They also use a function to determine 
+They also use a function to determine if they can change to a certain state, and prevent invalid state changes.
 
 ---
 
@@ -60,27 +58,39 @@ They also use a function to determine
 # State Transition Diagram: Traffic Light
 
 ```
-[G] -> [Y] -> [R]
+[G] -> [Y] -> [R] <--> [FR]
  ^             |
   \___________/
 ```
 
-Q: What if there was a "left turn ok" green light as well?
+* green can transition to yellow
+* yellow can transition to red
+* red can transition to *either* flashing red, or green
 
 ---
-# How to implement a state machine?
 
-> There's more than one way to do it.
+# Setting up the Allowable Transitions
 
-Easiest way is with something like this:
+The first step when creating a state machine is to set up an object that will hold your allowable transitions. You will need a key to represent each possible state, and a value that's an array of possible transitions.
 
 ```js
 let states = {
   green: ["yellow"],
   yellow: ["red"],
-  red: ["green", "flashing red"]
+  red: ["green", "flashing red"],
+  'flashing red': ["red"]
 }
+```
 
+---
+
+# Moving Between States
+
+To enforce our state machine we will create a function that knows what the current state is, and accepts the next state as an argument.
+
+If the change from the current state to the next state is valid we change our current state, otherwise we throw an error and the state doesn't change.
+
+```js
 let currentState = "green";
 
 function enterState(newState) {
@@ -88,7 +98,7 @@ function enterState(newState) {
   if (validTransitions.includes(newState)) {
     currentState = newState;
   } else {
-    throw "Invalid state transition attempted - from " + currentState + " to " + newState;
+    throw("Invalid state transition attempted - from " + currentState + " to " + newState;)
   }
 }
 ```
@@ -127,6 +137,8 @@ function enterState(newState) {
 
 # Transitioning Between Objects
 
----
+Often times you will want to do more than just change from one string to another. You'll need to transition between more complex data structures like objects.
 
-# State Machines and Lookup Tables
+We can combine state machines, and lookup tables to allow for more complex interactions.
+
+You can still keep track of the current state as a string, and use our state machine just as we previously set it up. The difference comes in how we use that current state. If you need to map it to an object you can create a lookup table which you access *at the current state*
