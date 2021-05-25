@@ -70,9 +70,8 @@ Classes are for making lots of objects with the same methods, but different data
 
   * makes a new empty object
   * sets the object's class
-  * sets `this` to point to the object
+  * sets `this` to point to the new instance
   * calls the constructor function
-  * sets `this` back to whatever it was before
   * returns a new object instance
 
 ---
