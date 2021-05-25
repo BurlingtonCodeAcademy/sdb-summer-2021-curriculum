@@ -212,7 +212,7 @@ We could use the factory method we defined before to generate circles from their
 let diameterCircle = Circle.fromDiameter(4)
 ```
 
-> Note that (lowercase "c") `circle.fromDiameter()` does **not** work. **Static methods are attached to classes**, not instances.
+> Note that (lowercase "c") `circle.fromDiameter()` does **not** work. **Static methods are attached to classes**, not instances, and classes are defined with **capitalized** names.
 
 ---
 

@@ -19,21 +19,15 @@ One of the most common uses for a lookup table is to match a string (usually som
 If we had a program that accepts a poet's name, and prints the title of a poem by that poet it might look something like this:
 
 ```js
-let frost = "Stopping by Woods on a Snowy Evening"
-
-let silverstein = "Falling Up"
-
-let plath = "A Winter Ship"
-
 let poetLookup = {
-  "Robert Frost": frost,
-  "Shel Silverstein": silverstein,
-  "Sylvia Plath": plath
-}
+  "Robert Frost": "Stopping by Woods on a Snowy Evening",
+  "Shel Silverstein": "Falling Up",
+  "Sylvia Plath": "The Bell Jar"
+};
 
 function printTitle(userInput) {
   console.log(poetLookup[userInput])
-}
+};
 ```
 
 > Note that we *have* to use square bracket notation to access our object, because we're using a variable `userInput` to determine the key.
@@ -41,7 +35,12 @@ function printTitle(userInput) {
 ---
 
 # State Machines
- A state machine is a system with a number of defined 'states', which can only be in one state at a time, and with defined rules to 'transition' between states.
+
+A state machine is a system with a number of defined 'states'. The system can only be in one state at a time, and with defined rules to 'transition' between states.
+
+At their simplest a state machine is an object, with the top level keys referencing the current state, and the values of those keys being an array of allowable transitions.
+
+They also use a function to determine 
 
 ---
 
@@ -77,9 +76,9 @@ Easiest way is with something like this:
 
 ```js
 let states = {
-  "green": {canChangeTo: ["yellow"]},
-  "yellow": {canChangeTo: ["red"]},
-  "red": {canChangeTo: ["green"]}
+  green: ["yellow"],
+  yellow: ["red"],
+  red: ["green", "flashing red"]
 }
 
 let currentState = "green";
@@ -99,7 +98,7 @@ function enterState(newState) {
 # Why use a state machine?
 
 1. Clarity
-2. Predicability
+2. Predictability
 3. Fail-fast debugging
 
 * Many bugs are due to the system receiving unexpected input, or input that is inappropriate *at the moment*
