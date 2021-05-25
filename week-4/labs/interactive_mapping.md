@@ -112,10 +112,10 @@ marker.remove();
 
 ```js
 let polygon = L.polygon([
-      [51.509, -0.08],
-      [51.503, -0.06],
-      [51.51, -0.047],
-    ], { color: 'red'}).addTo(mymap);
+  [51.509, -0.08],
+  [51.503, -0.06],
+  [51.51, -0.047],
+], { color: 'red'}).addTo(mymap);
 
 // delete the polygon later
 polygon.remove()

@@ -1,9 +1,17 @@
-## Wireframes
+# Timer
 
-```
-           🍅
-         25:00   
-[Start] [Pause] [Reset]
-```
+## Welcome!
 
-After implementing the basic features, feel free to implement your own ideas of layout and style using CSS.
+## Timing functions
+
+## Create the Page
+
+## Link the JavaScript
+
+## Counting Seconds
+
+## Counting Minutes
+
+## Left Padded Zeros
+
+## Going Further
