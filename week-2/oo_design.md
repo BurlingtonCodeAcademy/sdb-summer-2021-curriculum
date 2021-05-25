@@ -285,26 +285,9 @@ The above is fine as far as it goes, but it's not really object-oriented since `
 
 ---
 
-# Encapsulation?
-
-Unfortunately, in JavaScript, *any* code with a pointer to an object can see 
--- and modify! -- *all properties* of that object.
-
-This means that true encapsulation is difficult, since all properties are public, and none are private.
-
-Other languages solve this problem in various ways -- e.g. Java has a `private` keyword, and in Ruby all properties are private -- but JavaScript does not have a clean way of doing it... [at least not yet](https://github.com/tc39/proposal-class-fields).
-
-To work around this deficiency there are several options, but none is ideal:
- * create variables *and accessors* inside your constructor [using closure scope](https://stackoverflow.com/questions/22156326/private-properties-in-javascript-es6-classes/28165599#28165599)
- * prefix private properties with `_`
- * use [WeakMaps](https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md#how-can-you-model-encapsulation-using-weakmaps)
- * use [symbols](https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md#how-can-you-provide-hidden-but-not-encapsulated-properties-using-symbols)
-
----
-
 # "this" is it
 
-* "this" is a magic variable that always points to the current object
+* `this` is a magic variable that always points to the current object
 
 ```javascript
 var circle = {radius: 2};
@@ -314,7 +297,7 @@ circle.circumference = function() {
 console.log(circle.circumference()); // 12.566370614359172
 ```
 
-* "this" allows one function (method) to operate on many states (instances)
+* `this` allows one function (method) to operate on many states (instances)
 
 ```javascript
 var biggerCircle = {radius: 4};
@@ -357,7 +340,7 @@ Specifically, during *callbacks* `this` still points to the *other* object -- th
 
 ```javascript
 circle1.circumference()      // OK -- this = circle1
-circle2['circumference']()   // OK -- this = circle2
+circle2.circumference()   // OK -- this = circle2
 ```
 
 * when called *sans* object, `this` points to the **global object** (usually `window`)
@@ -390,4 +373,4 @@ console.log(boundGetX());
 // expected output: 42
 ```
 
-see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
