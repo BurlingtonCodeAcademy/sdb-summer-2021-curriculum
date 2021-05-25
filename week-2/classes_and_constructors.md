@@ -123,7 +123,7 @@ Encapsulation:
 
 # Constructors are for Validation
 
-constructors are a great place to *validate* your values, and 
+constructors are a great place to *validate* your values 
 
 ```javascript
 class Circle {
@@ -187,7 +187,6 @@ class Circle {
   static fromDiameter(diameter) {
     return new Circle(diameter / 2);
   }
-  
   constructor(radius) {
     if (radius <= 0) {
         throw('radius must be a positive number')
@@ -200,6 +199,8 @@ class Circle {
   }
 }
 ```
+
+---
 
 # Using Factory Methods
 
@@ -217,4 +218,4 @@ let diameterCircle = Circle.fromDiameter(4)
 
 # Class Inheritance
 
-
+All objects inherit the methods, and properties defined on their class. Usually a constructor will be used to allow you to dynamically assign the values of the properties when you create a new object instance, but if you hard code the values on the class then those properties will be automatically inherited by the class.  This is why object instances have access to all the methods defined on their class.
