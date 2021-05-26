@@ -9,6 +9,8 @@
 * CSS and JavaScript are designed to work in tandem with HTML
 * HTML is for structuring content
 
+---
+
 # What Is It?
 
 HTML is a coding language composed of various types of *tags*, also known as *elements*. These are what are used to build web pages.
@@ -40,7 +42,9 @@ HTML is a coding language composed of various types of *tags*, also known as *el
 
 # Elements (aka Tags)
 
-Lets break down the page structure above. You can see above, all HTML tags are surrounded by angle brackets. You can also see that every tag has what is known as a **closing tag**. These are the tags that have a preceding forward slash. For the most part, every HTML tag needs to have a closing tag.
+All HTML tags are surrounded by angle brackets, this is what defines the tag. Every tag also has what is known as a **closing tag**. These are the tags that have a preceding forward slash. For the most part, every HTML tag needs to have a closing tag. Between the opening and closing tags we put the content that appears on the page.
+
+HTML tags can be broken into 2 categories: structural tags, and style tags. Structural tags determine layout and behavior on the page, while style tags change the way things (usually text) appear on the page.
 
 ---
 
@@ -135,5 +139,6 @@ Remember how we discussed semantic HTML? Well in modern day HTML there are a num
 
 * Not all of these elements *have* to be used. 
 * Each is meant to contain a specific type of content. In fact, you do not need to use any of these.
-* They help screen readers and search engines to determine the structure of your website, and help to achieve higher SEO rankings. You could simply replace all of these HTML5 tags with `<div>` tags
-* Using these tags **will not automatically layout your page** as shown in the previous image. They simply help to *describe* what the content is on your website. Browsers render them all the same as a `<div>` element.
+* They help screen readers and search engines to determine the structure of your website, and help to achieve higher SEO rankings.
+* You could replace all of these HTML5 tags with `<div>` tags and your browser will render it the same way.
+* Using these tags **will not automatically layout your page** as shown in the previous image. They simply help to *describe* what the content is on your website.

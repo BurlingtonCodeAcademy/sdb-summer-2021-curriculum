@@ -41,8 +41,6 @@ We'll be covering HTTP methods in more detail when we dive into servers.
 * Your browser communicates with a **nameserver**, which tells your browser the IP address of where the files for your website are located. 
 * Information on your nameservers are known as **DNS Records**. 
 
-![DNS illustration](https://s.hswstatic.com/gif/dns-rev-1.gif "DNS Illustration")
-
 Remember, websites live at an **IP Address**. This is a string of numbers, (ex. 70.42.251.42) that locates a specific computer (or "host") on the Internet. A domain name is simply a translation that provides humans with an easy way to remember where a website lives.
 
 ---

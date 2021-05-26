@@ -53,14 +53,14 @@ There are several plugins for VSCode designed to help you serve static webfiles.
 * If it isn't clear, find and click on the elements tab
 * Notice how the HTML tags are displayed
 * You can do this for **any website** to examine how it is structured
-  * or to change its colors, or remove ads, etc...?
+  * or to change its colors, or remove ads, etc...
   * Note that this only changes the page for you, and only while you're on that page. Refreshing the page will clear all changes.
 
 ## Block Out the Sections
 
 Let's start laying out our web page. HTML tags will stack on top of each other so the first step to laying out our webpage is to block out our main sections *in the order we want them to appear on the page*.
 
-We're going to need a *header* section, a *nav* section, and a section for our *main* content. You could use *div* tags to represent these, but [more modern HTML5 tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#content_sectioning) will be more accessible, and more readable for both humans and screen-readers.
+We're going to need a *header* section, a *nav* section, and a section for our *main* content. You could use *div* tags to represent these, but [more modern HTML5 tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#content_sectioning) will be more accessible, and more readable for both humans and bots.
 
 ## Add Content
 
@@ -80,11 +80,15 @@ There are also many different [lorem ipsum generators](https://loremipsum.io/ult
 
 To link multiple pages together we will first need to make another page. In the same directory that your `index.html` file lives in create a new file called `about.html`. Create a shell for your html file and add a heading to the page.
 
-To link to the about page from the home page you will need to add an *href* to the `<a>` tag in your nav bar: `<a href="/about.html">About</a>`
+To link to the about page from the home page you will need to add an *href* to the `<a>` tag in your nav bar:
+
+`<a href="/about.html">About</a>`
 
 Clicking the word "About" in your browser should take you to the about page.
 
 Add a link on the about page that will take you back to the home page as well.
+
+> Linking to just "/" should take you back to the home page.
 
 ## Going Further: Styling the Page
 
