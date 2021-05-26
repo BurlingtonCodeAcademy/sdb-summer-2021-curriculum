@@ -101,21 +101,6 @@ SVG stands for **standard vector graphic**
 
 ---
 
-# Lab: Embedding Images
-
-Let's go to our trusty "example-html" directory, and add some images to make your page more engaging!
-
-* add in one image from an external source per section on your `index.html` document
-  * There are many sites around the web that serve up placeholder images. [PlaceKitten](https://placekitten.com/) is the classic, though [PlaceCage](https://www.placecage.com/), and [FillMurray](https://www.fillmurray.com/) are both hilarious
-
-* Choose an image from your computer to include on your About page
-* Create a subdirectory named "images" (or 'imgs', or 'pictures', or whatever name makes sense to you)
-* Place a copy of your chosen image into the newly created subdirectory.
-* Embed that image into your About page.
-* Bonus Challenge: What happens when you wrap an image in an anchor tag?
-
----
-
 # Embedding IFrames
 
 `<iframe>` means "inline frame"
@@ -130,7 +115,7 @@ Let's go to our trusty "example-html" directory, and add some images to make you
 </iframe>
 ```
 
-### More Information
+**More Information:**
 
 [MDN IFrame Reference](https://www.w3.org/Security/wiki/Same_Origin_Policy)
 
@@ -163,13 +148,13 @@ This is often used for login boxes.
 
 ---
 
-# Lab: Embedding an iFrame
+# Code Along: Embedding an iFrame
 
 iFrames are often used to embed videos from dedicated hosts such as Vimeo or YouTube
 
-Let's add a video to our site! Open up YouTube, and find a short video, and a long video. Leave them open in different tabs.
+Let's add a video to our hello-html site! Open up YouTube and find a short video, and a long video. Leave them open in different tabs.
 
-* Open up your "example-html" directory if it's not already open.
+* Open up your "hello-html" directory if it's not already open.
 * Go back to the open video tabs, and click on the "share" button
   * Choose the "embed" option, and copy the code for the iframe element it gives you
   * Paste that code into your `index.html` file
@@ -237,8 +222,10 @@ OpenStreetMaps defines a "bounding box" as a four-tuple: min Longitude, min Lati
 
 You can find the bounding box for a given map on https://www.openstreetmap.org/ by clicking the **Export** button.
 
+There are also front end frameworks that make creating, and manipulating embedded maps easier. We will be looking at one of those next week when we dive into client side coding.
+
 ---
 
 # Scripting Maps
 
-It is possible to use JavaScript to interact with an embedded map. See [the client-side coding lesson on embedding](/lessons/week-4/embedding)
+It is possible to use JavaScript to interact with an embedded map. See [the client-side coding lesson on interactive mapping](/lessons/written/interactive-mapping)

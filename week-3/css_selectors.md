@@ -31,15 +31,23 @@
 
 ---
 
-# Basic Selectors
-
----
-
 # Order of Specificity
+
+All CSS selectors have a level of specificity which is used to determine which styles to apply to which elements.
+
+* 5. Element Selectors
+* 4. Class Selectors
+* 3. ID Selectors
+* 2. Inline CSS
+* 1. !important
 
 ---
 
 # the !important Property
+
+The `!important` property can be added to any style to apply that style on the specified typ of element no matter what. Styles tagged with `!important` will always overwrite any other styles, even inline styles.
+
+Because of this `!important` should be used sparingly.  Using `!important` is almost never the correct way for you to apply a style. It should only be used as a method of last resort.
 
 ---
 
@@ -54,7 +62,7 @@ p img {
 }
 ```
 
-...means "select all `img` tags that are a decendent of 
+...means "select all `img` tags that are a descendent of a `p` tag
 
 ---
 
@@ -87,7 +95,27 @@ main .introduction > p {
 
 ---
 
+# Compound Operators
+
+We can apply compound operators to our compound selectors to further refine which elements are targeted.
+
+* `>` Direct children only
+* `,` Either matching selector
+* `+` Immediately adjacent sibling elements
+* `~` Subsequent sibling elements.
+
+---
+
 # Compound Specificity
+
+In general compound selectors are at the same level of specificity as their most specific identifier, but they are more specific than non-compound selectors.
+
+Longer compound selectors will be more specific than shorter compound selectors *of the same basic level of specificity*
+
+* a compound selector looking through 3 tags e.g. `main div p` would be more specific than `main div`
+* a compound selector containing a *class* is more specific than one just containing *tags*
+  * even if the one with just tags is longer
+* a non-compound *id* selector would be more specific than a compound selector that only contains *tags* and *classes*
 
 ---
 
@@ -123,6 +151,6 @@ a:active {
 
 # CSS Diner
 
-* Complete the CSS selector game linkeed below
+* Complete the CSS selector game linked below
 
   * https://flukeout.github.io/
