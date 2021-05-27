@@ -68,17 +68,13 @@ AJAX enables
 
 (corrected for modern use)
 
-> Ajax isn’t a technology. It’s really several technologies, each flourishing in its own right, coming together in powerful new ways. Ajax incorporates:
+Ajax isn’t a technology. It’s really several technologies, each flourishing in its own right, coming together in powerful new ways. Ajax incorporates:
 
-> * standards-based presentation using ~~XHTML~~ **HTML and CSS**
->
-> * dynamic display and interaction using the Document Object Model
->
-> * data interchange and manipulation using ~~XML and XSLT~~ **JSON**
->
-> * asynchronous data retrieval using ~~XMLHttpRequest~~ **Fetch**
->
-> * and JavaScript binding everything together.
+* standards-based presentation using ~~XHTML~~ **HTML and CSS**
+* dynamic display and interaction using the Document Object Model
+* data interchange and manipulation using ~~XML and XSLT~~ **JSON**
+* asynchronous data retrieval using ~~XMLHttpRequest~~ **Fetch**
+* and JavaScript binding everything together.
 
 **This was the moment that people realized web applications could be a competitor to desktop applications, and could run on every computer in the world.**
 
@@ -153,7 +149,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/' + postNumber)
 
 * `response.json()` is an alternative to `response.text()`
 * The server passes the Response from the server into the **first** callback function
-    * `response.json` parses the body of the response as JSON and returns real JavaScript objects
+  * `response.json` parses the body of the response as JSON and returns real JavaScript objects
 * it returns a *promise to parse* the body as JSON
 * the second `then` receives a *proper JavaScript Object* which is the result of calling `JSON.parse()` on the body
 
@@ -247,6 +243,10 @@ but if you want to do it yourself...
 ```javascript
 let data = JSON.parse(string)
 ```
+
+---
+
+# Parsing JSON Example
 
 So this would work fine:
 
