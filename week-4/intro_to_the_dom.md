@@ -15,17 +15,15 @@
 
 * BOM stands for Browser Object Model
 * the global `window` variable has lots of nice properties
-    * `window.location`
-    * `window.navigator`
-    * `window.history`
-    * `window.screen`
-    * `window.frames`
-    * `window.document` -- hey, look! it's the DOM
+  * `window.location`
+  * `window.navigator`
+  * `window.history`
+  * `window.document` -- hey, look! it's the DOM
 * And methods
-    * `open()`, `close()`
-    * `moveTo()`, `sizeTo()`
-    * `alert()`, `prompt()`, `confirm()`
-    * `setTimeout()`, `setInterval()`
+  * `open()`, `close()`
+  * `moveTo()`, `sizeTo()`
+  * `alert()`, `prompt()`, `confirm()`
+  * `setTimeout()`, `setInterval()`
 
 ---
 
@@ -278,25 +276,23 @@ An element is a particular type of node, and it's the most common, but beware, t
 
 In addition to getting a *single* element by its `id` or a CSS selector, you can also ask the document to give *all* elements that match a certain criterion.
 
+by *CSS Class* name
+
 ```js
 let elements = document.getElementsByClassName('profile-picture')
 ```
 
-> by *CSS Class* name
+by *Element* name
 
 ```js
 let elements = document.getElementsByTagName('h2')
 ```
 
-> by *Element* name
+by *CSS Selector* expression
 
 ```js
 let elements = document.querySelectorAll('h2.preview > p')
 ```
-
-> by *CSS Selector* expression
-
-These return *collection* objects, so you must write more code to get the actual element objects, or to check the collection's length.
 
 ---
 

@@ -61,11 +61,11 @@ Now that we have the information we want to put on the page (the author's names,
 
 We can create new elements using `document.createElement` and passing in the type of element we want to create. Since we are building linkable lists of authors, and titles an `a` element wouldn't be a bad choice. We'll need to assign the call to `document.createElement` to a variable so that we can reference it later on.
 
-To insert text into the element we just created we can manipulate its properties. By assigning the `.textContent` property of the element we just created to the author's name, or the post's title we can put that text into that element.
+To insert text into the element we just created we can manipulate its properties. By assigning the `.textContent` property of the element we just created to the author's name, or the post's title respectively we can put that text into that element.
 
 To set up links to the appropriate page we'll also need to add an `href` property. This should be equal to the page you want to link to and an identifier. IDs tend to make good identifiers because they are generally unique for each entry.
 
-The href for or blog post titles might look something like this: `"/post.html#" + postData.id`
+The href for our blog post titles might look something like this: `"/post.html#" + postData.id`
 
 ## Appending Elements
 
