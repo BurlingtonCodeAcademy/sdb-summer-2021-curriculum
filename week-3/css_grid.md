@@ -45,6 +45,26 @@
 
 ---
 
+# Grid Setup Explained
+
+---
+
+# Grid Template Rows and Columns
+
+---
+
+# The Grid Gap
+
+---
+
+# Assigning Elements to Areas
+
+---
+
+# Wrapping Rows
+
+---
+
 # Let's play a game!
 
 Let's practice some more grid setup! [Grid Garden](https://cssgridgarden.com/) Is a fantastic game by the same people who brought you Flexbox Froggy that lets you practice using grid properties. Go there now, and see if you can complete all 28 levels!

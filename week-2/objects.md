@@ -185,12 +185,11 @@ You aren't always going to be working with objects that you created. In web deve
 * In a JavaScript object, keys are strings that should also be valid variables
 
 * **Beware** of using these as keys, since they get converted to strings in unexpected ways:
-
-    * `null`
-    * `undefined`
-    * `''` (empty string)
-    * `false` or `true`
-    * `0` (or any number)
+  * `null`
+  * `undefined`
+  * `''` (empty string)
+  * `false` or `true`
+  * `0` (or any number)
 
 ---
 

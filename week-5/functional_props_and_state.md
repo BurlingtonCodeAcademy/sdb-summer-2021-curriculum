@@ -1,3 +1,6 @@
+
+
+
 # useState
 
 The first step to using `useState` is to import it from react
@@ -14,6 +17,7 @@ This creates a property in state, with an initial value, and an updater function
 
 `setProperty` takes the new value we want to set as `property` in our state. Note that our updater function is often wrapped in an event handler.
 
+---
 
 # useEffect
 
@@ -25,11 +29,15 @@ You can think of `useEffect` as an all-in-one function for the `componentDidMoun
 
 `useEffect` can clean up after itself by returning a clean up function, but not every operation needs to be cleaned up.
 
+---
+
 # useEffect with no Cleanup
 
 Effects that don't require a cleanup are actions that should be taken on every render. e.g. updating the `title` of your `document`. You can set these up by passing a callback function which performs the necessary action. This callback will be called every time the component renders, or rerenders
 
 > If you wanted to update the title of the document from the previous lab to reflect the user's full name you could add a `useEffect(() => { document.title = fullName + "'s page"})` to your component
+
+---
 
 # cleaning up after useEffect
 
@@ -47,13 +55,19 @@ useEffect(() => {
   })
 ```
 
-The function that is returned from our callback (`function() {chatService.close()}`) will be called during the `componentWillUnmount` lifecycle stage
+The function that is returned from our callback (`function() {chatService.close()}`) will be called during the `componentWillUnmount` lifecycle stage.
 
-# Fetching with useEffect
+---
+
+# Fetching with Functional Components
 
 A very common use of `useEffect` is to fetch data, but you have to be a little careful when doing so...
 
 Because `useEffect` combines `componentDidMount` and `componentDidUpdate` it fires its callback when the page first loads, and then again everytime the component re-renders. Changing state causes a re-render so if you forget to wrap your `setStateProperty` function in a gaurd clause you can get trapped in an infinite render cycle.
+
+---
+
+# Example Code
 
 `useEffect` and `useState`combined should look something like this:
 
@@ -81,3 +95,4 @@ function ShowData(props) {
 ```
 
 ---
+

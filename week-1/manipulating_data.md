@@ -2,7 +2,7 @@
 
 Open up your terminal and follow along. Let's play with some data!
 
-![data from Star Trek]()
+![data from Star Trek](https://images.app.goo.gl/bHyiW9pWGPBaT2H8A)
 
 ---
 

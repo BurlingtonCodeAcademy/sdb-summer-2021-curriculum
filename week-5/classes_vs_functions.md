@@ -76,7 +76,7 @@ Go ahead and clone down [this example code](https://github.com/Habenzy/class-com
 
 This is a simple class based React app that accepts an input in a form, and displays it as an `<h2>` on the page when the form is submitted.
 
-Follow along as I transform this class based compopnent into a functional component!
+Follow along as I transform this class based component into a functional component!
 
 ---
 

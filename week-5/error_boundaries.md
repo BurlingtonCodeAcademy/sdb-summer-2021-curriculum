@@ -1,24 +1,27 @@
-# Error Boundaries - Overview
-
-### Description
+# Error Boundaries
 
 * JavaScript errors within Components can corrupt an entire App
 * Boundaries place a container around errors to prevent propagation
 * Child components errors are caught and contained
+* ERrors become easier to track
 * Fallback UI can be rendered on error
 
-### Limitations
+---
 
-* Only catch errors below themselves in the Render tree
-* Cannot catch
-  * Errors in Event handlers
-  * Asyncronous code such as setTimeout or requestAnimationFrame
+# Limitations
+
+* Error boundaries only catch errors below themselves in the Render tree
+* They cannot catch errors in:
+  * Event handlers
+  * Asynchronous code such as setTimeout or requestAnimationFrame
   * React pages generated on the Server
   * Errors from the ErrorBoundary itself
 
+---
+
 # Error Boundaries - Creation
 
-* Any component can be a boundary if defines `componentDidCatch`
+* Any component can be a boundary if it defines a `componentDidCatch` lifecycle method
 * `componentDidCatch` behaves like JavaScript `catch {}`
 * Only React Class components can be Boundaries
 
@@ -32,13 +35,11 @@ class ErrorBoundary extends React.Component {
   componentDidCatch(error, info) {
     // Display fallback UI
     this.setState({ hasError: true });
-    // You can also log the error to an error reporting service
     logErrorToMyService(error, info);
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
       return <h1>Something went wrong.</h1>;
     }
     return this.props.children;
@@ -51,6 +52,8 @@ class ErrorBoundary extends React.Component {
   <MyWidget />
 </ErrorBoundary>
 ```
+
+---
 
 # Error Boundaries - componentDidCatch
 
@@ -72,7 +75,13 @@ componentDidCatch(error, info) {
 }
 ```
 
+---
+
+# Example CodePen
+
 [CodePen](https://codepen.io/Dangeranger/pen/oMRpQg?editors=0010)
+
+---
 
 # Error Boundaries - Within Event Handlers
 
@@ -99,10 +108,14 @@ function MyComponent (props) {
 }
 ```
 
+---
+
 # Error Boundaries - Live Example
 
 <p data-height="500" data-theme-id="light" data-slug-hash="oMRpQg" data-default-tab="js,result" data-user="Dangeranger" data-pen-title="oMRpQg" class="codepen">See the Pen <a href="https://codepen.io/Dangeranger/pen/oMRpQg/">oMRpQg</a> by Joshua Burke (<a href="https://codepen.io/Dangeranger">@Dangeranger</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+---
 
 # Error Boundaries - Stack Traces
 

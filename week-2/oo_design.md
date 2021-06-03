@@ -80,9 +80,9 @@ Unfortunately this is not something JavaScript enforces. So we, as the programme
 
 JavaScript is a hybrid of (at least) three styles:
 
-  * procedural
-  * functional
-  * object-oriented
+* procedural
+* functional
+* object-oriented
 
 In this lesson we explore how JavaScript implements *object-oriented* language features.
 

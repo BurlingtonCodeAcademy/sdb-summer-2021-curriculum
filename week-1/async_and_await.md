@@ -67,7 +67,7 @@ Open up your `hello_frenemy_input.js` file, and follow along with your instructo
 
 # Code-Along: using readline and await some more
 
-Please follow along with the instructor and create a file named `quest.js`. Add in the ask function:
+Please follow along with the instructor and create a file named `quest.js`, and in that file define the `ask` function:
 
 ```javascript
 const readline = require('readline');

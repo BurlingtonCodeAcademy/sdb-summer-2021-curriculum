@@ -84,7 +84,7 @@ See also: [What went wrong?](https://developer.mozilla.org/en-US/docs/Learn/Java
 
 ---
 
-![Breakdown of error message](needtocreatethis.com)
+![Breakdown of error message](https://res.cloudinary.com/btvca/image/upload/v1622657526/curriculum/error-message-breakdown_jpmlv0.png)
 
 ---
 

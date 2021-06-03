@@ -22,7 +22,18 @@ Functions are a way of *encapsulating* sections of code. Calling a function will
 
 Parameters are used to define the *input* of a function, while the *return statement* specifies the output
 
-![function diagram](doesn'tExistYet)
+```js
+function functionName(parameter) {
+  //This is the body of the function
+  //any actions you want the function to take should be defined here
+  return someValue //The result of running the function, expressions will be evaluated before being returned
+}
+
+functionName(32) //You call a function by its name followed by open and closed parentheses
+//You pass arguments to the function in the parentheses
+//Arguments become the values of the parameters
+//Not all functions take arguments
+```
 
 ## Defining the Function
 
