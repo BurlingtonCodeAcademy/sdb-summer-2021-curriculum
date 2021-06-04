@@ -122,4 +122,4 @@ The above languages run *inside* the web browser (aka "the client side").
 
 # Curl Screenshot
 
-![curl screenshot](/images/http-curl-example.png)
+![curl screenshot](https://res.cloudinary.com/btvca/image/upload/v1574445185/curriculum/http-curl-example_wc2siw.png)

@@ -52,6 +52,13 @@ Most notably:
 
 # Forms `onsubmit`
 
+When the submit button on a form is clicked the form element itself emits a "submit" event which does several things:
+
+* It redirects to the URL set as the `action` property on the form
+  * If no `action` property exists it will refresh the current page
+* It attaches a query parameter to your URL
+  * The key/value pairs being the `name` of each input, and the value for that input.
+
 ---
 
 # Forms contain inputs

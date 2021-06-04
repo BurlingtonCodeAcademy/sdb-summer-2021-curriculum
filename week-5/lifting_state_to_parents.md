@@ -5,7 +5,9 @@
 * Siblings do not pass state to each other directly
 * State should pass through a parent, then trickle down
 
-### Boiling Point Calculator
+---
+
+# Code Along: Boiling Point Calculator
 
 ```jsx
 function BoilingVerdict(props) {
@@ -19,6 +21,8 @@ function BoilingVerdict(props) {
   )
 }
 ```
+
+---
 
 # Lifting State - Calculator Input
 
@@ -47,11 +51,12 @@ function Calculator (props) {
 }
 ```
 
-[CodePen](https://codepen.io/Dangeranger/pen/jpJKGN?editors=0010)
+---
 
 # Lifting State - Another Input
 
 * The calculator should work for Celsius & Fahrenheit
+
 
 ### What we want
 
@@ -67,7 +72,9 @@ function Calculator (props) {
 }
 ```
 
-### Extract TemperatureInput
+---
+
+# Extract TemperatureInput
 
 ```jsx
 function TemperatureInput (props) {
@@ -89,6 +96,8 @@ function TemperatureInput (props) {
 }
 ```
 
+---
+
 # Lifting State - Passing State
 
 * The components must be kept in sync
@@ -96,7 +105,9 @@ function TemperatureInput (props) {
 * Sibling components can not communicate directly
 * State can be moved to `Calculator` to achieve this
 
-### Remove State from TemperatureInput
+---
+
+# Remove State from TemperatureInput
 
 ```jsx
 function TemperatureInput (props) {
@@ -120,13 +131,17 @@ function TemperatureInput (props) {
 }
 ```
 
+---
+
 # Lifting State - Parent State
 
 * Children call `setTemperature` from props with new state
 * Parent updates state with `setTemperature`
 * Children re-render with new props
 
-### Parent Calculator Passes State to Children
+---
+
+# Parent `Calculator` Passes State to Children
 
 ```jsx
 function Calculator (props) {
@@ -162,12 +177,14 @@ function Calculator (props) {
 }
 ```
 
-[CodePen](https://codepen.io/Dangeranger/pen/djrKLj?editors=0010)
+---
 
 # Lifting State - Live Example
 
 <p data-height="265" data-theme-id="light" data-slug-hash="djrKLj" data-default-tab="js,result" data-user="Dangeranger" data-pen-title="djrKLj" class="codepen">See the Pen <a href="https://codepen.io/Dangeranger/pen/djrKLj/">djrKLj</a> by Joshua Burke (<a href="https://codepen.io/Dangeranger">@Dangeranger</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+---
 
 # Lifting State - Conclusions
 
@@ -177,13 +194,7 @@ function Calculator (props) {
 * State flowing down makes state changes simpler to debug
 * Props should be derived from State
 
-# Lab: Post Selector
-
-Let's create a React component that consists of two main components; a list of posts, and a display box. These should be two seperate components. You will also need a parent component that renders both the list, and the display box.
-
-Using state and props set up the page so that when you click on a post the cotent is rendered in the display box.
-
-> Hint: If you want to store your posts locally it might be easiest to create JSON files to represent the posts. Or you could just use [JSONPlaceholder](https://jsonplaceholder.typicode.com/)
+---
 
 ### Links
 

@@ -6,7 +6,7 @@ The goal for this lab is to help you get comfortable debugging things in the bro
 
 ## Site Design
 
-![working site screenshot]()
+![working site screenshot](https://res.cloudinary.com/btvca/image/upload/v1622826263/curriculum/markdown-preview-complete_maogb8.png)
 
 ## Site Functionality
 

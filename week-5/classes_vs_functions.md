@@ -82,7 +82,7 @@ Follow along as I transform this class based component into a functional compone
 
 # Compare and Contrast
 
-![class vs. functional components](/images/func_v_class_comp.png)
+![class vs. functional components](https://res.cloudinary.com/btvca/image/upload/v1622826629/curriculum/func_v_class_comp_h7omae.png)
 
 ---
 

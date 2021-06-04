@@ -1,6 +1,6 @@
 # Flexbox
 
-<img src="/images/centered-flexbox.png" width="480px"/>
+![Centered Flexbox](https://res.cloudinary.com/btvca/image/upload/v1574445169/curriculum/centered-flexbox_oqccyf.png)
 
 ---
 
@@ -24,6 +24,7 @@
 * Flexbox is one-dimensional. It can arrange items either in a row, or a column, but not both at the same time.
 * Flexbox is useful for laying out elements such as navigation bars, headers, image galleries, etc.
 * Flexbox *fixes* CSS layout madness by placing the responsibility for layout with the *container*, and not asking *each item* to be responsible for laying *itself* out
+* Flex containers only operate on their *direct children*
 
 ---
 
@@ -209,7 +210,6 @@ Then give the first item `order: 2`, and the second item `order: 1`.
 
 **A**: A grid! (But not CSS Grid)
 
-[flex-grid](./flex-grid.html)
 
 ```html
 <div class='two-columns'>

@@ -86,7 +86,7 @@ It should now print
 Invalid state transition attempted
 ```
 
-And if you `console.log` out 
+And if you `console.log` out `currentLocation` you should see the `home` object.
 
 ## There, and Back Again
 

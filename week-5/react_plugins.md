@@ -18,6 +18,8 @@ const Router = () => (
 
 ```
 
+---
+
 # Routing the Traditional Way
 
 * Most web frameworks like Express, Angular, Ember, etc. have routing
@@ -32,6 +34,8 @@ app.get('/posts/:id/edit', handlePostEdit)
 
 app.listen(5000)
 ```
+
+---
 
 # React Routing - Most Basic
 
@@ -55,6 +59,8 @@ const App = () => {
 const root = document.getElementById('root');
 ReactDOM.render( <App />, root)
 ```
+
+---
 
 # React Routing - Dynamic Routing
 
@@ -96,6 +102,8 @@ export default App;
 ```
 
 [Code Sandbox Step 1](https://codesandbox.io/s/82wvknrzn8)
+
+---
 
 # React Routing - Links
 
@@ -147,6 +155,8 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<Router />, rootElement);
 ```
 
+---
+
 # React Routing - Matching Routes
 
 ```jsx
@@ -188,14 +198,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<Router />, rootElement);
 ```
 
-# Lab: React Nav Bar
-
-Let's set up a simple site with some basic navigation using React Router.
-
-- Create a new react app
-- Create an `About` Component, a `Homepage` component, and a `Nav` component
-- add links to the `Nav` component that direct you to the `Home` and `About` pages
-- The `Nav` component should be loaded on both the `Home`, and `About` pages
+---
 
 # React Routing - The Match Object
 
@@ -238,6 +241,8 @@ ReactDOM.render(<Router />, rootElement);
 
 [Code Sandbox Match Object](https://codesandbox.io/s/ymqp7xnxjj)
 
+---
+
 # React Routing - Match Object Details
 
 ```jsx
@@ -271,6 +276,8 @@ Object {props: Object}
 
 [Code Sandbox Match Object](https://codesandbox.io/s/ymqp7xnxjj)
 
+---
+
 # React Router - URL Parameters
 
 * A colon `:someRoute` denotes that a Route component should be a parameter
@@ -303,6 +310,8 @@ ReactDOM.render(<App />, rootElement);
 
 [CodeSandbox - URL Params](https://codesandbox.io/s/31yvwl87p5)
 
+---
+
 # React Router - Sub-Parameters
 
 ```jsx
@@ -334,12 +343,16 @@ ReactDOM.render(<App />, rootElement);
 
 [CodeSandbox - Subparams](https://codesandbox.io/s/k956r67znr)
 
+---
+
 # React Routing - Query Parameters
 
 * Query parameters are the `name=value` pairs afte a `?` in a URL
 * `<Link />` Components can pass URL Parameters to a Route
 * The `to` param works differently between strings and objects
 * Params can be parsed using `new URLSearchParams(params)`
+
+---
 
 ### Example
 
@@ -361,6 +374,7 @@ const Nav = props => {
 
 [CodePen](https://codesandbox.io/s/1o9o1wn5l3)
 
+---
 
 # React Routing - Switch Component
 
@@ -390,11 +404,15 @@ const App = props => {
 
 [CodeSandbox](https://codesandbox.io/s/pl0wpn6q0)
 
+---
+
 # React Routing - Catch All Route
 
 * Catch all routes can be useful to prevent 404 errors
 * Allow for a 'helpful' message, instead of a "Page Not Found" HTTP error
 * Are easy to create with the `<Switch>` and `<Route>` components
+
+---
 
 ### Example
 
@@ -424,6 +442,8 @@ const App = props => {
 
 [CodeSandbox](https://codesandbox.io/s/m58vy8q99j)
 
+---
+
 # React Routing - Redirection
 
 ### Examples
@@ -450,7 +470,9 @@ const App = props => {
 
 [CodeSandbox](https://codesandbox.io/s/yp4xrk60mv)
 
-# Lab: React Router Blog
+---
+
+# React Router Blog
 
 Let's create a fake blog using [JSONPlaceholder](https://jsonplaceholder.typicode.com/) and React Router!
 

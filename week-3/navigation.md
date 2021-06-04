@@ -62,7 +62,3 @@
   margin-top: 3em;
 }
 ```
-
----
-
-# Navigation Bars Example: Flexbox

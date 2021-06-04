@@ -1,6 +1,6 @@
 # Embedding Media
 
-[Embedding](/lessons/www-track/embedding-media) is the process of including *media* from other sources into your web sites.
+Embedding is the process of including *media* from other sources into your web sites.
 
 "other documents" can include:
 
@@ -228,4 +228,4 @@ There are also front end frameworks that make creating, and manipulating embedde
 
 # Scripting Maps
 
-It is possible to use JavaScript to interact with an embedded map. See [the client-side coding lesson on interactive mapping](/lessons/written/interactive-mapping)
+It is possible to use JavaScript to interact with an embedded map. See [the client-side coding lesson on interactive mapping](/lessons/slides/using-libraries)

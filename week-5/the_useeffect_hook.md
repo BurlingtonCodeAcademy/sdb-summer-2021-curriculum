@@ -1,5 +1,7 @@
 # useEffect Explained
 
+---
+
 # Fetching Data
 
 * Most React frontend apps (and most web apps in general) need server data
@@ -7,6 +9,7 @@
 * Fetched data should be stored in state, and the values in state are rendered to the page
 * It is generally best practice to fetch when the component first mounts, during the `componentDidMount` lifecycle process
 
+---
 
 # Fetching Data Cont.
 
@@ -14,6 +17,8 @@
 * Get data after it has been rendered
 * Re-render by setting the fetched data in state
 * We can access the state and lifecycle render methods by using the `useState` and `useEffect` hooks respectively
+
+---
 
 # Fetching Data With Hooks
 
@@ -26,6 +31,8 @@ To fetch data (and store it) in a functional component we need to use Hooks
 
 > Note: Changing state triggers a re-render, a re-render triggers `useEffect` so remember to wrap your state changes in conditionals, or you'll be trapped in an infinte render cycle.
 
+---
+
 # Fetching Data Example
 
 ```jsx
@@ -36,20 +43,15 @@ function DisplayMessages(props) {
 
 ```
 
-# Lab: Functional Fetching
-
-Let's practice fetching data with `useEffect` by creating a React app that fetches a list of users, and displays them on the page
-
-- Create a new React app
-- When the page loads fetch a list of userss from `https://jsonplaceholder.typicode.com/users`
-- Then display a list of the user names on the page
-  - This means you will also be *rendering multiple components*
+---
 
 # Fetching Data - Handle Errors
 
 * Errors in `fetch` using APIs happen
 * Do not let an error ruin your page by raising in production
 * Better to wait/retry and present a nice message
+
+---
 
 # Component with Error Handling
 
@@ -77,6 +79,8 @@ function AuthorList(props) {
   )
 }
 ```
+
+---
 
 # Fetching Data - Example
 

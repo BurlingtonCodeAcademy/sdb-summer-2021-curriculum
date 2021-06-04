@@ -40,7 +40,7 @@ Chrome can be one of the most useful tools for debugging HTML and CSS.
 
 # Chrome Inspector
 
-![Image of the chrome web inspection tool](/images/dom-debugging.png)
+![Image of the chrome web inspection tool](https://res.cloudinary.com/btvca/image/upload/v1574445175/curriculum/dom-debugging_a3ij2j.png)
 
 ---
 
@@ -105,7 +105,7 @@ In FireFox:
 
 # Step 2a breakdown
 
-![chrome debugger example](/images/chrome-debugger.png)
+![chrome debugger example](https://res.cloudinary.com/btvca/image/upload/v1574445168/curriculum/chrome-debugger_y1uc1z.png)
 
 ---
 
@@ -119,7 +119,7 @@ In FireFox:
 
 # Step 2b breakdown
 
-![firefox debugger example](/images/firefox-debugger.png)
+![firefox debugger example](https://res.cloudinary.com/btvca/image/upload/v1574445177/curriculum/firefox-debugger_puni46.png)
 
 ---
 
