@@ -138,7 +138,7 @@ Software
 
 * Inside the Terminal, you are always "inside" a directory.
 * It is very easy to get lost in a maze of directories.
-* To find out which directory you are in, type: <kbd>p</kbd><kbd>w</kbd><kbd>d</kbd><kbd>Return</kbd>
+* To find out which directory you are in, type <kbd>p</kbd><kbd>w</kbd><kbd>d</kbd> and then hit <kbd>Return</kbd>
   * This stands for "print working directory" (not "password").
   * Most of the time you can also look at the prompt to see what the current directory is.
 

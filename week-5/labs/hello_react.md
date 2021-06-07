@@ -1,1 +1,1 @@
-# Just the Hello Frenemy lab, but in React this time
+# Just the Hello World basic set up
