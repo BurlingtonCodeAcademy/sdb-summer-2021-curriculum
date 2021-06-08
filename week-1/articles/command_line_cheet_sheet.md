@@ -8,7 +8,7 @@ When moving around on the terminal you use the `cd` command with the *relative p
 
 You can use more complicated relative paths to go through multiple directories
 
-`cd ../../labs/bug-hunts` would take you up two levels (into the location that contains the directory that contains the directory you started in) then it will look for a sub directory named `labs` and a further subdirectory named `bug-hunts` which is where you end up.
+`cd ../../labs/bug-hunts` would take you up two levels (into the location that contains the directory that contains the directory you started in) then it will look for a sub directory named `labs` and a further subdirectory named `bug-hunts` which is where you end up when you hit <kbd>Enter</kbd>.
 
 You can also hit <kbd>Tab</kbd> to autofill directory names after typing the first couple characters.
 
@@ -38,6 +38,6 @@ There are two programs we will commonly access through the CLI throughout this c
 
 The command for NodeJS is `node`. Entering `node` by itself will change your terminal into a Node environment
 
-Entering the command `node index.js` from the 
+Entering the command `node index.js` from the terminal (**NOT A NODE ENVIRONMENT**) will run the file `index.js` if it exists in the current location.
 
-# Moving Things
+The terminal command for VSCode is `code`. To open VSCode from the directory you're currently in you can use the command `code .`
