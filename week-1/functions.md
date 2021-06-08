@@ -111,6 +111,10 @@ The following are all roughly equivalent to the above:
 let add = function(x,y) { return x + y; };
 ```
 
+---
+
+# Four Function Syntaxes Cont.
+
 [Arrow Function Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 ```js
