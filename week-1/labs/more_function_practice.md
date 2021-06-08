@@ -93,9 +93,11 @@ supplyCal(0, 3, "cookie") // => "You will need 109500 cookies to last the rest o
 function supplyCalc(age, amountPerDay, item) {
   let amountPerYear = amountPerDay * 365
   let numberOfYears = 100 - age
-  let totalNeeded = amountperYear * numberOfYears
+  let totalNeeded = amountPerYear * numberOfYears
 
-  let message = "You will need" + totalNeeded + " " + item + "s to last the rest of your life"
+  let message = "You will need " + totalNeeded + " " + item + "s to last the rest of your life"
+
+  console.log(message)
 }
 ```
 
