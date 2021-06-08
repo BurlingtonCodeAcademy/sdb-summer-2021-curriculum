@@ -61,7 +61,7 @@ function shouter(someString) {
   return loudString + '!!!';
 }
 
-shouter('i like pizza');  => 'I LIKE PIZZA!!!'
+shouter('i like pizza'); // => 'I LIKE PIZZA!!!'
 ```
 
 The variable `loudString` is called a **local variable** and can only be used **inside** the function.
@@ -138,3 +138,5 @@ In JavaScript variables are always in a specific *scope*.
 * In general, sets of curly braces `{}` create a *new scope*
   * New scopes can always look outside of themselves
   * But **nothing** can look into a different interior scope
+* Function parameters are local variables scoped to the function definition
+  * Arguments become the values of the parameters.
