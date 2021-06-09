@@ -98,7 +98,7 @@ function greeter(name) {
 console.log("Who are you?")
 
 process.stdin.on('data' function(data) {
-  greeter(data)
+  greeter(data.toString())
   console.log("Who are you?")
 })
 ```
