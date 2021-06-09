@@ -43,3 +43,13 @@ Entering the command `node index.js` from the terminal (**NOT A NODE ENVIRONMENT
 The terminal command for VSCode is `code`.
 
 To open VSCode from the directory you're currently in you can use the command `code .`
+
+# Command Line Shortcuts
+
+* <kbd>Ctrl</kbd> + <kbd>C</kbd> will end a currently running process in the terminal
+* <kbd>Ctrl</kbd> + <kbd>L</kbd> will clear the terminal
+  * typing `clear` and hitting <kbd>Enter</kbd> will also clear the terminal
+* pressing the up arrow key will cycle through previous commands
+* hitting <kbd>Tab</kbd> will autofill directory or file names based on the command.
+  * `node` deals with files so hitting <kbd>Tab</kbd> will autofill file names
+  * `cd` deals with directories so hitting <kbd>Tab</kbd> will autofill directory names
