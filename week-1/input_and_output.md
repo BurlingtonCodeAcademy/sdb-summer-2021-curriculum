@@ -63,6 +63,21 @@ process.stdin.once('data', (chunk) => {
 
 ---
 
+# Event Listeners
+
+`.once` is a special type of function in JavaScript called an *event listener*
+
+Event Listeners are one of the main ways of handling user input for your programs. They:
+
+* are attached to a specific element, or interface
+  * In this case the terminal
+* wait for a specific type of interaction or event
+  * represented by the first argument to the function
+  * In this case a *data entry* event
+* run a function, that is supplied as the second argument to the event listener
+
+---
+
 # Welcome to Callback City!
 
 The previous one-liner code is equivalent to this:
@@ -92,3 +107,13 @@ function takesACallback(callback) {
   callback()
 }
 ```
+
+---
+
+# Code Along: Madlibs
+
+Let's create a Madlib template! The goal for this lab is to create a program that will ask for certain types of words (noun, verb, adjective, etc.) and once it has recieved a certain number of inputs it will insert those words, in the correct places, into a story which your computer will print to the terminal.
+
+* create a story with at least five words omitted (it does not have to be a long story ~1 paragraph)
+* create a function that asks for input for each of the omitted words
+* print the story to the console, filling in the blanks with the provided words.

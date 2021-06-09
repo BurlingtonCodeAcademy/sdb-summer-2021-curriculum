@@ -40,4 +40,6 @@ The command for NodeJS is `node`. Entering `node` by itself will change your ter
 
 Entering the command `node index.js` from the terminal (**NOT A NODE ENVIRONMENT**) will run the file `index.js` if it exists in the current location.
 
-The terminal command for VSCode is `code`. To open VSCode from the directory you're currently in you can use the command `code .`
+The terminal command for VSCode is `code`.
+
+To open VSCode from the directory you're currently in you can use the command `code .`
