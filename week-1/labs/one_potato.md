@@ -4,21 +4,16 @@
 
 The purpose of this lab is to build a program that uses loops to print the following poem:
 
+```
 1 potato,
-
 2 potato,
-
 3 potato,
-
 4!
-
 5 potato,
-
 6 potato,
-
 7 potato,
-
 More!
+```
 
 Create a new file called `potato.js`. We will be defining a function that will print this poem for us.
 
