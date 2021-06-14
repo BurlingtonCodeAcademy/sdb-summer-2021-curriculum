@@ -63,7 +63,7 @@ function printUpper(name) {
   console.log(name.toUpperCase())
 };
 
-names.forEach(name => printUpper)
+names.forEach(printUpper)
 ```
 
 prints:
