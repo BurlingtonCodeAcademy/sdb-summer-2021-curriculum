@@ -20,35 +20,35 @@ Let's create our `results` array, and see how we can access the properties on th
 ```js
 let results = [
   {
-    title: "A Wizard of Earthsea"
+    title: "A Wizard of Earthsea",
     tags:['fantasy', 'ursula k. le guin']
   },
   {
-    title: "Thing Explainer"
+    title: "Thing Explainer",
     tags:["science", "technology", "humor", "randal munro"]
   },
   {
-    title: "The Fellowship of the Ring"
+    title: "The Fellowship of the Ring",
     tags:["fantasy", "jrr tolkien"]
   },
   {
-    title: "A Brief History of Time"
+    title: "A Brief History of Time",
     tags:["history", "science", "stephen hawking"]
   },
   {
-    title: "The Great Fairy Tale Tradition"
+    title: "The Great Fairy Tale Tradition",
     tags:["fairy tale", "history", "jack zipes"]
   },
   {
-    title: "The Hitchhiker's Guide to the Galaxy"
+    title: "The Hitchhiker's Guide to the Galaxy",
     tags:["science fiction", "humor", "douglas adams"]
   },
   {
-    title: "The Silmarillion"
+    title: "The Silmarillion",
     tags:["fantasy", "mythology", "jrr tolkien"]
   },
   {
-    title: "Eloquent JavaScript"
+    title: "Eloquent JavaScript",
     tags:["programming", "technology", "marijn haverbeke"]
   }
 ];
