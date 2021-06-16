@@ -94,7 +94,7 @@ If the change from the current state to the next state is valid we change our cu
 let currentState = "green";
 
 function enterState(newState) {
-  let validTransitions = states[currentState].canChangeTo;
+  let validTransitions = states[currentState];
   if (validTransitions.includes(newState)) {
     currentState = newState;
   } else {
