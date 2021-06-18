@@ -37,3 +37,8 @@ Beware of accidentally setting multiple `setIntervals`! This will cause a weird 
 ## Clearing the Timer
 
 When the "reset" button is clicked we want to stop counting down, and reset our timer to its original value.
+
+## Going Further
+
+- Add a button to dynamically add more timers to the page
+  - Each timer should operate independently of the others
