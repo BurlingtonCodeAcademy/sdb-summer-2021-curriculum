@@ -6,10 +6,6 @@ In this lab we will be building out a website using HTML. Ultimately we want it 
 
 Create a new directory named "hello-html" and inside that directory create a file named `index.html`. This will be our homepage. The name `index.html` is actually significant, and your homepage should **always** be named `index.html`.
 
-## Wireframe
-
-![Hello HTML Wireframe]()
-
 ## Using Emmet Abbreviations
 
 When we're in VSCode we have access to a Emmet Abbreviations which are certain key combinations that auto-fill content. To create an empty HTML template you can type an exclamation point <kbd>!</kbd> and then hit the <kbd>Tab</kbd> key in any HTML file.

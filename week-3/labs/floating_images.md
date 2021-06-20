@@ -8,6 +8,8 @@ In a new subdirectory create a new `index.html` file
 
 ## Wireframe
 
+![Two column wireframe](https://res.cloudinary.com/btvca/image/upload/v1624230990/floating-img-wireframe_xjqf2g.png)
+
 ## Create an Outline
 
 The easiest way to start creating a page is to block out the main sections you will need, then fill in the content, and finally style the page a section at a time.
