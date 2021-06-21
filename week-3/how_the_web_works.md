@@ -117,9 +117,3 @@ The above languages run *inside* the web browser (aka "the client side").
   * reused **MIME**: (Multipurpose Internet Mail Extensions) spec for file type names
 * `Content-Length` header so the client knows how big a file to expect
 * ...and many more headers to help clients and servers work together
-
----
-
-# Curl Screenshot
-
-![curl screenshot](https://res.cloudinary.com/btvca/image/upload/v1574445185/curriculum/http-curl-example_wc2siw.png)

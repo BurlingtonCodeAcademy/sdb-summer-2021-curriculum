@@ -46,8 +46,6 @@ See <https://developer.mozilla.org/en-US/docs/Web/CSS/display> for many more `di
 
 # Example of Block vs. Inline Elements
 
-Inherent display properties of commonly-used HTML elements.
-
 | Block Level Elements |
 |----------------------|
 | div                  |
@@ -101,6 +99,15 @@ In order to make content layout work in CSS, you often need to introduce *wrappe
 
 For example, when you have an image with its own caption, and you want them to appear *together* and also have the caption positioned *relative to the image*.
 
+In this instance you would want to create a `<div>` (or possibly a `<figure>` tag if you want to use semantic HTML5 tags) that would *wrap around* aka *contain* your image, and text elements.
+
+```html
+<figure>
+  <img src='not-real.jpg' />
+  <figcaption>As you can see the image above doesn't really exist...</figcaption>
+</figure>
+```
+
 ---
 
 # Floats
@@ -123,7 +130,7 @@ For example, when you have an image with its own caption, and you want them to a
 
 ![CSS Float Property Illustration](https://patriciasdesignsite.files.wordpress.com/2015/01/text-wrap_031.jpg "Illustration of text-wrapping with CSS float")
 
-> TIP: applying `clear: both` to an element will make it skip down the page past *all* floats, left and right. This is usually done to a `<br>`
+> TIP: applying `clear: both` to an element will make it skip down the page past *all* floats, left and right.
 
 ---
 

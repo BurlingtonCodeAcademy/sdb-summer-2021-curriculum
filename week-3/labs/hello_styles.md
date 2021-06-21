@@ -6,9 +6,9 @@ In this lab we'll be going back to our hello-html lab, and sprucing up the page 
 
 The idea here is take this page, and style it so that it looks like the page below. If you want to use your own typography, colors, and images feel free to add your own flair. Get creative with it!
 
-## Site Example
+## Site Wireframe
 
-![site screenshot]()
+![site wireframe](https://res.cloudinary.com/btvca/image/upload/v1624232231/hello-styles_pprhzq.png)
 
 ## Linking Styles
 

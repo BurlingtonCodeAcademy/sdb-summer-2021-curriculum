@@ -8,6 +8,8 @@ In a new subdirectory create a new `index.html` file
 
 ## Wireframe
 
+![Two column wireframe](https://res.cloudinary.com/btvca/image/upload/v1624230990/floating-img-wireframe_xjqf2g.png)
+
 ## Create an Outline
 
 The easiest way to start creating a page is to block out the main sections you will need, then fill in the content, and finally style the page a section at a time.
@@ -16,11 +18,11 @@ For this page we're going to want a *header* section which will contain our page
 
 ## Fill in Content
 
-In your header add a title to the page. Make it big, and bold.
+* In your header add a title to the page. Make it big, and bold.
 
-Each article will need an image, and some text. 500 words of lorem ipsum should be sufficient for the text, though you should feel free to add more.
+* Each article will need an image, and some text. 500 words of lorem ipsum should be sufficient for the text, though you should feel free to add more.
 
-Your images shouldn't be much more than 300px wide
+* Your images shouldn't be much more than 300px wide
 
 ## Style Your Page
 

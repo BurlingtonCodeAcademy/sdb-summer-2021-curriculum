@@ -6,10 +6,6 @@ In this lab we will be building out a website using HTML. Ultimately we want it 
 
 Create a new directory named "hello-html" and inside that directory create a file named `index.html`. This will be our homepage. The name `index.html` is actually significant, and your homepage should **always** be named `index.html`.
 
-## Wireframe
-
-![Hello HTML Wireframe]()
-
 ## Using Emmet Abbreviations
 
 When we're in VSCode we have access to a Emmet Abbreviations which are certain key combinations that auto-fill content. To create an empty HTML template you can type an exclamation point <kbd>!</kbd> and then hit the <kbd>Tab</kbd> key in any HTML file.
@@ -71,6 +67,17 @@ In the header section add a title that says something along the lines of "Home P
 In your navigation section add a single anchor tag that we will use to link to the about page. Don't forget to put some text in it, or nothing will show up!
 
 In the main section add an image, and some text
+
+## Placeholder Content
+
+When mocking out a site design you often won't want to use or create a bunch of image files, text blocks, or other types of media. Luckily for us there are a lot of sites for placeholder content (especially images).
+
+Sites like:
+
+* [placekitten](https://placekitten.com/)
+* [placecage](https://www.placecage.com/)
+* [fillmurray](https://www.fillmurray.com/)
+* And many more...
 
 ## Lorem Ipsum
 

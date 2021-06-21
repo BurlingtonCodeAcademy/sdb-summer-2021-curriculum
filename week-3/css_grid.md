@@ -47,24 +47,75 @@
 
 # Grid Setup Explained
 
+The CSS display property `grid` will create a grid container. It is very common to use a `div` as your container element since `div`s are a very unopinionated element. You should also feel free to use more descriptive HTML5 elements such as `main` `sidebar` `header` `footer` elements for different sections of your page. Grid containers:
+
+* Contain the elements you want to lay out on the page
+* Allow your container to set grid properties
+  * grid properties determine how your elements are laid out *inside* the container
+* Only operate on their direct child elements
+* Align items based on the defined rows, and columns
+
 ---
 
 # Grid Template Rows and Columns
+
+To define the areas of your grid you can use the properties `grid-template-rows` and `grid-template-columns`. Both can take similar values, and are used to determine how many rows, and columns your grid has as well as their sizes.
+
+```css
+#grid-container {
+  display: grid;
+  grid-template-rows: 2fr 1fr 3fr 2fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+}
+```
+
+---
+
+# grid-template-rows
+
+* Usually optional; *if* it's not set your grid will:
+  * make enough rows to fit your content
+  * automatically make evenly sized rows
+* Necessary *if* you want to set different sizes for different rows
+
+---
+
+# grid-template-columns
+
+* Always necessary
+* Used to determine how many, and what size your columns are
+* If it's not set it will only make a single column
+  * We have a better tool for unidirectional layout we'll be covering later
 
 ---
 
 # The Grid Gap
 
+* Defines the space *between* the cells of the grid
+* `column-gap` defines the space between columns
+* `row-gap` defines the space between rows
+* `gap` is a shorthand property that combines `column-gap` and `row-gap`
+
 ---
 
 # Assigning Elements to Areas
 
+By default the child elements in a grid container will each fill one cell, going left to right, top to bottom in the order they are defined in your HTML. We can make the elements span multiple cells by using the `grid-column` and `grid-row` properties to determine exactly which cells an item is contained by. To specify cells you can give your `grid-column` and/or `grid-row` a starting line number, and either an ending line number, or a number of cells to span.
+
+* Items can overlap
+* All grid areas must by rectangular
+* You can use `grid-column` and `grid-row` individually or in conjunction to specify grid areas
+
 ---
 
-# Wrapping Rows
+# An Excellent Reference
+
+css-tricks.com is one of the best resources for all things CSS.
+
+[Here's a handy reference guide for using CSS Grids](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 ---
 
 # Let's play a game!
 
-Let's practice some more grid setup! [Grid Garden](https://cssgridgarden.com/) Is a fantastic game by the same people who brought you Flexbox Froggy that lets you practice using grid properties. Go there now, and see if you can complete all 28 levels!
+Let's practice some more grid setup! [Grid Garden](https://cssgridgarden.com/) Is a fantastic game that lets you practice using grid properties. Go there now, and see if you can complete all 28 levels!
