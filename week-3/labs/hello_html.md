@@ -68,6 +68,17 @@ In your navigation section add a single anchor tag that we will use to link to t
 
 In the main section add an image, and some text
 
+## Placeholder Content
+
+When mocking out a site design you often won't want to use or create a bunch of image files, text blocks, or other types of media. Luckily for us there are a lot of sites for placeholder content (especially images).
+
+Sites like:
+
+* [placekitten](https://placekitten.com/)
+* [placecage](https://www.placecage.com/)
+* [fillmurray](https://www.fillmurray.com/)
+* And many more...
+
 ## Lorem Ipsum
 
 You can easily generate placeholder text by using *lorem ipsum* which is ungrammatical latin dummy text often used to mock out content. The emmet abbreviation for generating lorem ipsum text is the word "lorem" followed by the number of words you need. e.g. if you typed `lorem250` and then hit <kbd>Tab</kbd> you would get 250 words of placeholder text.

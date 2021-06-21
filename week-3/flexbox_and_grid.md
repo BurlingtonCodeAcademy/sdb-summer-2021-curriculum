@@ -45,6 +45,8 @@ While this can be very useful for setting up more complicated layouts keep in mi
 
 # Why Would We Do This?
 
+What do you think? There are no wrong answers here...
+
 ---
 
 # Because...

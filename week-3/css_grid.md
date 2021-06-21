@@ -61,14 +61,26 @@ The CSS display property `grid` will create a grid container. It is very common 
 
 To define the areas of your grid you can use the properties `grid-template-rows` and `grid-template-columns`. Both can take similar values, and are used to determine how many rows, and columns your grid has as well as their sizes.
 
-`grid-template-rows`:
+```css
+#grid-container {
+  display: grid;
+  grid-template-rows: 2fr 1fr 3fr 2fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+}
+```
+
+---
+
+# grid-template-rows
 
 * Usually optional; *if* it's not set your grid will:
   * make enough rows to fit your content
   * automatically make evenly sized rows
 * Necessary *if* you want to set different sizes for different rows
 
-`grid-template-columns`:
+---
+
+# grid-template-columns
 
 * Always necessary
 * Used to determine how many, and what size your columns are
