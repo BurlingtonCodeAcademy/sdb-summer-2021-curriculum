@@ -8,6 +8,13 @@ The purpose of this lab is to get a little bit more comfortable using flexbox, a
 
 Draw a sketch that breaks down the layout of your blog-style site.
 
+Here's one example of how it could be drawn, but feel free to sketch out your own, and design a site that looks good to you. It must contain:
+
+* A title at the top of the page that spans the full width of the page
+* A sidebar containing several article previews
+  * Each preview should contain a title, small thumbnail image, and a little bit of text
+* A main article with a title, author, and optionally a large image
+
 ![Wireframe example](https://res.cloudinary.com/btvca/image/upload/v1624313532/wireframe_psscfs.png)
 ​
 
