@@ -4,7 +4,7 @@
 
 The purpose of this lab is to get a little more comfortable with grid by making a responsive gallery of thumbnail images. Lets first start by creating an HTML file and a CSS file that is linked to the HTML file
 
-[usefulTips](https://css-tricks.com/snippets/css/complete-guide-grid/)
+Here's a [great Grid guide.](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 ## Wireframe
 
@@ -55,4 +55,5 @@ The 4 most important steps to setting up a grid container and its layout
 
 CSS Grid was built with responsiveness in mind so lets make the image gallery responsive!
 You won't even need media queries!
+
 [Here's a good guide for making your grid responsive.](https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-grid/)
