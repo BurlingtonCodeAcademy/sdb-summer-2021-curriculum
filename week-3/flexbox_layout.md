@@ -141,10 +141,6 @@ Not anymore! Flexbox makes this easy, with one simple line of CSS. There are 5 d
 }
 ```
 
-![Flexbox Direction Property](https://cdn-images-1.medium.com/max/1000/1*htfdNmRIIFu_veRaFOj5qA.gif "Flex direction with Flexbox")
-
-> NOTE: if you want your items to be columns, use `flex-direction: row` in the container, and if you want rows, use `flex-direction: column` in the container
-
 ---
 
 # Controlling Individual Flex Items
@@ -163,7 +159,10 @@ Then give the first item `order: 2`, and the second item `order: 1`.
 
 (Note that the default value is `0`, so all items will need to be given an order number.)
 
-## Example
+---
+
+# Example CSS
+
 ```css
 .firstItem {
   display: flex;
@@ -190,7 +189,10 @@ Then give the first item `order: 2`, and the second item `order: 1`.
   4. stretch
   5. baseline
 
-## Example
+---
+
+## Example CSS
+
 ```css
 .navigationBarItem0 {
   display: flex;
@@ -225,8 +227,13 @@ Then give the first item `order: 2`, and the second item `order: 1`.
     <div>American</div>
   </div>
 </div>
+```
 
-<style>
+---
+
+# Flexi-grid CSS
+
+```css
 .two-columns {
     display: flex;
     flex-direction: row;
@@ -236,7 +243,6 @@ Then give the first item `order: 2`, and the second item `order: 1`.
     display: flex;
     flex-direction: column;
 }
-</style>
 ```
 
 ---
