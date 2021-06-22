@@ -51,4 +51,4 @@ Lastly, adjust your elements within your larger html elements so that they also 
 ​
 # Resources
 
-![Everyone's favorite Flexbox Helper!](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+[Everyone's favorite Flexbox Helper!](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
