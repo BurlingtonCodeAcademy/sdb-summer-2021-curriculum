@@ -72,8 +72,6 @@ For instance, for a **click** event, `event.target` contains a pointer to the *e
 
 ---
 
-# Code Along: Magic Button
-
 ```html
 <button type="button" id="presto">Presto...</button>
 <button type="button" id="abra">Abra...</button>
@@ -115,13 +113,13 @@ abraButton.addEventListener('click', sayMagicWord)
 
 ---
 
+# Bubbling Example
+
 <iframe height="265" style="width: 100%;" scrolling="no" title="bubble-events" src="//codepen.io/Dangeranger/embed/GbjpbP/?height=265&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href='https://codepen.io/Dangeranger/pen/GbjpbP/'>bubble-events</a> by Joshua Burke
   (<a href='https://codepen.io/Dangeranger'>@Dangeranger</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ---
-
-# Event Lifecycle
 
 ![event flow](https://res.cloudinary.com/btvca/image/upload/v1574445173/curriculum/eventflow_nyx1zw.svg)

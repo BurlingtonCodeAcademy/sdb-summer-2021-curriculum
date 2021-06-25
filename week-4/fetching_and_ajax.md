@@ -160,7 +160,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/' + postNumber)
 If you want to request data from a **local** webserver, use a partial URL 
 
 ```javascript
-fetch('/city-market.md')
+fetch('/some-markdown.md')
   .then(function(response) {
     return response.text();
   })

@@ -27,7 +27,7 @@ Web mapping is the process of creating maps on the internet. This is a deceptive
 
 Probably the most well known web mapping framework is Google maps. Google Maps revolutionized web mapping, and web development in general by being one of the first applications to prove that web apps could be as powerful as desktop apps.
 
-Today we'll be looking a different web mapping library, LeafletJS. Leaflet is the second largest web mapping library in the world. It's open source, and free to use, and often has more consistent data than Google Maps.
+Today we'll be looking a different web mapping library, LeafletJS. Leaflet is the second largest web mapping library in the world. It's open source, and free to use, and often has more up to date data than Google Maps.
 
 ---
 
@@ -48,14 +48,40 @@ Today we'll be looking a different web mapping library, LeafletJS. Leaflet is th
 
 ---
 
-# Creating a Map
+# Importing LeafletJS
+
+To create a leaflet map we will first need to *import* the leaflet JavaScript, and CSS files. Put the following `link` tags into the `<head>` of your HTML document:
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+```
+
+```html
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+```
+
+It's important to note that the `script` tag **must** come after the stylesheet, or your map will explode all over the page.
+
+---
+
+# Creating the Map
+
+To create the map on our page we will need several things: 
+
+* A container in our HTML for the map to live in
+* The `L` object in our JavaScript file
+* And a tileset chosen from [the Leaflet providers](https://leaflet-extras.github.io/leaflet-providers/preview/)
 
 ---
 
 # Adding Markers
 
 - Markers add a point to the map
-- The text of a marker can be set using a string of HTML
+- The text of a marker can be set using a string of HTML with the `.bindPopup` method
 
 ```js
 let marker = L.marker([51.5, -0.09]).addTo(mymap);
@@ -66,7 +92,7 @@ marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
 # Removing Markers
 
-- Markers can be removed by calling `remove()` on the marker object
+- Markers can be removed by calling the `.remove()` method on the marker object
 
 ```js
 let marker = L.marker([51.5, -0.09]).addTo(mymap);

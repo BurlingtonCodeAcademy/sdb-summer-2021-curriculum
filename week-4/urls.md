@@ -91,11 +91,7 @@ Query Parameters use the same URL slot as normal queries, but use a particular f
   * `&` to separate parameters from each other 
   * `=` to separate individual parameter names from values
 
-in `http://musical-notes.com/bands/search?category=folk&date=1977`
-
-the *query* is `?category=folk&date=1977`
-
-the *query parameters* are
+The *query* is `?category=folk&date=1977` and the *query parameters* are:
 
 |name|value|
 |---|---|

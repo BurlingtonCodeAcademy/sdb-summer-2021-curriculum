@@ -12,18 +12,17 @@ Most notably:
 
 # Buttons
 
-`<button>` elements have some inherent `onclick` behavior. It's fairly unobtrusive and just alters the button's styles so it looks like it get pressed in.
+`<button>` elements have some inherent `onclick` behavior.
+
+It's fairly unobtrusive and just alters the button's styles so it looks like it get pressed in.
 
 ---
 
 # Anchors
 
 * Anchor tags have an inherent `onclick` property to help with their main purpose; linking to other locations.
-
 * *internal anchors* are linked to `id` properties on the page
 * when linking to an *inner anchor*, use the # character to distinguish *external anchors* from *internal anchors*)
-
----
 
 ```html
 <a href='#stuff'>here is my stuff</a>
@@ -177,8 +176,7 @@ There are many more types of form elements (or "widgets") that let the user ente
   * or the user presses <kbd>Enter</kbd> in a text field
   * or JavaScript calls `form.submit()` on the form DOM element
 3. The client sends an HTTP request
-  * including parameters like `q=apple&submit=Search`
-  * (yes, the submit button's text label becomes the value)
+  * including parameters like `?item=apple&submit=Search`
 
 ---
 
