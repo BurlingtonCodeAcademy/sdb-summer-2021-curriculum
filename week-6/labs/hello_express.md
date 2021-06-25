@@ -103,17 +103,6 @@ Visit this URL in a web browser using copy-and-paste, or use this handy shortcut
 heroku open
 ```
 
-# High Five!
-
-Give yourself a high five.
-
-![high five](/images/high-five.svg)
-
-You deserve it!
-
-<small>image by [Pandark](https://www.deviantart.com/pandark/art/High-Five-350078391) ([CC-BY-SA](http://creativecommons.org/licenses/by-sa/3.0/))
-</small>
-
 # Lab: Hello, You!
 
 Now go back to VSCode, and modify the server code so instead of saying "Hello, World!" it says something clever and personalized.
@@ -125,21 +114,6 @@ Once you've made the change...
 * re-deploy to Heroku
 * reload the web page and read your new message
 * give yourself a high five!
-
-
-# Parameters in Express
-
-The special character `:` means "this is a [path parameter](./parameters#path_parameters)"
-
-Example:
-
-|  |  |
-|---|---|
-| Path:| `/hello/Gandalf` | 
-| Route:| `/hello/:friend` | 
-| Params:| `{friend: 'Gandalf'}` | 
-
-Express will grab the *value* from the path itself, and assign it to `request.params` for you to use later.
 
 # Visualize It
 

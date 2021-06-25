@@ -135,6 +135,35 @@ app.post('/file',(req,res)=>{
 })
 ```
 
+# Body Parameters in Express
+
+`express` comes with a handful of *middleware* options right out of the box, one of which is `express.urlencoded()`, which parses the `request` body for you. 
+
+That data will be available as `request.body`, much like `request.params` and `request.query`. 
+
+The **difference** is that `request.body` doesn't come from the URL like `params` and `query` do.
+
+Let's visualize it.
+
+
+# Visualize It
+
+In your `index.html`, add a form with the method of POST, like so:
+
+```html
+
+  <form action="/postroute" method="POST">
+        <input type="text" name="first">
+        <input type="text" name="last">
+        <input type="submit" value="submit">
+    </form>
+
+```
+In your `server.js` file, set up a route `/postroute`, that when the form SUBMITS,
+prints `request.body` to the command line. Be sure to enter data to the form!
+
+Note: add `express.urlencoded()` as *middleware* so the body (the form data, in this case) can be parsed and read by the server.
+
 # Summary: GET vs POST
 
 All requests are sent from the client to the server, but there are multiple types of request collectively known as request methods

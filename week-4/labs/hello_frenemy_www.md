@@ -2,13 +2,13 @@
 
 ## Welcome!
 
-In this lab you will set up an input form where you can enter a name, and the page will greet that name with a fancy popup. We'll also make it so that if an enemy is entered it will alert us of that, and deny them entry
+In this lab you will set up an input form where you can enter a name, and the page will greet that name with a fancy popup. We'll also make it so that if an enemy is entered it will alert us of that, and deny them entry.
 
 ## Creating the Page
 
-Begin by creating an html file and a seperate JS file
+Begin by creating an html file named `index.html`, and 
 
-Link them together with a script tag `<script src='index.js'/>`
+Create a separate JS file, and link both files together with a script tag in your HTML with a `src` attribute pointing to your JavaScript file. e.g. `<script src='main.js'/>`
 
 ## Reading Properties
 
@@ -16,22 +16,29 @@ Looking at HTML elements in JS is fairly easy. Use a dom query. Access the prope
 
 ## Forms as Input
 
-Inside the html <body>, lets set up the page by using a form element with one text and a corrisponding submit button
+Inside the html <body>, lets set up the page by using a form element with one text and a corresponding submit button
 
 ## The `<input>` Element
 
-The <input> HTML element is used to create interactive controls for web-based forms in order to accept data from the user.
+The `<input>` HTML element is used to create interactive controls for web-based forms in order to accept data from the user.
 
 It also:
--specifies an input field where the user can enter data.
--is the most important form element.
--can be displayed in several ways, depending on the type attribute.
+
+- specifies an input field where the user can enter data
+- is the most important form element
+- can be displayed in several ways, depending on the type attribute
+
+For the purposes of entering a name we probably want an input with a `type="text"` attribute.
 
 *Inputs can never have child nodes, only values*
 
 ## Writing to the DOM
 
-We'll want the names displaying on the page, just put it in the display for now.
+We'll want the names displaying on the page so let's target or "display" element using a DOM query.
+
+Store that value in a variable, and we can then manipulate the element's attributes to change the way it looks, and behaves on the page.
+
+To write text content to an element you might find the `textContent` property most useful.
 
 ## Clearing the Form
 
@@ -53,4 +60,4 @@ Styling modals, tracking *state*.
 
 ## Enemy Alert!
 
-Lets build it out more: Make the alert modal flash different colors
+Lets build it out more: Make the alert modal flash different colors when an enemy is detected! 

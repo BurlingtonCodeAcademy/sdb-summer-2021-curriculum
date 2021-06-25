@@ -472,7 +472,7 @@ const App = props => {
 
 ---
 
-# React Router Blog
+# Code Along: React Router Blog
 
 Let's create a fake blog using [JSONPlaceholder](https://jsonplaceholder.typicode.com/) and React Router!
 
