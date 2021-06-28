@@ -1,9 +1,3 @@
-    topic name: "forms"
-    topic name: "http-methods"
-    topic name: "html-elements"
-    topic name: "values"
-    topic name: "event-handlers"
-
 # Forms contain inputs
 
 a `<form>` is an HTML element that contains input elements
@@ -86,17 +80,6 @@ Also,
 
 There are many more types of form elements (or "widgets") that let the user enter data in a wide variety of formats.
 
-# Intercepting forms with JavaScript
-
-* your JavaScript code can add a *submit event handler*
-  * also known as "onsubmit"
-* this function will be called after the user clicks "Submit"
-  * but before the data is sent to the server
-* this lets you *modify* the data sent to the server, or execute code *before* sending the data to the server, or just *cancel* the server call altogether
-* if you intend a form to only be used by JavaScript, do one or both of these: 
-  * `<form href='#'>` in your HTML
-  * `event.preventDefault();` in your JS event handler
-
 # Form submission: how does it work?
 
 ![client-server illustration](https://developer.mozilla.org/files/4291/client-server.png)
@@ -115,78 +98,6 @@ There are many more types of form elements (or "widgets") that let the user ente
 Forms are a great way to accept user input in your webpages. The simplest way to handle user input is to create a form with an `<input type="text" />` element, and an `<input type="submit" />` element.
 
 When the form is submitted you use JavaScript to read the value of the text field, and do whatever manipulations, or actions you need to do based on that input.
-
-# Lab: Say Hello
-
-In this lab you will set up an input form where you can enter a name, and the page will display text greeting that name.
-
-  - Set up a form with a text input, and submit button
-  - When a user inputs their name and hits submit the page displays a personalized greeting for that name
-  -  Format the name so that it's always capitalized
-  - Bonus Challenge: Can you get it to say hello to some names, and tell others to go away?
-
-
-# Say Hello Solution
-
-<details>
-<summary>Hint 1</summary>
-<div>
-
-Text inputs have a `value` property which is equal to the text that's currently in the input area. This value comes into JavaScript as a string, and all standard string methods work on it.
-
-</div>
-</details>
-
-<details>
-<summary>Hint 2</summary>
-<div>
-
-When working with forms part of the default `submit` action is to refresh the page, which means you loose any DOM manipulation you might have applied. You can prevent default behaviours from taking place by calling `event.preventDefault()`
-
-</div>
-</details>
-
-<details>
-<summary>Solution</summary>
-<div>
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title
-</head>
-
-<body>
-  <form id='name' onsubmit="sayHello(event)">
-    <input id="name-input" type='text' />
-    <input type='submit' />
-  </form>
-
-  <h1 id='display'></h1>
-
-  <script>
-
-    let nameInput = document.getElementById('name-input')
-    let display = document.getElementById('display')
-
-    function sayHello (event) {
-      event.preventDefault()
-      let name = nameInput.value
-      let formattedName = name[0].toUpperCase() + name.toLowerCase().slice(1)
-      display.textContent = "Hello, " + formattedName + "!"
-    }
-    
-  </script>
-</body>
-</html>
-  ```
-
-</div>
-</details>
 
 # References
 

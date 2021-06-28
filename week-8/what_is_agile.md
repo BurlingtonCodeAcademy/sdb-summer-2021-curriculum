@@ -11,6 +11,8 @@
 * the Mythical Man-Month 
   * adding more people to a late project makes it more late
 
+---
+
 # Software Development, pre-Agile
 
 * start coding before you understand the problem
@@ -19,6 +21,8 @@
 * work alone
 * wait for QA to find bugs
 * react defensively to feedback and bug reports
+
+---
 
 # The Agile Manifesto
 
@@ -38,20 +42,7 @@ That is, while there is value in the items on
 the right, we value the items on the left more.
 ```
 
-# Manifesto Principles
-
-<http://agilemanifesto.org/principles.html>
-
-# Beware of Dark Agile
-
-aka Faux Agile or Evil Agile
-
-<https://ronjeffries.com/articles/018-01ff/abandon-1/>
-
-this obeys Chaffee's Law of Titles: if a discipline's title includes a complimentary descriptor, then that descriptor does not apply
-
-  * Computer Science is not a science
-  * Agile is not agile
+---
 
 # Agile Methodologies
 
@@ -60,6 +51,8 @@ this obeys Chaffee's Law of Titles: if a discipline's title includes a complimen
 * Kanban
 * SAFE
 * ...and several others
+
+---
 
 # Extreme Programming (XP)
 
@@ -71,6 +64,8 @@ Why is it called "extreme"? Mostly it's tongue-in-cheek, but beneath that is an 
 
 (where X is testing, code review, incremental design, refactoring, ...)
 
+---
+
 # XP values
 
 * Communication
@@ -78,9 +73,13 @@ Why is it called "extreme"? Mostly it's tongue-in-cheek, but beneath that is an 
 * Simplicity
 * Courage
 
+---
+
 # XP Practices
 
 <https://en.wikipedia.org/wiki/Extreme_programming_practices>
+
+---
 
 # XP Practices: Fine scale feedback
 * Pair programming
@@ -89,11 +88,15 @@ Why is it called "extreme"? Mostly it's tongue-in-cheek, but beneath that is an 
 * Iteration planning
 * Test driven development
 
+---
+
 # XP Practices: Whole team
 * War Room
 * Continuous integration
 * Design improvement (refactoring, domain modeling)
 * Small releases
+
+---
 
 # XP Practices: Shared understanding
 * Coding standard
@@ -104,13 +107,19 @@ Why is it called "extreme"? Mostly it's tongue-in-cheek, but beneath that is an 
 * Automated acceptance tests
 * User-centric design (e.g. personas)
 
+---
+
 # XP Practices:	Programmer welfare
 * Sustainable pace
 * Continuous process improvement (via retrospectives)
 
+---
+
 # XP Practices: Iterative development
 * Time boxed iterations
 * work, measure, plan, repeat
+
+---
 
 # Yesterday's Weather
 
@@ -122,7 +131,9 @@ is with the question,
 
 > "What was the weather yesterday?"
 
-...sure it'll be wrong 20% of the time, but that's a **much** better rate than every other planning system 
+...sure it'll be wrong 20% of the time, but that's a **much** better rate than every other planning system
+
+---
 
 # Continuous Improvement
 
@@ -134,6 +145,4 @@ then improve the rules
 
 (then repeat)
 
-# Retrospectives
-
-see [cadence](./cadence) and [retrospectives](./retrospectives) lessons
+---

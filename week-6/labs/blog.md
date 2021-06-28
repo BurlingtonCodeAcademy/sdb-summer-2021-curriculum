@@ -1,5 +1,3 @@
-# Blog Codealong
-
 # LAB: Let's build a blog in Express!
 
 Follow along here: <https://github.com/BurlingtonCodeAcademy/express-blog>
@@ -429,4 +427,3 @@ function searchArticles(params) {
 ```
 
 See? Who needs a database? :-)
-

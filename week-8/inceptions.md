@@ -1,8 +1,3 @@
-# 
-
-<br><br><br><br>
-![inception](/images/inception.jpg)
-
 # What is an Inception?
 
 * an exploratory workshop…
@@ -10,6 +5,8 @@
 * defines the goals and themes for a project…
 * and produces an initial backlog…
 * to kickstart an iterative process
+
+---
 
 # Before the Inception
 
@@ -27,6 +24,8 @@ Resources and time have been allocated for a short project
 
   * (inception + discovery + maybe one MVP)
 
+---
+
 # Inception Goals
 
 * define the project’s goals, anti-goals, risks
@@ -36,6 +35,8 @@ Resources and time have been allocated for a short project
 * sketch technical architecture (but avoid Big Design Up Front)
 * introduce the team to each other
 * define who is the customer (and other responsibilities)
+
+---
 
 # Optional Inception Goals
 
@@ -47,6 +48,8 @@ Resources and time have been allocated for a short project
 * start project glossary (aka *ubiquitous language* or *domain language*)
 * examine assumptions (scope, schedule, feasability, business goals, risks, user population, team size, etc.)
 
+---
+
 # Inception Anti-Goals
 
 * working software
@@ -57,11 +60,15 @@ Resources and time have been allocated for a short project
   * we will know more later
 * others?
 
+---
+
 # Inception Schedule
 
 * can be one day, two days, or a full week
 * needs a facilitator
 * invite as much of the whole team as possible
+
+---
 
 # Sample Inception Schedule
 
@@ -69,6 +76,7 @@ Resources and time have been allocated for a short project
 
 from [Pivotal Labs](http://cargocollective.com/pivotallabs/No-7-Dev-Inception)
 
+---
 
 # Project Goals
 
@@ -78,11 +86,15 @@ from [Pivotal Labs](http://cargocollective.com/pivotallabs/No-7-Dev-Inception)
 *  product goals
 *  engagement goals
 
+---
+
 # Team goals
 
 * workday experience and pacing
 * exploring technology vs. exercising skills
 * using new or old processes (e.g. remote pairing)
+
+---
 
 # Project Non-Goals
 
@@ -91,6 +103,8 @@ from [Pivotal Labs](http://cargocollective.com/pivotallabs/No-7-Dev-Inception)
 *  useful when there’s a priority decision to be made
   *  e.g. if a non-goal is "support mobile" then we can ignore Mobile Safari UI bugs
 * It's also OK to list unknown or unresolved goals
+
+---
 
 # Project Risks
 
@@ -114,6 +128,8 @@ from [Pivotal Labs](http://cargocollective.com/pivotallabs/No-7-Dev-Inception)
 
 Based off <http://pivotallabs.com/agile-inception_knowing-what-to-build-and-where-to-start/>
 
+---
+
 # Team Risks
 
 How do we want to work?
@@ -125,6 +141,8 @@ How do we want to work?
 * Desired test coverage?
 * Desired role ratios? 
     * Customer :: Project Manager :: Developer :: Designer :: QA Tester :: Support :: Ops :: Coach
+
+---
 
 # Elevator Pitch
 
@@ -139,11 +157,15 @@ Unlike ______, our product ______.
 
 Then select a spokesperson to share your result with the group. If time allows, collaborate to create a consensus pitch statement.
 
+---
+
 # Elevator Pitch Example
 
 ![elevator pitch](/images/elevator-pitch.png)
 
 (from <https://agilewarrior.wordpress.com/2010/11/06/the-agile-inception-deck/>)
+
+---
 
 # Mission Statement Game
 
@@ -159,6 +181,8 @@ Then select a spokesperson to share your result with the group. If time allows, 
 
 Here are some [mission statements from 50 non-profit organizations](https://topnonprofits.com/examples/nonprofit-mission-statements/), sorted from shortest to longest. See how much more poignant the short ones are!
 
+---
+
 # Personas
 
 ![example persona](https://blog.alexa.com/wp-content/uploads/2017/10/Buyer-Persona-Examples-B2C-Retail.jpg)
@@ -171,8 +195,7 @@ Here are some [mission statements from 50 non-profit organizations](https://topn
  * goals
  * frustrations
 
-Links:
-
+---
 
 # Persona Details
 
@@ -188,10 +211,14 @@ Links:
     * https://blog.alexa.com/10-buyer-persona-examples-help-create/
     * https://www.hubspot.com/make-my-persona
     * https://www.google.com/search?q=persona+generator
-    
+
+---
+
 # Persona Sections
 
 After creating the personas, you can start applying them to the system you're designing, e.g...
+
+---
 
 ## Marketing Plan
 
@@ -203,6 +230,8 @@ After creating the personas, you can start applying them to the system you're de
 * start to diagram relationships among personae and activities and roles
 * start to make timelines and sequence diagrams showing communication and workflow between roles and documents
 
+---
+
 # Story Mapping
 
 *  very time-consuming
@@ -213,11 +242,15 @@ After creating the personas, you can start applying them to the system you're de
 
 > ["The goal isn’t to get all the cards created, but to establish a rhythm of story creation."](http://agilecoffee.com/using-an-inception-to-kick-off-a-project/)
 
+---
+
 # Story Mapping Example
 
 ![Winninpeg Example Story Map](http://3.bp.blogspot.com/-KWX3M3EbdzY/VTZr6PNJ1rI/AAAAAAAAAOs/8HTZDtGw1zc/s1600/UserStoryMap.png)
 
 <http://winnipegagilist.blogspot.com/2012/03/how-to-create-user-story-map.html>
+
+---
 
 # Stories
 
@@ -230,6 +263,8 @@ After creating the personas, you can start applying them to the system you're de
 * Usually one story per feature, bug, or chore
 
 (For more see the [Planning](planning#stories) lesson.)
+
+---
 
 # Story Body Template
 
@@ -247,6 +282,8 @@ e.g.
 |---|
 |As a customer, I want to sort the matching cars by price, so that I can see the best deal.|
 
+---
+
 # Acceptance Criteria Template
 
 Generally a single *story* has several *acceptance criteria*, which are often written following this pattern:
@@ -261,20 +298,20 @@ THEN ____     [the system is in this state, or responds in this way]
 * Use present tense for WHEN and subjunctive mood ("should") for THEN
 * During the Inception, don't worry too much about filling in acceptance criteria for all stories, but it can be useful to do so for important or mysterious stories.
 
-## Example:
+---
 
-<!--BOX-->
+## Example:
 
 **GIVEN** I have $100 in my bank account, <br>
 **WHEN** I attempt to withdraw $200, <br>
 **THEN** the bank should reject the transaction <br>
 **AND** I should still have $100 in my account
 
-<!--/BOX-->
-
 ## Links:
 
 * https://martinfowler.com/bliki/GivenWhenThen.html
+
+---
 
 # Epics
 
@@ -284,6 +321,8 @@ THEN ____     [the system is in this state, or responds in this way]
 * Put epics across the top row of your story map
   * Put stories in columns underneath their epic
 
+---
+
 # Story Mapping Order
 
 1. Write Story Titles
@@ -292,6 +331,8 @@ THEN ____     [the system is in this state, or responds in this way]
 4. Write Stories
 5. Estimate Stories
 6. Prioritize Stories into a Backlog (across Epics)
+
+---
 
 # Advice for Facilitators
 
@@ -306,6 +347,8 @@ THEN ____     [the system is in this state, or responds in this way]
   * Use a Parking Lot (or IOU) list for items to deal with immediately after the meeting
 *  If the conversation ebbs, ask if anyone sees a pattern… or has a suggestion… or if it’s time for a break
 
+---
+
 # Iteration Zero
 
 * sometimes inceptions reveal that a project is not yet ready to build
@@ -315,6 +358,8 @@ THEN ____     [the system is in this state, or responds in this way]
   * "spiking" proof of concept on architectural or usability unknowns
   * setting up technical infrastructure (build, deployment, environments)
 * these experiments should be bounded and scoped just like "real" features
+
+---
 
 # Recurring Meetings
 
@@ -328,11 +373,15 @@ Inceptions are a great place to establish the regular rhythm of the project, as 
 *  User Testing sessions
 * Others?
 
+---
+
 # Next Steps
 
 * Review Parking Lot / IOUs
 * Schedule additional meetings
 * Assign someone to capture cards and diagrams into Tracker
+
+---
 
 # Retrospective & Closing
 
@@ -342,6 +391,8 @@ Inceptions are a great place to establish the regular rhythm of the project, as 
   * Specific feedback for the facilitator?
 * Appreciation Circle
 * Any last thoughts?
+
+---
 
 # Party Time!
 

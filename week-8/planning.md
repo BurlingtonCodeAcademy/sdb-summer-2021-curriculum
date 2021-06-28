@@ -4,6 +4,8 @@
 
 (from <https://en.wikipedia.org/wiki/Extreme_programming>)
 
+---
+
 # Project Phases
 
 * Scoping => SOW (Statement/Scope of Work)
@@ -29,6 +31,7 @@
 
 This is not waterfall! These phases often overlap and recur.
 
+---
 
 # Recurring Meetings
 
@@ -39,6 +42,8 @@ This is not waterfall! These phases often overlap and recur.
 * Retrospective (weekly, bi-weekly, or monthly)
 * User Testing sessions
 * Others?
+
+---
 
 # Stories
 
@@ -52,7 +57,9 @@ This is not waterfall! These phases often overlap and recur.
   * can be implemented within 1 iteration
   
 * (*) chores and spikes do not directly provide business value, but improve knowledge or reduce debt or increase simplicty
-  
+
+---
+
 # Stories vs Features
 
 Usually a given *feature* has one or more *stories*.
@@ -64,11 +71,15 @@ There are other types of stories and tasks...
 * chore
 * research
 
+---
+
 # Story Lifecycle
 
 ![tracker story lifecycle](/images/tracker-workflow.png)
 
 (this diagram is from Pivotal Tracker but the workflow applies to most Agile processes and tools)
+
+---
 
 # Story Independence
 
@@ -77,6 +88,8 @@ There are other types of stories and tasks...
 * If a dependency does exist, you can say that Story B will cost more points if implemented before Story A
 * No dependencies makes planning **much** easier, 
 * and helps focus attention on business value, not technical problems
+
+---
 
 # Story Body Template
 
@@ -93,11 +106,15 @@ SO THAT ____   [motivation]
  * If you write "As a user" you're probably doing it wrong -- use a more specific role name instead
  * "I want to" should be an action, not just a desire
 
+---
+
 # Acceptance Criteria
 
 * Each story should have a list of conditions by which we know when it's done
   * A story is called a story because it has a beginning, a middle, and an end
 * If well-written, Acceptance Criteria can turn into Acceptance Tests
+
+---
 
 # Acceptance Criteria Template
 
@@ -106,6 +123,8 @@ GIVEN ____ [precondition]
 WHEN ____  [action]
 THEN ____  [postcondition/assertion]
 ```
+
+---
 
 # Sample Story
 
@@ -133,6 +152,8 @@ When I look at the nav bar
 Then I do not see the "Sign Out" button
 ```
 
+---
+
 # Backlog
 
 A backlog is a list of stories
@@ -147,6 +168,8 @@ that have been
 
 ☑ in **linear** order
 
+---
+
 # Backlog checklist
 
 When writing stories, it is very tempting to skip one of these steps
@@ -159,6 +182,8 @@ e.g. :
 
 so *please* try to treat the previous slide as a checklist, and push back if someone wants to skip a step, or do it out of order, or impatiently do several steps at once
 
+---
+
 # Planning Meeting
 
 * A planning meeting is focused on the upcoming work
@@ -169,7 +194,9 @@ so *please* try to treat the previous slide as a checklist, and push back if som
   * look over upcoming stories, check if any need more research or design
 * Often combined with Acceptance (but not always)
 * Often called "Backlog Grooming"
- 
+
+---
+
 # Estimation and Prioritization
 
 * Estimation is a technical task, prioritization is a customer task
@@ -182,6 +209,8 @@ so *please* try to treat the previous slide as a checklist, and push back if som
   * You shouldn’t prioritize until there’s an estimate, but you shouldn’t estimate until you know it’s near the top of the (unestimated) pile
   * Sometimes unexpectedly high or low estimates will change the priority
 
+---
+
 # Estimation
 
 * Estimate the *relative effort* of stories
@@ -189,6 +218,8 @@ so *please* try to treat the previous slide as a checklist, and push back if som
 * Choose a point scale that works for your team
   * 1-2-3 and 1-2-3-5-8 are popular
 * High estimates should make you consider *splitting* the story
+
+---
 
 # Easy as 1-2-3
 
@@ -203,6 +234,8 @@ In general...
  
 Points can also be awarded for *complexity* or *risk* or *mystery*
 
+---
+
 # Prioritization
 
 * Prioritize as "A-B-C" at first
@@ -211,6 +244,8 @@ Points can also be awarded for *complexity* or *risk* or *mystery*
 * Then try for *linear* prioritization
   * You all know exactly which story is next
   * And which stories may need more design or research
+
+---
 
 # How to Prioritize?
 
@@ -225,6 +260,8 @@ It’s up to the customer, BUT here are some guidelines:
 * by external deadline (e.g. a conference, or a marketing season)
 * randomly! (any decision is better than indecision)
 
+---
+
 # Acceptance Meetings
 
 * customer is presented with stories that have become "done" since the last acceptance meeting
@@ -234,7 +271,9 @@ It’s up to the customer, BUT here are some guidelines:
 * Acceptance doesn’t need to include the whole team, but if the right people aren’t in the room, invite them or wait until the next meeting
   * face-to-face is always better than high-latency channels like email or Tracker
 
-Flowchart:
+---
+
+# Flowchart
 
 ```
         ____________fix________       
@@ -245,6 +284,8 @@ in-progress -> done -> accept/reject?
                           Done
 ```
 
+---
+
 # Acceptance Meetings: Coders Welcome!
 
 * shy or impatient coders may want to skip Acceptance meetings since they feel like project management, but it's very important to have coders in the room for...
@@ -254,6 +295,8 @@ in-progress -> done -> accept/reject?
      * understanding why a story was rejected
      * understanding steps to reproduce bugs
      * maintaining continuity, esp. with coders who aren't there right now
+
+---
 
 # Planning Meetings: Coders Welcome!
 
@@ -268,9 +311,13 @@ in-progress -> done -> accept/reject?
   * maintaining continuity, esp. with coders who aren't there right now
   * thinking of related chores and external blockers
 
+---
+
 # The Veil of Ignorance
 
 > The goal is for **any** coder to be able to work on **any** story (with help, if needed, from the right pair partner).
+
+---
 
 # Retrospectives
 
@@ -287,44 +334,13 @@ in-progress -> done -> accept/reject?
 * Good/bad/weird is a common game, but doesn’t need to be the only one
   * [Agile Retrospectives](https://smile.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649) by Derby and Larsen for a good structure and lots of games
 
+---
+
 # Agile Planning Tools
 
 * Pivotal Tracker
 * Trello
 * sprint.ly
 * Jira (if configured well!)
+* Github Projects
 * etc.
-
-# Project Planning with Pivotal Tracker
-
-* BACKLOG is ORDERED by the customer
-  * order by value, or risk, or learning
-* a feature story delivers VALUE to the customer
-* feature stories are ESTIMATED and TESTED by the developers
-* features are ACCEPTED by the customer
-
-# Project Planning with Pivotal Tracker (2)
-
-* tasks live inside a story and do not deliver value on their own
-* stories can be SPLIT at any time as needed
-* chores and bugs are POINTLESS (unestimated) and do not deliver value
-    * they pay off debt or increase knowledge
-* dependencies between stories are IGNORED
-  * but can be captured as LINKS to other stories
-
-# Project Planning with Pivotal Tracker (3)
-
-* velocity is MEASURED by counting only the stories accepted in an iteration
-* iterations are BOUNDED by date and velocity
-  * not by scope or deadlines
-* velocity is an APPROXIMATION (prediction) of work per iteration
-* releases are GOALS not deadlines
-    * they can have a target date, but they might move past it and go red
-
-# Project Planning with Pivotal Tracker (4)
-
-* ICEBOX is fluid and chaotic - unordered, unestimated, for possibilities or “cold storage”
-* an EPIC comprises MANY STORIES
-    * feature sets or themes, not releases
-* labels are free text TAGS
-    * can be used to layer other workflows on top

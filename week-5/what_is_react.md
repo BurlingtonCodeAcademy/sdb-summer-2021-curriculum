@@ -1,8 +1,20 @@
 # What is React
 
+React is a front end, declarative, JavaScript framework that allows you to create modular, dynamic wep applications.
+
+React components use babel, and JSX to allow the user to write code that looks a lot like HTML in our JavaScript files
+
 ---
 
 # Component Oriented Design
+
+React is built around the idea of creating modular components that can be used to construct specific sections of your web page
+
+- Smaller components make more modular pages
+- Larger components can be used to render smaller components
+- Each instance of a component holds its own state
+- We can create multiple instances of a single component
+  - And change their state to repeat *layout* while changing *data*
 
 ---
 
@@ -14,7 +26,7 @@
 
 - Isolated pieces of a website or app
 - Can be passed data from parent components in the form of `props`
-- Can be rendered manually, or programatically
+- Can be rendered manually, or programmatically
 - Return JSX
 
 ---
@@ -245,7 +257,7 @@ class LoggingButton extends React.Component {
   render() {
     return (
       <button onClick={this.handleClick}>
-        {this.state.isToggleOn ? true : false}
+        {this.state.isToggleOn ? "On" : "Off"}
       </button>
     );
   }

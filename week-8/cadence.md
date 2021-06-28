@@ -6,6 +6,8 @@ The cadence of an Agile team revolves around its schedule of meetings, large and
 
 The timing, recurrence, agendas and durations of these meeting all contribute greatly to the team's sense of cohesion, and provide regular touchpoints for feedback, communicatio and adjustment.
 
+---
+
 # Standup
 
 Frequency: Daily
@@ -21,6 +23,8 @@ Goals:
   * if discussions start, pick a time to finish them later
     * "Parking Lot" technique
 
+---
+
 # Iteration Planning
 
 Frequency: Weekly (depending on iteration length)
@@ -35,6 +39,8 @@ Goals:
   * estimate effort, cut scope, specify technical tasks
   * identify risks and unknowns
   * plan for (unestimated!) bugs and chores, to pay down technical debt
+
+---
 
 # Story Demo/Acceptance/Rejection
 
@@ -53,6 +59,7 @@ Goals:
     * if it's partially ready, or scope or effort is larger than anticipated, then consider spinning off a new story for the remainder in the backlog, and move this story forward
   * if acceptance is done on the fly (e.g. one-on-one at desk), then don't forget to schedule a group demo too, for other team members
 
+---
 
 # Retrospective
 
@@ -71,6 +78,8 @@ Goals:
     * Are we accomplishing our goals (communication, feedback, testing, sustainable pace, etc.)?
 
 Link: [Agile Retrospectives](https://smile.amazon.com/Agile-Retrospectives-Making-Teams-Great/dp/0977616649) book
+
+---
 
 # Other cadence elements
 

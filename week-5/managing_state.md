@@ -110,7 +110,7 @@ In React there are two sources of data for your components: `props`, and `state`
 
 # Passing Props
 
-To pass props to a component we need to *render* the component, and assign the `props` *as if the were html properties on an element*. This is why they're called "`props`."
+To pass props to a component we need to *render* the component, and assign the `props` *as if they were html properties on an element*. This is why they're called "`props`."
 
 If we were to use our `ExampleForm` component from before, passing the `title` prop would look like this
 
