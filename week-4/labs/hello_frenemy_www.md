@@ -72,7 +72,7 @@ Upon the initial click, we want the inputs to clear so that another entry can be
 
 ## Enemy Alert!
 
-Lets build it out more: Make the alert modal flash different colors when an enemy is detected!
+Lets build it out more: Make the display area flash different colors when an enemy is detected!
 
 We can create a random color generator by choosing three random numbers between 0 and 255, and using them to create an RGB string.
 
@@ -80,9 +80,9 @@ We can create a random color generator by choosing three random numbers between 
 let color = `rgb(${red}, ${green}, ${blue})
 ```
 
-We can then set up a timing function that will change the background of our alert modal to a different color every second.
+We can then set up a timing function that will change the background of our display area to a different color every specified number of second.
 
-And modifying your CSS `backgroundColor` property. To access your CSS properties in JavaScript you will need to access the `style` property of an element, and you can then freely manipulate your style properties. It is worth noting that style properties are camel case in JavaScript even though they are kabob case in CSS
+To access your CSS properties in JavaScript you will need to access the `style` property of an element, and you can then freely manipulate your style properties. It is worth noting that style properties are camel case in JavaScript even though they are kabob case in CSS
 
 ## Going Further
 

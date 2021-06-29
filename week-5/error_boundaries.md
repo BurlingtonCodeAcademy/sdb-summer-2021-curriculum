@@ -25,19 +25,18 @@
 * `componentDidCatch` behaves like JavaScript `catch {}`
 * Only React Class components can be Boundaries
 
+---
+
 ```jsx
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
-
   componentDidCatch(error, info) {
-    // Display fallback UI
     this.setState({ hasError: true });
     logErrorToMyService(error, info);
   }
-
   render() {
     if (this.state.hasError) {
       return <h1>Something went wrong.</h1>;
@@ -85,8 +84,10 @@ componentDidCatch(error, info) {
 
 # Error Boundaries - Within Event Handlers
 
-* Event handlers are just normal JavaScript
-* Use regular `try/catch` syntax
+* Event handlers are just normal JavaScript functions
+* Use regular `try/catch` syntax to catch errors within the callback
+
+---
 
 ```jsx
 function MyComponent (props) {
@@ -114,15 +115,3 @@ function MyComponent (props) {
 
 <p data-height="500" data-theme-id="light" data-slug-hash="oMRpQg" data-default-tab="js,result" data-user="Dangeranger" data-pen-title="oMRpQg" class="codepen">See the Pen <a href="https://codepen.io/Dangeranger/pen/oMRpQg/">oMRpQg</a> by Joshua Burke (<a href="https://codepen.io/Dangeranger">@Dangeranger</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
----
-
-# Error Boundaries - Stack Traces
-
-### Default
-
-![](https://reactjs.org/static/error-boundaries-stack-trace-f1276837b03821b43358d44c14072945-71000.png)
-
-### With Create-React-App
-
-![](https://reactjs.org/static/error-boundaries-stack-trace-line-numbers-45611d4fdbd152829b28ae2348d6dcba-4e7a0.png)

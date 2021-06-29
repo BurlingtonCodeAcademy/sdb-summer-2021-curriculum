@@ -244,6 +244,8 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<Router />, rootElement);
 ```
 
+---
+
 [Code Sandbox Match Object](https://codesandbox.io/s/ymqp7xnxjj)
 
 ---
@@ -279,6 +281,8 @@ Object {props: Object}
     staticContext: undefined
 ```
 
+---
+
 [Code Sandbox Match Object](https://codesandbox.io/s/ymqp7xnxjj)
 
 ---
@@ -312,6 +316,8 @@ const App = props => {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 ```
+
+---
 
 [CodeSandbox - URL Params](https://codesandbox.io/s/31yvwl87p5)
 
@@ -387,7 +393,9 @@ const Nav = props => {
 * Switch renders only the first matching `<Route>` instead of all
 * Can be used to build a catch all route for 404 like pages
 
-### Example
+---
+
+# Example
 
 ```jsx
 const App = props => {
@@ -451,8 +459,6 @@ const App = props => {
 
 # React Routing - Redirection
 
-### Examples
-
 ```jsx
 const Home = () => <h1>You are Home</h1>;
 const Posts = () => <h1>All the Posts</h1>;
@@ -489,5 +495,3 @@ Let's create a fake blog using [JSONPlaceholder](https://jsonplaceholder.typicod
   * the title
   * the author's name
   * and when you click the author's name it should take you to a page with a list of all the articles **by that author**
-
->Hint: You might want to look back at some of your [previous projects](https://bootcamp.burlingtoncodeacademy.com/projects/yelpington-app) and/or the [JSON](../javascript/json) lesson for inspiration
