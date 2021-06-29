@@ -37,8 +37,22 @@ To fetch data (and store it) in a functional component we need to use Hooks
 
 ```jsx
 
-function DisplayMessages(props) {
+function DisplayPost(props) {
+  const [post, setPost] = useState(null)
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+      .then(res => res.json())
+      .then(res => {
+        setPost(res)
+      })
+  })
   
+  return(
+    <ul>
+      {post}
+    </ul>
+  )
 }
 
 ```
@@ -53,7 +67,7 @@ function DisplayMessages(props) {
 
 ---
 
-# Component with Error Handling
+**Component with Error Handling**
 
 ```jsx
 function AuthorList(props) {

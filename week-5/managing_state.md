@@ -54,6 +54,8 @@ We want our React components to be responsible for all their own data. We don't 
 
 To get around this we can use _controlled inputs_. We store a value in state, and use that stateful property to determine what the value of our `input` element is. When the input is changed we update the value in state to reflect those changes.
 
+---
+
 ```js
 class ExampleForm extends React.Component {
   constructor(props) {
@@ -91,14 +93,19 @@ class ExampleForm extends React.Component {
 
 In React there are two sources of data for your components: `props`, and `state`.
 
-**State:**
+- `state` are pieces of data defined on, and maintained by the component
+- `props` are pieces of data that get passed to the component from outside
+
+---
+
+# State
 
 - Private data held by the component
 - Can only be read, and modified by the component it belongs to
 - Defined as an object in the constructor
 - Must be modified with the updater method
 
-**Props:**
+# Props
 
 - Data passed in from outside the component
 - Read only property, cannot be modified from inside the component

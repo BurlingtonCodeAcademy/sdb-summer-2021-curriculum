@@ -27,7 +27,7 @@ Cons:
 
 # Functions, Pros and Cons
 
-Functional components are a shorthand way of setting up a react componentn, and can be as simple as writing a function that returns a JSX element.
+Functional components are a shorthand way of setting up a react component.
 
 Pros:
 
@@ -50,7 +50,9 @@ Hooks are a way to bring state, and life-cycle operations into functional Compon
 
 The two most common hooks are `useState` and `useEffect`
 
-`useState` is used to set up, and manipulate state
+`useState` is used to set up, and manipulate state.
+
+`useEffect` is used to set up side-effect operations, such as fetching data from an external source.
 
 ---
 

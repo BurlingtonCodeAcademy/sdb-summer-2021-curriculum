@@ -3,29 +3,7 @@
 * Components can be rendered using If/Else or a Ternary
 * State within the Class or Function can be used in the conditions
 
-```jsx
-const UserGreeting = (props) => {
-  return <h1>Welcome back!</h1>;
-}
-
-const GuestGreeting = (props) => {
-  return <h1>Please sign up.</h1>;
-}
-
-const Greeting = (props) =>  {
-  const isLoggedIn = props.isLoggedIn;
-  if (isLoggedIn) {
-    return <UserGreeting />;
-  }
-  return <GuestGreeting />;
-}
-
-ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
-  <Greeting isLoggedIn={false} />,
-  document.getElementById('root')
-);
-```
+>Note: Conditional `if...else` statements can't by used inline to do conditional rendering, but ternaries can.
 
 ---
 
@@ -51,27 +29,25 @@ const LogoutButton = (props) => {
 
 ---
 
-# React Elements as Variables - Usage
-
 ```jsx
 function LoginControl (props) {
 
   const [isLoggedIn, setLogIn] = useState(false)
 
-  handleLoginClick () {
+  function handleLoginClick () {
     setLogIn(true);
   }
 
-  handleLogoutClick () {
+  function handleLogoutClick () {
     setLogIn(false);
   }
 
   let button;
 
   if (isLoggedIn) {
-    button = <LogoutButton onClick={ this.handleLogoutClick } />;
+    button = <LogoutButton onClick={ handleLogoutClick } />;
   } else {
-    button = <LoginButton onClick={ this.handleLoginClick } />
+    button = <LoginButton onClick={ handleLoginClick } />
   }
 
   return (
@@ -105,12 +81,6 @@ const Mailbox = (props) => {
     </div>
   );
 }
-
-const messages = ['React', 'Re: React', 'Re:Re: React'];
-ReactDOM.render(
-  <Mailbox unreadMessages={messages} />,
-  document.getElementById('root')
-);
 ```
 
 ---
@@ -180,7 +150,11 @@ const WarningBanner = (props) => {
     </div>
   );
 }
+```
 
+---
+
+```jsx
 function Page (props) {
 
   const [showWarning, setWarning] = useState(true)
@@ -197,7 +171,7 @@ function Page (props) {
     <div>
       <WarningBanner warn={showWarning} />
       <button onClick={handleToggleClick}>
-        {showWarning ? 'Hide' : 'Show'}
+        Show Warning
       </button>
     </div>
   );

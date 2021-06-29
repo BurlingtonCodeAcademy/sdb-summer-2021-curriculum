@@ -25,8 +25,6 @@ Each Hook can be used multiple times, but it is worth noting that *order is impo
 
 Hooks must be rendered in the same order every time to work properly which is why you can't use hooks inside loops, or conditionals.
 
-> Those curly braces around useState are important since `useState` is not the default export for the React package
-
 ---
 
 # Benefits of Hooks

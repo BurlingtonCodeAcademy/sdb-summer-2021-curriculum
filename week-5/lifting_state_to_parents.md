@@ -10,15 +10,17 @@
 # Code Along: Boiling Point Calculator
 
 ```jsx
-function BoilingVerdict(props) {
+class BoilingVerdict extends React.Component{
+  let message = ''
   if (props.celsius >= 100) {
-    return (
-      <p>The water would boil.</p>;
-    )
+    message = <p>The water would boil.</p>;
+  } else {
+    message = <p>The water would not boil.</p>
   }
-  return (
-    <p>The water would not boil.</p>
-  )
+
+  render() {
+    return message
+  }
 }
 ```
 
@@ -26,28 +28,31 @@ function BoilingVerdict(props) {
 
 # Lifting State - Calculator Input
 
-* An element to collect input is needed
-* The input is passed to the `BoilingVerdict` Component
-
 ```jsx
-function Calculator (props) {
+class Calculator extends React.Component {
 
-  const [temperature, setTemperature] = useState('')
+  constructor(props) {
+    super(props)
+    this.state = {
+      temperature: ''
+    }
+  }
 
-  return (
-    <fieldset>
-      <legend>Enter temperature in Celsius:</legend>
-      <input
-        value={temperature}
-        onChange={(evt) => {
-          setTemperature(evt.target.value)
-        }} />
+  render() {
+    return (
+      <fieldset>
+        <legend>Enter temperature in Celsius:</legend>
+        <input
+          value={temperature}
+          onChange={(evt) => {
+            this.setState({temperature: evt.target.value})
+          }} />
 
-      <BoilingVerdict
-        celsius={parseFloat(temperature)} />
-
-    </fieldset>
-  );
+        <BoilingVerdict
+          celsius={parseFloat(temperature)} />
+      </fieldset>
+    );
+  }
 }
 ```
 
@@ -55,14 +60,12 @@ function Calculator (props) {
 
 # Lifting State - Another Input
 
-* The calculator should work for Celsius & Fahrenheit
+* Let's make the calculator work for both celsius and fahrenheit
 
-
-### What we want
+### Changing the Render
 
 ```jsx
-function Calculator (props) {
-
+render() {
   return (
     <div>
       <TemperatureInput scale="c" />
@@ -77,21 +80,27 @@ function Calculator (props) {
 # Extract TemperatureInput
 
 ```jsx
-function TemperatureInput (props) {
-  const [temperature, setTemperature] = useState('')
+class TemperatureInput extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      temperature
+    }
+  }
 
-  const scale = props.scale;
-  return (
-    <fieldset>
-      <legend>Enter temperature in {scaleNames[scale]}:</legend>
-      <input value={temperature}
-              onChange={(evt) => {
-                  setTemperature(evt.target.value)
-                }
-              }
-      />
-    </fieldset>
-    );
+  render() {
+    return (
+      <fieldset>
+        <legend>Enter temperature in {scaleNames[this.props.scale]}:</legend>
+        <input value={temperature}
+          onChange={(evt) => {
+              this.setState(temperature: evt.target.value)
+            }
+          }
+        />
+      </fieldset>
+      );
+    }
   }
 }
 ```
@@ -110,24 +119,20 @@ function TemperatureInput (props) {
 # Remove State from TemperatureInput
 
 ```jsx
-function TemperatureInput (props) {
-  
-
-  /* Send changes to the parent */
-  handleChange(evt) {
+class TemperatureInput extends React.Component {
+  handleChange = (evt) => {
     props.setTemperature(evt.target.value);
     props.setScale(props.scale)
   }
-
-  /* Use READ-ONLY Props instead of State */
-
-  return (
-    <fieldset>
-      <legend>Enter temperature in {scaleNames[scale]}:</legend>
-      <input value={props.temperature}
-             onChange={this.handleChange} />
-    </fieldset>
-  );
+  render() {
+    return (
+      <fieldset>
+        <legend>Enter temperature in {scaleNames[scale]}  :</legend>
+        <input value={this.props.temperature}
+               onChange={this.handleChange} />
+      </fieldset>
+    );
+  }
 }
 ```
 
@@ -144,15 +149,37 @@ function TemperatureInput (props) {
 # Parent `Calculator` Passes State to Children
 
 ```jsx
-function Calculator (props) {
+class Calculator extends React.Component {
 
-    const [scale, setScale] = useState('c')
-    const [temperature, setTemperature] = useState('')
+    constructor(props) {
+      super(props)
+      this.state = {
+        scale: 'c',
+        temperature: ''
+      }
+    }
 
-    const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
+    setScale = (evt) => {
+      this.setState(
+        {scale: evt.target.value}
+      )
+    }
+
+    setTemperature = (evt) => {
+      this.setState(
+        {temperature: evt.target.value}
+      )
+    }
+
+```
+
+---
+
+```jsx
+  render() {
+    const celsius = this.state.scale === 'f' ? tryConvert(temperature, toCelsius) : temperature;
     
-    const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
-
+    const fahrenheit = this.state.scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature;
     return (
       <div>
         <TemperatureInput

@@ -20,6 +20,10 @@ React is built around the idea of creating modular components that can be used t
 
 # The Component Class
 
+The React Component is a JavaScript class that comes with several pre-built methods that allow us to hook into the React lifecycle. These methods are collectively referred to as *Lifecycle Methods*.
+
+When setting up our own components we will create a new class for that component that *extends* the React Component class.
+
 ---
 
 # React Components
@@ -65,12 +69,21 @@ React is built around the idea of creating modular components that can be used t
 
 # Component Lifecycle
 
+- Mounting
+- Updating
+- Unmounting
+- Error handling
+
+---
+
 ## Mounting
 
 - constructor()
 - static getDerivedStateFromProps()
 - render()
 - componentDidMount()
+
+---
 
 ## Updating
 
@@ -80,9 +93,13 @@ React is built around the idea of creating modular components that can be used t
 - getSnapshotBeforeUpdate()
 - componentDidUpdate()
 
+---
+
 ## Unmounting
 
 - componentWillUnmount()
+
+---
 
 ## Errors
 
@@ -109,7 +126,7 @@ React is built around the idea of creating modular components that can be used t
 <button onclick="handleData()">Submit Data</button>
 ```
 
-```javascript
+```jsx
 /* React Event Handler */
 <button onClick={handleData}>Submit Data</button>
 ```
@@ -121,7 +138,7 @@ React is built around the idea of creating modular components that can be used t
 - Works in the same way as preventing the default on a normal event
 - Calling `event.preventDefault()` must be done in the handler
 
-```javascript
+```jsx
 function Link() {
   function handleClick(event) {
     event.preventDefault();
@@ -143,6 +160,10 @@ function Link() {
 - Events in React are not **real** DOM events
 - They are captured by React and replaced with a Synthetic Event
 - Synthetic Events behave the same across all Browsers, unlike DOM Events
+
+---
+
+# Event Properties
 
 | Property               | Return Type    |
 | ---------------------- | -------------- |
@@ -198,6 +219,8 @@ function onClick(event) {
 - JavaScript classes do not by default `bind` the `this` in ES6 Classes
 - Binding is a normal JavaScript behavior and is very confusing
 - Either use `bind` in the constructor, or use an ES6 Arrow Function
+
+---
 
 ```javascript
 class Toggle extends React.Component {
@@ -263,5 +286,3 @@ class LoggingButton extends React.Component {
   }
 }
 ```
-
-[Arrow Functions as Class Properties](https://medium.com/quick-code/react-quick-tip-use-class-properties-and-arrow-functions-to-avoid-binding-this-to-methods-29628aca2e25)

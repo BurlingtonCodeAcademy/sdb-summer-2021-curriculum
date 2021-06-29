@@ -114,14 +114,29 @@ export default App;
 ```jsx
 import { Link } from 'react-router-dom';
 
+const Router = () => {
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
+};
+
 const Nav = () => {
   <nav>
     <Link to='/'>Home</Link>
-    <Link to={{ pathname: '/dashboard' }}>Home</Link>
-    <Link to={{ pathname: '/contact }} replace>Home</Link>
+    <Link to={{ pathname: '/dashboard' }}>Dashboard</Link>
+    <Link to={{ pathname: '/contact' }}>Contact</Link>
   </nav>
 }
 
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Router />, rootElement);
+```
+
+---
+
+```jsx
 const App = () => {
   return (
     <Nav />
@@ -143,16 +158,6 @@ const Contact = () => {
   )
 };
 
-const Router = () => {
-  return (
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  );
-};
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Router />, rootElement);
 ```
 
 ---
@@ -294,7 +299,7 @@ const App = props => {
     <BrowserRouter>
       <div>
         <Route
-          path="/:post?"
+          path="/:post"
           render={({ match }) => (
             <h1>Post equals: {match.params.post || "None"}</h1>
           )}
@@ -324,7 +329,7 @@ const App = props => {
     <BrowserRouter>
       <div>
         <Route
-          path="/:author?/:post?"
+          path="/:author/:post"
           render={({ match }) => (
           <div>
             <h1>Author equals: {match.params.author || "None"}</h1>
@@ -347,7 +352,7 @@ ReactDOM.render(<App />, rootElement);
 
 # React Routing - Query Parameters
 
-* Query parameters are the `name=value` pairs afte a `?` in a URL
+* Query parameters are the `name=value` pairs after a `?` in a URL
 * `<Link />` Components can pass URL Parameters to a Route
 * The `to` param works differently between strings and objects
 * Params can be parsed using `new URLSearchParams(params)`

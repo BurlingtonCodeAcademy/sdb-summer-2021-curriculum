@@ -38,7 +38,7 @@ It also:
 
 For the purposes of entering a name we probably want an input with a `type="text"` attribute, and another `input` element with a `type="submit"` to act as our submit button.
 
-To make it easier to target your elements in JavaScript you may also want to 
+To make it easier to target your elements in JavaScript you may also want to give them `id`s
 
 *Inputs can never have child nodes, only values* so it's generally a good idea to make your inputs self closing tags.
 
