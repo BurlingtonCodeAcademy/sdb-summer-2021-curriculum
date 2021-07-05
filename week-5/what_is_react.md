@@ -6,6 +6,24 @@ React components use babel, and JSX to allow the user to write code that looks a
 
 ---
 
+# Imperative vs Declarative Programming
+
+**Declarative Programming**
+
+- Must tell the computer exactly what to do
+  - Every step of the way
+- Focused on the process rather than the result
+- More direct interaction between programmer, and computer
+
+**Imperative Programming**
+
+- Tell the computer what you want
+  - Let the computer figure out how to build it
+- Focused on the desired result rather than the process
+- Additional layers of abstraction between programmer and computer
+
+---
+
 # Component Oriented Design
 
 React is built around the idea of creating modular components that can be used to construct specific sections of your web page

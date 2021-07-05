@@ -1,4 +1,47 @@
-# useEffect Explained
+# useEffect
+
+Like all other hooks `useEffect` must be directly imported from React before you can use it.
+
+`useEffect` is used to setup what React refers to as "side effects." These are operations which fall outside the normal React render cycle, such as direct manipulation of the window objects, fetching data, setting up event listeners, or performing cleanup tasks.
+
+---
+
+# use Effect in the Lifecycle
+
+You can think of `useEffect` as an all-in-one function for the `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` lifecycle methods
+
+`useEffect` can clean up after itself by returning a clean up function, but not every operation needs to be cleaned up.
+
+---
+
+# useEffect with no Cleanup
+
+Effects that don't require a cleanup are actions that should be taken on every render. e.g. updating the `title` of your `document`. You can set these up by passing a callback function which performs the necessary action. This callback will be called every time the component renders, or rerenders
+
+> If you wanted to update the title of the document from the previous lab to reflect the user's full name you could add a `useEffect(() => { document.title = fullName + "'s page"})` to your component
+
+---
+
+# Cleaning up After useEffect
+
+If you are drawing data from an outside source, or you're subscribing to an external service you probably need to clean up after your effect to prevent a memory leak. To do this `return` a function from your `useEffect` callback that performs the cleanup tasks
+
+---
+
+# Clean useEffect Example
+
+```js
+useEffect(() => {
+    if(user) {
+     chatService.openConnection(user.id);
+    }
+
+    return function() {chatService.close()}
+  })
+```
+
+The function that is returned from our callback (`function() {chatService.close()}`) will be called during the `componentWillUnmount` lifecycle stage
+
 
 ---
 
@@ -102,3 +145,12 @@ function AuthorList(props) {
 
 <p data-height="500" data-theme-id="light" data-slug-hash="gjELaj" data-default-tab="js,result" data-user="Dangeranger" data-pen-title="Fetching API Data" class="codepen">See the Pen <a href="https://codepen.io/Dangeranger/pen/gjELaj/">Fetching API Data</a> by Joshua Burke (<a href="https://codepen.io/Dangeranger">@Dangeranger</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+# useState in useEffect
+
+Using `useState` inside a `useEffect` callback is a fairly common practice, but you want to be a little careful when doing this
+
+- `useState`'s updater function triggers the `componentDidUpdate` lifecycle event
+- The callback function for `useEffect` gets called every time the component updates
+- Using the updater directly inside your `useEffect` callback causes an infinite loop
+- This is comparable to using `this.setState` inside `componentDidUpdate` in a class based component
