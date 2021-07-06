@@ -8,14 +8,14 @@ React components use babel, and JSX to allow the user to write code that looks a
 
 # Imperative vs Declarative Programming
 
-**Declarative Programming**
+**Imperative Programming**
 
 - Must tell the computer exactly what to do
   - Every step of the way
 - Focused on the process rather than the result
 - More direct interaction between programmer, and computer
 
-**Imperative Programming**
+**Declarative Programming**
 
 - Tell the computer what you want
   - Let the computer figure out how to build it
