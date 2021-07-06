@@ -11,11 +11,15 @@ which *sends it back* to the server on *every request*
 * Docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
 * Spec: https://tools.ietf.org/html/rfc6265
 
+---
+
 # Cookie Uses
 
 * tracking users (of the same browser) across time
 * storing data without allocating server space
 * an early version of LocalStorage for storing arbitrary objects on the client
+
+---
 
 # Cookie Limitations
 
@@ -27,6 +31,8 @@ which *sends it back* to the server on *every request*
   * the server specifies which other domains/hosts/sites to share this cookie with
   * but the client can restrict it further
 * user can erase them at any time
+
+---
 
 # Cookie Sessions
 
@@ -43,6 +49,7 @@ which *sends it back* to the server on *every request*
 
     * this is how web sites implement "Remember Me" login checkboxes
 
+---
 
 # Cookie Headers
 
@@ -55,11 +62,15 @@ which *sends it back* to the server on *every request*
 * asks the client to *create* or *modify* a cookie for this
 * `name=value`, plus other *options* for this cookie separated by `;`s
 
+---
+
 # `Cookie` Header
 
 * set on the client *request* to the server
 * tells the server "here are *all* the cookies I know about for you"
 * `name=value` pairs separated by `;`s
+
+---
 
 # Fetch API vs Cookies
 
@@ -76,11 +87,15 @@ fetch('/articles.json', {credentials: 'include'})
 
 > WARNING: this is a **security hole** and you should only add `credentials: include` if you are having trouble getting cookies to work on `localhost`; don't do it in production unless you have a good reason.
 
-# Express Cookie Code
+---
+
+# Express Cookies
 
 In Express, the incoming request's `Cookie` header is available (via `request.headers.cookie`), but it isn't pretty. Like URL-encoded parameters, it has to be parsed before it's useful.
 
 Fortunately, Express has a middleware component called [cookie-parser](https://www.npmjs.com/package/cookie-parser) that parses the `Cookie` header and puts all available cookies into an object at `request.cookies`.
+
+---
 
 ```javascript
 const express = require('express');
@@ -92,13 +107,19 @@ app.get('/', function(request, response) {
 })
 ```
 
-To set a cookie, use the method [response.cookie()](https://expressjs.com/en/4x/api.html#res.cookie):
+---
+
+# Setting Cookies on the Server
+
+To set a cookie, use the [response.cookie](https://expressjs.com/en/4x/api.html#res.cookie) method 
 
 ```javascript
 response.cookie('cart', ['milk', 'cheese', 'dog food'])
 ```
 
 Express will take care of encoding the value into JSON, and then URI-encoding that, to satisfy the arcane demands of the Cookie spec.
+
+---
 
 # Cookie Counter
 

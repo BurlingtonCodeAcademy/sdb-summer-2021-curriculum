@@ -6,6 +6,8 @@ JSON is a type of text document that is in the shape of a JavaScript object. How
 
 JSON objects can contain arrays of acceptable datatypes, and other JSON objects as the values for their keys, as well as the datatypes previously mentioned.
 
+---
+
 # Why JSON?
 
 * used for data *sans* behavior
@@ -17,6 +19,8 @@ JSON objects can contain arrays of acceptable datatypes, and other JSON objects 
   * always Unicode, usually UTF-8
 * very flexible data format
   * allows arbitrary nesting of arrays and objects (hashes)
+
+---
 
 # Example JSON object
 
@@ -39,11 +43,15 @@ JSON objects can contain arrays of acceptable datatypes, and other JSON objects 
 
 (from [the spec](https://tools.ietf.org/html/rfc7159#section-13))
 
+---
+
 # JSON Collections
 
 A JSON file might contain multiple JSON objects. In this case the JSON file will contain an *array* of JSON objects
 
-# Example JSON array
+---
+
+# Example JSON Collection
 
 ```javascript
 [
@@ -72,6 +80,8 @@ A JSON file might contain multiple JSON objects. In this case the JSON file will
 
 (from [the spec](https://tools.ietf.org/html/rfc7159#section-13))
 
+---
+
 # Viewing JSON in Browser
 
 * Its mime-type is `application/json` which most browsers will display all on one line :-(
@@ -80,6 +90,8 @@ A JSON file might contain multiple JSON objects. In this case the JSON file will
 
 
 ![json viewer screenshot](https://raw.githubusercontent.com/tulios/json-viewer/master/screenshot.png)
+
+---
 
 # Viewing JSON in NodeJS Console
 

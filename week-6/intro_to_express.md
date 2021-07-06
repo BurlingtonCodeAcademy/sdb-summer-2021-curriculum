@@ -9,14 +9,17 @@ the "code we run" is also called an *endpoint* or a *route* or a *script* or a *
 
 The "code we run" doesn't have to be complicated. It could be as simple as sending a file.
 
+---
 
-# Routing is simple...
+# Routing is Simple...
 
 Many web app server frameworks have complicated systems for routing, but that complexity is not essential.
 
 Routing can be a simple series of `if..else` statements, or a [`switch` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) 
 
 and most of the fancy framework code is simply to build up a list of matching rules which the server then walks through in first-to-last order.
+
+---
 
 # ...but don't reinvent the wheel
 
@@ -26,6 +29,7 @@ they also give you an *interface* that will make **your** calling code easier to
 
 as well as a shared context of documentation and tutorials so other coders don't have as much to learn before understanding your code
 
+---
 
 # Express Routing
 
@@ -35,6 +39,7 @@ as well as a shared context of documentation and tutorials so other coders don't
 
 * That *handler* has access to the `request` and `response`, and the methods/properties they contain!
 
+---
 
 # Express Routing Example
 
@@ -44,7 +49,9 @@ In the [Hello, Express](./hello_express) lesson we saw the following route:
 app.get('/', (request, response) => response.send('Hello World!'))
 ```
 
-This means, 
+---
+
+# Express Routing Breakdown
 
 | code | explanation |
 |---|---|
@@ -54,6 +61,8 @@ This means,
 | `response.send` | send a response |
 | `('Hello, World')` | with this string as its body | 
 
+---
+
 # Express Route Matching Rules
 
 * paths can include special characters that are *like* regular expressions
@@ -62,22 +71,14 @@ This means,
   * `+` "one of more of these"
   * `*` "zero or more" (but see below)
   * `()` "these go together"
-
 * ...but are *not* regular expressions
-
   * `.` and `-` are interpreted literally
   * `:` means "this is a parameter" (see next slide)
   * `*` means "zero or more characters" (which is `.*` in real regexes)
-
 * ...or you can use *actual* regular expressions
-
-        // This route path will match butterfly 
-        // and dragonfly, but not butterflyman
-        app.get(/.*fly$/, function (request, response) {
-            response.send('I am a fly')
-        })
-
 * for more info, see the full [Express Routing Guide](https://expressjs.com/en/guide/routing.html) on their web site
+
+---
 
 # Parameters in Express
 
@@ -93,9 +94,17 @@ Example:
 
 Express will grab the *value* from the path itself, and assign it to `request.params` for you to use later.
 
+---
+
 # Route Matching is Top-Down
 
-# Middleware
+Express will try to match routes *in the order they are defined* in your JS file.
+
+Once it finds the matching route it runs the attached request/response callback function
+
+...and stops looking. So any other route handlers that would also match don't get run.
+
+# Express Middleware
 
 * [`body-parser`](https://expressjs.com/en/resources/middleware/body-parser.html) parses incoming request bodies. Very useful for reading form submissions!
 * [`express.urlencoded`](https://expressjs.com/en/4x/api.html#express.urlencoded) parses incoming requests with URL-encoded payloads. **What we just used: based off of `body-parser`**
@@ -103,7 +112,9 @@ Express will grab the *value* from the path itself, and assign it to `request.pa
 * [`express.static`](http://expressjs.com/en/4x/api.html#express.static) serves static files. Should look familiar.
 * Tons of 3rd-party and error-handling options
 
-Middleware can also be directly inserted into individual routes, so they only run in those specific cases. 
+---
+
+# Middleware Example
 
 Example (from [the express guide](http://expressjs.com/en/resources/middleware/body-parser.html)):
 
@@ -119,19 +130,17 @@ app.post('/api/users', express.json(), function (req, res) {
 })
 ```
 
+---
+
 # Write your own middleware!
 
 Remember how we said you can customize your own middleware? Give it a shot!
 
 When doing so, that function will have access to the `request` and `response` objects, AND the callback function `next` that simply tells it to carry on with the route's execution.
 
-Note: the names of these arguments does not matter, although `req` and `res` are often the convention.
+> Note: the names of these arguments are just variables, although `req` and `res` are the conventional names.
 
 ```javascript
-/* 
-The request and response are sent to the middleware FIRST, and when next() is called, 
-passed through to the route itself. They are expected in the order shown.*/
-
 function logTime(req, res, next) {
     let date = new Date()
     console.log(date.toLocaleDateString()) 
@@ -141,5 +150,4 @@ function logTime(req, res, next) {
 app.get('/route/', logTime, (req,res)=>{
   res.send("All done!")
 })
-
 ```

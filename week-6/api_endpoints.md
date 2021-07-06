@@ -6,6 +6,8 @@ APIs are used to send data into a front end application
 
 They are an interface between your raw data, and the front end display
 
+---
+
 # JSON and APIs
 
 Many APIs send data over as JSON, or have the option to send data as JSON based on query parameters.
@@ -14,11 +16,15 @@ An API Endpoint in its simplest incarnation could be a directory in your filesys
 
 When you receive a request from your client side application your server will then query that directory for a document matching the request, and if it finds one it sends the data back over
 
+---
+
 # Querying APIs
 
 To query an API you can send a `GET` request to a certain path (which you've defined on your server), or to the location of the endpoint in your filesystem.
 
 You can also send requests through forms, or other inputs to bring back specific subsets of data. Often times there will be some parsing, and conversion necessary on the front end to display the data where, and how you want.
+
+---
 
 # Postman
 

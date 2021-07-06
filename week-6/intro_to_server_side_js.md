@@ -1,8 +1,12 @@
 # Overview
-Welcome to the server-side! In this slide deck, we will be covering the basic aspects of servers, like what they are and how they relate to your viewing web pages! 
+Welcome to the server-side! In this slide deck, we will be covering the basic aspects of servers, like what they are and how they relate to your viewing web pages!
+
+---
 
 # What is a server?
-*Server* is a term that refers to both hardware and/or software. It is used to define the relationship between the computer a user is interacting with (client) and the distinctly different environment that said user will request information from. 
+*Server* is a term that refers to both hardware and/or software. It is used to define the relationship between the computer a user is interacting with (client) and the distinctly different environment that said user will request information from.
+
+---
 
 ## When dealing with hardware, it: 
 
@@ -16,6 +20,8 @@ Welcome to the server-side! In this slide deck, we will be covering the basic as
   - CSS stylesheets
   - Images
 
+---
+
 ## When dealing with software, it:
 
 - understands URLs (AKA web addresses)
@@ -23,8 +29,12 @@ Welcome to the server-side! In this slide deck, we will be covering the basic as
 - responds to request
 - sends response through a *protocol* response
 
+---
+
 # Requests
 Servers have uniquely defined rules that determine how they will respond based on a request.
+
+---
 
 ## The request:
 
@@ -38,19 +48,22 @@ Servers have uniquely defined rules that determine how they will respond based o
   - retrieve information
   - and more!
 
-# Responses
-Servers have uniquely defined rules that determine how they will respond based on a request.
+---
 
-## The response:
+# Responses
+
+Servers have uniquely defined rules that determine how they will respond based on a request. The response:
 
 - is sent by the server
 - sends information back to the *client* (most often a web browser)
 - is typically determined by the request received
 - may carry out an action based on the request
-- contain a status code for general information
+- contains a status code for general information
   - 200 is `OK`
   - 404 is `Not Found`
   - [and more...](https://http.cat/)
+
+---
 
 # Headers
 When requests and responses are sent between server and browser, additional information is included in *headers*
@@ -64,16 +77,20 @@ The header can be loosely categorized based on its context: **request, response,
 - **general headers** 
     - can be included in both request and responses, but provide no info based on what information is contained.
 
+---
+
 # Server-side programming
 "Server-side" is meant to describe everything that happens in between a request and a response. 
 
-## Server-side code:
+Server-side code:
 
 - is used to deliver information efficiently
 - is used to keep things secure
 - is versatile
 - is not visible to the *client* (most often a web browser)
 - can be written in a number of programming languages!
+
+---
 
 # Server Environment
 
@@ -83,9 +100,13 @@ When we are doing DOM Scripting, working with React, or otherwise doing *client-
 
 *Server-side* JavaScript generally runs in a Node environment
 
+---
+
 # Welcome Back Node!
 
 If Node.js sounds familiar, that's because we started this course programming in a Node environment!
+
+---
 
 # Differences Between Node and the Browser
 
@@ -93,6 +114,8 @@ If Node.js sounds familiar, that's because we started this course programming in
   * `global` v. `browser` or `window`
 * Import/export methods
   * `require` v. `import`
+
+---
 
 # Server and Client
 
@@ -113,11 +136,15 @@ The Server and Client sides to your application have separate, but related jobs,
 
 Together they make a full stack application
 
+---
+
 # Structuring your Directory
 
 When creating a full stack application, your server file should live at the root level of your project, while all the client side code should live in a dedicated subdirectory; often called `client` or `public`
 
 ![directory file structure](/images/basic-server-structure.png)
+
+---
 
 # Setting up Your Client with React
 
@@ -129,13 +156,17 @@ When creating a full stack application, your server file should live at the root
 * Still inside the directory run `npx create-react-app client`
 * Now you have a React front end!
 
-![React server example](/images/client-closed.png)
+---
 
-![React server example](/images/client-open.png)
+![React server example](https://res.cloudinary.com/btvca/image/upload/v1625589830/client-closed_st2qli.png)
+
+---
+
+![React server example](https://res.cloudinary.com/btvca/image/upload/v1625589858/client-open_yvkn3a.png)
+
+---
 
 # React Caveats
-
-When using a React front end there are a couple things to keep in mind
 
 * React is a single page web App. All user facing routes should return the `index.html` file
 * `create-react-app` creates a git repo. Git does not like it when you try to put repos in repos
@@ -143,6 +174,8 @@ When using a React front end there are a couple things to keep in mind
 * React has `production`, and `build` versions. You generally want to serve the `build` version
   * If you need to have the production version talk to your server you will need to [proxy the requests from React](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
   * And you will need to have React's production server, and your custom server running at the same time
+
+---
 
 # Resources
 

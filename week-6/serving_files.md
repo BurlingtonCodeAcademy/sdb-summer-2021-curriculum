@@ -7,6 +7,8 @@ At its core, HTTP is a *file transfer protocol*.
 * because these files are stored on disk on the server, they are called *static files*
   * to distinguish from *dynamic pages* (aka *routes*) which the server will create on the fly for every request 
 
+---
+
 # node-static
 
 In earlier lessons, you may have used the `node-static` package, or the `live-server` VSCode plugin to serve your HTML, JS, CSS, images, etc...
@@ -14,6 +16,8 @@ In earlier lessons, you may have used the `node-static` package, or the `live-se
 *node-static*, and *live-server* are standalone static file servers built in NodeJS
 
 They're useful for local development but not great for production deployments
+
+---
 
 # static file server in Express
 
@@ -24,81 +28,7 @@ They're useful for local development but not great for production deployments
 app.use(express.static('.'))
 ```
 
-# LAB: static file server
-
-* create a new Express project dir called `static-server`:
-
-        cd ~/code
-        mkdir static-server
-        npm init -y
-        npm install express
-        code .
-    
-* create a file called `app.js` containing the following code:
-
-```js
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 5000
-
-app.use(express.static('.'))
-
-app.listen(port, () => console.log(`Example app listeningport ${port}!`))
-```
-
-* create a file called `index.html` containing an `h1` element, with the text "Hello, world!"
-
-* in `package.json`, add a start script
-
-```json
-{
-  "scripts": {
-    "start": "node app.js"
-  }
-}
-```
-
-* launch the web server using `npm start`
-
-* Now open a web browser and visit <http://localhost:5000/index.html>
-
-
-# Oops!
-
-The good news: your web server can now serve static files to its clients!
-
-The bad news: your web clients can now see *any files they like* in your project
-
-(including your server source code and configuration files, which may include secrets like passwords)
-
-## LAB: Hack Your Own Server
-
-open a web browser and visit <http://localhost:5000/package.json>
-
-`package.json` should probably be more secret than that `:-)`
-
-# Solution: public directory
-
-To keep server-side code and configuration files secret, most web apps have a *public* directory containing static files
-
-This is one major difference between *static sites* and *web apps* -- since some of your code runs on your server, and some runs on your client's browser, your project directory structure needs to segregate *client-side files* from *server-side files*
-
-* in your top-level project dir, type `mkdir public`
-* in your `app.js`, change the `app.use` line to
-
-        app.use(express.static('public'))
-
-Now you can put HTML, CSS, PNG, and `.js` files inside `/public` where your clients can fetch them as needed
-
-* *move* `index.html` from your top-level project dir (`static-server`) to your `public` dir
-    * either use VS Code's GUI
-    * or run `mv index.html public` from the terminal 
-
-* restart your server
-    
-* Now open a web browser and visit <http://localhost:5000/index.html>
-
-> Note that the URL path `/index.html` maps directly to the filesystem path `static-server/public/index.html`
+---
 
 # index.html
 
@@ -112,6 +42,8 @@ A little historical note...
 * This is *why* index.html is named *index* -- it is a *replacement* for the automatic default *index* page.
 
 Now open a web browser and visit <http://localhost:5000/> and you will see the contents of `index.html` ("Hello in HTML") even though your request did not contain the words "index" or "html", just the path `/`
+
+---
 
 # Content-Type
 
@@ -130,11 +62,15 @@ Now open a web browser and visit <http://localhost:5000/> and you will see the c
     * `text/css` means CSS Stylesheet
     * ...these are called *MIME Types* (after the Multipurpose Internet Mail Extensions specification)
 
+---
+
 # Viewing Headers
 
 **TIP:** open the browser DevTools and click on the Headers sub-tab to see Content-Type and other headers:
 
 ![headers](/images/content-type.png)
+
+---
 
 # 404 Not Found and other status codes
 
@@ -149,10 +85,3 @@ the server must send the correct *[status code](https://en.wikipedia.org/wiki/Li
 Note: even though there is an error, the server *still returns a body and content-type* for display to the user.
 
 In this case, we just see Express' boring default error page, but it's possible to get [very creative](https://www.canva.com/learn/404-page-design/) with web site error pages.
-
-# Lab: Create a 404 page
-
-Go back to your "static-server" directory, and let's make a custom 404 page!
-
-* Create a page in your "public" directory named 404.html
-* When the user visits any route other than your home route the 404 page should be displayed.
