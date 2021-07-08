@@ -103,7 +103,7 @@ Visit this URL in a web browser using copy-and-paste, or use this handy shortcut
 heroku open
 ```
 
-# Lab: Hello, You!
+# Hello, You!
 
 Now go back to VSCode, and modify the server code so instead of saying "Hello, World!" it says something clever and personalized.
 
@@ -136,8 +136,6 @@ app.get('/:key', (request,response)=>{
 </div>
 
 </details>
-
-
 
 # Resources
 

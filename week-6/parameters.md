@@ -81,14 +81,20 @@ Would match this route in Express:
 '/:user/:repo/:section/:branch/:filepath'
 ```
 
-And set up local variables automatically for your route handler when it receives the request
+---
+
+# Params Object
+
+The Route on the pervious slide would create a `params` object and interpret the path like this:
 
 ```js
-user = "BurlingtonCodeAcademy"
-repo = "til"
-section = "blob"
-branch = "master"
-filepath = "README.md"
+{
+  user: "BurlingtonCodeAcademy",
+  repo: "til",
+  section: "blob",
+  branch: "master",
+  filepath: "README.md"
+}
 ```
 
 ---
@@ -115,11 +121,11 @@ This is admittedly a little convoluted to look at. You're sure to have seen it a
 
 If a URL contains a question mark `?` everything that comes after the question mark is a query parameter
 
-Requests can pass multiple query parameters to the server on a single request separated by ampersands `&` and accessed through the `request.query` property in express
+Requests can pass multiple query parameters to the server on a single request separated by ampersands `&` and are accessed through the `request.query` property in express. You don't need to pass the query as part of the route express is listening for when you're setting up your route handler.
 
-Given the example on the last slide the in the console we would see an object that looks like this:
+Given the example on the last slide the query object in our express server looks like this:
 
-```sh
+```js
 {
   user: "BurlingtonCodeAcademy",
   repo: "til",
@@ -129,13 +135,11 @@ Given the example on the last slide the in the console we would see an object th
 }
 ```
 
-> Note: You don't need to pass the query as part of the route express is listening for when you're setting up your route handler.
-
 ---
 
 # Post Parameters
 
-The other HTTP method used for passing parameters is POST. POST is implicitly more secure, as the information isn't sent directly to the server through a super-visible URL. Instead, it is contained in a post *body* when the information is JSON formatted.
+The other HTTP method used for passing parameters is POST. POST is implicitly more secure, as the information isn't sent directly to the server through a super-visible URL. Instead, it is contained in a post *body* where the information is sent to the server in JSON format.
 
 ```
 POST /file 
@@ -146,7 +150,7 @@ POST /file
 assuming the proper middleware is in place, this information would be available in `express` like so:
 
 ```js
-app.post('/file',(req,res)=>{
+app.post('/file', (req,res)=>{
   console.log(req.body)
 })
 ```
@@ -161,27 +165,28 @@ That data will be available as `request.body`, much like `request.params` and `r
 
 The **difference** is that `request.body` doesn't come from the URL like `params` and `query` do.
 
-Let's visualize it.
+Let's do a little code along to help visualize it.
 
 ---
 
 # Visualize It
 
-In your `index.html`, add a form with the method of POST, like so:
+Create a new `index.html` file, and add a form with the method of POST, like so:
 
 ```html
 
   <form action="/postroute" method="POST">
-        <input type="text" name="first">
-        <input type="text" name="last">
-        <input type="submit" value="submit">
-    </form>
+    <input type="text" name="first">
+    <input type="text" name="last">
+    <input type="submit" value="submit">
+  </form>
 
 ```
+
 In your `server.js` file, set up a route `/postroute`, that when the form SUBMITS,
 prints `request.body` to the command line. Be sure to enter data to the form!
 
-Note: add `express.urlencoded()` as *middleware* so the body (the form data, in this case) can be parsed and read by the server.
+> Note: add `express.urlencoded()` as *middleware* by including an `app.use(express.urlencoded()` in your server setup so the body (the form data, in this case) can be parsed and read by the server.
 
 ---
 
@@ -191,6 +196,13 @@ All requests are sent from the client to the server, but there are multiple type
 
 HTTP defines several *methods* (GET, POST, PUT, HEAD, etc...) the most common are `GET` and `POST`
 
+In general:
+
+* `GET` requests are *requesting* data from the server
+* `POST` requests are *sending* data to the server
+
+Though we can set up rules on the server to handle these requests any way we want.
+
 ---
 
 # GET requests
@@ -198,6 +210,8 @@ HTTP defines several *methods* (GET, POST, PUT, HEAD, etc...) the most common ar
 * Triggered natively by a change to the URL in the browser, or a `fetch` request
 * Ask for a specific resource from the server
 * Sends over full URL, including path, and query parameters as part of the request
+* Expected path parameters should be defined in the server's routes
+* Query parameters do **not need** to be defined in the server's routes
 
 ---
 
@@ -212,6 +226,8 @@ HTTP defines several *methods* (GET, POST, PUT, HEAD, etc...) the most common ar
 ---
 
 # REST
+
+**RE**presentative **S**tate **T**ransfer
 
 The concept of "path parameters" is central to an idea called REST.
 

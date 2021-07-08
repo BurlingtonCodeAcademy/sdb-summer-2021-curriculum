@@ -63,7 +63,7 @@ app.get('/', (request, response) => response.send('Hello World!'))
 
 ---
 
-# Express Route Matching Rules
+# [Express Route Matching Rules](https://expressjs.com/en/guide/routing.html)
 
 * paths can include special characters that are *like* regular expressions
 
@@ -75,8 +75,7 @@ app.get('/', (request, response) => response.send('Hello World!'))
   * `.` and `-` are interpreted literally
   * `:` means "this is a parameter" (see next slide)
   * `*` means "zero or more characters" (which is `.*` in real regexes)
-* ...or you can use *actual* regular expressions
-* for more info, see the full [Express Routing Guide](https://expressjs.com/en/guide/routing.html) on their web site
+* ...or you can use *actual* [regular expressions](https://en.wikipedia.org/wiki/Regular_expression)
 
 ---
 
@@ -103,6 +102,8 @@ Express will try to match routes *in the order they are defined* in your JS file
 Once it finds the matching route it runs the attached request/response callback function
 
 ...and stops looking. So any other route handlers that would also match don't get run.
+
+---
 
 # Express Middleware
 
@@ -137,8 +138,6 @@ app.post('/api/users', express.json(), function (req, res) {
 Remember how we said you can customize your own middleware? Give it a shot!
 
 When doing so, that function will have access to the `request` and `response` objects, AND the callback function `next` that simply tells it to carry on with the route's execution.
-
-> Note: the names of these arguments are just variables, although `req` and `res` are the conventional names.
 
 ```javascript
 function logTime(req, res, next) {
