@@ -72,6 +72,14 @@ Now open a web browser and visit <http://localhost:5000/> and you will see the c
 
 ---
 
+# Match the Route not the Path
+
+When setting up our links on the front end we want to match the routes we set up on the server, not the actual path to the file.
+
+This will allow us to more accurately define our site structure so it's representative of the purpose of our pages rather than being bound to the physical location on disk.
+
+---
+
 # 404 Not Found and other status codes
 
 open a web browser and visit <http://localhost:5000/oops.html>

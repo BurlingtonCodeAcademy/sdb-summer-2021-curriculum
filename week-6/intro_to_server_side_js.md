@@ -117,7 +117,7 @@ If Node.js sounds familiar, that's because we started this course programming in
 
 ---
 
-# Server and Client
+# Client and Server
 
 The Server and Client sides to your application have separate, but related jobs, and each is useful for specific things.
 
@@ -127,6 +127,10 @@ The Server and Client sides to your application have separate, but related jobs,
   * Sends requests to the server
   * Not secure, all data/code is available through the browser
   * Options depend on browser
+
+---
+
+# Server and Client
 
 * Server Side:
   * Listens for requests from the client, and sends back responses
@@ -142,7 +146,7 @@ Together they make a full stack application
 
 When creating a full stack application, your server file should live at the root level of your project, while all the client side code should live in a dedicated subdirectory; often called `client` or `public`
 
-![directory file structure](/images/basic-server-structure.png)
+![directory file structure](https://res.cloudinary.com/btvca/image/upload/v1625660568/basic-server-structure_yt8ow5.png)
 
 ---
 
@@ -152,17 +156,11 @@ When creating a full stack application, your server file should live at the root
 
 * Create a project directory
 * Inside that directory run `npm init -y`
-* Install any server dependencies, and create your server file
+* Install any server dependencies, `create-react-app`, and create your server file
 * Still inside the directory run `npx create-react-app client`
-* Now you have a React front end!
-
----
+* Now you have a React front end named `client`!
 
 ![React server example](https://res.cloudinary.com/btvca/image/upload/v1625589830/client-closed_st2qli.png)
-
----
-
-![React server example](https://res.cloudinary.com/btvca/image/upload/v1625589858/client-open_yvkn3a.png)
 
 ---
 
@@ -171,9 +169,10 @@ When creating a full stack application, your server file should live at the root
 * React is a single page web App. All user facing routes should return the `index.html` file
 * `create-react-app` creates a git repo. Git does not like it when you try to put repos in repos
   * run `rm -rf .git` from inside `client` to remove the interior repo otherwise git will have issues
+  * If the `rf` command doesn't work on a windows machine use `del .git`. Type `Y` when prompted
 * React has `production`, and `build` versions. You generally want to serve the `build` version
   * If you need to have the production version talk to your server you will need to [proxy the requests from React](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
-  * And you will need to have React's production server, and your custom server running at the same time
+  * And you will need to have React's development server, and your custom server running at the same time
 
 ---
 

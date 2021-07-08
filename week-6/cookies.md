@@ -36,18 +36,16 @@ which *sends it back* to the server on *every request*
 
 # Cookie Sessions
 
-* cookie data on the client is 
-      1. not very secure
-      2. limited in size and format
-      3. unstable (it might be deleted, or edited, at any moment)
+Cookie data on the client is:
+* not very secure
+* limited in size and format
+* unstable (it might be deleted, or edited, at any moment)
     
-* so a cookie is often used not to store data directly, but as a *key* to a larger, long-term server-side database or 
+So a cookie is often used, not to store data directly, but as a *key* to a larger, long-term server-side database.
 
-    * this is called a "session cookie" (yet another meaning of the term "session")
-
+* this is called a "session cookie" (yet another meaning of the term "session")
 * often that key identifies a *currently logged-in user* with a lot of related long-lived database records
-
-    * this is how web sites implement "Remember Me" login checkboxes
+  * this is how web sites implement "Remember Me" login checkboxes
 
 ---
 
@@ -96,6 +94,8 @@ In Express, the incoming request's `Cookie` header is available (via `request.he
 Fortunately, Express has a middleware component called [cookie-parser](https://www.npmjs.com/package/cookie-parser) that parses the `Cookie` header and puts all available cookies into an object at `request.cookies`.
 
 ---
+
+# Express Cookies Example
 
 ```javascript
 const express = require('express');
