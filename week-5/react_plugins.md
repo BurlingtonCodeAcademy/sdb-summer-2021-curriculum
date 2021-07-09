@@ -1,3 +1,13 @@
+# React Plugins
+
+There are many different plugins for React. These are packages that extend React's functionality event further or allow React to more easily deal with different technologies. Things like:
+
+* [React Leaflet](https://react-leaflet.js.org/) for creating LeafletJS maps
+* [React Router](https://reactrouter.com/) for dynamic Routing in React
+* and many that give you [pre styled components](https://hackernoon.com/23-best-react-ui-component-libraries-and-frameworks-250a81b2ac42)
+
+---
+
 # React Routing
 
 * Using a pages URL is a core web feature
@@ -480,18 +490,3 @@ const App = props => {
 ```
 
 [CodeSandbox](https://codesandbox.io/s/yp4xrk60mv)
-
----
-
-# Code Along: React Router Blog
-
-Let's create a fake blog using [JSONPlaceholder](https://jsonplaceholder.typicode.com/) and React Router!
-
-* When the user visits the homepage they should see a welcome page with:
-  * a greeting ('Welcome to our page, click an article to get started')
-  * a list of all available articles from JSONPlaceholder by title
-* When the user clicks an article's title it should take you to a new page with:
-  * the contents of that article
-  * the title
-  * the author's name
-  * and when you click the author's name it should take you to a page with a list of all the articles **by that author**
