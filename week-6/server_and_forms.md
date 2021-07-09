@@ -100,10 +100,8 @@ There are many more types of form elements (or "widgets") that let the user ente
 2. **Either**...
   * the user clicks "Submit"
   * or the user presses <kbd>Enter</kbd> in a text field
-  * or JavaScript calls `form.submit()` on the form DOM element
 3. The client sends an HTTP request
-  * including parameters like `q=apple&submit=Search`
-  * (yes, the submit button's text label becomes the value)
+  * including query parameters if it has a `method` of `"get"`
 
 ---
 
@@ -111,7 +109,35 @@ There are many more types of form elements (or "widgets") that let the user ente
 
 Forms are a great way to accept user input in your webpages. The simplest way to handle user input is to create a form with an `<input type="text" />` element, and an `<input type="submit" />` element.
 
-When the form is submitted you use JavaScript to read the value of the text field, and do whatever manipulations, or actions you need to do based on that input.
+This can be used to set up anything from providing information to the page, to simple login, to full database operations
+
+If we do not intercept the form with JavaScript on the front end, then our form data gets sent to the server where we can deal with it in a more secure environment.
+
+If we send the form data via a `POST` request it further hides the data by sending it over in the request's `body` property rather than through the URL
+
+---
+
+# Reading Request Bodies in Express
+
+To read a post request's body on your express server you will need to use some middleware to transform it into a format you can interact with. Luckily express comes with some build in middleware. `express.urlencoded()` used as middleware allows us to transform a POST request's `body` into a JavaScript object.
+
+Middleware can be set up in an `app.use` method, before you set up your routes, or directly inline in the desired route.
+
+```js
+app.use(express.urlencoded())
+
+app.post("/some/path", (req, res) => {
+  console.log(req.body)
+})
+```
+
+**Or**
+
+```js
+app.post("/some/path", express.urlencoded(), (req, res) => {
+  console.log(req.body)
+})
+```
 
 ---
 

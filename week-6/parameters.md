@@ -227,8 +227,6 @@ Though we can set up rules on the server to handle these requests any way we wan
 
 # REST
 
-**RE**presentative **S**tate **T**ransfer
-
-The concept of "path parameters" is central to an idea called REST.
+The concept of "path parameters" is central to an idea called **RE**presentative **S**tate **T**ransfer.
 
 It argues that people designing web applications should consider their apps URLs to be an essential part of their app's design and functionality, and that those URL paths should follow a convention that exposes parts of the app as *resources* that can be identified and interacted with individually using a common set of *methods* (that happen to be more or less the same as the HTTP methods).

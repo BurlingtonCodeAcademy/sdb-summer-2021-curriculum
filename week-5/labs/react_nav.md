@@ -25,7 +25,7 @@ In the `Home`, `About`, and `Contact` components add some unique content so you 
 Import all of them into your `App` component. We will also need a few *prebuilt* components from React Router. Namely the `Switch`, `Route`, and `BrowserRouter` components which you can bring in by importing them from `react-nav`
 
 ```jsx
-import {Switch, Route, BrowserRouter} from "react-router"
+import {Switch, Route, BrowserRouter} from "react-router-dom"
 ```
 
 ## Getting Ready for Routing
