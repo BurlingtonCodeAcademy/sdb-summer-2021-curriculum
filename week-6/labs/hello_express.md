@@ -4,11 +4,13 @@
 
 In this lab you will set up your first server in [Express](https://expressjs.com/) and deploy it to Heroku, where it will be visible to everyone on the Internet.
 
-## Setting up Express!
+## Getting Ready for Express!
 
 In your Terminal, make a directory called `hello-express` with the command `mkdir hello-express` and `cd` into it. Express is a JavaScript framework that allows us to build servers a little more easily. To use it we will need to download it from npm.
 
 Run `npm init -y` to create a fresh `package.json` file, to get your application ready. Then run `npm install express` to download the Express package into this project so we can use it to set up our server.
+
+## Setting up the Server File
 
 Once you've installed Express make a file named `server.js` for us to set up our express server.
 
@@ -27,7 +29,7 @@ const port = process.env.PORT || 5000
 
 ## Hello, Home Page!
 
-Severs listen for specific routes using specific methods and then determine a response based on the code that you, as the programmer, write. Express has built in methods that correspond to the HTTP methods `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` which take a string that represents a path from the URL, and a callback function that takes two arguments, a *request object* and a *response object*. To send a response on a given route we can call the `.send` method on the `response object passing in the message we want to send.
+Severs listen for specific routes using specific methods and then determine a response based on the code that you, as the programmer, write. Express has built in methods that correspond to the HTTP methods `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` which take a string that represents a path from the URL, and a callback function that takes two arguments, a *request object* and a *response object*. To send a response on a given route we can call the `.send` method on the `response` object passing in the message we want to send.
 
 Most of the time we'll be listening for `GET` requests since that is by far the most common type of request on the internet.
 

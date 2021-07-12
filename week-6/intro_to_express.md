@@ -5,7 +5,7 @@
   * given this request
   * what code do we run?
   
-the "code we run" is also called an *endpoint* or a *route* or a *script* or a *handler* or...
+the "code we run" is also called an *endpoint* or a *route* or a *script* or a *handler* or any of a number of different terms. It is generally a callback function with access to a "request" and a "response" object.
 
 The "code we run" doesn't have to be complicated. It could be as simple as sending a file.
 
@@ -23,11 +23,11 @@ and most of the fancy framework code is simply to build up a list of matching ru
 
 # ...but don't reinvent the wheel
 
-Frameworks like Express give you more than the *implementation* of features like routing and parameter passing
+Frameworks like Express give you more than the *implementation* of features like routing and parameter passing.
 
-they also give you an *interface* that will make **your** calling code easier to read
+They also give you an *interface* that will make **your** code easier to read.
 
-as well as a shared context of documentation and tutorials so other coders don't have as much to learn before understanding your code
+As well as a shared context of documentation and tutorials so other coders don't have as much to learn before understanding your code.
 
 ---
 
@@ -43,11 +43,15 @@ as well as a shared context of documentation and tutorials so other coders don't
 
 # Express Routing Example
 
-In the [Hello, Express](./hello_express) lesson we saw the following route:
+An Express route set up to listen for a `get` request on the home page, that sends back the text "Hello World!" would look like this:
 
 ```js
 app.get('/', (request, response) => response.send('Hello World!'))
 ```
+
+`get` requests are by far the most common type of request you'll be dealing with since it is the method that *requests* new data from the server
+
+`get` requests can be triggered many different ways, such as by entering a URL in the browser, using `fetch` in your client side code, or redirecting to a new router on the server.
 
 ---
 
@@ -55,8 +59,8 @@ app.get('/', (request, response) => response.send('Hello World!'))
 
 | code | explanation |
 |---|---|
-| `app` | my application, |
-| `.get` | when the client does a `GET` request |
+| `app` | my application, the initialized Express app|
+| `.get` | when the client sends a `GET` request |
 | `(request, response) =>` | will call this *handler* function with a *request* object and a *response* object |
 | `response.send` | send a response |
 | `('Hello, World')` | with this string as its body | 
@@ -111,6 +115,7 @@ Once it finds the matching route it runs the attached request/response callback 
 * [`express.json`](https://expressjs.com/en/4x/api.html#express.json) parses incoming requests with JSON payloads.
 * [`express.static`](http://expressjs.com/en/4x/api.html#express.static) serves static files, and sets restrictions on client-side access
 * Tons of 3rd-party and error-handling options
+* And the ability to create, and use your own middleware!
 
 ---
 
@@ -134,7 +139,7 @@ app.post('/api/users', express.json(), function (req, res) {
 
 # Write your own middleware!
 
-Remember how we said you can customize your own middleware? Give it a shot!
+Remember how we said you can create your own middleware? Let's give it a shot!
 
 When doing so, that function will have access to the `request` and `response` objects, AND the callback function `next` that simply tells it to carry on with the route's execution.
 

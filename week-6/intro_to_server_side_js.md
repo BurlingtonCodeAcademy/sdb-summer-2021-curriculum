@@ -1,10 +1,17 @@
 # Overview
-Welcome to the server-side! In this slide deck, we will be covering the basic aspects of servers, like what they are and how they relate to your viewing web pages!
+
+Welcome to the server-side!
+
+In this slide deck, we will be covering the basic aspects of servers, like what they are and how they relate to viewing your web pages!
 
 ---
 
 # What is a server?
-*Server* is a term that refers to both hardware and/or software. It is used to define the relationship between the computer a user is interacting with (client) and the distinctly different environment that said user will request information from.
+
+*Server* is a term that refers to both hardware and/or software. It is used to define the relationship between the computer a user is interacting with (client) and the distinctly different environment that said user will request information from. So we have several different definitions of "server" and you just to figure out which one we mean by the context. Whether it's:
+
+* The program that actually serves your files
+* The computer that program is running on
 
 ---
 
@@ -31,8 +38,11 @@ Welcome to the server-side! In this slide deck, we will be covering the basic as
 
 ---
 
-# Requests
+## Requests
+
 Servers have uniquely defined rules that determine how they will respond based on a request.
+
+When setting up a server you get to determine what those rules are for a given request, on a given path.
 
 ---
 
@@ -66,6 +76,7 @@ Servers have uniquely defined rules that determine how they will respond based o
 ---
 
 # Headers
+
 When requests and responses are sent between server and browser, additional information is included in *headers*
 
 The header can be loosely categorized based on its context: **request, response, or general**
@@ -80,6 +91,7 @@ The header can be loosely categorized based on its context: **request, response,
 ---
 
 # Server-side programming
+
 "Server-side" is meant to describe everything that happens in between a request and a response. 
 
 Server-side code:
@@ -96,15 +108,17 @@ Server-side code:
 
 All code needs to run in some sort of environment, which affects the syntax, and options available to you.
 
-When we are doing DOM Scripting, working with React, or otherwise doing *client-side* coding we are working in the browser's environment
+When we are doing DOM Scripting, working with React, or otherwise doing *client-side* coding we are working in the *browser's environment*
 
-*Server-side* JavaScript generally runs in a Node environment
+*Server-side* JavaScript generally runs in a *Node environment*
 
 ---
 
 # Welcome Back Node!
 
 If Node.js sounds familiar, that's because we started this course programming in a Node environment!
+
+Now that we're working on the server we're back in a Node environment!
 
 ---
 
@@ -114,6 +128,8 @@ If Node.js sounds familiar, that's because we started this course programming in
   * `global` v. `browser` or `window`
 * Import/export methods
   * `require` v. `import`
+* Some functions are only available in the browser
+  * Such as `fetch`
 
 ---
 
@@ -138,7 +154,7 @@ The Server and Client sides to your application have separate, but related jobs,
   * Secure
   * Consistent
 
-Together they make a full stack application
+Together with the front end it makes a full stack application
 
 ---
 
@@ -169,7 +185,7 @@ When creating a full stack application, your server file should live at the root
 * React is a single page web App. All user facing routes should return the `index.html` file
 * `create-react-app` creates a git repo. Git does not like it when you try to put repos in repos
   * run `rm -rf .git` from inside `client` to remove the interior repo otherwise git will have issues
-  * If the `rf` command doesn't work on a windows machine use `del .git`. Type `Y` when prompted
+  * If the `rf` command doesn't work on a windows machine use `del .git`. Type <kbd>Y</kbd> when prompted
 * React has `production`, and `build` versions. You generally want to serve the `build` version
   * If you need to have the production version talk to your server you will need to [proxy the requests from React](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
   * And you will need to have React's development server, and your custom server running at the same time

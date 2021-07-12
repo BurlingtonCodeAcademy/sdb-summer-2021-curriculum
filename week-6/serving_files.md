@@ -13,9 +13,9 @@ At its core, HTTP is a *file transfer protocol*.
 
 In earlier lessons, you may have used the `node-static` package, or the `live-server` VSCode plugin to serve your HTML, JS, CSS, images, etc...
 
-*node-static*, and *live-server* are standalone static file servers built in NodeJS
+*node-static*, and *live-server* are standalone static file servers built in NodeJS.
 
-They're useful for local development but not great for production deployments
+They're useful for local development but not great for production deployments since we don't have very much control over them.
 
 ---
 
@@ -68,12 +68,14 @@ Now open a web browser and visit <http://localhost:5000/> and you will see the c
 
 **TIP:** open the browser DevTools and click on the Headers sub-tab to see Content-Type and other headers:
 
-![headers](/images/content-type.png)
+![headers](https://res.cloudinary.com/btvca/image/upload/v1626093503/content-type_zimyop.png)
 
 ---
 
-# Match the Route not the Path
+# Match the Route not the File Path
 
 When setting up our links on the front end we want to match the routes we set up on the server, not the actual path to the file.
+
+In the route handler we will tell our server where the file actually lives, but the client side code doesn't need to know that!
 
 This will allow us to more accurately define our site structure so it's representative of the purpose of our pages rather than being bound to the physical location on disk.
