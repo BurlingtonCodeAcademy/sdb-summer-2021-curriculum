@@ -2,9 +2,9 @@
 
 ## Welcome!
 
-## Creating the Front end
+Madlibs on the server? If so we shouldn't use React...
 
-with React
+## Creating the Front end
 
 It's going to need a form
 
@@ -23,8 +23,6 @@ Make sure the form on the front end has a `method="POST"` and `action="/whatever
 ## View the Request Body
 
 ## Do Something with the Request
-
-match hard coded username and password?
 
 redirect to a different page depending on request body properties?
 

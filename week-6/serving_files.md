@@ -77,19 +77,3 @@ Now open a web browser and visit <http://localhost:5000/> and you will see the c
 When setting up our links on the front end we want to match the routes we set up on the server, not the actual path to the file.
 
 This will allow us to more accurately define our site structure so it's representative of the purpose of our pages rather than being bound to the physical location on disk.
-
----
-
-# 404 Not Found and other status codes
-
-open a web browser and visit <http://localhost:5000/oops.html>
-
-if there is an error loading the file (in this case, there is simply no file by that name),
- 
-the server must send the correct *[status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)*
-
-  * (404 means "not found")
-  
-Note: even though there is an error, the server *still returns a body and content-type* for display to the user.
-
-In this case, we just see Express' boring default error page, but it's possible to get [very creative](https://www.canva.com/learn/404-page-design/) with web site error pages.

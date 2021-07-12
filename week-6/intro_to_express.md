@@ -107,10 +107,9 @@ Once it finds the matching route it runs the attached request/response callback 
 
 # Express Middleware
 
-* [`body-parser`](https://expressjs.com/en/resources/middleware/body-parser.html) parses incoming request bodies. Very useful for reading form submissions!
-* [`express.urlencoded`](https://expressjs.com/en/4x/api.html#express.urlencoded) parses incoming requests with URL-encoded payloads. **What we just used: based off of `body-parser`**
+* [`express.urlencoded`](https://expressjs.com/en/4x/api.html#express.urlencoded) parses incoming requests with URL-encoded payloads.
 * [`express.json`](https://expressjs.com/en/4x/api.html#express.json) parses incoming requests with JSON payloads.
-* [`express.static`](http://expressjs.com/en/4x/api.html#express.static) serves static files. Should look familiar.
+* [`express.static`](http://expressjs.com/en/4x/api.html#express.static) serves static files, and sets restrictions on client-side access
 * Tons of 3rd-party and error-handling options
 
 ---

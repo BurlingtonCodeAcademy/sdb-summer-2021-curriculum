@@ -21,7 +21,7 @@ In this lab we will be creating a site that uses the power of delicious baked go
 
 - Set up a server with express. Here's a hint to get you started:
 
-```
+```js
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
