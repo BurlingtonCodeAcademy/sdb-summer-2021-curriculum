@@ -114,7 +114,7 @@ When dealing with passwords, say, stored in a database, it is good practice to s
 
 enter [`bcrypt`](https://www.npmjs.com/package/bcrypt)
 
-# Lab: Hashing
+# Hashing
 Create a simple password, create a hashed version with `bcrypt`, and compare it that hash to the original!
 
 Set it up:

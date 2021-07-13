@@ -1,4 +1,5 @@
 # Overview
+
 Passport boasts "simple, unobtrusive authentication for Node.js."
 
 What this actually means is that, with relatively minimal housekeeping, one can create authentication *middleware* (remember middleware?) that handles the request from the client and, based on how the authentication process goes, grant or deny access!
@@ -7,7 +8,10 @@ What this actually means is that, with relatively minimal housekeeping, one can 
 - Configurable auth requirements.
 - Highly modular.
 
+---
+
 # Basics
+
 Passport's conventions are based on defining and utilizes the previously mentioned strategies. And, as mentioned, there are a lot. [See for yourself](http://www.passportjs.org/packages/)
 
 These *strategies*, while plentiful, do share some similarities. They all need to be installed and configured via the `.use()` method on the `passport` instance. 
@@ -15,6 +19,8 @@ These *strategies*, while plentiful, do share some similarities. They all need t
 For this example, we will be utilizing the `passport-jwt` (JSON Web Token) and Postman to simulate requests. We'll create a token and include it in the header of subsequent requests to authorize the user to access certain areas. 
 
 Be sure you have a working instance of Postman!
+
+---
 
 # Configuration
 Three pieces are needed to properly configure Pasport for authentication:
@@ -45,8 +51,10 @@ If your app is using persistent sessions you would also need:
 app.use(passport.session())
 ```
 
+---
 
-# Lab: Postman it!
+# Postman it!
+
 In this lab you will be provided with a basic server that, when setup properly, will redirect to a user dashboard when the JWT is properly verified. 
 
 Clone down the following repository run `npm install` to bring in the proper packages.
@@ -55,8 +63,10 @@ https://github.com/pphelps28/postman-passport-lab
 
 Run `server.js` once with the code as is to create a collection on your local machine that contains a mock user,then remove the indicated line to ensure no duplicates are written to the database.
 
+---
 
 # Setup
+
 Under *passport setup*, add the following:
 
 ```javascript
@@ -68,6 +78,8 @@ const ExtractJwt = require('passport-jwt').ExtractJwt
 app.use(passport.initialize())
 ```
 These are the modules used to enforce the authentication strategies *and* intialize passport as express middleware
+
+---
 
 # Defining Strategies
 Now, let's set up the JWT strategy itself, so when we use it as middleware, it knows how to handle the request.
