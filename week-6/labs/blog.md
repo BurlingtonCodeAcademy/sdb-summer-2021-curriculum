@@ -86,7 +86,7 @@ Here's one way you could set up the home page, though you should feel free to ma
 <h1>Express Blog</h1>
 
 <form method='GET' action='/search'>
-  <label>Search by Author: <input type="search" name="author"></label>
+  <label>Search by Author: <input type="search" name="author" /></label>
   <input type='submit' value='Search'>
 </form>
 
@@ -106,7 +106,7 @@ Here's one way you could set up the home page, though you should feel free to ma
 
 ## Seeding the Database
 
-Create a directory named . Inside the `articles` directory create a file named `1.json` containing some code that looks like this:
+Inside the `articles` directory create a file named `1.json` containing some code that looks like this:
 
 ## articles/1.json
 
@@ -259,16 +259,16 @@ app.get('/api/articles', (request, response) => {
 <h1>Publish an Article</h1>
 
 <form method='POST' action='/articles'>
-  <label>Author: <input type='text' name='author'></label>
+  <label>Author: <input type='text' name='author' /></label>
   <br>
-  <label>Title:  <input type='text' name='title'></label>
+  <label>Title:  <input type='text' name='title' /></label>
   <br>
   <label for='body'>Body:</label>
   <br>
   <textarea name='body'>
   </textarea>
   <br>
-  <input type='submit'>
+  <input type='submit' />
 </form>
 ```
 
