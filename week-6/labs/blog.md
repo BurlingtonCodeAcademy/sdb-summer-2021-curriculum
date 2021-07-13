@@ -383,7 +383,7 @@ That's it for now! (We can add other fields later if we want.)
 </div>
 
 <script>
-fetch('/search.json' + document.location.search)
+fetch('/api/search' + document.location.search)
   .then((response) => response.json())
   .then(fillArticles);
 
@@ -421,7 +421,7 @@ app.get('/search', (request, response) => {
   response.sendFile(path.join(publicDir, 'search.html'))
 })
 
-app.get('/search.json', (request, response) => {
+app.get('/api/search', (request, response) => {
   let results = searchArticles(request.query)
   response.type('application/json');
   response.send(JSON.stringify(results));
