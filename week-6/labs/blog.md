@@ -170,7 +170,7 @@ Add the following code to the server:
 
 ```javascript
 app.get('/api/articles/:articleId', (request, response) => {
-  let filePath = path.join(articlesDir, request.params.articleId + '.json);
+  let filePath = path.join(articlesDir, request.params.articleId + '.json');
   response.sendFile(filePath);
 });
 
