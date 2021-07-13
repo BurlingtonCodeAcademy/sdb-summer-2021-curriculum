@@ -80,7 +80,7 @@ You can use any, and all array methods on a JSON collection, including iteration
 
 ---
 
-# Viewing JSON in Browser
+# Viewing JSON in the Browser
 
 * Its mime-type is `application/json` which most browsers will display all on one line :-(
 * There are browser extensions that will render it better
@@ -91,11 +91,10 @@ You can use any, and all array methods on a JSON collection, including iteration
 
 ---
 
-# Viewing JSON in NodeJS Console
+# Viewing JSON in your NodeJS Console
 
 * JSON *is* JavaScript
-* so if you _copy_ a JSON blob and _paste_ it into the Node REPL
-* it will look like this:
+* so if you _copy_ a JSON blob and _paste_ it into the Node REPL it will look like this:
 
 ```
 $ node
@@ -122,7 +121,9 @@ Parsing JSON in JavaScript is easy!
 
 Since JSON objects are based off of JavaScript objects it's simple to translate them into true JavaScript objects.
 
-There is a global `JSON` object in JavaScript that can be used to manipulate JSON data. The `JSON.parse(someJson)` method will translate `someJson` into a JavaScript Object
+There is a global `JSON` object in JavaScript that can be used to manipulate JSON data. The `JSON.parse(someJson)` method will translate `someJson` (which would probably be a JSON formatted string) into a JavaScript Object
+
+We can also take a JavaScript object, and turn it into a JSON formatted string with the method `JSON.stringify(someObj)`
 
 ---
 

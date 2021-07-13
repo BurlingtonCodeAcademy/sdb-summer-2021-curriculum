@@ -49,5 +49,3 @@ const port = process.env.PORT || 5000;
 
 - Now create a function to set the cookies and check them using `document.cookie`
     -*Hint* Use `console.log()`s to log the cookies and check in the inspector
-    
-     

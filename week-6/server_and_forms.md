@@ -131,17 +131,10 @@ app.post("/some/path", (req, res) => {
 })
 ```
 
-**Or**
-
-```js
-app.post("/some/path", express.urlencoded(), (req, res) => {
-  console.log(req.body)
-})
-```
-
 ---
 
 # References
 
- <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form> - docs
- <https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms> - guide
+<https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form> - docs
+
+<https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms> - guide

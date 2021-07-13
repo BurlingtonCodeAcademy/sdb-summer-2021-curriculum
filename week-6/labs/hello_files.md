@@ -122,3 +122,4 @@ In this case, we just see Express' boring default error page, but it's possible 
 
 * Create a page in your "public" directory named 404.html
 * When the user visits any route other than one of your previously assigned routes the 404 page should be displayed.
+* Add some styles to your pages. Make them look nice!

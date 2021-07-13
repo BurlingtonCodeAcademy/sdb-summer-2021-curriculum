@@ -1,7 +1,10 @@
 # LAB: Let's build a blog in Express!
 
+## Welcome!
+
 In this lab we are going to create a server that allows us to pull information from a filesystem and set the information we have gathered into HTML and JSON endpoints. Our end product will be a blog style web application that includes a home page, a list of articles, a search function, the ability to create an article, and the ability to publish a new one. 
 
+Eventually we will set up the following routes on our server to handle the various pieces of functionality on our site:
 
 ## HTML Endpoints:
 
@@ -14,57 +17,70 @@ In this lab we are going to create a server that allows us to pull information f
 
 ## JSON Endpoints:
 
-* GET`/articles.json` - list of all articles in JSON format
-* GET`/articles/1.json` - article with id 1 in JSON format
-* GET`/search.json?author=alice` - list of all articles written by Alice
+* GET`/api/articles` - list of all articles in JSON format
+* GET`/api/articles/1` - article with id 1 in JSON format
+* GET`/api/search?author=alice` - list of all article objects with an `author` property of `"Alice"`
 
-# Data storage
+## Data storage
 
 We haven't learned about databases yet, which is fine, because...
 
-> The filesystem **is** a database. 😮
+> The filesystem **is** a database.
 
 ... so for this app, we will store articles as JSON files on disk.
 
-# Project Setup
+## Server Setup
 
-Create a new project named "blog" and run
+Create a new project directory named "blog" and run
 
-```bash
+```
 npm init -y
 npm install express
 ```
 
-# Server Setup
+to bring in the Express framework.
 
-Create a file named `app.js` with the following code:
+Create two subdirectories, both at the root level of our project directory:
+
+* `public` where all our HTML, client side JavaScript and CSS files will live
+* `articles` which will hold all of the articles on our site.
+
+Create a file named `app.js` at the root level of your project directory and set up your express app. Since this is a larger application we will bring in another couple of packages called "path" and "fs"
+
+"path" is a native Node package so we don't need to install it, but we will need to import it into our server file. It makes it easier to read filepaths by giving us several methods for reading, and creating file paths. The `.resolve` method from the `path` object takes a relative filepath as it's argument and returns the exact filepath. This will allow us to store the full file paths to the directories we'll be serving our files from as variables for ease of reference throughout our application.
+
+"fs" is another native Node modules which makes reading, and writing to a file system easier, and we will be using it to create our JSON files from form submissions.
+
+Currently our server should look something like this:
 
 ```javascript
-const fs = require('fs');
-const $path = require('path');
 const express = require('express');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 5000;
-const publicDir = $path.resolve('./public');
-const articlesDir = $path.resolve('./articles');
+const publicDir = path.resolve('./public');
+const articlesDir = path.resolve('./articles');
 
 app.use(express.static('public'));
-app.listen(port, () => console.log(`Blog app listening on port ${port}!`));
+
+app.listen(port, () => {
+  console.log(`Blog app listening on port ${port}!`)
+  });
 ```
-
-### Notes:
-
-* `fs` and `path` are NodeJS libraries for dealing with the filesystem. We will use them later.
-* we made `$path` start with a $ so that later we can use a local variable named `path` without namespace collision
 
 # Home page
 
 Our existing server code will handle a default static home page; if we name it `index.html` then we're good.
 
-**Remember** -- if you copied and pasted the *hello_express* server code, you must **remove** the `app.get('/'` route, or else Express will say "hello" instead of sending the file.
+Inside the `public` directory create a file named `index.html` containing a form that will allow us to search by author, and three links linking to the routes:
 
-Create a directory named `public` and a file named `index.html` containing:
+* `"/articles"` which is a page that displays a list of all available articles
+* `"/articles/1"` Which will link to our featured article page.
+* `"/publish"` which will take us to a form that will allow us to create a new article.
+
+Here's one way you could set up the home page, though you should feel free to make it fancier!
 
 ```html
 <h1>Express Blog</h1>
@@ -88,11 +104,9 @@ Create a directory named `public` and a file named `index.html` containing:
 </ul>
 ```
 
-This page now contains links to all the other pages in the site. Feel free to make it prettier! :-)
+## Seeding the Database
 
-# Seeding the Database
-
-Create a directory named `articles`. Inside this directory create a file named `1.json` containing something like this:
+Create a directory named . Inside the `articles` directory create a file named `1.json` containing some code that looks like this:
 
 ## articles/1.json
 
@@ -113,10 +127,12 @@ A more modern app will send *static* HTML/CSS/JS, then *that* code will run on t
 
 So to make our modern blog app show an article, we need *two*  
  
- 1. an HTML *file* to send on initial page load
- 2. a JSON *route* to send the actual article
+1. an HTML *file* to send on initial page load
+2. a JSON *route* to send the actual article
 
 # Viewing a single article (Client-side)
+
+We can set up a page for viewing a single article on the front end by creating a page with several empty elements which we will fill with data fetched from our server's api endpoints.
 
 ### public/article.html 
 
@@ -126,6 +142,7 @@ So to make our modern blog app show an article, we need *two*
   <i>by <span id='author'></span></i>
   <p id='body'></p>
 </div>
+
 <script>
 let articleId = document.location.pathname.split('/').splice(-1);
 
@@ -145,26 +162,22 @@ function fillArticle(article) {
 
 Our first route will match `/articles/1` and return the HTML for viewing a single article.
 
-Our second route will match `/articles/1.json` and return the actual article data in JSON format.
+Our second route will match `/api/articles/1` and return the actual article data in JSON format.
 
 Add the following code to the server:
 
 ### app.js
 
 ```javascript
-function articleFilePath(articleId) {
-  return $path.join(articlesDir, articleId + ".json");
-}
-
-app.get('/articles/:articleId.json', (request, response) => {
-  let filePath = articleFilePath(request.params.articleId);
+app.get('/api/articles/:articleId', (request, response) => {
+  let filePath = path.join(articlesDir, request.params.articleId, '.json);
   response.sendFile(filePath);
 });
 
 app.get('/articles/:articleId', (request, response) => {
   let filePath = articleFilePath(request.params.articleId);
   if (fs.existsSync(filePath)) {
-    let htmlFile = $path.join(publicDir, "article.html");
+    let htmlFile = path.join(publicDir, "article.html");
     response.sendFile(htmlFile);
   }
   else {
@@ -176,6 +189,8 @@ app.get('/articles/:articleId', (request, response) => {
 > Now try it out! Visit the "Featured Article" from the home page and see if it works.
 
 # Viewing All Articles (Client-side)
+
+To view all of the articles we will once more need to create an empty container to fill with data from our api endpoint, this time drawing from the endpoint that serves all of the articles.
 
 ### public/articles.html
 
@@ -211,33 +226,30 @@ function fillArticles(articles) {
 
 In addition to serving *static files*, the server needs to respond to some routes *dynamically*.
 
-For example, `/articles/1.json` will be served statically, but `/articles.json` will be created on the fly based on the current contents of the `public/articles` directory.
+For example, `/api/articles/1` will be served statically, but `/api/articles` will be created on the fly based on the current contents of the `articles` directory.
+
+Let's also create a helper function called `allArticles` which will read our `articles` directory and automatically turn its contents into an array of data.
 
 ## app.js
 
 ```js
+function allArticles() {
+  return fs.readdirSync(articlesDir)
+    .filter(file => file.endsWith('.json'))
+    .map(file => JSON.parse(fs.readFileSync(path.join(articlesDir, file))))
+    .sort((a,b)=> (a.id - b.id));
+}
+
 app.get('/articles', (request, response) => {
-  response.sendFile($path.join(publicDir, 'articles.html'))
+  response.sendFile(path.join(publicDir, 'articles.html'))
 })
 
-app.get('/articles.json', (request, response) => {
+app.get('/api/articles', (request, response) => {
   let articles = allArticles();
   let data = JSON.stringify(articles);
   response.type('application/json').send(data);
 })
-
-function allArticles() {
-  return fs.readdirSync(articlesDir)
-    .filter(file => file.endsWith('.json'))
-    .map(file => JSON.parse(fs.readFileSync($path.join(articlesDir, file))))
-    .sort((a,b)=> (a.id - b.id));
-}
 ```
-
-## Notes:
-
-* There's probably a more efficient way to read all the files, using `readFile` instead of `readFileSync`, but this works for now.
-* Although they look very similar to human eyes, the routes `/articles` and `/articles.json` will *not* overlap with each other, since they are both exact matches. So you can put them in any order.
 
 # Publish an Article (Client-side)
 
@@ -270,11 +282,11 @@ So on the server, we must use `express.urlencoded` to parse the body and set the
 
 ```javascript
 app.get('/publish', (request, response) => {
-  let htmlFile = $path.join(publicDir, "publish.html");
+  let htmlFile = path.join(publicDir, "publish.html");
   response.sendFile(htmlFile);
 })
 
-app.post('/articles', express.urlencoded({extended: false}), (request, response) => {
+app.post('/articles', express.urlencoded({extended: true}), (request, response) => {
   createArticle(nextArticleId(), request.body, response)
 })
 ```
@@ -318,7 +330,7 @@ function createArticle(articleId, params, response) {
     body: params.body.trim()
   };
 
-  let articleDataFile = $path.join(articlesDir, articleId + ".json");
+  let articleDataFile = path.join(articlesDir, articleId + ".json");
   fs.writeFile(articleDataFile, JSON.stringify(article), (err) => {
     if (err) {
       response.status(500).send(err);
@@ -344,8 +356,8 @@ function createArticle(articleId, params, response) {
 New endpoints:
 
  * `/search` returns `search.html`
-    * which calls `/search.json` on page load to perform the actual search
- * `/search.json` returns the results of a search in JSON
+    * which calls `/api/search` on page load to perform the actual search
+ * `/api/search` returns the results of a search in JSON
 
 The parameters to search are 
 
@@ -406,7 +418,7 @@ Since our database is so small, we will load all articles into memory and search
 
 ```javascript
 app.get('/search', (request, response) => {
-  response.sendFile($path.join(publicDir, 'search.html'))
+  response.sendFile(path.join(publicDir, 'search.html'))
 })
 
 app.get('/search.json', (request, response) => {
@@ -427,4 +439,4 @@ function searchArticles(params) {
 }
 ```
 
-See? Who needs a database? :-)
+And now you've got a fully functional (though not terribly efficient) blog site!

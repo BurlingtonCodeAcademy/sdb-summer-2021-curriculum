@@ -32,7 +32,7 @@ In this slide deck, we will be covering the basic aspects of servers, like what 
 ## When dealing with software, it:
 
 - understands URLs (AKA web addresses)
-- listens for a *protocol** request
+- listens for a *protocol* request
 - responds to request
 - sends response through a *protocol* response
 
