@@ -170,12 +170,12 @@ Add the following code to the server:
 
 ```javascript
 app.get('/api/articles/:articleId', (request, response) => {
-  let filePath = path.join(articlesDir, request.params.articleId, '.json);
+  let filePath = path.join(articlesDir, request.params.articleId + '.json);
   response.sendFile(filePath);
 });
 
 app.get('/articles/:articleId', (request, response) => {
-  let filePath = articleFilePath(request.params.articleId);
+  let filePath = path.join(articlesDir, request.params.articleId, '.json');
   if (fs.existsSync(filePath)) {
     let htmlFile = path.join(publicDir, "article.html");
     response.sendFile(htmlFile);
