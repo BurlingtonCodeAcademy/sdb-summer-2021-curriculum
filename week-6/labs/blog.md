@@ -146,7 +146,7 @@ We can set up a page for viewing a single article on the front end by creating a
 <script>
 let articleId = document.location.pathname.split('/').splice(-1);
 
-fetch('/articles/' + articleId + '.json')
+fetch('/api/articles/' + articleId)
   .then((response) => response.json())
   .then(fillArticle)
 
@@ -175,7 +175,7 @@ app.get('/api/articles/:articleId', (request, response) => {
 });
 
 app.get('/articles/:articleId', (request, response) => {
-  let filePath = path.join(articlesDir, request.params.articleId, '.json');
+  let filePath = path.join(articlesDir, request.params.articleId + '.json');
   if (fs.existsSync(filePath)) {
     let htmlFile = path.join(publicDir, "article.html");
     response.sendFile(htmlFile);
@@ -203,7 +203,7 @@ To view all of the articles we will once more need to create an empty container 
 </div>
 
 <script>
-fetch('/articles.json')
+fetch('/api/articles')
   .then((response) => response.json())
   .then(fillArticles)
 
