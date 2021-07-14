@@ -8,6 +8,8 @@ Compass is a GUI, or *graphical user interface*, that simply provides a platform
 
 This makes it a great place to start!
 
+---
+
 # MongoDB Overview
 
 * document database (NoSQL)
@@ -18,6 +20,7 @@ This makes it a great place to start!
 
 > "Mongo is not a toy, although it can be fun to play with." - Josh Burke
 
+---
 
 # Concept: Database
 
@@ -46,6 +49,8 @@ Note that the term "database" is overloaded: it refers to either:
 1. a single MongoDB *process* hosting many data sets
 2. a single MongoDB *data set* containing many related *collections*
 
+---
+
 # Concept: Collection
 
 A *collection* holds documents. 
@@ -53,6 +58,8 @@ A *collection* holds documents.
 Many collections can live in a *database*.
 
 This is analogous to a *table* in SQL.
+
+---
 
 # Concept: Document
 
@@ -64,12 +71,16 @@ Like in a relational database, a document can be *created, read, updated, delete
 
 This nesting and type-flexibility makes it very appropriate to store whatever JavaScript objects your app uses, without needing to devise a *mapping* between nested objects and joined relational tables.
 
+---
+
 # Drivers
 * MongoDB has its own [query syntax](https://docs.mongodb.com/manual/tutorial/query-documents/) that, while very similar to JavaScript at times, has its own rules and structure! 
 
 This allows MongoDB to be used with a number of languages through the use of *drivers*, which are language-specific! For our case, we'll be using MongoDB's **Node.js driver**, because we're JavaScript people, and we're working server side.
 
 [Full list of drivers](https://docs.mongodb.com/drivers/)
+
+---
 
 # View it in Compass
 
@@ -78,6 +89,8 @@ Select the database and collection on the side and...
 ![Compass2](/images/Compass2.png)
 
 Voila! But what's that `_id` thing?
+
+---
 
 # Concept: ObjectId
 

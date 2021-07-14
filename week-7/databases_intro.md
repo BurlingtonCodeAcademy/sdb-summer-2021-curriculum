@@ -163,7 +163,9 @@ Sometimes a query would return many results -- maybe more than can fit in memory
 
 To solve this problem, most databases provide an object called a *Cursor* which fetches some of the results but not necessarily all of them at once.
 
-When you ask a cursor for the next result, it will automatically go back to the database to fetch the next page if needed. 
+When you ask a cursor for the next result, it will automatically go back to the database to fetch the next page if needed.
+
+---
 
 # Transaction
 
@@ -179,6 +181,8 @@ If everything succeeds, the transaction is *committed* and other connections can
 
 This is known as an *atomic* operation -- several actions behaving as one.
 
+---
+
 # Blob
 
 BLOB stands for "Binary Large Object" but it is also a good metaphor.
@@ -190,6 +194,8 @@ Example: an profile picture image file
 Storing BLOBs is often very convenient, and is useful for prototyping or for apps with low-to-middling performance requirements.
 
 But in high-performance web applications, it's often a better idea to store media files in a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) like Amazon S3; in your database, instead of a blob, store a URL or id pointing to that file in the CDN.
+
+---
 
 # Join
 
@@ -217,6 +223,8 @@ In document DBs, joins are often not necessary because...
 > In SQL databases, the *contents point to their containers*.
 
 see https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/
+
+---
 
 # Schema
 
