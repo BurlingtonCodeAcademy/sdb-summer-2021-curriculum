@@ -81,3 +81,7 @@ In our client side JavaScript we can access any cookies set on our site with the
 Go ahead and `console.log` your cookies to see what is available to you in `index.html`
 
 Add some DOM scripting so that when the `index.html` page first loads in you read the cookies, and if a "theme" cookie exists apply the appropriate class name to your `body` element.
+
+## Celebrate!
+
+Now your chosen theme will persist even across page refreshes, or closing the page, and opening it again! You can learn more about how express handles cookies [here](https://expressjs.com/en/api.html#res.cookie)
