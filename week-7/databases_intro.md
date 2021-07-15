@@ -219,11 +219,15 @@ BLOB stands for "Binary Large Object" but it is also a good metaphor.
 
 A BLOB is *any piece of data* that the database treats like a blob -- it does not look inside it, doesn't know its value, can't sort based on it, allows it to be arbitrarily small or large, etc.
 
-Example: an profile picture image file
+> Example: an image file
 
 Storing BLOBs is often very convenient, and is useful for prototyping or for apps with low-to-middling performance requirements.
 
-But in high-performance web applications, it's often a better idea to store media files in a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) like Amazon S3; in your database, instead of a blob, store a URL or id pointing to that file in the CDN.
+---
+
+# But...
+
+In high-performance web applications, it's often a better idea to store media files in a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) like Amazon S3; in your database, instead of a blob, store a URL or id pointing to that file in the CDN.
 
 ---
 
@@ -237,22 +241,13 @@ The syntax and usage of joins can get very complicated, but at heart it's straig
 
   * given A and B, return A+B together
 
-In SQL:
-
-```
-SELECT person.id, person.name, address.person_id, address.street, ...
-FROM person
-JOIN address
-ON person.id = address.person_id
-```
+# Joins in NoSQL
 
 In document DBs, joins are often not necessary because...
- 
-> In NoSQL databases, documents *contain their contents*
- 
-> In SQL databases, the *contents point to their containers*.
 
-see https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/
+> In NoSQL databases, documents *contain their contents*
+
+> In SQL databases, the *contents point to their containers*.
 
 ---
 

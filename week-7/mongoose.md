@@ -1,4 +1,5 @@
 # Overview
+
 When writing to a database, it is often important to ensure the data is as expected.
 
 Enter schema-validation with **Mongoose**. 
@@ -12,10 +13,11 @@ Or in their words,
 ---
 
 # Getting Started
+
 * Mongoose replaces the `mongodb` driver
 * Runs `mongodb` queries under the hood
 
-Make a new directory named `mongoose-example` 
+Let's make a new directory named `mongoose-example` and look at how we can set up and use a schema.
 
 ```
 cd mongoose-example
@@ -46,6 +48,7 @@ db.on('error', console.error.bind(console, 'connection error:'))
 ---
 
 # Concept: Schemas
+
 A database schema outlines the expected structure of the data that will be inserted into a *collection*
 
 A database schema can also define *methods* on the documents being inserted. 
@@ -56,7 +59,7 @@ A database schema can also define *methods* on the documents being inserted.
 
 ---
 
-# Lab: Schemas 
+# Example Schema 
 
 ```javascript
 const studentSchema = new mongoose.Schema({
@@ -77,6 +80,7 @@ A comprehensive list can be found [here](https://mongoosejs.com/docs/guide.html#
 ---
 
 # Concept: Model
+
 While the definition of the data's structure is held in the Schema, a *Model* actually handles the work.
 
 * *constructors* built using the *schema*
@@ -86,7 +90,7 @@ While the definition of the data's structure is held in the Schema, a *Model* ac
 
 ---
 
-# Lab: Models
+# Example Model
 Take our previous schema, `studentSchema`. Let's create a *model* from that schema, and call it `Student`.
 
 ```javascript
@@ -96,7 +100,10 @@ const paul = new Student({ name: 'Paul', age: 29, hobbies: ['guitar', 'd&d', 'co
 // call the save() method on a model instance (document) to insert it to the collection 
 paul.save()
 ```
-Or a version with error handling
+
+---
+
+# Document with Error Handling
 
 ```javascript
 paul.save((err, paul) => {
@@ -114,6 +121,7 @@ We can create an *instance* of the `Student` model like we would any class!
 ---
 
 # Models and Collections
+
 * creating an *instance* of a Model makes a document that can be saved to a collection
 * that *collection* is is a lower-case, pluralized version of the Model name 
     - Model: `Student`
@@ -125,6 +133,7 @@ We can create an *instance* of the `Student` model like we would any class!
 ---
 
 # Seeing it work
+
 ```javascript
 Student.find({ name: 'Paul' }, (err, results) => {
     if (err) {
@@ -134,12 +143,14 @@ Student.find({ name: 'Paul' }, (err, results) => {
     }
 })
 ```
+
 You can also open up **Compass** and what it does with the collection name. 
 You should see `students` under `example_db`, or whatever you ended your connection string with.
 
 ---
 
 # Seeing it break
+
 Let's try create an instance of the `Student` model, and intentionally give it bad data:
 
 ```javascript
@@ -147,4 +158,4 @@ let sam = new Student({name:"Samantha", age:"thirty-two", hobbies:["carpentry", 
 sam.save()
 `Student validation failed: age: Cast to Number failed for value "thirty-two" at path "age"`
 ```
-It thorws an error! It's working!
+It throws an error! It's working!

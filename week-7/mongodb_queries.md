@@ -1,32 +1,27 @@
----
-
 # How to Query MongoDB Documents in JS
 
-This lesson makes the following assumptions:
-
-**1.** You have properly connected to your database, and declared the following:
+This lesson makes the following assumes you have properly connected to your database, and declared the following:
 
 ```javascript
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 const uri = "mongodb://localhost:27017"
 const client = new MongoClient(uri, { useUnifiedTopology: true })
 
 async function runQuery() {
-    await client.connect()
-    const database = client.db('test')
-    const collection = database.collection('inventory')
-    
-     // insert query here
-    const results =  
+  await client.connect()
+  const database = client.db('test')
+  const collection = database.collection('inventory')
+  //insert query here
 
- 
-    // close connection
-    await client.close()
-
+  await client.close()
 }
-runQuery()
 ```
-**2.** You have added the following test-data:
+
+---
+
+# Seeding the DataBase
+
+It also assumes you have added the following test-data to your database:
 
 ```javascript
 await collection.insertMany([
@@ -52,8 +47,6 @@ const results = await collection.find({})
 await results.forEach(doc => console.log(doc))
 ```
 
-* Similar to the `SELECT * FROM inventory` in SQL
-
 ---
 
 # Finding a Single Match
@@ -78,7 +71,7 @@ const results = await collection.find( { status: "D" } )
 await results.forEach(doc => console.log(doc))
 ```
 
-* Multple conditions imply an AND between the constraints
+* Multiple conditions imply an AND between the constraints
 
 ```javascript
 const results = collection.find( { status: "D", item: "planner" } )
@@ -89,7 +82,7 @@ await results.forEach(doc => console.log(doc))
 
 # Finding SOME documents using OR
 
-* Can be used with the same properties
+The `$or` operator can be used to set up lists of properties to match against. If any of the conditions match the document is added to the result.
 
 ```javascript
 const results = await collection.find(
@@ -102,7 +95,11 @@ const results = await collection.find(
 await results.forEach(doc => console.log(doc))
 ```
 
-* Can be used with the different properties
+---
+
+# Using `$or` With Different Properties
+
+`$or` can be used with the different properties as well as checking against multiple properties with the same values.
 
 ```javascript
 const results = await collection.find(
@@ -178,20 +175,7 @@ await results.forEach(doc => console.log(doc))
 
 # Range Queries in Nested Documents
 
-* Reminder of document shape and properties
-
-```javascript
-{
-	"_id" : ObjectId("5b631aff2f6ff13721a2e38b"),
-	"item" : "journal",
-	"status" : "A",
-	"size" : {
-		"h" : 14,
-		"w" : 21,
-		"uom" : "cm"
-	}
-}
-```
+We can also use our various atomic operators on nested properties in a document.
 
 * Single Range in a nested document
 

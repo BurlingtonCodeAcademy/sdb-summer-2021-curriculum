@@ -85,7 +85,7 @@ This allows MongoDB to be used with a number of languages through the use of *dr
 
 Select the database and collection on the side and...
 
-![Compass2](/images/Compass2.png)
+![Compass2](https://res.cloudinary.com/btvca/image/upload/v1626359023/curriculum/Compass2_azhhmk.png)
 
 Voila! But what's that `_id` thing?
 
@@ -95,3 +95,4 @@ Voila! But what's that `_id` thing?
 
 - `_id` is assigned by Mongo when a document is inserted
 - `ObjectId` is a factory function that either generates a new id, or transforms a given string into a Mongo ID object
+- If we want to reference a document by `_id` we need to make sure it's a Mongo ID object.
