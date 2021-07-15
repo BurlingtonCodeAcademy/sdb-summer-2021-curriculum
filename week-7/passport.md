@@ -38,6 +38,8 @@ Note the `done` callback function is called a *verify callback*. It's job is to 
 
 `User.findOne()` represents a yet-to-be-defined model that searches a `users` collection.
 
+---
+
 # Middleware
 In Express, `passport.intialize()` is used for basic implementation of passport.  Like most middleware in express, that will look like this:
 
@@ -111,6 +113,8 @@ This says:
 - If there is a `user`, I will return them so they are available for the response
 - By adding the `jwtFromRequest` option, I expect the JWT to be in the header in the form of a Bearer Token
 
+---
+
 # Issuing a Token
 Let's write a function that will build and sign a JWT and sent it back to the user if the `user` and `password` are correct.
 
@@ -129,6 +133,8 @@ function issueJWT(user) {
     }
 }
 ```
+
+---
 
 # Logging In
 Let's say we have a simple form, with `user` and `password` sent to `/login` via `POST` method. The following checks the database to see if the user and password are correct, and issues a token if they are.
@@ -158,6 +164,8 @@ app.post('/login', (req, res, next)=>{
 } )
 ```
 
+---
+
 # Authentication Middleware
 Now, we need to add a route to check the (presumably saved) JWT coming back from the browser!
 
@@ -174,6 +182,8 @@ app.get('/dashboard', passport.authenticate('jwt', { session: false }),
 
 And that should be all of the setup needed!
 
+---
+
 # See it in Postman
 On the CLI, run your server with `node server.js`
 
@@ -185,6 +195,7 @@ In Postman, it should look something like this:
 
 ![Postman-login](/images/Postman-login.png)
 
+---
 
 # See it in Postman, cont.
 Copy the `token` from the JSON response, and make a GET request to `/dashboard` and set your token as a *Bearer token* in the "Authentication" tab
@@ -195,8 +206,12 @@ That will look something like this:
 
 SUCCESS!!! We have effectively created a JSON Web Token, and used it to authenticate a using Passport authentication as middleware.
 
+---
+
 # Great! But What About Outside of Postman?
 
 Unfortunately the code we just wrote won't work in a real world environment
 
-It relies on 
+It relies on us being able to see and copy that authentication token, and then hard coding it as a header on the next request.
+
+It relies on PostMan's pre built functionality to operate, and I'm too fucking tired to reverse engineer this bullshit right now.

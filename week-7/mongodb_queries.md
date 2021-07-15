@@ -1,3 +1,5 @@
+---
+
 # How to Query MongoDB Documents in JS
 
 This lesson makes the following assumptions:
@@ -37,6 +39,8 @@ await collection.insertMany([
 
 ```
 
+---
+
 # Finding ALL documents in a Collection
 
 * The most basic query is "Get all the documents in a collection"
@@ -50,6 +54,8 @@ await results.forEach(doc => console.log(doc))
 
 * Similar to the `SELECT * FROM inventory` in SQL
 
+---
+
 # Finding a Single Match
 
 * The `db.some-collection.findOne()` method can be used with any of the queries shown in this lesson to limit the results to the first found document.
@@ -60,6 +66,8 @@ console.log(results)
 ```
 
 Doing so will return the document, NOT a a *cursor* so there is no need to iterate over it to display results
+
+---
 
 # Finding SOME documents in a Collection
 
@@ -76,6 +84,8 @@ await results.forEach(doc => console.log(doc))
 const results = collection.find( { status: "D", item: "planner" } )
 await results.forEach(doc => console.log(doc))
 ```
+
+---
 
 # Finding SOME documents using OR
 
@@ -105,6 +115,8 @@ const results = await collection.find(
 await results.forEach(doc => console.log(doc))
 ```
 
+---
+
 # Finding SOME documents using RANGES
 
 * Simple ranges have the general form syntax of the below template:
@@ -120,6 +132,8 @@ const results = await collection.find( { status: "A", qty: { $lt: 30 } } )
 await results.forEach(doc => console.log(doc))
 ```
 
+---
+
 # Querying for properties IN a set
 
 * Example one
@@ -134,6 +148,8 @@ const results = await collection.find( { status: { $in: ["A", "B", "C"] } } )
 const results = await collection.find( { item: { $in: ["Journal", "Notebook", "Paper"] } } )
 await results.forEach(doc => console.log(doc))
 ```
+
+---
 
 # Querying Nested Documents
 
@@ -157,6 +173,8 @@ await results.forEach(doc => console.log(doc))
 const results = await collection.find({ status: "A", "size.h": 14 })
 await results.forEach(doc => console.log(doc))
 ```
+
+---
 
 # Range Queries in Nested Documents
 
@@ -189,6 +207,8 @@ const results = await collection.find({ "size.h":  { $gt: 10, $lt: 100 } })
 await results.forEach(doc => console.log(doc))
 ```
 
+---
+
 # Range Queries in Nested Documents using OR
 
 ```javascript
@@ -202,6 +222,8 @@ const results = await collection.find( {
 )
 await results.forEach(doc => console.log(doc))
 ```
+
+---
 
 # List of Comparisons for Ranges
 

@@ -7,10 +7,14 @@ This lesson gives an overview of the terms and concepts involved in databases.
 * Database concepts
 * Database styles
 
+---
+
 # Database definition
 
 > *database* (n.) -
 > a structured set of data held in a computer, usually organized so that it can be easily accessed, managed and updated
+
+---
 
 # Database Examples
 
@@ -28,6 +32,8 @@ This lesson gives an overview of the terms and concepts involved in databases.
 
 (*) GraphQL not a database *per se*, but a query language *for* graph DBs and APIs
 
+---
+
 # Server vs. Server vs. Server
 
 There are at least *three* overlapping uses of the term "server":
@@ -42,6 +48,8 @@ There is similar fuzziness around the term "database" -- e.g. a single MongoDB d
 
 Usually the meaning is clear from context, but sometimes you need to clarify.
 
+---
+
 # Application Database vs Integration Database
 
 Martin Fowler makes the following distinction:
@@ -51,17 +59,23 @@ Martin Fowler makes the following distinction:
 
 The needs of the two scenarios are often very different, and people with experience in one style can have very different assumptions than people with experience in the other style; they often end up talking past each other.
 
+---
+
 # Application Database vs Integration Database (cont.)
 
 In an organization with a history of using integration DBs, it can be difficult to write applications, since common operations (like adding a table or renaming a field) must go through a process to make sure they don't break *other apps* or use cases.
 
 > One of the great advantages of an application database is that it is easier to change since all its use is **encapsulated** by a single application. Evolutionary database design and database refactoring can be used to make significant changes to an application database's design even after the database is put into production.
+
+---
  
 # Relational Database vs Document Database
 
 a *relational database* (aka SQL) stores information in *tables*; every record in this table has the same flat structure, and this structure (the "schema") must be defined beforehand 
 
 a *document database* (aka NoSQL) stores information in *documents*; records can contain any fields, can include collections and child records directly, and don't require an explicit schema
+
+---
 
 # Database concepts
 
@@ -76,6 +90,8 @@ a *document database* (aka NoSQL) stores information in *documents*; records can
   * Blob
   * Join
 
+---
+
 # Connection
 
 Most database protocols are *stateful*, which means the communication between client and server involves more than a single request and response.
@@ -85,6 +101,8 @@ Generally the client connects to a server early on and *authenticates* itself (l
 (This can lead to trouble because servers have a limit on the number of simultaneous connections they can preserve, leading to client-side software solutions like *connection pooling*.)
 
 Stateful connections also enable other features like *transactions*, *caching*, and *load balancing*.
+
+---
 
 # Collection
 
@@ -100,6 +118,8 @@ Example (Mongo):
 
 `db.collection('students').find({})`  -- "give me all the documents from the collection named 'students'"
 
+---
+
 # Record
 
 In a database, the data is stored in packets called *records*.
@@ -108,6 +128,8 @@ Every record in a collection has the same *field names* but each record usually 
 
   * in SQL DBs, a record is also called a *row*
   * in NoSQL DBs, a record is usually called a *document* 
+
+---
 
 # Primary Key
 
@@ -121,6 +143,8 @@ databases have various ways to ensure uniqueness, usually by causing new records
 
   * the next integer in a *sequence*, or
   * a *UUID* (Universally Unique ID) which is a *huge random-ish* number
+
+---
 
 # CRUD
 
@@ -137,6 +161,8 @@ The four basic database operations:
 
 see http://mongodb.github.io/node-mongodb-native/3.1/tutorials/crud/
 
+---
+
 # JIST
 
 In addition to CRUD, the following database features are also fairly standard: 
@@ -145,6 +171,8 @@ In addition to CRUD, the following database features are also fairly standard:
 * **I**ndex by field for fast lookup and search
 * **S**earch by field or "free text"
 * maintain **T**ransactional integrity (like making sure multiple simultaneous actions don't corrupt the data)
+
+---
 
 # Query / Search
 
@@ -156,6 +184,8 @@ a *search* is either
 
 1. any *find* operation that may return multiple results
 2. a *full-text search* or a *keyword search* that looks for bits of text *inside* certain fields
+
+---
 
 # Cursor
 

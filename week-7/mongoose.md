@@ -9,6 +9,8 @@ Or in their words,
 
         "A straight-forward, schema-based solution to model your application data"
 
+---
+
 # Getting Started
 * Mongoose replaces the `mongodb` driver
 * Runs `mongodb` queries under the hood
@@ -20,6 +22,9 @@ cd mongoose-example
 npm init -y
 npm install mongoose
 ```
+
+---
+
 # Getting Started, cont.
 Create a file called `mongoose.js`
 In it, write the following code.
@@ -38,6 +43,8 @@ const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 ```
 
+---
+
 # Concept: Schemas
 A database schema outlines the expected structure of the data that will be inserted into a *collection*
 
@@ -47,7 +54,7 @@ A database schema can also define *methods* on the documents being inserted.
 * used to create a *model* 
 * definitions are based on `SchemaTypes`
 
-
+---
 
 # Lab: Schemas 
 
@@ -67,6 +74,7 @@ The `SchemaType` is the 'value' to the right of the `:`, and is by default a *co
 The code above defines a simple schema that expects a certain datatype for the given field.
 A comprehensive list can be found [here](https://mongoosejs.com/docs/guide.html#definition).
 
+---
 
 # Concept: Model
 While the definition of the data's structure is held in the Schema, a *Model* actually handles the work.
@@ -76,6 +84,7 @@ While the definition of the data's structure is held in the Schema, a *Model* ac
 * creates a collection based on provided name
 * instances of models are documents
 
+---
 
 # Lab: Models
 Take our previous schema, `studentSchema`. Let's create a *model* from that schema, and call it `Student`.
@@ -102,6 +111,7 @@ Think of `Student` as a *Class* with enforcement run by the *Schema* underneath.
 
 We can create an *instance* of the `Student` model like we would any class!
 
+---
 
 # Models and Collections
 * creating an *instance* of a Model makes a document that can be saved to a collection
@@ -112,6 +122,7 @@ We can create an *instance* of the `Student` model like we would any class!
     - supports MongoDB query syntax
     - takes a callback for error handling
 
+---
 
 # Seeing it work
 ```javascript
@@ -125,6 +136,8 @@ Student.find({ name: 'Paul' }, (err, results) => {
 ```
 You can also open up **Compass** and what it does with the collection name. 
 You should see `students` under `example_db`, or whatever you ended your connection string with.
+
+---
 
 # Seeing it break
 Let's try create an instance of the `Student` model, and intentionally give it bad data:
