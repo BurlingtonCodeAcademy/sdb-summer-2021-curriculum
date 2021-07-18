@@ -1,4 +1,5 @@
 # Overview
+
 Web security is a complex topic, the scope of which far surpasses this course.  With that in mind, there are a number of **key risks** to be mindful of.
 
 Let's start with the OWASP (Open Web Application Security Project) top 10. 
@@ -9,6 +10,7 @@ This is a continually-updated list of the most prevalent and dangerous risks, as
 
 Note how many of these involve proper *authentication*. This will be our main focus.
 
+---
 
 # Authentication
 
@@ -22,7 +24,10 @@ Typically, this comes in the form of submitting a username or ID and one or more
 
 [Authentication Cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)
 
+---
+
 # Session Management
+
 A process by which a server maintains the state of an entity interacting with it. 
 
 That state informs how a server will react to subsequent requests throughout the exchange.
@@ -35,7 +40,10 @@ That state informs how a server will react to subsequent requests throughout the
 
 [Session Cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
 
+---
+
 # Tokens
+
 Many web applications use a [JSON Web Token](https://jwt.io/) instead of using sessions.
 
 From the JWT [site](https://jwt.io/introduction/):
@@ -52,7 +60,10 @@ Instead of the data being stored on the server, the server creates a JWT with a 
 - More frequent authentications than sessions
 - Are *signed* by the server
 
-# Lab: Visualizing JWTs
+---
+
+# Visualizing JWTs
+
 Let's see what a JWT looks like! Make a new directory `jwt-example`
 
 ```
@@ -68,8 +79,11 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config() //allows reading of .env file 
 ```
 
+---
+
 # Visualizing JWTs, cont.
-Next, add a *payload*, which contains the *claims*.  Claims are statements about an entity (normally the user) and additional data. 
+
+Next, we will add a *payload*, which contains the *claims*.  Claims are statements about an entity (normally the user) and additional data. 
 
 **Remember, if it's on the front end, it can and will be seen! If you're sending sensitive information, be sure to encrypt it first! We'll be covering that next.**
 
@@ -103,6 +117,8 @@ You'll also notice a new property, `iat`.  This is the the time the token was is
 ```javascript
 setTimeout(() => console.log(jwt.verify(signedJWT, process.env.SECRET_KEY)), 3000)
 ```
+---
+
 # Encryption
 *Encryption* is a way of scrambling data so that only authorized parties can understand the information (like JWTs!)
 
@@ -113,6 +129,8 @@ When dealing with passwords, say, stored in a database, it is good practice to s
 `Node.js` comes with a core module [`crypto`](https://nodejs.org/dist/latest-v12.x/docs/api/crypto.html#crypto_crypto) that will serve that general purpose, but a current standard resides elsewhere.
 
 enter [`bcrypt`](https://www.npmjs.com/package/bcrypt)
+
+---
 
 # Hashing
 Create a simple password, create a hashed version with `bcrypt`, and compare it that hash to the original!
@@ -133,6 +151,8 @@ const saltRounds = 10
 const plainTextPassword = 'password1234'
 ```
 
+---
+
 # Hashing, cont.
 Now, let's take that `plainTextPassword` and *salt* it to return a *hash*, or encrypted string
 
@@ -150,6 +170,8 @@ unhashed password: password1234
 hashed password: $2b$10$CbPOlQSQhFnz71CrS5h9M.t6IJBOtA3cQaDn/ams1IPTP0ffFPkaO
 ```
 
+---
+
 # Hashing, cont.
 Now, after a password hash has been stored in your database, how would you compare it to a user's input?
 
@@ -164,7 +186,10 @@ Simply run it through the `compare` method, like so:
 ```
 The above code will need to be within the previous `hash` method, due to their asynchronous nature.
 
+---
+
 # Insights
+
 Much like setting up servers, don't feel the need to reinvent the wheel.  There are many libraries and third-party resources to help take the guesswork out of proper authentication. 
 
 Some provide a variety of approaches to authentication, like signing in/up through other services, like Google, Facebook, Github, etc. 

@@ -86,7 +86,7 @@ Here's one way you could set up the home page, though you should feel free to ma
 <h1>Express Blog</h1>
 
 <form method='GET' action='/search'>
-  <label>Search by Author: <input type="search" name="author"></label>
+  <label>Search by Author: <input type="search" name="author" /></label>
   <input type='submit' value='Search'>
 </form>
 
@@ -106,7 +106,7 @@ Here's one way you could set up the home page, though you should feel free to ma
 
 ## Seeding the Database
 
-Create a directory named . Inside the `articles` directory create a file named `1.json` containing some code that looks like this:
+Inside the `articles` directory create a file named `1.json` containing some code that looks like this:
 
 ## articles/1.json
 
@@ -146,7 +146,7 @@ We can set up a page for viewing a single article on the front end by creating a
 <script>
 let articleId = document.location.pathname.split('/').splice(-1);
 
-fetch('/articles/' + articleId + '.json')
+fetch('/api/articles/' + articleId)
   .then((response) => response.json())
   .then(fillArticle)
 
@@ -170,12 +170,12 @@ Add the following code to the server:
 
 ```javascript
 app.get('/api/articles/:articleId', (request, response) => {
-  let filePath = path.join(articlesDir, request.params.articleId, '.json);
+  let filePath = path.join(articlesDir, request.params.articleId + '.json');
   response.sendFile(filePath);
 });
 
 app.get('/articles/:articleId', (request, response) => {
-  let filePath = articleFilePath(request.params.articleId);
+  let filePath = path.join(articlesDir, request.params.articleId + '.json');
   if (fs.existsSync(filePath)) {
     let htmlFile = path.join(publicDir, "article.html");
     response.sendFile(htmlFile);
@@ -203,7 +203,7 @@ To view all of the articles we will once more need to create an empty container 
 </div>
 
 <script>
-fetch('/articles.json')
+fetch('/api/articles')
   .then((response) => response.json())
   .then(fillArticles)
 
@@ -259,16 +259,16 @@ app.get('/api/articles', (request, response) => {
 <h1>Publish an Article</h1>
 
 <form method='POST' action='/articles'>
-  <label>Author: <input type='text' name='author'></label>
+  <label>Author: <input type='text' name='author' /></label>
   <br>
-  <label>Title:  <input type='text' name='title'></label>
+  <label>Title:  <input type='text' name='title' /></label>
   <br>
   <label for='body'>Body:</label>
   <br>
   <textarea name='body'>
   </textarea>
   <br>
-  <input type='submit'>
+  <input type='submit' />
 </form>
 ```
 
@@ -383,7 +383,7 @@ That's it for now! (We can add other fields later if we want.)
 </div>
 
 <script>
-fetch('/search.json' + document.location.search)
+fetch('/api/search' + document.location.search)
   .then((response) => response.json())
   .then(fillArticles);
 
@@ -421,7 +421,7 @@ app.get('/search', (request, response) => {
   response.sendFile(path.join(publicDir, 'search.html'))
 })
 
-app.get('/search.json', (request, response) => {
+app.get('/api/search', (request, response) => {
   let results = searchArticles(request.query)
   response.type('application/json');
   response.send(JSON.stringify(results));

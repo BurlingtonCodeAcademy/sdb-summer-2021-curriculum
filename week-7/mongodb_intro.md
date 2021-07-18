@@ -1,4 +1,3 @@
-
 # Setup
 * Download [MongoDB Community Server](https://www.mongodb.com/try/download/community)
 
@@ -7,6 +6,8 @@ This should include MongoDB Compass.
 Compass is a GUI, or *graphical user interface*, that simply provides a platform to view your data without the initial need for knowing MongoDB [query syntax](https://docs.mongodb.com/manual/tutorial/query-documents/).
 
 This makes it a great place to start!
+
+---
 
 # MongoDB Overview
 
@@ -18,6 +19,7 @@ This makes it a great place to start!
 
 > "Mongo is not a toy, although it can be fun to play with." - Josh Burke
 
+---
 
 # Concept: Database
 
@@ -46,6 +48,8 @@ Note that the term "database" is overloaded: it refers to either:
 1. a single MongoDB *process* hosting many data sets
 2. a single MongoDB *data set* containing many related *collections*
 
+---
+
 # Concept: Collection
 
 A *collection* holds documents. 
@@ -53,6 +57,8 @@ A *collection* holds documents.
 Many collections can live in a *database*.
 
 This is analogous to a *table* in SQL.
+
+---
 
 # Concept: Document
 
@@ -64,6 +70,8 @@ Like in a relational database, a document can be *created, read, updated, delete
 
 This nesting and type-flexibility makes it very appropriate to store whatever JavaScript objects your app uses, without needing to devise a *mapping* between nested objects and joined relational tables.
 
+---
+
 # Drivers
 * MongoDB has its own [query syntax](https://docs.mongodb.com/manual/tutorial/query-documents/) that, while very similar to JavaScript at times, has its own rules and structure! 
 
@@ -71,15 +79,20 @@ This allows MongoDB to be used with a number of languages through the use of *dr
 
 [Full list of drivers](https://docs.mongodb.com/drivers/)
 
+---
+
 # View it in Compass
 
 Select the database and collection on the side and...
 
-![Compass2](/images/Compass2.png)
+![Compass2](https://res.cloudinary.com/btvca/image/upload/v1626359023/curriculum/Compass2_azhhmk.png)
 
 Voila! But what's that `_id` thing?
+
+---
 
 # Concept: ObjectId
 
 - `_id` is assigned by Mongo when a document is inserted
 - `ObjectId` is a factory function that either generates a new id, or transforms a given string into a Mongo ID object
+- If we want to reference a document by `_id` we need to make sure it's a Mongo ID object.
