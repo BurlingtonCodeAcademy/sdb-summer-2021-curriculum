@@ -1,6 +1,8 @@
 # Lab: Exploring with Compass
 
-This is MongoDb's GUI tool. Let's open it up and see what it can do!
+## Welcome!
+
+In this lab we will be familiarizing ourselves with our database structure, and operations by creating a couple of different collections, and playing around with some data using Compass, MongoDB's GUI tool. Let's open it up and see what it can do!
 
 *(Don't have it installed? [Click here](https://www.mongodb.com/try/download/compass))
 
@@ -13,11 +15,12 @@ Upon loading up on `localhost:27017`, you'll see a large white field and a grey 
 
 ## Collections
 
-Find the database named `test` and open it. This is where collections that you establish through localhost applications will be stored, as `test` is the default database for locally established connections unless directed otherwise. Most of this week's labs and codealongs will connect to MongoDB databases and collections via `localhost`. You'll be able to find the different *collections* we create here.
+Find the database named `test` and open it. This is where collections that you establish through localhost applications will be stored, as `test` is the default database for locally established connections unless directed otherwise. Most of this week's labs and code-a-longs will connect to MongoDB databases and collections via `localhost`. You'll be able to find the different *collections* we create here.
 
 A *collection* is any number of documents (or entries, or records) that are are related. In MongoDB these records are defined by *schemas*, which are data structures that are used by *models* that create individual collection entries. These get stored in the collection, which lives inside of a *database*. As we create more collections in class, you'll see that multiple collections can live inside of a database.
 
 ## Collections Con'td
+
 Right now we don't have any collections. Create your own by clicking the "Create Collection" button at the top left of the white field. You will be prompted to name the collection. Do so, and leave the boxes below unchecked.
 
 Ta da! A wild collection has appeared.
@@ -25,6 +28,7 @@ Ta da! A wild collection has appeared.
 In the collection you just created, try running through the following exercises:
 
 # CREATE a Document: 
+
 >Remember, a document is another way to say entry or record. 
 
 Click the 'Add Data' button to open a dropdown. Here you'll be able to add multiple documents at once to your collection through JSON or CSV files, or by adding them  individually. Let's do the latter by selecting "Insert Document".
@@ -51,7 +55,7 @@ This one is easy! You can see all of your documents laid out in the white field 
 
 # DELETE a Document:
 
-To delete, simply hover over the document you want to delete and click the furthest right button that appears; a trashcan. Poof!
+To delete, simply hover over the document you want to delete and click the furthest right button that appears; a trashcan. Poof! It's gone!
 
 # AND MORE!
 
@@ -60,10 +64,13 @@ The tabs at the top of this white field allow us to break down the various piece
 
 ## FIND:
 
-The search bar above our documents is also very powerful. As such, it needs you to be very specific about what you're looking for. You can't just type in Juniper if you're looking to pull up all documents that contain the word Juniper. If you want to pull all records where the name field equals Juniper, you can do so by calling on the document object using curly brackets and the key: value pair within. 
+The search bar above our documents is also very powerful. As such, it needs you to be very specific about what you're looking for. You can't just type in Juniper if you're looking to pull up all documents that contain the word Juniper. If you want to pull all records where the name field equals Juniper, you can do so by calling on the document object using curly brackets and the key: value pair within.
+
 ```js
 { name: "Juniper" }
 ```
+
+Hmmmmmm... That looks like a data structure we're familiar with. MongoDB was designed to be readily accessible in JavaScript, and query parameters take the form of an object.
 
 You can expand or minimize your search by revealing advanced search options. Click the 'OPTIONS' drop down in the search bar, to the left of the green 'FIND' button.
 
@@ -71,7 +78,6 @@ You can also glimpse a history of past searches by selecting the clock/arrow but
 
 Try it for yourself!
 
-
-# Add another collection
+## Add another collection
 
 In the grey sidebar, click on the `test` directory. you will be brought back to the `test` database dashboard, where you can create another collection the same way you made the first. Databases are great; they can hold multiple collections at once! 

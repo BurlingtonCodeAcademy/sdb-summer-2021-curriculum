@@ -241,6 +241,8 @@ The syntax and usage of joins can get very complicated, but at heart it's straig
 
   * given A and B, return A+B together
 
+---
+
 # Joins in NoSQL
 
 In document DBs, joins are often not necessary because...

@@ -1,10 +1,10 @@
-# Lab: Do it with JavaScript!
+# Lab: Creating a DataStore
 
-Let's make our first Mongo collection! 
+## Welcome!
 
-**We will insert a *document* into a *collection* that lives in a *database*.**
+In this lab we will be creating a `class` that will handle all our database transactions to allow us to interact with a Mongo database more easily, efficiently, and consistently. We will be using it top set up a simple CLI tool that will allow us to **C**reate new documents, **R**ead, and **U**pdate existing documents, and **D**elete previously created entries to track books in a library.
 
-Start by making new directory, and initializing it as an npm repository and installing the `mongodb` drivers. 
+Start by making new directory, and initializing it as an npm repository, and installing the `mongodb` drivers.
 
 ```
 mkdir mongo_example
@@ -13,62 +13,88 @@ npm init -y
 npm install mongodb
 ```
 
-# Do it with JavaScript! cont.
+## Setting up the Connection
 
-Next, create a file called `mongoClient.js`
+Next, create a file called `mongo-client.js`
 
-This is where we'll configure the *client*, or the *software* that connects to the server
+This is where we'll configure the _client_, or the _software_ that connects to the server. AKA our DataStore
 
 The server, in this case, is `localhost:27017`
 
-in `mongoClient.js`, add:
+in `mongo-client.js`, add:
 
 ```javascript
 const { MongoClient } = require("mongodb");
-const uri = "mongodb://localhost:27017" //mongodb connects to port 27017 by default
-const client = new MongoClient(uri)
+const uri = "mongodb://localhost:27017"; //mongodb connects to port 27017 by default
+const client = new MongoClient(uri);
 ```
 
-# Do it with JavaScript! cont.
+## Test it Out
 
-Now, *connect* to the database `library`, and insert a *document* into the `books` *collection*
+Now let's _connect_ to the database `library`, and insert a _document_ into the `books` _collection_
 
-Let's do this with an *asynchronous* function so we can harness the `await` keyword and keep things in order
+Let's do this with an _asynchronous_ function so we can harness the `await` keyword and keep things in order
 
 like so:
 
 ```javascript
 async function run() {
-
-    await client.connect()
-    const database = client.db('library')
-    const collection = database.collection('books')
-    await collection.insertOne({ title: "Eloquent Javascript", author: "Marijn Haverbeke" })
-    await client.close()
-
+  await client.connect();
+  const database = client.db("library");
+  const collection = database.collection("books");
+  await collection.insertOne({
+    title: "Eloquent Javascript",
+    author: "Marijn Haverbeke",
+    copies: 1,
+  });
+  await client.close();
 }
-run()
+run();
 ```
-Note: This is a bare-bones example that does nothing for error handling. It is simply meant to demonstrate the most basic data flow.
 
-<!-- The code above is meant to just run in the terminal as an example of how to connect to the database, we will eventually be using the code below in the "fetching data from the db" lab as an interface between our server and our database. Please remove this comment after editing  -->
+Run this file through your terminal with `node mongo-client.js` to insert a single document into your Database.
 
+> Note: This is a bare-bones example that does nothing for error handling. It is simply meant to demonstrate the most basic data flow.
 
-# FactStore Walkthrough
+## Building the DataStore
 
-The `FactStore` class acts as a repository for facts. It hides the details of connecting and talking to MongoDB from its callers, and exposes methods for adding and searching for facts in the database.
+The `DataStore` class acts as a repository for your database. It hides the details of connecting and talking to MongoDB from its callers, and exposes methods for adding and searching for documents in a database.
 
-This class is used from both the web app and the command-line app.
+This class will be able to be used from both a web app and a command-line app, so let's create a new file for it named `data-store.js`. We will need to bring in some mongo drivers for our `DataStore` to use.
 
-# `client`
+```js
+const { MongoClient, ObjectId } = require("mongodb")
+```
 
-The `client()` method on FactStore...
- 
- * opens a connection to the MongoDB server
- * saves that connection inside an instance variable
- * reuses the saved connection if possible 
+## Setting up the Class
 
-> The MongoDB driver calls this connection object a *client*, but it's not a *browser*. The TIL web app is a client of Mongo even while it's a server to other clients. 
+To set up our new class we first need to define a class. Let's call it `DataStore`. This class will need to keep track of where it's connecting, so let's set up a constructor we can use to assign the connection info:
+
+- The connection URL
+- The currently connected DB (if any)
+- The DB name
+- And the Collection name
+
+```js
+class DataStore {
+  constructor(dbUrl, dbName, collName) {
+    this.dbURL = dbUrl;
+    this.dbName = dbName;
+    this.collName = collName;
+    this.dbClient = null;
+  }
+}
+```
+
+## `client`
+
+The `client()` method on DataStore...
+
+- opens a connection to the MongoDB server
+- saves that connection inside an instance variable
+- reuses the saved connection if possible
+
+> The MongoDB driver calls this connection object a _client_, hence why we name this method `client`, but it's not a _browser_. Our server will be a client of Mongo even while it's a server to other clients.
 
 ```javascript
   async client() {
@@ -83,7 +109,7 @@ The `client()` method on FactStore...
   }
 ```
 
-# closing time
+## closing time
 
 `client.close()` will tell the driver "I'm done with the database for now"
 
@@ -93,129 +119,130 @@ It's good form to close your connection when you're not using it, to free up res
 
 You can think of `client()` as a one-member connection pool. It keeps the connection open as long as possible, but if it has closed in the meantime, it will create a new one.
 
-# `collection`
+## `collection`
 
-The `collection()` method on FactStore...
+The `collection()` method on DataStore...
 
- * acquires a connection to the MongoDB server
- * asks it for the *database* named `til`
- * then asks for the *collection* of TIL entries named `facts`
+- acquires a connection to the MongoDB server
+- asks it for the _database_ named `til`
+- then asks for the _collection_ of TIL entries named `facts`
 
 ```javascript
   async collection() {
     const client = await this.client();
     const db = client.db(this.dbName);
-    const collection = db.collection('facts');
+    const collection = db.collection(this.collName);
     return collection;
   }
 ```
+
 It is declared `async` (asynchronous) because the database connection might not currently be open, and the `client()` method might take some time to respond.
 
-# `all`
+## `all`
 
-The `all()` method on FactStore...
+The `all()` method on DataStore...
 
- * acquires the *collection*
- * asks it for a *cursor*
- 
-A cursor is like an iterator for databases. 
+- connects to the _collection_
+- asks it for a _cursor_
+
+A cursor is like an iterator for databases.
 
 ```javascript
   async all() {
     let collection = await this.collection()
-    return collection.find({}).sort([['when', 1]]);
+    return collection.find({});
   }
 
 ```
 
 If you know you've only got a few results, you can call `cursor.toArray()`, which fetches all the results up front, then puts them all into an array. But it's usually cleaner and safer to use the cursor itself.
 
-# `find`
+## Using our Class
 
-`collection.find` takes a parameter named `query` listing the *fields and values* to match on. 
+Now that we've got a couple methods set up for connecting to, and reading from our database let's bring it into our `mongo-client.js` file, set it up and use it with JavaScript.
 
-For instance, `collection.find({author: 'alex')` returns all entries whose `author` field is the string `alex`
+* Import the `DataStore` class from `data-store.js`
+  * This is Node.js so we'll need to use the `require` method
+  * Don't forget to export your `DataStore` with `module.exports = DataStore`
 
-For more complicated queries, you can use operators like `$gte` (greater than or equal) and `$or`, e.g. this would find all items created on January 21, 2012:
+Then we will replace the contents of your run function with code that:
+
+* Creates our new interface for the `"books"` collection
+
+```js 
+let collection = new DataStore("mongodb://localhost:27017", "library", "books")
+```
+
+* Prints to the terminal all the books in our `books` collection
 
 ```js
-collection.find({
- when: {
-    '$gte': new Date(2012, 0, 21),
-    '$lt': new Date(2012, 0, 22)
- }
+let allBooks = await collection.all()
+allBooks.forEach((book) => {
+  console.log(book)
 })
 ```
 
-docs here: 
-  * <http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#find>
-  * <https://docs.mongodb.com/manual/tutorial/query-documents/>
+## `.find`
 
-# `printAll`
+Go back to our `DataStore` and add a new method called `.find` that:
 
-remember, a cursor is an iterator -- an object that keeps track of a position in a collection,, and keeps returning the next item until it's done
+* accepts a parameter named `query`
+* connects to the *collection*
+* returns a cursor with all matching documents
 
-`cursor.forEach` takes two parameters:
+`.find` when it's used takes a parameter named `query` listing the _fields and values_ as a JS object to match on.
 
-1. a function to call on each item
-2. a function to call when done (which we're ignoring)
+For instance in our `mongo-client.js` file, `collection.find({author: 'alex')` returns all entries whose `author` field is the string `alex`
 
-```javascript
-  // Print all entries, in chronological order,
-  // with a headline for each distinct date.
-  async printAll() {
-    let cursor = await this.all();
-    let currentDay;
-    await cursor.forEach((fact) => {
-      let when = moment(fact.when);
-      let startOfDay = when.format('YYYYMMDD');
-      if (!currentDay || currentDay != startOfDay) {
-        console.log(when.format('MMMM Do, YYYY'));
-        currentDay = startOfDay;
-      }
-      let output = when.format('  hh:mm a - ') + fact.text;
-      console.log(output);
-      return currentDay;
-    })
-
-```
-
-# `addFact`
-
-This function 
-
-1. retrieves the *collection* object
-2. inserts a fact entry into it
-3. returns the new id that Mongo chose, in case the calling code needs it
-
-```javascript
-  async addFact(text) {
-    let entry = {
-      when: new Date(),
-      text: text
-    };
-
-    let collection = await this.collection()
-    let result = await collection.insertOne(entry)
-    assert.equal(1, result.insertedCount); // sanity check
-    console.log('Inserted fact as id ' + result.insertedId)
-
-    return {id: result.insertedId};
-  }
-```
-
-# `_id`
-
-Every time you insert a document into a MongoDB collection, Mongo adds a field named `_id` with a *unique* value.
-
-This id is *not* a normal integer! It's a long string with a hex code inside it. 
-
-Mongo has an algorithm for ensuring that this id is unique across *all other documents* in itself (and probably inside every other MongoDB database in the universe too).
-
-In JavaScript, Mongo defines a *class* named `ObjectId` that encapsulates this string and provides useful methods; that's why in the output of `find` you see the JS code: 
+For more complicated queries, you can use operators like `$gte` (greater than or equal) and `$or`, e.g. this would find all items with 1 or more copies left, but less than 5:
 
 ```js
-{ "_id" : ObjectId("5b5e27ba44c44608f97083f3"),
- "when" : ISODate("2018-07-29T20:46:50.749Z"), 
- "text" : "dogs like to bark" }
+collection.find({
+  copies: {
+    $gte: 1,
+    $lt: 5,
+  },
+});
 ```
+
+We'll be talking more in depth about query objects a little later this week, but you can get a head start by reading the docs here:
+
+- <http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#find>
+- <https://docs.mongodb.com/manual/tutorial/query-documents/>
+
+## `addEntry`
+
+Create a new method on `DataStore` called `addEntry` that:
+
+1. retrieves the _collection_ object
+2. inserts a single data entry into it
+3. returns the new ID that Mongo chose, in case we need it later
+
+## `_id`
+
+Every time you insert a document into a MongoDB collection, Mongo adds a field named `_id` with a _unique_ value.
+
+This id is _not_ a normal integer! It's a long string with a hex code inside it.
+
+Mongo has an algorithm for ensuring that this id is unique across _all other documents_ in itself (and probably inside every other MongoDB database in the universe too).
+
+In JavaScript, Mongo defines a _class_ named `ObjectId` that takes an ID string, and parses it as a Mongo Object ID.
+
+## `.findOne`
+
+Create a new method on your `DataStore` that can find a single item by it's ID field. As with all our other methods we will want this to be an `async` method. It should:
+
+* accept a string `id` as a parameter
+* turns the string `id` into a Mongo `ObjectId`
+* queries the database for *just that document*
+* returns *a single document*
+
+## Building Out the Client
+
+Let's extend the `run` function to make it a little more interactive.
+
+* Define an `ask` function as we did in the first week of this course
+* When the `run` function gets called *ask* the user what they want to do
+* Depending on the user input, perform a database operation
+  * and ask if they'd like to perform another operation
+* Add a section to your logic to handle all the database operations we set up
