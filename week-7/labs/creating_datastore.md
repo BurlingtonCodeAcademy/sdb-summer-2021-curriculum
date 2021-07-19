@@ -245,4 +245,4 @@ Let's extend the `run` function to make it a little more interactive.
 * When the `run` function gets called *ask* the user what they want to do
 * Depending on the user input, perform a database operation
   * and ask if they'd like to perform another operation
-* Add a section to your logic to handle all the database operations we set up
+* Add a section to your logic to handle each of the database operations we set up in our `DataStore`

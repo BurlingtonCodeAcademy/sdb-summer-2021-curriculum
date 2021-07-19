@@ -46,6 +46,7 @@ hashed password: "$2b$10$CbPOlQSQhFnz71CrS5h9M.t6IJBOtA3cQaDn/ams1IPTP0ffFPkaO"
 ```
 
 # Hashing, cont.
+
 Now, after a password hash has been stored in your database, how would you compare it to a user's input?
 
 `bcrypt` comes fully prepared to "undo" those multiple rounds of salt for you!
