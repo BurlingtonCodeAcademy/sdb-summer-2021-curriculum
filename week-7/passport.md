@@ -23,7 +23,8 @@ Be sure you have a working instance of Postman!
 ---
 
 # Configuration
-Three pieces are needed to properly configure Pasport for authentication:
+
+Three pieces are needed to properly configure Passport for authentication:
 
 - Authentication strategies
 - Application middleware
@@ -57,7 +58,7 @@ app.use(passport.session())
 
 # Postman it!
 
-In this lab you will be provided with a basic server that, when setup properly, will redirect to a user dashboard when the JWT is properly verified. 
+In this lesson you will be provided with a basic server that, when setup properly, will redirect to a user dashboard when the JWT is properly verified. 
 
 Clone down the following repository run `npm install` to bring in the proper packages.
 
@@ -210,8 +211,8 @@ SUCCESS!!! We have effectively created a JSON Web Token, and used it to authenti
 
 # Great! But What About Outside of Postman?
 
-Unfortunately the code we just wrote won't work in a real world environment
+Unfortunately the code we just wrote won't work in a real world environment.
 
 It relies on us being able to see and copy that authentication token, and then hard coding it as a header on the next request.
 
-It relies on PostMan's pre built functionality to operate, and I'm too fucking tired to reverse engineer this bullshit right now.
+It relies on Postman's pre built functionality to operate, and I'm too fucking tired to reverse engineer this bullshit right now.
