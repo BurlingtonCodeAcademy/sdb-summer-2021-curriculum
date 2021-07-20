@@ -63,7 +63,7 @@ The `DataStore` class acts as a repository for your database. It hides the detai
 This class will be able to be used from both a web app and a command-line app, so let's create a new file for it named `data-store.js`. We will need to bring in some mongo drivers for our `DataStore` to use.
 
 ```js
-const { MongoClient, ObjectId } = require("mongodb")
+const { MongoClient, ObjectId } = require("mongodb");
 ```
 
 ## Setting up the Class
@@ -98,14 +98,11 @@ The `client()` method on DataStore...
 
 ```javascript
   async client() {
-    if (this.dbClient && this.dbClient.isConnected()) {
-      return this.dbClient;
-    } else {
-      console.log(`Connecting to ${this.dbUrl}...`)
-      this.dbClient = await MongoClient.connect(this.dbUrl, { useNewUrlParser: true })
-      console.log("Connected to database.");
-      return this.dbClient;
-    }
+
+    console.log(`Connecting to ${this.dbUrl}...`)
+    this.dbClient = await MongoClient.conne(this. dbUrl, { useNewUrlParser: true })
+    console.log("Connected to database.");
+    return this.dbClient;
   }
 ```
 
@@ -161,27 +158,27 @@ If you know you've only got a few results, you can call `cursor.toArray()`, whic
 
 Now that we've got a couple methods set up for connecting to, and reading from our database let's bring it into our `mongo-client.js` file, set it up and use it with JavaScript.
 
-* Import the `DataStore` class from `data-store.js`
-  * This is Node.js so we'll need to use the `require` method
-  * Don't forget to export your `DataStore` with `module.exports = DataStore`
-* Since we are now connecting through our DataStore we no longer need the Mongo drivers in our `mongo-client.js` file
-  * feel free to delete the mongo setup in this file (the import, and connection)
+- Import the `DataStore` class from `data-store.js`
+  - This is Node.js so we'll need to use the `require` method
+  - Don't forget to export your `DataStore` with `module.exports = DataStore`
+- Since we are now connecting through our DataStore we no longer need the Mongo drivers in our `mongo-client.js` file
+  - feel free to delete the mongo setup in this file (the import, and connection)
 
 Then we will replace the contents of your run function with code that:
 
-* Creates our new interface for our database and connects to a `"books"` collection
-
-```js 
-let collection = new DataStore("mongodb://localhost:27017", "library", "books")
-```
-
-* Prints to the terminal all the books in our `books` collection
+- Creates our new interface for our database and connects to a `"books"` collection
 
 ```js
-let allBooks = await collection.all()
+let collection = new DataStore("mongodb://localhost:27017", "library", "books");
+```
+
+- Prints to the terminal all the books in our `books` collection
+
+```js
+let allBooks = await collection.all();
 allBooks.forEach((book) => {
-  console.log(book)
-})
+  console.log(book);
+});
 ```
 
 > Note: This will need to happen inside the `run` function, or any other `async` function that you have defined
@@ -190,9 +187,9 @@ allBooks.forEach((book) => {
 
 Go back to our `DataStore` and add a new method called `.find` that:
 
-* accepts a parameter named `query`
-* connects to the *collection*
-* returns a cursor with all matching documents
+- accepts a parameter named `query`
+- connects to the _collection_
+- returns a cursor with all matching documents
 
 `.find` when it's used takes a parameter named `query` listing the _fields and values_ as a JS object to match on.
 
@@ -236,50 +233,50 @@ In JavaScript, Mongo defines a _class_ named `ObjectId` that takes an ID string,
 
 Create a new method on your `DataStore` that can find a single item by it's ID field. As with all our other methods we will want this to be an `async` method. It should:
 
-* accept a string `id` as a parameter
-* turns the string `id` into a Mongo `ObjectId`
-* queries the database for *just that document*
-* returns *a single document*
+- accept a string `id` as a parameter
+- turns the string `id` into a Mongo `ObjectId`
+- queries the database for _just that document_
+- returns _a single document_
 
 ## Update an Entry
 
 Create a new `async` method on `DataStore` called `updateEntry`. This method will take two parameters:
 
-* The ID of the target document (as a string)
-* An update object
+- The ID of the target document (as a string)
+- An update object
 
 The `.updateOne` method on a Mongo collection takes two arguments, the "filter" which is a database query that targets a document, we will be using the ID for this, and a update object. The update object only needs to contain the key/value pairs you want to change. So If we had an object with and ID of `"60f5e2608f5ef1330f9b841e"` we could use MongoDB's `.updateOne` method like so:
 
 ```js
 collection.updateOne(
   //This is our query to target the document
-  {_id: ObjectId("60f5e2608f5ef1330f9b841e")},
+  { _id: ObjectId("60f5e2608f5ef1330f9b841e") },
   //This variable holds the update to be applied
   updateObj
-)
+);
 ```
 
 **But** you will need to wrap the key/value pair(s) you want to update in an atomic `$set` operator so our `updateObj` would look like this if we wanted to change our document's `name` property to `"New Name"`:
 
 ```js
-let updateObj = {$set: {name: "New Name"}}
+let updateObj = { $set: { name: "New Name" } };
 ```
 
 ## Building Out the Client
 
 Let's extend the `run` function to make it a little more interactive. Let's set it up so we can interact with our application through the command line.
 
-* Define an `ask` function as we did in the first week of this course
-* When the `run` function gets called *ask* the user what they want to do
-* Depending on the user input, perform a database operation
-  * and ask if they'd like to perform another operation
-* Add a section to your logic to handle each of the database operations we set up in our `DataStore`
+- Define an `ask` function as we did in the first week of this course
+- When the `run` function gets called _ask_ the user what they want to do
+- Depending on the user input, perform a database operation
+  - and ask if they'd like to perform another operation
+- Add a section to your logic to handle each of the database operations we set up in our `DataStore`
 
 ## Going Further
 
 Currently our DataStore class can handle several read operations, and a single create operation. Build it out more so that there are methods for:
 
-* Inserting several documents at once
-* Deleting an existing document
+- Inserting several documents at once
+- Deleting an existing document
 
 Create sections of your front end logic to handle these operations
