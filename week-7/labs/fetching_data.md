@@ -62,3 +62,4 @@ Think about how you want to perform different operations;
   * Entering the ID in a form?
 * What about modifying an entry?
   * How are you going to determine which document to update?
+  * How are you going to determine what fields to update?
