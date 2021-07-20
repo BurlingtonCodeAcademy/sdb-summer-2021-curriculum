@@ -1,6 +1,6 @@
 # How to Query MongoDB Documents in JS
 
-This lesson makes the following assumes you have properly connected to your database, and declared the following:
+This lesson assumes you have properly connected to your database, and declared the following:
 
 ```javascript
 const { MongoClient, ObjectId } = require("mongodb");
@@ -9,10 +9,9 @@ const client = new MongoClient(uri, { useUnifiedTopology: true })
 
 async function runQuery() {
   await client.connect()
-  const database = client.db('test')
-  const collection = database.collection('inventory')
+  const database = await client.db('test')
+  const collection = await database.collection('inventory')
   //insert query here
-
   await client.close()
 }
 ```
@@ -99,7 +98,7 @@ await results.forEach(doc => console.log(doc))
 
 # Using `$or` With Different Properties
 
-`$or` can be used with the different properties as well as checking against multiple properties with the same values.
+`$or` can be used with the different properties as well as checking against the same property with the different values.
 
 ```javascript
 const results = await collection.find(

@@ -237,12 +237,45 @@ Create a new method on your `DataStore` that can find a single item by it's ID f
 * queries the database for *just that document*
 * returns *a single document*
 
+## Update an Entry
+
+Create a new `async` method on `DataStore` called `updateEntry`. This method will take two parameters:
+
+* The ID of the target document (as a string)
+* An update object
+
+The `.updateOne` method on a Mongo collection takes two arguments, the "filter" which is a database query that targets a document, we will be using the ID for this, and a update object. The update object only needs to contain the key/value pairs you want to change. So If we had an object with and ID of `"60f5e2608f5ef1330f9b841e"` we could use MongoDB's `.updateOne` method like so:
+
+```js
+collection.updateOne(
+  //This is our query to target the document
+  {_id: ObjectId("60f5e2608f5ef1330f9b841e")},
+  //This variable holds the update to be applied
+  updateObj
+)
+```
+
+**But** you will need to wrap the key/value pair(s) you want to update in an atomic `$set` operator so our `updateObj` would look like this if we wanted to change our document's `name` property to `"New Name"`:
+
+```js
+let updateObj = {$set: {name: "New Name"}}
+```
+
 ## Building Out the Client
 
-Let's extend the `run` function to make it a little more interactive.
+Let's extend the `run` function to make it a little more interactive. Let's set it up so we can interact with our application through the command line.
 
 * Define an `ask` function as we did in the first week of this course
 * When the `run` function gets called *ask* the user what they want to do
 * Depending on the user input, perform a database operation
   * and ask if they'd like to perform another operation
 * Add a section to your logic to handle each of the database operations we set up in our `DataStore`
+
+## Going Further
+
+Currently our DataStore class can handle several read operations, and a single create operation. Build it out more so that there are methods for:
+
+* Inserting several documents at once
+* Deleting an existing document
+
+Create sections of your front end logic to handle these operations
