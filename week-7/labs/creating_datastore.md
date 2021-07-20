@@ -17,7 +17,7 @@ npm install mongodb
 
 Next, create a file called `mongo-client.js`
 
-This is where we'll configure the _client_, or the _software_ that connects to the server. AKA our DataStore
+This is where we'll configure the _client_, or the _software_ that connects to the server AKA our `DataStore`
 
 The server, in this case, is `localhost:27017`
 
@@ -164,10 +164,12 @@ Now that we've got a couple methods set up for connecting to, and reading from o
 * Import the `DataStore` class from `data-store.js`
   * This is Node.js so we'll need to use the `require` method
   * Don't forget to export your `DataStore` with `module.exports = DataStore`
+* Since we are now connecting through our DataStore we no longer need the Mongo drivers in our `mongo-client.js` file
+  * feel free to delete the mongo setup in this file (the import, and connection)
 
 Then we will replace the contents of your run function with code that:
 
-* Creates our new interface for the `"books"` collection
+* Creates our new interface for our database and connects to a `"books"` collection
 
 ```js 
 let collection = new DataStore("mongodb://localhost:27017", "library", "books")
@@ -181,6 +183,8 @@ allBooks.forEach((book) => {
   console.log(book)
 })
 ```
+
+> Note: This will need to happen inside the `run` function, or any other `async` function that you have defined
 
 ## `.find`
 
