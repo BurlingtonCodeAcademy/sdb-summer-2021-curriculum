@@ -273,3 +273,7 @@ And lastly, close out the function with a `process.exit()`. If you haven't decla
    process.exit()
 }
 ```
+
+# Going Further
+
+You've just built out a command-line interface with full CRUD functionality using a mongoose model. Command line applications run in a Node.js environment just like our Express servers. To take this to the next level you can translate the command line code to an Express server, much like we did in the "DataStore" and "Fetching Data" labs with our `DataStore` class.
