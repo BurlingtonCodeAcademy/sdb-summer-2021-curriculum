@@ -99,6 +99,9 @@ In your `.env` file, add a secret string that will be used in signing
 ```
 SECRET_KEY=thisisasecret
 ```
+
+---
+
 and back in your `jwt-example.js`
 
 ```javascript
@@ -108,6 +111,8 @@ console.log(signedJWT) // will show encrypted string
 const verified = jwt.verify(signedJWT, process.env.SECRET_KEY)
 console.log(verified) // will show unencrypted payload again! 
 ```
+
+---
 
 The `signedJWT` token we've created doesn't last long, however. That `expiresIn` property is in seconds.
 Set a timeout to verify it again, and you'll see it's expired not 3 seconds later!
