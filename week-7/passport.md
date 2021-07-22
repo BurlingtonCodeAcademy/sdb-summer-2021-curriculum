@@ -215,4 +215,4 @@ Unfortunately the code we just wrote won't work in a real world environment.
 
 It relies on us being able to see and copy that authentication token, and then hard coding it as a header on the next request.
 
-It relies on Postman's pre built functionality to operate, and I'm too fucking tired to reverse engineer this bullshit right now.
+It relies on Postman's pre built functionality to operate. Let's do a little code along to demo how we could take this code, and make it more applicable to a real application.

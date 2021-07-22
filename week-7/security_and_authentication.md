@@ -163,6 +163,7 @@ bcrypt.hash(plainTextPassword, saltRounds, (err, hash) => {
     //Store hashed password in DB here
 })
 ```
+
 Running this code should show you a before and after:
 
 ```javascript
