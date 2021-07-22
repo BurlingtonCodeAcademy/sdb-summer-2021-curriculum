@@ -74,7 +74,7 @@ Now, after a password hash has been stored in your database, how would you compa
 Remember `bcrypt` comes fully prepared to "undo" those rounds of salt for you. We can run our stored password against the password the user entered, and if they match we redirect them to their dashboard
 
 ```javascript
-let userObj = await User.find({username: req.body.username})
+let userObj = await User.findOne({username: req.body.username})
 
 bcrypt.compare(req.body.password, userObj.password, (err, result) => {
     if(err) {
