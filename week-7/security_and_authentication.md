@@ -102,7 +102,9 @@ SECRET_KEY=thisisasecret
 
 ---
 
-and back in your `jwt-example.js`
+# Meanwhile...
+
+Back in your `jwt-example.js`
 
 ```javascript
 const signedJWT = jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: 2 })
@@ -114,6 +116,8 @@ console.log(verified) // will show unencrypted payload again!
 
 ---
 
+# Tokens Expire
+
 The `signedJWT` token we've created doesn't last long, however. That `expiresIn` property is in seconds.
 Set a timeout to verify it again, and you'll see it's expired not 3 seconds later!
 
@@ -122,6 +126,7 @@ You'll also notice a new property, `iat`.  This is the the time the token was is
 ```javascript
 setTimeout(() => console.log(jwt.verify(signedJWT, process.env.SECRET_KEY)), 3000)
 ```
+
 ---
 
 # Encryption
