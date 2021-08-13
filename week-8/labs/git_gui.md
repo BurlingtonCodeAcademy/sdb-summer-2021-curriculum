@@ -8,7 +8,7 @@ We'll start as we always do when writing a new project that will be saved to Git
 
 ## Set up your repo
 ---
-Every project begins with a brief, descriptive name. Enter one here, and be sure that it is different than any other repo name. 
+Every project begins with a brief, descriptive name. Enter one here, and be sure that it is different than any other repo name. For this lab, let's call it `bca-test-one`.
 
 Next, set the privacy preferences. Would you like to make it available for anyone on the internet to see? If so, you can choose who is able to commit, or not. Otherwise you can make it private, and choose both who can see *and* commit to this repo. 
 
