@@ -52,7 +52,7 @@ In this lab we will be exploring functionality of the main page. Notice the uppe
 
 ## Branching Out
 
-Beneath the tabs are some repository controls. On the left is branch management, which apears as a button containing an emoji and the branch name `main`. Here you can create or switch between branches. If you remember, branches act as independent lines of development within your repository and are very powerful. 
+Beneath the tabs are some repository controls. On the left is branch management, which appears as a button containing an emoji and the branch name `main`. Here you can create or switch between branches. If you remember, branches act as independent lines of development within your repository and are very powerful. 
 
 When you initializing your repository, git creates a branch called `main`. This is your main codebase and should never be coded directly into. It is best practice to break a branch off of `main` and work in that. 
 

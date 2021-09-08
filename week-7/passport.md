@@ -101,12 +101,16 @@ passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
             return done(null, user);
         } else {
             return done(null, false);
-            // or you could create a new account
         }
     });
 }));
 ```
-This says: 
+
+---
+
+# Strategy Breakdown
+
+This strategy we just set up says: 
 
 - I expect a JSON Web Token  
 - I expect it to have an `_id` property
@@ -138,6 +142,7 @@ function issueJWT(user) {
 ---
 
 # Logging In
+
 Let's say we have a simple form, with `user` and `password` sent to `/login` via `POST` method. The following checks the database to see if the user and password are correct, and issues a token if they are.
 
 ```javascript
@@ -146,19 +151,13 @@ app.post('/login', (req, res, next)=>{
         if(!user){
             res.status(401).json({success:false, msg:"no user found!"})
         }
-            /*BEST PRACTICE: user.password should be encrypted in the database, 
-            and compared with bcrypt or other trusted encryption libraries*/
-
-            const isValid = (req.body.password === user.password) // => equates to Boolean
-
-            if(isValid){
-                // remember, issueJWT returns an object of our design, with a 'token'
-                const tokenObject = issueJWT(user)
-                res.status(200).json({success:true, token:tokenObject.token, expiresIn: tokenObject.expires})
-            } else{
-                res.status(401).json({ success: false, msg: "you entered the wrong password" })
-            }
-
+        const isValid = (req.body.password === user.password) // => equates to Boolean
+        if(isValid){
+            const tokenObject = issueJWT(user)
+            res.status(200).json({success:true, token:tokenObject.token, expiresIn: tokenObject.expires})
+        } else{
+            res.status(401).json({ success: false, msg: "you entered the wrong password" })
+        }
     }).catch((err)=>{
         next(err)
     })
@@ -168,6 +167,7 @@ app.post('/login', (req, res, next)=>{
 ---
 
 # Authentication Middleware
+
 Now, we need to add a route to check the (presumably saved) JWT coming back from the browser!
 
 After all that setup, this is where it finally starts looking like middleware!
@@ -194,7 +194,7 @@ Hit send.
 
 In Postman, it should look something like this:
 
-![Postman-login](/images/Postman-login.png)
+![Postman-login](https://res.cloudinary.com/btvca/image/upload/v1626964764/curriculum/Postman-login_idmxa2.png)
 
 ---
 
@@ -203,7 +203,7 @@ Copy the `token` from the JSON response, and make a GET request to `/dashboard` 
 
 That will look something like this:
 
-![Postman-dashboard](/images/Postman-dashboard.png)
+![Postman-dashboard](https://res.cloudinary.com/btvca/image/upload/v1626964785/curriculum/Postman-dashboard_mcsy10.png)
 
 SUCCESS!!! We have effectively created a JSON Web Token, and used it to authenticate a using Passport authentication as middleware.
 
