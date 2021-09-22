@@ -116,6 +116,7 @@ Why is it called "extreme"? Mostly it's tongue-in-cheek, but beneath that is an 
 ---
 
 # XP Practices: Iterative development
+
 * Time boxed iterations
 * work, measure, plan, repeat
 

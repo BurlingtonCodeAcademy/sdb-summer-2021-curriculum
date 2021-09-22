@@ -90,7 +90,7 @@ Fill out the cells of the following table for the call `countdown(5)`:
 
 In addition to the base case, a recursive function needs to define at least one other case; this case *wraps around* the base case like a Russian doll.
 
-![matryoshka](/images/matryoshka.jpg)
+![matryoshka](https://en.wikipedia.org/wiki/Matryoshka_doll#/media/File:First_matryoshka_museum_doll_open.jpg)
 
 You can think of a recursive function as starting with a large problem, and gradually reducing the problem until it reaches the base case.
 

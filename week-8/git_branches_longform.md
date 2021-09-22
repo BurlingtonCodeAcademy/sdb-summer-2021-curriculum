@@ -52,10 +52,6 @@ git push	// send the changes off to your repository
 ```
 
 ---
-
-# LAB: enter shopping list lab here
-
----
 # Branching Strategies
 
 Different teams will choose different strategies for managing their branches. These strategies are also called “workflows”. Some common workflow styles include:
