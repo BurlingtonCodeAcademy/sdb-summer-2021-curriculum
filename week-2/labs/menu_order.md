@@ -68,7 +68,7 @@ Take a look at the documentation for the methods on [numbers](https://developer.
 
 ## Going Further
 
-Use [ARGV]('/lessons/references/argv') to allow the user to input their order through the command line when they run the file. e.g.
+Use [ARGV](/lessons/references/argv) to allow the user to input their order through the command line when they run the file. e.g.
 
 ```
 node order.js burger burger fries shake
