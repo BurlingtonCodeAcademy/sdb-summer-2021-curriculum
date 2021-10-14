@@ -32,6 +32,10 @@ Why might this be important?
 
 ![Mobile Device Simulation Screenshot](https://res.cloudinary.com/btvca/image/upload/v1574445189/curriculum/mobile-device-simulation_zlrmgj.png "Mobile Device Simulation Screeenshot")
 
+---
+
+# Documentation Links
+
 [Link: Firefox Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode "Firefox Responsive Design Mode")
 
 [Link: Chrome Mobile Device Simulator](https://developers.google.com/web/tools/chrome-devtools/device-mode/ "Chrome Mobile Device Simulator")
