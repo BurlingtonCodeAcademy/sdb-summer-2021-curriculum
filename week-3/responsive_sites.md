@@ -30,7 +30,7 @@ Why might this be important?
 
 # Mobile Device Simulator
 
-![Mobile Device Simulation Screenshot](/images/mobile-device-simulation.png "Mobile Device Simulation Screeenshot")
+![Mobile Device Simulation Screenshot](https://res.cloudinary.com/btvca/image/upload/v1574445189/curriculum/mobile-device-simulation_zlrmgj.png "Mobile Device Simulation Screeenshot")
 
 [Link: Firefox Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode "Firefox Responsive Design Mode")
 
