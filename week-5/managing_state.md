@@ -105,6 +105,8 @@ In React there are two sources of data for your components: `props`, and `state`
 - Defined as an object in the constructor
 - Must be modified with the updater method
 
+---
+
 # Props
 
 - Data passed in from outside the component
