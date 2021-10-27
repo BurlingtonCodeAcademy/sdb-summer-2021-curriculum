@@ -8,6 +8,61 @@ There are many different plugins for React. These are packages that extend React
 
 ---
 
+# Why use Plugins?
+
+Many front end libraries make heavy use of DOM scripting, to add functionality to your websites, but React really doesn't like it when anything *but* React tries t manipulate the page.
+
+Luckily for us this is a known issue, and developers (being a highly collaborative bunch) have created some plugins for React that allow us to use the power of these front end libraries in our React apps
+
+**AND** most of these plugins are free and open source.
+
+There are many, many plugins that will extended React's functionality
+
+---
+
+# Leaflet in React
+
+The Leaflet library is heavily dependant on DOM scripting to put your maps on the page, so by default it doesn't play very nicely with React.
+
+The [React Leaflet](https://react-leaflet.js.org/) framework was designed to bridge the gap by using custom components and hooks that integrate with Leaflet.
+
+The end result of this is that we can use Leaflet in React by installing both `leaflet` and `react-leaflet` in our React application, and then importing, and using the custom components from React Leaflet by importing them into our own components.
+
+# React Leaflet in `create-react-app`
+
+`create-react-app` is a great way to generate a directory for our React applications because it performs all the initial setup, and linking for us
+
+**BUT** it can sometimes set up *too many* things, which can interfere with certain frameworks.
+
+With React Leaflet we will need to tweak some settings in our `package.json` file so that our maps will display
+
+Change the `browserslist` property from this:
+```json
+ "browserslist": {
+   "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+}
+```
+to this:
+```json
+"browserslist": [
+   ">0.2%",
+  "not dead",
+  "not op_mini all"
+]
+```
+Then delete your `node_modules` and run `npm install`
+
+---
+
 # React Routing
 
 * Using a pages URL is a core web feature
