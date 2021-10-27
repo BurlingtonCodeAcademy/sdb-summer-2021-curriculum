@@ -28,6 +28,8 @@ The [React Leaflet](https://react-leaflet.js.org/) framework was designed to bri
 
 The end result of this is that we can use Leaflet in React by installing both `leaflet` and `react-leaflet` in our React application, and then importing, and using the custom components from React Leaflet by importing them into our own components.
 
+---
+
 # React Leaflet in `create-react-app`
 
 `create-react-app` is a great way to generate a directory for our React applications because it performs all the initial setup, and linking for us
