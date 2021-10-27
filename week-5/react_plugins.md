@@ -38,6 +38,8 @@ The end result of this is that we can use Leaflet in React by installing both `l
 
 With React Leaflet we will need to tweak some settings in our `package.json` file so that our maps will display
 
+---
+
 Change the `browserslist` property from this:
 ```json
  "browserslist": {
