@@ -2,8 +2,9 @@
 
 * Components can be rendered using If/Else or a Ternary
 * State within the Class or Function can be used in the conditions
+* Variable names can be used in place of hardcoded values in our JSX
 
->Note: Conditional `if...else` statements can't by used inline to do conditional rendering, but ternaries can.
+>Note: We can **not** use an if/else statement in-line in our JSX, but we can use a Ternary.
 
 ---
 
@@ -122,13 +123,15 @@ function Greeting (props) {
 
 ```jsx
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState(false)
 
   return (
     <div>
-      {isLoggedIn ? (
-        <LogoutButton onClick={() => {setIsLoggedIn(false)}} />
-      ) : (
+      {!isLoggedIn ? (
         <LoginButton onClick={() => {setIsLoggedIn(true)}} />
+      ) : ( userName ?
+        <LogoutButton onClick={() => {setIsLoggedIn(false)}} />
+        : <ChooseUser onSubmit=>(() => {setUserName("Some Value")})
       )}
     </div>
   );
