@@ -25,7 +25,7 @@ in `CRUD.js`, add:
 
 ```javascript
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/test');
 const db = mongoose.connection
 ```
 
@@ -112,9 +112,9 @@ let droidColor = await ask('What is your droid\'s color(s)?   ')
 ```
 
 Some of these questions will be conditional based on the droid type. 
-    -  If the droid is an astromech, the application should not ask if the droid is a protocol droid, and vice versa. 
-    - Regardless of choice, the application should then ask how the droid is affiliated, and a new Date instance should be generated and assigned to the date
-    -  Don't forget to set those variables outside of the loop, or else they will be lost in scope later on.
+-  If the droid is an astromech, the application should not ask if the droid is a protocol droid, and vice versa. 
+- Regardless of choice, the application should then ask how the droid is affiliated, and a new Date instance should be generated and assigned to the date
+-  Don't forget to set those variables outside of the loop, or else they will be lost in scope later on.
 
 Because every field of our schema requires data, you'll need to assign the whichever droid type wasn't chosen to the corresponding boolean value.
 
