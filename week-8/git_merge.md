@@ -30,6 +30,6 @@ A common practice is to rebase your feature branch on top of your master branch,
 
 It's as easy as 1 -2 - 3! From a branch named `feature_branch`, after adding and committing your changes:
 
-1 `git rebase master`
-2 `git checkout master`
-3 `git merge feature_branch`
+1. `git rebase master`
+2. `git checkout master`
+3. `git merge feature_branch`
