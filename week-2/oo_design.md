@@ -188,4 +188,3 @@ Objects are *things* that can be *described* and can *do* things, or...
     * (a property that describes a particular thing)
   * Classes are categories
     * (a noun that describes a *type* of thing, not a thing itself)
-

@@ -31,7 +31,25 @@ let abby = {
 
 ---
 
-# Properties are Strings
+# Keys are Strings
+
+All of the keys of an object are strings. Our `abby` object has 6 keys:
+
+- species
+- color
+- spayed
+- breed
+- weight
+- favoriteActivity
+
+As long as the keys have no spaces in them we don't need to wrap them in quotation marks, though if we wanted to make the key `favoriteActivity` two words, we could do that by wrapping it in quotation marks when we're defining the object. i.e:
+
+```js
+let abby = {
+  ...,
+  "favorite activity": 'chasing squirrels'
+}
+```
 
 ---
 
@@ -50,11 +68,13 @@ let states = {
 };
 ```
 
+> When talking about objects we often reference the values as the object's name at the property name. For example we could say "states at 'vt' is the string 'Vermont'" for this object
+
 ---
 
 # Getting Object Properties
 
-You can get the properties of an object with either *dots* or *brackets*:
+You can get the properties of an object with either *dots* or *square brackets*:
 
 | With Dots   | With Brackets  | The Value         |
 |-------------|----------------|-------------------|

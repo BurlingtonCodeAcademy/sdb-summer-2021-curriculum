@@ -218,4 +218,9 @@ let diameterCircle = Circle.fromDiameter(4)
 
 # Class Inheritance
 
-All objects inherit the methods, and properties defined on their class. Usually a constructor will be used to allow you to dynamically assign the values of the properties when you create a new object instance, but if you hard code the values on the class then those properties will be automatically inherited by the class.  This is why object instances have access to all the methods defined on their class.
+All objects inherit the methods, and properties defined on their class. Usually a constructor will be used to allow you to dynamically assign the values of the properties when you create a new object instance, but if you hard code the values on the class then those values will also be inherited by the class.
+
+
+By setting the methods as properties of the class and not setting them in the constructor we are taking advantage of inheritance to pass those methods to every object that is created by our class without having to redefine them each time.
+
+If we don't want a method, or property to be inherited by the class's objects we can use the `static` keyword to prevent it from being passed down. This is commonly done with factory methods.

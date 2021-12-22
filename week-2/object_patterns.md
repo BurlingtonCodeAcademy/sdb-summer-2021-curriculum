@@ -97,6 +97,7 @@ function enterState(newState) {
   let validTransitions = states[currentState];
   if (validTransitions.includes(newState)) {
     currentState = newState;
+    console.log(currentState)
   } else {
     throw("Invalid state transition attempted - from " + currentState + " to " + newState;)
   }
@@ -105,7 +106,21 @@ function enterState(newState) {
 
 ---
 
-# Why use a state machine?
+# Using our State Machine
+
+Now we can run through some state transitions using our state machine.
+
+```js
+enterState("yellow")
+enterState("red")
+enterState("yellow")
+```
+
+Note that the last call to `enterState` *should* throw an error, because `"yellow"` is not a valid transition from `"red"`
+
+---
+
+# Why Use a State Machine?
 
 1. Clarity
 2. Predictability

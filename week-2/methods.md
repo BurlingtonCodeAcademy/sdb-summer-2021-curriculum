@@ -69,13 +69,18 @@ rectangle.area()   //=> 80
 
 # Using `this`
 
-Let's go back to our `dog` object and add a new method that 
+Let's go back to our `dog` object and adjust our speak method so that it tells us a little more about our specific object.
+
+- In the console log where we have the string `"Bark!"` let's change the string to say the dog's name and color
+  - To reference the object we're on we'll use the `this` keyword, and then access the property we want
+  - so if we replace the string `"Bark!"` with `"My name is " + this.name + " and I am a " this.color + " dog."`
+  - We now have a talking dog!
 
 ---
 
 # `this` and Binding
 
-The keyword `this` is *bound* to the context in which it is *called*. If you're calling the method through the object using dot notation (as you normally would), the context is *that object*
+The keyword `this` is *bound* to the context in which it is *called*. If you're calling the method through the object using dot notation (as you normally would), the context is *that object.*
 
 If you detach the method, then the `this` keyword becomes *unbound*. This can cause issues because the global object usually doesn't have the properties your method is looking for.
 
@@ -102,13 +107,11 @@ let rectangle = {
     height: 10,
     width: 8,
 }
-
 rectangle.area()   //=> TypeError: rectangle.area is not a function
 
 rectangle.area = function() {
      return this.height * this.width;
 }
-
 rectangle.area()   //=> 80
 ```
 
