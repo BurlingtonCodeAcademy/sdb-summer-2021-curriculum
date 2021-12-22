@@ -19,7 +19,7 @@ Let's lift the hood and check out the engine that makes the World Wide Web run.
 * This file contains code, which tells your browser how, and what, to render. 
 * A web server responds to this request, by telling the browser where the file lives. 
 
-![HTTP Request](/images/http_request.png "HTTP Request") (via <https://betterexplained.com/>)
+![HTTP Request](https://603168-1953132-raikfcquaxqncofqfm.stackpathdns.com/wp-content/images/http_process_explained.jpg "HTTP Request") (via <https://study-ccna.com/>)
 
 ---
 

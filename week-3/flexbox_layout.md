@@ -1,9 +1,3 @@
-# Flexbox
-
-![Centered Flexbox](https://res.cloudinary.com/btvca/image/upload/v1574445169/curriculum/centered-flexbox_oqccyf.png)
-
----
-
 # Introduction to Flexbox
 
  Flexbox is an amazing tool for website layout.

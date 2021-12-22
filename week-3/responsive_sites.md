@@ -46,10 +46,7 @@ Why might this be important?
 
 * Media Queries (`@media (some_condition) { }`) cause different CSS rules to be applied on different screens
 
-
-#### Example
-
-This will make our `.nav` element position relative when the media type is `print`
+This CSS will make our `.nav` element position relative when the media type is `print`
 
 ```css
 
