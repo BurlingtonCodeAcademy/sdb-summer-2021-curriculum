@@ -323,7 +323,7 @@ in-progress -> done -> accept/reject?
 
 * the more frequent they are, the shorter they can be
 
-* Standard Burlington Code Academy Retro format: 
+* Standard Retro format: 
 
   1. 5 minutes: intro and "take temperature"
   2. 10 minutes to brainstorm Happy/Sad/Confused (aka Good/Bad/Weird) topics

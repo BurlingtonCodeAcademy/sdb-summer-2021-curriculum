@@ -1,6 +1,6 @@
 # Install Fest Instructions
 
-Welcome to your Burlington Code Academy software program!
+Welcome to your  software program!
 
 We will use several tools during class, please see the instructions for installing the specific tools you will need based on your operating system.
 
@@ -63,7 +63,6 @@ This is a different tool than `Microsoft Visual Studio` which is a non-free prop
 
 The following extensions for VS Code are helpful, but optional. You can learn how to install extensions [from the official documentation](https://code.visualstudio.com/docs/editor/extension-marketplace).
 
-* [Bracket Pair - Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
 * [Prettier - Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 * [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 
@@ -159,7 +158,6 @@ This is a different tool than `Microsoft Visual Studio` which is a non-free prop
 
 The following extensions for VS Code are helpful, but optional. You can learn how to install extensions [from the official documentation](https://code.visualstudio.com/docs/editor/extension-marketplace).
 
-* [Bracket Pair - Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
 * [Prettier - Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 * [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 
@@ -300,9 +298,11 @@ Check the documentation on [this page](https://docs.mongodb.com/manual/tutorial/
 
           brew services start mongodb/brew/mongodb-community
 
-3. If you run into any issues please let one of our instructors or TAs know
+3. If you run into any issues please let one of our instructors know
 
 #### MongoDB Compass Graphical Interface
+
+__ Note: Only do this if it was not installed along with MongoDB in the previous step. 
 
 1. Visit the MongoDB Compass installation instructions <https://docs.mongodb.com/compass/master/install/>
 2. Download MongoDB Compass from <https://www.mongodb.com/try/download/compass>

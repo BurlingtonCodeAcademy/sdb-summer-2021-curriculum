@@ -2,7 +2,7 @@
 
 ## Welcome
 
-This repository holds slides, exercises, and labs for the Burlington Code Academy software development bootcamp, for June of 2021.
+This repository holds slides, exercises, and labs for the  software development bootcamp, for June of 2021.
 
 You are able to view the curriculum in the form of [Markdown](https://commonmark.org/) files, and these files are converted into HTML using various processing tools.
 
