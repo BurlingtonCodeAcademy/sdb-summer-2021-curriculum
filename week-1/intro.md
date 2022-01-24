@@ -1,104 +1,69 @@
-# Welcome to the Burlington Code Academy!
+# Welcome!
+
+Welcome to your software development program!
+
+This invaluable skill will challenge and develop you into a creative problem solver if you put in the work.
+
+Let's get started!
 
 ---
 
 # What is code?
 
-In general, code is something that stands for something else.
+**Code** is saying one thing to mean something else. In computer science, it refers to how we write out instructions.
 
-In computers, code is a series of instructions that tell a computer what to do.
+**Code** is a _tool_ used to give the computer _instructions_ to later follow.
 
----
+These are instructions are called **programs**.
 
-# What is coding?
-
-* coding (aka programming or software development) is a *creative, human* activity
-* *coding* does not mean "cracking the code" or "deciphering" -- it's not a mystery or a secret, at least no more than any other language
-* the words (and numerals and punctuation) we write are translated into long strings of ones and zeros
-* the computer interprets the code, and takes the actions it describes
+**Coding is writing.**
 
 ---
 
 # Programmatic Thinking
 
-Throughout this course one of the most important skills you will learn is how to think like a programmer.
-
-Computers are weird, and very literal. Here are a few things to keep in mind when working with them:
-
-* Computers are very fast, but not very smart. They will only ever do exactly what you tell them to
-* Computers are really bad at being random. There's always a pattern, though it's not always obvious
-  * When you run into a bug, try and replicate it. If you know the actions that break your code it's easier to guard against them
-* Getting a different error is good. It means you're making progress so don't get discouraged!
-* Build things for fun, and to learn!
+- It's easy to immediately start writing code. Don't. Figure out the instructions needed first.
+- Imagination and scratch paper go a long way when planning.
+- Computers follow **programs** exactly as written.
+- Computers _sometimes_ show **error** messages to help the programmer.
+- Always **test** _before_ submitting.
+- Mistakes are expected and respected. Try again.
 
 ---
 
-# Languages
+# Programming Languages
 
-* Every program is written in a LANGUAGE
-  * like Java or Python or C or Fortran or Lisp or...
-  * even HTML and CSS and SQL are languages
-  * every computer language has a silly name
-* Computer languages are very **specific** compared to natural languages
-* Different languages are useful in different areas, but there is a lot of overlap
-* Over the next several months we will be learning JavaScript, HTML, and CSS
+- Every program is written in a **language**:
+  - anyone can make a computer language
+  - different languages are good at different things
+  - the manual is called **documentation**. Read it.
+- Computer languages are not ambiguous. Specific words mean specific things.
+- We will be learning JavaScript, HTML, and CSS -- the languages designed to build the web.
 
 ---
 
 # What will we learn?
 
-In this class, you will learn about:
+Throughout this course, you will learn about:
 
-* The command line and why we use it
-* Strings, Arrays, Variables, Objects, Loops, Files
-* How to run your code interactively or from a file
-* How to make a very simple website run on your own computer
-* How to make a not so simple application run on the web
-
-Follow along online! Put a browser pointed at this site on one side of your screen, and Terminal on the other.
-
----
-
-# What if I know some of this already?
-
-* Pair up
-* Help your partner, help your neighbor
-* Promote yourself to TA
-
----
-
-# Errors Are Awesome
-
-* Don't be afraid of errors
-* Your computer is trying to help you fix your program
-  * It's just *really* bad at communicating
-
-> If your code is a two-year-old child, then an error is a temper tantrum.
-
-(It can take effort to figure out the underlying reason why they're upset and fix it.)
-
-* It's not all gibberish
-* Try to read it -- really try! -- and pull out the pearls from the pig slop
-
-See also: [What went wrong?](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_went_wrong) from MDN
-
----
-
-![Breakdown of error message](https://res.cloudinary.com/btvca/image/upload/v1622657526/curriculum/error-message-breakdown_jpmlv0.png)
+- Common programmer tools.
+- Common parts of programming languages used to write programs.
+- Thinking like programmers.
+- How to make simple websites.
+- How to make Single Page Applications, i.e. more complex websites.
 
 ---
 
 # Technical Requirements
 
-See the [Installfest](/projects/installfest) project for more instructions.
+See the [Installfest](/week-1/articles/installfest) project for more instructions.
 
 Software
 
-- a text editor - VS Code from Microsoft <https://code.visualstudio.com>
-- JavaScript - a live node.js installation
-- Git - version 2.x
-- GitHub 
-  - **Sign up** for an account at <https://github.com/>
+- a text editor - VSCode <https://code.visualstudio.com>
+- JavaScript - Node.js <https://nodejs.org>
+- version control software - git version 2.x <https://git-scm.com>
+- open-source sharing site account - GitHub <https://github.com>
 
 ---
 
@@ -106,41 +71,46 @@ Software
 
 - Heroku
   - **Sign up** for an account at <https://signup.heroku.com>
-  - **Install** the Heroku Command Line Interface (CLI) at <https://devcenter.heroku.com/articles/heroku-cli>
+  - **Install** the _Heroku Command Line Interface_ (CLI) at <https://devcenter.heroku.com/articles/heroku-cli>
 - Postman
-- MongoDB, and Compass
+- MongoDB and Compass
 
 - Please stop right now and check
-  - If you do not have these, let us know!
+- If you do not have these, let us know!
 
 ---
 
 # Introducing: The Command Line!
 
-* the **Command Line** is a window into which you can talk directly to your computer
-  * aka *console* or *terminal* or *command prompt* or *shell*
-* when you type into the terminal, you are issuing **commands** to the computer
-* a *CLI* (Command Line Interface) is different from the *GUI* (Graphical User Interface) you are used to
-  * a CLI is more primitive **and more powerful** than a GUI
+- We use the **Command Line** application to tell the computer _commands_.
+  - AKA _console_ or _terminal_ or _command prompt_ or _shell_
+- Some apps only exist in the terminal and are seemingly invisible.
+  - These are _CLI_ (Command Line Interface) applications.
+- Some display a window for the user to interact with.
+  - These _GUI_ (Graphical User Interface) applications.
+- Developers use the _terminal_ for its ease-of-access, speed, and power.
 
 ---
 
 # Directories
 
-* a *directory* is a location on your hard disk
-  * also called a *folder*
-* directories can contain *files*
-* directories can also contain other directories (called *subdirectories*)
+- _Directories_ AKA _folders_ organize items into groups
+- directories can contain
+  - _files_
+  - other _directories_
+- We can use _the command line_ to navigate and manipulate _directories_ and their contents.
 
 ---
 
 # Where am I?
 
-* Inside the Terminal, you are always "inside" a directory.
-* It is very easy to get lost in a maze of directories.
-* To find out which directory you are in, type <kbd>p</kbd><kbd>w</kbd><kbd>d</kbd> and then hit <kbd>Return</kbd>
-  * This stands for "print working directory" (not "password").
-  * Most of the time you can also look at the prompt to see what the current directory is.
+- The terminal is always referencing some directory, as if it were inside that folder.
+- This helps it make sense of commands.
+- It makes navigating your computer feel more like exploring rooms in a house.
+- It's common to need to ask, "Where am I?"
+- We can tell the computer to `print` or `log` things we want to see.
+- We can use the terminal to say, "_Print_ the _working directory_," by typing <kbd>p</kbd><kbd>w</kbd><kbd>d</kbd> and hitting <kbd>Return</kbd>
+- The terminal might also list the current directory whenever it's ready for commands.
 
 ---
 
@@ -148,21 +118,29 @@ Software
 
 The command line is very dependant on the file path. Here are a few key directional commands in the command line:
 
-* `.` means "this directory I'm currently inside of"
-* `..` means "the directory containing the directory I'm currently inside of"
-* `/another-directory` means "look for a directory named `another-directory` inside of the current directory
-  * Paths can also be chained to go through multiple subdirectories
-  * e.g. `/another-directory/further-down`
-  * when `cd`ing into subdirectories hitting <kbd>Tab</kbd> will autofill the directory name after typing at least one character
+- `.` means "this directory I'm currently inside of"
+- `..` means "the directory containing the directory I'm currently inside of"
+- `/another-directory` means "look for a directory named `another-directory` inside of the current directory
+  - Paths can also be chained to go through multiple subdirectories
+  - e.g. `/another-directory/further-down`
+  - when `cd`ing into subdirectories hitting <kbd>Tab</kbd> will autofill the directory name after typing at least one character
 
 ---
 
 # Basic Commands (Unix)
 
-* `pwd` ("print working dir") -- shows the name of the current directory
-* `ls` ("list") -- shows the contents of the current directory
-* `mkdir` ("make dir") -- creates a new subdirectory inside the current directory
-* `cd` ("change dir") -- move into a different directory
+- "Print Working Directory"
+  - command: `pwd`
+  - use case: shows the name of the current directory
+- "List"
+  - command: `ls`
+  - use case: shows the contents of the current directory
+- "Make Directory"
+  - command: `mkdir`
+  - use case: creates a new directory inside the current one
+- "Change Directory"
+  - command: `cd`
+  - use case: move into a different directory
 
 > These apply to Mac / Unix / Linux / bash
 
@@ -170,9 +148,9 @@ The command line is very dependant on the file path. Here are a few key directio
 
 # Basic Commands (DOS)
 
-* `cd` ("change dir") -- With no directory, it lists the current directory. Otherwise, it changes to the specified directory
-* `dir` ("directory") -- shows the contents of the current directory
-* `mkdir` ("make dir") -- creates a new subdirectory inside the current directory
+- `cd` ("change dir") -- With no directory, it lists the current directory. Otherwise, it changes to the specified directory
+- `dir` ("directory") -- shows the contents of the current directory
+- `mkdir` ("make dir") -- creates a new subdirectory inside the current directory
 
 > These apply to Windows / DOS / PowerShell
 
@@ -180,22 +158,24 @@ The command line is very dependant on the file path. Here are a few key directio
 
 # Running Programs
 
-You can also run programs through the command line. To run a program through the command line, you type a preset keyword for the type of program you want to run, and then the name of the file you want to run.
+To run a program in the terminal, use a preset key word followed by the file or directory name.
 
-* To open VSCode from the command line you can issue the command `code .`
-  * `code` is the keyword to open VSCode
-  * `.` means "from this directory I'm currently in"
-  * You should always `cd` into the directory you want to be working in, then open VSCode from the command line
-  * Don't open VSCode through the GUI!
+Example:
+
+- To open VSCode from the command line you can issue the command `code .`
+  - `code` is the keyword to open VSCode
+  - `.` means "from this directory I'm currently in"
 
 ---
 
 # JS in the CLI
 
-You can also write JavaScript directly in th command line. This is a great way for testing out code snippets, and operations!
+When we installed Node, we gave ourselves the ability to use JavaScript in the terminal.
 
-* To write JavaScript you need to be in a "Node" environment
-* You can check that Node is installed with the command `node --version`
-  * If Node **isn't** installed you'll get the error: `node is not recognized as an internal or external command`
-  * typing `node` by itself and hitting <kbd>Enter</kbd> will open a Node environment inside your terminal
-  * to exit a Node environment hit <kbd>Ctrl</kbd> and <kbd>C</kbd> twice
+This lets us run JavaScript files and test out ideas quickly.
+
+- To use JavaScript, we need to run Node.
+- You can check that Node is installed with the command `node --version`
+  - If Node **is NOT** installed, this error is shown: `node is not recognized as an internal or external command`
+  - Typing `node` by itself and hitting <kbd>Return</kbd> will start Node inside your terminal
+  - to exit, hit <kbd>CTRL-C</kbd> twice
