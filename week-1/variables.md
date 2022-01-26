@@ -10,7 +10,7 @@ let color = "blue"
 let fruit = "berry"
 ```
 
-* Anywhere you would use a literal value, you can use a variable instead.
+* Anywhere you would use a value, you can use a variable instead.
 
 ```js
 color + fruit       // "blueberry"
@@ -27,6 +27,8 @@ fruit.toUpperCase() // "BERRY"
 * `var` is a lot like `let` but has wider *scope* which is sometimes bad
 * If you don't use either `let` or `var` then the variable becomes *global* (which is dangerous)
 * Moral: *always use let* unless you have a good reason not to
+
+[ Mozilla Developer Network | Declarations ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements#declarations)
 
 ---
 
