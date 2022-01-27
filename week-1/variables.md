@@ -1,193 +1,195 @@
 # Variables
 
 - A **variable** is a **name** for a value.
-- You give a value a name using the **assignment** operator 
-    - It looks like an equal sign but is *not* a comparison.
-    - often preceded by `let` as in "Let there be light" or "Let X equal 10".
+- The **assignment** operator _assigns_ a _variables_ to a value.
+  - It looks like an equal sign, but it does not mean "equals".
+  - often preceded by `let` as in "Let there be light" or "Let x be assigned to 10".
 
 ```js
-let color = "blue"
-let fruit = "berry"
+let color = "blue";
+let fruit = "berry";
 ```
-
-* Anywhere you would use a value, you can use a variable instead.
-
-```js
-color + fruit       // "blueberry"
-fruit.toUpperCase() // "BERRY"
-```
-
-* ...so pick good names :-)
 
 ---
 
-# Let there be confusion
+# Variables Cont.
 
-* `let` is just one way to declare a variable in JavaScript
-* `var` is a lot like `let` but has wider *scope* which is sometimes bad
-* If you don't use either `let` or `var` then the variable becomes *global* (which is dangerous)
-* Moral: *always use let* unless you have a good reason not to
+Tip: _Anywhere_ you would use a _value_ or _expression_, you can use a variable instead _and vice versa_:
+
+```js
+color + fruit;         // "blueberry"
+fruit.toUpperCase();   // "BERRY"
+"berry".toUpperCase(); // "BERRY"
+
+if (color) {
+  // do some stuff here
+}
+
+if ("blue") {
+  // do some stuff here
+}
+```
 
 [ Mozilla Developer Network | Declarations ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements#declarations)
 
 ---
 
-# Don't let me down 
+# Declarations
 
-In JavaScript you can only use `let` once per variable name (in a given *scope*), otherwise you will get an error:
+Declarations are key words we use to say we are creating a variable _for the first time_.
 
-```js
-Identifier 'x' has already been declared
-```
+- `let` is the easiest way to **declare** a variable in JavaScript
+- `const` and `var` are other **declarations**, but they have specific rules and caveats.
+- Without a _declaration_ (`let`, `const`, `var`) the variable becomes **global** (which is dangerous).
+- Stick with `let` unless otherwise needed.
 
-That means that when you're in the JavaScript console, if you see this error then try again without the `let`
+_How is declaring a variable different from assigning one?_
 
-```js
-> let x = 1
-undefined
-> let x = x + 2
-SyntaxError: Identifier 'x' has already been declared
-> x = x + 2
-3
-```
-
-* also confusing: the value of a `let` is `undefined`, but the value of a normal assignment is the value being assigned
+[Mozilla Developer Network | Statements and Declarations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements)
 
 ---
 
-# Variables are documentation
+# Common Declaration Mistake
 
-Which is clearer, this:
-
-```js
-60 * 60 * 24
-```
-
-or this:
+We can only _declare_ a variable once in each **scope** or code block. Otherwise, you will get an error:
 
 ```js
-let secondsPerMinute = 60
-let minutesPerHour = 60
-let hoursPerDay = 24
-let secondsPerDay = secondsPerMinute * minutesPerHour * hoursPerDay
+SyntaxError: Identifier 'coolNumber' has already been declared
 ```
 
-?
+If you see this error then try again without the _declaration_.
+
+```js
+let coolNumber = 1;
+// => undefined
+
+let coolNumber = coolNumber + 2;
+// => SyntaxError: Identifier 'x' has already been declared
+
+coolNumber = coolNumber + 2; // <= no "let", "const", or "var" this time
+// => 3 
+```
+
+---
+
+# Best Practices when Naming Variables
+
+Which is easier to understand without asking someone else?
+
+This?
+
+```js
+60 * 60 * 24;
+```
+
+Or this?
+
+```js
+let secondsPerMinute = 60;
+let minutesPerHour = 60;
+let hoursPerDay = 24;
+let secondsPerDay = secondsPerMinute * minutesPerHour * hoursPerDay;
+```
+
+How can you use this knowledge to be an effective teammate?
 
 ---
 
 # The Pointer Metaphor
 
 ```js
-let snack = "Apple"
+let snack = "Apple";
 ```
 
 ![snack-apple](https://res.cloudinary.com/btvca/image/upload/v1574445202/curriculum/snack-apple_ltysdv.svg)
 
-Think of a variable as an arrow **pointing** to a value.
+Think of a variable as a name that **points** to a value.
+
+> Note: Variables point. Values do not.
 
 ---
 
-# Changing Variables
+# Reassigning Variables
 
-You can assign and reassign variables at will.
+We tell variables what to point to when we **assign** and **reassign** them. If we don't assign them, they point to `undefined` by default.
 
 ```js
-let color = "blue"     // assign 'blue' to color
-let fruit = "berry"    // assign 'berry' to fruit
-color + fruit      // 'blueberry'
+let color;           // declare a variable but never assign it to a value
+color = "blue";      // assign the variable to a string values "blue"
+let fruit = "berry"; // declare fruit variable and assign to "berry" value
+color + fruit;       // combine the variables (and their values) to make "blueberry"
 
-color = "black"    // 'black'
-color + fruit      // 'blackberry'
+color = "black";     // reassigning again but this time to "black"
+color + fruit;       // combining again to now make "blackberry"
 ```
-
-*Reassignment* only changes the name of an object. It does *not* change the data inside the object.
-
-This is analogous to removing a label from one box and placing it on a different box.
 
 ---
 
-# Many pointers can point to the same thing
+# Assigning Variables to Other Variables
+
+If _variables_ are a kind of _expression_ that will be processed into _values_, what happens in a scenario like this?
 
 ```js
-let fruit = "Apple"
-let snack = fruit
+let fruit = "Apple";
+let snack = fruit;
 ```
 
-![snack-fruit](https://res.cloudinary.com/btvca/image/upload/v1574445202/curriculum/snack-fruit_momdep.svg)
-
-After this both `snack` and `fruit` are *pointing* to the same *value*
-
-This is analogous to placing two labels on the same box.
-
----
-
-# Return Values Are New
-
-Most messages return *new* values:
-
-```js
-let fruit = "banana"
-let snack = fruit.toUpperCase()
-```
-
-![fruit-banana-snack-banana](https://res.cloudinary.com/btvca/image/upload/v1574445175/curriculum/fruit-banana-snack-banana_fbbd8h.svg)
-
-`"banana"` and `"BANANA"` are two *different values* in memory. The value of `fruit` is still "banana".
-
----
-
-# Changing Values
-
-Most messages do not change the data, instead they return a new piece of data.
-
-```javascript
-let color = "blue"
-color.toUpperCase()     // "BLUE"
-color                   // "blue"
-```
-
-This is true for all strings, since strings in JavaScript are *immutable*. Any message that transforms a string will return you an entirely new string.
-
-But some messages **do** change the contents!
+|                                                                                                             | <br/>                                                                                                            |
+| ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| ![snack-fruit](https://res.cloudinary.com/btvca/image/upload/v1574445202/curriculum/snack-fruit_momdep.svg) | `snack` and `fruit` end up _pointing_ to the same _value_. <br/>This is like placing two labels on the same box. |
 
 ---
 
 # Constants: Variables that Aren't Variable
 
-* the keyword `const` is just like `let`, but also *prevents reassignment*
+- The keyword `const` is just like `let`, but _prevents reassignment_
 
-```javascript
+```js
 const pi = 3.14159;
 ```
 
-* the value of a `const` is *constant* after it's been set once
-  * if you try to change it, you get an error
+- When using const to declare a variable, the assignment is _constant_.
+  - Trying to reassign it will result in a TypeError.
 
-```javascript
+```js
 pi = 7;
 TypeError: Assignment to constant variable.
 ```
 
-> WARNING: `const` prevents *reassignment* but does not prevent changing the *insides* of objects or arrays.
+> WARNING: `const` prevents _reassignment_, but it does not stop a value from changing on its own.
 
 ---
 
-# Scope
+# { Scope }
 
-All variables are defined within a certain scope. The easiest way to recognize something is in a different scope is to pay attention to the levels of indentation.
+- **Scope** refers to the section of code where a variable can be used, like a territory or jurisdiction.
+- A variable's scope is determined when it is _declared_.
+- We can identify scopes by looking for `{}`s and indentations. This is why formatting your code really matters.
+- Starting a new pair of curly braces `{}` opens a new scope.
+- Indented variables, these are in between the `{}`, are located in an _interior_ scope.
+- Trying to use a variable outside of its scope results in an error.
 
-An item that is indented, when your code is properly formatted, is in an *interior* scope. Any time you open a set of curly braces it opens a new scope, and code written inside it should be indented. Remember to format your documents often!
+> ✨🪞✨<br> _Scope is like a one way mirror:_ <br>
+> You can look out (to exterior scopes), <br>
+> but you cannot look in (to interior scopes).
 
-Scope is like a one way mirror; you can always look out, to exterior scopes, but you can never look into interior scopes.
+---
+
+# { Scope Example }
+
+<figure>
+  <img src='https://res.cloudinary.com/btvca/image/upload/v1643917202/curriculum/scopeexample.png' width="70%"/>
+  <figcaption>
+    <a href="https://developer.mozilla.org/en-US/docs/Glossary/Scope">Mozilla Developer Network | Scope</a><br/>
+    <a href="https://www.w3schools.com/js/js_scope.asp">W3 Schools | Scope</a>
+  </figcaption>
+</figure>
 
 ---
 
 # Summary: Variables
 
-* variables are names for memory locations, which hold values
-* *declaring* a variable says what its *scope* is
-* *assigning* a variable changes which location it points to
-* you can have many names for the same location
-* sometimes values can change on the inside of a location
-  * (which is useful but could cause bugs)
+- _Variables_ are names for values
+- _Declaring_ a variable says what its _scope_ is
+- _Assigning_ a variable sets the value it's naming.
+- You can have many names for the same value.
