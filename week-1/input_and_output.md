@@ -46,7 +46,9 @@ process.stdin.once("data", (input) => {
 });
 ```
 
-[Node.js | process.stdin](https://nodejs.org/api/process.html#processstdin)<br/>[Node.js | emitter.once ](https://nodejs.org/api/events.html#emitteronceeventname-listener)
+[Node.js | process.stdin](https://nodejs.org/api/process.html#processstdin)
+<br/>
+[Node.js | emitter.once()](https://nodejs.org/api/events.html#emitteronceeventname-listener)
 
 ---
 
@@ -150,5 +152,9 @@ function printLine(input) {
 process.stdin.once("data", printLine);
 ```
 [Node.js | buffer.toString()](https://nodejs.org/api/buffer.html#buftostringencoding-start-end)<br/>[MDN | String.strip() ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)
+
+[Node.js | buffer.toString()](https://nodejs.org/api/buffer.html#buftostringencoding-start-end)
+<br/>
+[MDN | String.strip()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)
 
 ---
