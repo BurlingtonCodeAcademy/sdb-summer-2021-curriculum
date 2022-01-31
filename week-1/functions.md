@@ -1,146 +1,152 @@
 # Functions
 
-Remember that a **variable** is a **name** for a piece of data
+*Variables* allow us to reuse _values_.
 
-A **function** is the **name** for a piece of code
-
----
-
-## Why would you want to name a chunk of code?
-
-Perhaps...
-
-* you have some code you want to run again and again
-* you want to do the same operation on different values
-* you want to keep your code organized
+**Functions** allow us to reuse _statements_.
 
 ---
 
-# Function example
+## When to Use Functions
 
-Here's an example function:
+JavaScript is a **functional programming language**. _Functions_ are the tools used to organize code blocks into sections.
+
+| When you are...                                    | Use functions to...                            |
+| -------------------------------------------------- | ---------------------------------------------- |
+| 1. copying and pasting code blocks                 | 1. keep edits in one place                     |
+| 2. getting code to affect data in a different file | 2. share logic between files and computers     |
+| 3. noticing your file is rather long               | 3. break it apart and make it easier to read.  |
+| 4. lost as to what part of your code does what     | 4. label and divide your code into clear steps |
+
+---
+
+# Function Syntax
+
+- Here is the function syntax structure:
 
 ```js
-function add(x, y) {
-  let sum = x + y;
-  return sum;
+keyword functionName ( parameter1, parameter2 ) { code block }
+```
+
+In what ways does this look familiar?
+
+```js
+function sayHello() {
+  console.log("Hello!");
 }
 ```
 
-* `function` means "define a function"
-* `add` is the *name* of the function
-* `x, y` are the *parameters* of the function (also called *arguments*)
-* `sum` is a *local variable* of the function
-* `sum` is also the function's *return value* because of the magic word *return*
+Why is the _parameter_ an empty expression here?
 
 ---
 
-# Call Me, Maybe
+# Function Syntax Cont.
 
-You call a function by its name, plus parentheses:
+- Functions are often used to make changes to data.
+- This means functions need
+  - **Parameters**: A way to receive data
+  - **Return values**: A way to send data when done
 
 ```js
-function add(x, y) {
-  let sum = x + y;
-  return sum;
+function sayHelloToName(name) {
+  return "Hello " + name + "!";
 }
-
-add(2, 3)   // returns 5
-add(12, 30) // returns 42
 ```
 
 ---
 
-# Shouter
+# Calling or Invoking a Function
 
-Here is a slightly more complex function that takes some String as input, and as output returns a shouted version of that String.
+- We tell a computer to use a function by **invoking** or **calling** it.
+- To _call_ a function, we use 2 things:
+  - The function's name
+  - An expression holding **arguments**
+    - _Values_ provided to fill in the expected _parameters_
+    - Leave empty if no arguments are needed
+
+```js
+function sayHelloToName(name) {
+  return "Hello " + name + "!";
+}
+
+sayHelloToName("Lemony Snicket");
+```
+
+---
+
+# Function Literacy Practice
+
+Can you translate this JavaScript back to English?
 
 ```js
 function shouter(someString) {
   let loudString = someString.toUpperCase();
-  return loudString + '!!!';
+
+  return loudString + "!!!";
 }
-
-shouter('i like pizza'); // => 'I LIKE PIZZA!!!'
 ```
-
-The variable `loudString` is called a **local variable** and can only be used **inside** the function.
 
 ---
 
 # Passing Variables to Functions
 
-When you pass a *variable* to a function, that variable's *value* is assigned to a *parameter*.
+When you pass a _variable_ to a function, that variable's _value_ is assigned to a _parameter_.
 
 The variable and parameter names **do not** need to match!
 
 ```js
 function shouter(someString) {
   let loudString = someString.toUpperCase();
-  return loudString + '!!!';
+  return loudString + "!!!";
 }
 
 let feeling = "I feel great";
 let strongFeeling = shouter(feeling);
 ```
 
-
 | Outside the function | Inside the function | Value               |
-|----------------------|---------------------|---------------------|
-| `feeling`            | `someString`           | `"I feel great"`    |
-|                      | `loudString`     | `"I FEEL GREAT"`    |
+| -------------------- | ------------------- | ------------------- |
+| `feeling`            | `someString`        | `"I feel great"`    |
+|                      | `loudString`        | `"I FEEL GREAT"`    |
 | `strongFeeling`      |                     | `"I FEEL GREAT!!!"` |
 
 ---
 
-# Four Function Syntaxes
+# Alternative Ways to Write Functions
 
-> **WARNING**: JavaScript has many ways to define a function.
+When defining functions, there are multiple approaches developers can take:
 
-[Function declaration syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+[Function Declaration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
 
 ```js
-function add(x,y) { return x + y; }
+function add(x, y) {
+  return x + y;
+}
 ```
-
-The following are all roughly equivalent to the above:
 
 [Function Expression](https://developer.mozilla.org/en-US/docs/web/JavaScript/Reference/Operators/function)
 
 ```js
-let add = function(x,y) { return x + y; };
+let add = function (x, y) {
+  return x + y;
+};
 ```
 
 ---
 
-# Four Function Syntaxes Cont.
+# Alternative Ways to Write Functions Cont.
 
 [Arrow Function Expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
 ```js
-let add = (x,y) => { return x + y; };
+let add = (x, y) => {
+  return x + y;
+};
 ```
 
-[Arrow Function Expression with implicit return value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#Function_body)
+[Arrow Function Expression Shorthand](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#Function_body)
 
 ```js
-let add = (x,y) => x + y;
+let add = (x, y) => x + y;
 ```
 
-* Note that these new forms are *anonymous*, meaning there is **no name** between `function` and `(x,y)`
-    * the name of the function **is** the name of the variable that points to it
-
 ---
-
-# Variables and Scope
-
-In JavaScript variables are always in a specific *scope*.
-
-* "Scope" determines where we can use certain variables
-* Any variable defined at the *root level* of your file is in the *global scope*
-  * Global scope is useful, but dangerous!
-* In general, sets of curly braces `{}` create a *new scope*
-  * New scopes can always look outside of themselves
-  * But **nothing** can look into a different interior scope
-* Function parameters are local variables scoped to the function definition
-  * Arguments become the values of the parameters.
