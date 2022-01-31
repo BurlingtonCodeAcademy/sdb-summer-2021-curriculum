@@ -1,119 +1,154 @@
 # Input and Output
 
-* Computers have many senses -- keyboard, mouse, network card, camera, joystick, etc. Collectively, these are called **INPUT**.
+- Computers have many "senses" (ways to take _in_ information).
 
-* Computers can also express themselves in many ways -- text, graphics, sound, networking, printing, etc. Collectively, these are called **OUTPUT**.
+  - Keyboard, mouse, camera, joystick, etc.
+  - Collectively, these are called **input**
 
-* Input and Output together are called **I/O**.
+- Computers can also express themselves (ways to send _out_ information).
 
-* the only part of your laptop that is *really* a computer is the CPU and the RAM; all the other parts (keyboard, trackpad, display, disk drive, etc.) are technically I/O devices 
+  - Text, graphics, sound, networking, printing, etc.
+  - Collectively, these are called **output**.
+
+- Together, they are called **I/O**.
+
+- The CPU and the RAM are the parts of computers that actually do computing.
+- All the other parts are technically _I/O_ devices.
 
 ---
 
 # Memory vs I/O
 
-* Performing *calculations* and accessing *memory* is **very fast**
-* ...but reading and writing to I/O devices is **slow**
-    * (at least as far as the CPU is concerned)
-    * I/O operations can take *seconds* or *milliseconds*; CPU operations take *nanoseconds*
-* Every time you ask JavaScript to do an I/O operation, it *pauses your program*
-  * this allows the CPU to spend time doing other things, not just sitting idle waiting for a key to be pressed or a file to be written
-* In NodeJS, you have to write a function for JavaScript to run once it *resumes*
-    * this function is named an *asynchronous callback*
-    * *asynchronous* is Greek for "out of time" or "not together in time"
+- Computers can perform computations and get data from memory within nanoseconds.
+
+- Processing I/O operations, however, takes milliseconds to seconds long.
+
+  - While waiting, Node.js (JavaScript) pauses the program to let the CPU do other tasks.
+
+  - Node.js requires you to define a function to run when the program is ready to move on.
 
 ---
 
-# Terminal I/O
+# Using I/O Data in the Terminal
 
-* In JavaScript,
-    * `console.log` means "print a line to the terminal"
+Programs in the terminal also have the ability to input and output data.
 
-* In NodeJS,
-    * `process.stdin` means "input coming from the terminal"
+- To output or display a value, use `console.log();`.
 
-    * Reading a line in NodeJS is **weird**; here's one way to do it
+  - e.g. `console.log('Hello world!');`
+
+- To receive input from the terminal, use `process.stdin`:
 
 ```js
-process.stdin.once('data', (chunk) => {
-  console.log(chunk.toString()) 
-})
+// Here, we use both together tell the computer, "Show me what input you received."
+process.stdin.once("data", (input) => {
+  console.log(input.toString());
+});
 ```
 
+[Node.js | process.stdin](https://nodejs.org/api/process.html#processstdin)<br/>[Node.js | emitter.once ](https://nodejs.org/api/events.html#emitteronceeventname-listener)
+
 ---
 
-# node load code, decoded
-
-Let's break down the code we just wrote
+# Using I/O Data in the Terminal Cont.
 
 ```js
-process.stdin.once('data', (chunk) => {
-  console.log(chunk.toString()) 
-})
+process.stdin.once("data", (input) => {
+  console.log(input.toString());
+});
 ```
 
-> `once` is a special type of function, called an event listener, that takes two parameters,
-> and its second parameter is **another function**
+<br />
+<br />
 
-* `process.stdin` means "hey terminal input," 
-* `.once('data',` ... `)`   when you get some data, 
-* `(chunk)`               please name it `chunk` 
-* ` => ` and send it to this block of code `{console.log(chunk.toString())}`
-* which says "convert it to a string and print it to the terminal"
-
----
-
-# Event Listeners
-
-`.once` is a special type of function in JavaScript called an *event listener*
-
-Event Listeners are one of the main ways of handling user input for your programs. They:
-
-* are attached to a specific element, or interface
-  * In this case the terminal
-* wait for a specific type of interaction or event
-  * represented by the first argument to the function
-  * In this case a *data entry* event
-* run a function, that is supplied as the second argument to the event listener
+| JavaScript                        | English                                              |
+| --------------------------------- | ---------------------------------------------------- |
+| `process.stdin`                   | "Hey terminal input,                                 |
+| `.once('data',` ... `)`           | once you get some data...                            |
+| `(input)`                         | use it as a parameter called 'input'...              |
+| `=>`                              | and send it to this function's block of code...      |
+| `{console.log(input.toString())}` | convert it to a string and print it to the terminal" |
 
 ---
 
-# Welcome to Callback City!
+# Advanced Functions: Event Listeners
 
-The previous one-liner code is equivalent to this:
+`.once` is a special type of function in JavaScript called an _event listener_
+
+Event Listeners are one of the main ways of handling user input for your programs.
+
+- They represent a **function** value that is waiting for something to happen.
+
+- They need to know
+  - What they're waiting for: an event with the name **data**
+  - What to do _once_ that trigger happens: call a Function with the input String
+
+- This information is provided by you in the form of a _parameter_.
+
+In this case we're waiting for a _data_ event to happen, so we can print what that data is.
+
+---
+
+# Advanced Functions: Callbacks
+
+When an _argument_ is a _function_, we call that argument a **callback function**.
+
+Let's **refactor** (rewrite) the previous example to better see the _callback function_ we pass to `once()`:
 
 ```js
-function printLine(chunk) { 
-    console.log(chunk) 
+// One
+process.stdin.once("data", (input) => {
+  console.log(input.toString());
+});
+
+// Two
+function printLine(input) {
+  console.log(input.toString());
 }
-process.stdin.once('data', printLine);
-```
 
-The `printLine` function itself is called a *callback* 
-(since you are asking the I/O device to *call you back* when it receives input).
+process.stdin.once("data", printLine);
+// One and Two do the same thing
+```
 
 ---
 
-# Callbacks, the Original Async
+# Advanced Functions: Callbacks Cont.
 
-Callback functions are the original way of handling asynchronous programming in JavaScript.
-
-Callback functions take the responsibility of calling the function away from the programmer and puts it on another function. This allows your program to call that callback function *when it's needed*
-
-Functions that take callbacks can look confusing, but at their core all they're doing is this:
+Here is an example of the syntax:
 
 ```js
-function takesACallback(callback) {
-  callback()
+function useCallback(callback) {
+  // calling the function passed as a parameter
+  callback();
 }
+
+useCallback(function () {
+  console.log("Printing to the console from the callback function");
+});
 ```
+
+> Note: Callback functions and regular functions are the same thing. The different terms are for clarity in collaboration.
 
 ---
 
-# Code Along: Madlibs
+# Advanced Functions: Questions
 
-Let's create a Madlib template! The goal for this program is to ask for certain types of words (noun, verb, adjective, etc.) and once it has recieved a certain number of inputs it will insert those words, in the correct places, into a story which your computer will print to the terminal. We're going to:
+1. What is the callback function in example Two called?
+2. What happens if you omit the `.toString()` call in either example?
+3. Is what is printed exactly what is typed? Why or why not?
 
-* create a story with at least five words omitted (it does not have to be a long story ~1 paragraph)
-* set up a function that asks for input for each of the omitted words
-* print the story to the console, filling in the blanks with the provided words.
+```js
+// One
+process.stdin.once("data", (input) => {
+  console.log(input.toString());
+});
+// Two
+function printLine(input) {
+  console.log(input.toString());
+}
+
+process.stdin.once("data", printLine);
+```
+[Node.js | buffer.toString()](https://nodejs.org/api/buffer.html#buftostringencoding-start-end)<br/>[MDN | String.strip() ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim)
+
+---
