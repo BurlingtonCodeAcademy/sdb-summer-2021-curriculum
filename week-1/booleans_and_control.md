@@ -1,186 +1,75 @@
 # Null
 
-*null* is the value that means "there is no value"
+We briefly discussed _null_ when first learning about [manipulating data](https://online.uprighted.com/lessons/slides/manipulating-data).
 
-> Q: What is the sound of one hand clapping?
-
-> A: `null`
+Do you remember what it represents?
 
 ---
 
-# Null Values
+# Synonyms for Null
 
-JavaScript has several null values (a.k.a. empty values). This can be a bit confusing
+Null is just one way developers might express the concept of "none".
 
-* `null` means "nothing"
-* `undefined` means "i don't know"
-* `NaN` means "not a number"
-* `''` means "an empty string"
+Here are some you'll come across in your career:
 
-Docs: [MDN: null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
+> |           |                                                  |
+> | --------- | ------------------------------------------------ |
+> | null      | none<br/>nothing<br/><br/>                       |
+> | undefined | can't be found<br/>has never been made<br/><br/> |
+> | NaN       | **N**ot **A** **N**umber<br/><br/>               |
+> | ''        | No response                                      |
+
+[Mozilla Developer Network | null](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null)
 
 ---
 
-# Null is useful
+# Using Null with Conditionals
 
-Null is used in cases where "nothing yet" is a valid scenario.
+Null is often used as a default value when storing data on the backend.
 
 For instance, if a user has an account, but doesn't (yet) have a profile picture, `account.profilePic` may be `null`.
 
-Then you can test for that case, e.g.
+This allows us to make decisions based on this knowledge.
 
 ```js
 if (account.profilePic === null) {
-    showDefaultPicture();
+  showDefaultPicture();
 } else {
-    showPicture(account.profilePic);
+  showAccountPicture(account.profilePic);
 }
 ```
-
----
-
-# Null is dangerous
-
-Let's try the following code snippet in the terminal
-
-```js
-let fruit = null
-fruit.toUpperCase()
-```
-
-> *Read the error!*
-
----
-
-# Errors are good
-
-They tell you
-
-* you made a mistake
-* what that mistake was
-* (sometimes) how to fix it
-
-Please try to interpret this error:
-
-```js
-fruit.toUpperCase()
-TypeError: Cannot read property 'toUpperCase' of null
-```
-
----
-
-# TypeError explained
-
-```js
-fruit.toUpperCase()
-TypeError: Cannot read property 'toUpperCase' of null
-```
-
----
-
-# Error Explained
-
-* "`TypeError`" means "this is an error about data types" -- you thought you were using a string, but you weren't -- you were actually using `null` which is *not* a string
-
-* "`Cannot read property 'toUpperCase'`" means "you asked the value for a property named `toUpperCase` but there was no such property"
-
-* `of null` means "the value you were using was null"
-
-This error is confusing because it *buries the lede* -- you must read all the way to the end before you find the relevant clue ("`null`"), and it *omits* the name of the variable whose value was null ("`fruit`").
-
-Sadly, it is your job as a programmer to translate "TypeError: Cannot read property 'toUpperCase' of null" into "We expected the variable `fruit` to contain a string, but it contained `null` instead."
-
----
-
-# Null Pointer Errors
-
-* null pointer errors are fairly common
-* the trick is reading the error and figuring out
-    1. *where* it happened (*which line*)
-    2. *which variable* was null
-    3. *why* it was null
-* often once you know *which*, knowing *why* is obvious
-    * but sometimes it's a puzzle and you have to trace back
-    * e.g. the original problem was when *fruit was set to `null`*, but the error happened later, when the program tried to *use* `null` as if it were a string
-
----
-
-# If You're Going To Fail...
-
-Two failure recovery philosophies:
-
-* fail fast, fail hard
-* keep calm and carry on
-
-> Which idea do you think is better?
-
-> Why?
-
----
-
-# Failure Recovery
-
-*graceful* - generally good for users
-
-  * provide information and context in non-technical language
-  * help user accomplish their goal
-  * allow user to try again immediately
-
-*fail-fast* - generally good for coders
-
-  * exposes errors early
-  * forces you to think through "rainy day" scenarios
-  * provides information about the state of the program at the moment the error happened
-
-  ---
-
-# Nulls are falsy
-
-All of the empty values in JavaScript are *falsy*, so they will cause an `if` statement to fall through. This allows the code from the earlier example to be written concisely
-
-```js
-if (user.profilePic) {
-    showPicture(user.profilePic);
-} else {
-    showDefaultPicture();
-}
-```
-
----
-
-# Truthiness
-
-Computers have a very particular idea of when things are *true* and *false*.
-
-To a computer **everything** is one or the other.
 
 ---
 
 # Comparisons
 
-*Comparison operators* let you compare two values. JavaScript has all the usual suspects...
+_Comparison operators_ let you compare two values. JavaScript has all the usual suspects...
 
-|Operator|Comparison|
-|---|---|
-| `<` | less than |
-| `>` | greater than |
-| `<=` | less than or equal to |
-| `>=` | greater than or equal to |
-| `==` | equal to |
-| `!=` | not equal |
-| `===` | *really* equal to |
-| `!==` | *really* not equal to |
+| Operator | Comparison               |
+| -------- | ------------------------ |
+| `<`      | less than                |
+| `>`      | greater than             |
+| `<=`     | less than or equal to    |
+| `>=`     | greater than or equal to |
+| `==`     | equal to                 |
+| `!=`     | not equal                |
+| `===`    | _really_ equal to        |
+| `!==`    | _really_ not equal to    |
 
-[Comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) are also called "Boolean operators" after *[George Boole](https://en.wikipedia.org/wiki/George_Boole)*,
+[Comparison operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators) are also called "Boolean operators" after _[George Boole](https://en.wikipedia.org/wiki/George_Boole)_,
 a 19th-century mathematician who invented [Boolean algebra](https://en.wikipedia.org/wiki/Boolean_algebra).)
 
 ---
 
-# Conditions
+# Using If Statements to Set Up Conditions
 
-The keyword `if` sets up a *conditional* statement.
-
-The phrase immediately after `if` is a *condition*.
+- If statements follow the typical statement structure covered thus far:
+```js
+keyword ( expression ) { codeBlock }
+```
+- Here, the expression is used run the code block _only under certain conditions_
+- If the expression is **truthy** or `true`, the code block will happen
+- If it is **falsy** or `false`, the computer skips the code block and moves on
 
 ```js
 if (age < 18) {
@@ -188,118 +77,91 @@ if (age < 18) {
 }
 ```
 
-|phrase|meaning|
-|---|---|
-| `if (` ... `)`      | **if** this condition's value is *truthy* |
-| `{` ... `}`         | **then** run this block of code |
-
-Wait a second. "Truthy?"
-
-[MDN: if...else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)
+[Mozilla Developer Network | if...else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)
 
 ---
 
-# What is truthiness?
+# Truthy and Falsy
 
-![Truthiness](https://res.cloudinary.com/btvca/image/upload/v1574445211/curriculum/truthiness_jhdubk.png)
+If statements force the computer to decide if a value is `true` or `false`.
 
-* in the Colbert Report [truthiness](https://en.wikipedia.org/wiki/Truthiness) means things we *feel* to be true, even though we know they probably aren't
+But what if you put some other data type? A string, an array, a number, etc.
 
-* In JavaScript, **most** values are truthy **unless** they are explicitly falsy.
+Then, the computer will figure out if that value is closer to true (_truthy_)
+or closer to false (_falsy_)
 
-* [MDN: Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
-
----
-
-# What is falsiness?
-
-`false`, `null`, `undefined`, `0`, `NaN`, and the empty string (`""`) are all falsy values.
-
-These are also the *only* falsy values in JavaScript.
-
-Fortunately, `true` is truthy and `false` is falsy.
-
-Unfortunately, the string `"false"` is truthy, and the string `"0"` is truthy, even though the number `0` is falsy. This is because the string contains a character, and, even though the character is `0`, *any string with at least one character is truthy*.
-
-[MDN: Falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
+[Mozilla Developer Network | Truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy)
 
 ---
 
-# The Tragedy of the Equal Sign
+# Truthy and Falsy Cont.
 
-* a single equal sign means ASSIGNMENT
-  * `name = "Alice"` -- "assign the value 'Alice' to the variable 'name'"
-* two equal signs means COMPARISON
-  * `name == "Alice"` -- "does the variable 'name' contain the string 'Alice'?"
+Most values are _truthy_, so it's more important to recognize _falsy_ values:
 
-> This is confusing! (More about it on the next slide.)
+1. `false`
+2. `null`
+3. `undefined`
+4. `0`
+5. `NaN`
+6. `""`
 
----
+What do notice about these values?
 
-# A Notorious Bad Idea
-
-> "A **notorious example for a bad idea** was the choice of the equal sign to denote assignment. It goes back to Fortran in 1957 and **has blindly been copied by armies of language designers**. Why is it a bad idea? Because it overthrows a century old tradition to let "=" denote a comparison for equality, a predicate which is either true or false. But Fortran made it to mean assignment, the **enforcing** of equality... `x = y` does not mean the same thing as `y = x`."
->
-> — [Niklaus Wirth](https://en.wikipedia.org/wiki/Niklaus_Wirth), Good Ideas, Through the Looking Glass (2005)
-
-see also http://en.wikipedia.org/wiki/Assignment_%28computer_science%29#Assignment_versus_equality
+[Mozilla Developer Network | Falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)
 
 ---
 
-# Condition or Assignment?
+# Truthy and Falsy Practice
 
-> BEWARE of using a single equal sign inside an `if` condition!
+Are these values _truthy_ or _falsy_?
 
-* the value of a comparison is either `true` or `false`
-  * so `if (x == 2)` means `if x is 2` which changes based on `x`
+- `"false"`
+- `0`
+- `"0"`
+- `[]` **\***
+- `undefined`
 
-* the value of an assignment is the *value being assigned*
-  * so `if (x = 2)` means `if 2` which is *always truthy*
-  * also, the value of `x` will be 2 afterwards, no matter what it was before
-
----
-
-# The Tragedy of the Threequal Sign
-
-In addition to `=` and `==`, JavaScript also has `===`.
-
-That's three equal signs in a row.
-
-|Operator|Operation|Example|Meaning|
-|---|---|---|---|
-| `=`   | assignment         | `X = Y`  | let X equal Y |
-| `==`  | comparison (fuzzy) | `X == Y` | does X *mostly* equal Y? |
-| `===` | comparison (exact) | `X === Y`  | does X *really* equal Y? |
-
-`==` means "does X equal Y, or if not, can Y be *converted* into something that equals X?"
+[\* More on this example](https://www.nfriedly.com/techblog/2009/07/advanced-javascript-operators-and-truthy-falsy/)
 
 ---
 
-# When Should I Use `===`?
+# Using Else Statements
 
-Since the rules for type conversion are confusing, most JavaScript experts recommend:
-
-> **always use `===`, never use `==`**
-
-> Using `==` can have some very interesting side effects, see [Stackoverflow](https://stackoverflow.com/questions/359494/which-equals-operator-vs-should-be-used-in-javascript-comparisons)
-
----
-
-# if... then... else...
-
-The magic word `else` allows **BRANCHING**.
+The keyword `else` allows you to run a _code block_ when the conditional _expression_ is _falsy_ or `false`.
 
 ```js
-if (age >= 18) {
-  console.log("allowed");
+if (false) {
+  console.log("🍕");
 } else {
-  console.log("denied");
+  console.log("🍔");
 }
 ```
 
-Like a fork in the road, the program chooses one path or the other.
+Which code block will _execute_?
 
-It takes the first path if the condition is truthy, and takes the second path if the condition is falsy.
+---
+
+# Not Using Else Statements
+
+How does this behave differently...
+
+```js
+if (false) {
+  console.log("🍕");
+} else {
+  console.log("🍔");
+}
+```
+
+... from this?
+
+```js
+if (false) {
+  console.log("🍕");
+}
+
+console.log("🍔");
+```
 
 ---
 
@@ -307,19 +169,24 @@ It takes the first path if the condition is truthy, and takes the second path if
 
 You can make more complicated logical expressions using conjunctions:
 
-|Conjunction|Operator|Example|Meaning|
-|---|---|---|---|
-| AND | `&&` | `X && Y` | "are both X and Y true?" |
-| OR | <code>&#124;&#124;</code> | <code>X &#124;&#124; Y</code> | "is either X or Y (or both) true?" |
-| NOT | `!`  | `!X` | "is X false?" |
+| Conjunction | Operator                  | Example                       | Meaning                          |
+| ----------- | ------------------------- | ----------------------------- | -------------------------------- |
+| AND         | `&&`                      | `X && Y`                      | "are both X and Y true?"         |
+| OR          | <code>&#124;&#124;</code> | <code>X &#124;&#124; Y</code> | "is at least one of these true?" |
+| NOT         | `!`                       | `!X`                          | "is the opposite of X true?"     |
 
+Which code block will _execute_?
 
 ```js
-if (age >= 18 || hasPermissionSlip()) {
-  console.log("allowed");
+if (true || false) {
+  console.log("🍕");
 } else {
-  console.log("denied");
+  console.log("🍔");
 }
 ```
 
-[MDN: logical operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
+
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators">Mozilla Developer Network | Logical Operators</a>
+
+
+---
