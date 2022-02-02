@@ -1,106 +1,88 @@
 # Divisible
 
-## Welcome!
+# Objective
 
-The goal for this lab is to create a function that takes two numbers, and returns the boolean `true` if the first number is evenly divisible by the second, and `false` if they are not evenly divisible. Go ahead and create a file names "divisible.js"
+## Learning
 
-## Define the Function
+In this lab, we will be practicing writing functions, conditional logic, Boolean values and the Remainder `%` operator, which is also called the modulo operator.
 
-The first step when building a function is always to define the function. Let's call this one "divisible." It expects 2 arguments, the dividend, and the divisor so let's use those as the names for our parameters.
+Topics
 
-```js
-function divisible(dividend, divisor) {
+- `%` Remainder operator
+- `if...else` statements
+- Boolean values `true` and `false`
 
-}
+## Achieving
+
+In this lab, we will achieve a piece of software which takes two numbers and returns the Boolean `true` if the first number is evenly divisible by the second, and `false` if they are not evenly divisible. 
+
+Your work will result in:
+
+- A file named `divisible.js`
+- Within `divisible.js`, a function named `divisible` which takes two arguments and handles our logic.
+- Within the `divisible` function, the `remainder`, `dividend` and `divisor` variables to store our values.
+- Within the `divisible` function,  `if...else` conditional logic to return `true` or `false`
+- A program that correctly identifies whether or not one number is evenly divisible by the other.
+
+# Procedure
+
+## Create a `divisible.js` file
+
+- [ ] Navigate to your `code` folder in the command line.
+
+```sh
+cd ~/path/to/your/folder/code
 ```
 
-If we were to call this function, and `console.log` the results, we would get `undefined` printed to the console because there is currently no return value.
+- [ ] Use the command `mkdir` to create a new subfolder named `divisible`.
 
-```js
-console.log(divisible(25, 5))
+```sh
+# from within the code folder
+mkdir divisible
 ```
 
-## The Modulus Operator 
+- [ ] `cd` into the `divisible` directory.
 
-In JavaScript the `%` symbol is referred to as the modulus operator. The modulus operator tells you what the remainder is of dividing the two numbers. If the remainder is 0 the numbers are evenly divisible.
-
-Use the modulus operator to get the remainder of your dividend and divisor, and assign the result to a variable.
-
-`console.log` the remainder so that you can make sure it is what you expect it to be
-
-```js
-let remainder = dividend % divisor
-
-console.log(remainder)
+```sh
+cd divisible
 ```
 
-## Booleans
+- [ ] Use the terminal command `touch` to create a new file named `divisible.js`
 
-Ultimately we will want to return a boolean `true` or `false` from this function.
-
-For now let's just have the function always return `true`
-
-## Branching Logic
-
-We can have the function return different values under different circumstances by having some logical statements that return different results.
-
-Directly above your return statement add an `if` statement. If the remainder is not `0` return `false`
-
-> Remember all numbers are *truthy* except 0
-
-## Returning an Expression
-
-We can also return the result of an expression by returning the expression itself. This can allow us to write extremely concise code, such as the last example below, but there is always a trade off.
-
-THe more concise something is, the less readable it is. You should write functions in a way that makes sense to you. Try to find the balance between readable, and concise code that works best for you.
-
-## One Problem, Many Solutions
-
-There are always multiple ways to solve any problem. Here are a few different examples of ways we could define the `divisible` function:
-
-```js
-function divisible(dividend, divisor) {
-  let remainder = dividend % divisor
-  if(remainder) {
-    return false
-  }
-
-  return true
-}
-
+```sh
+touch divisible.js
 ```
 
-```js
-function divisible(dividend, divisor) {
-  let remainder = dividend % divisor
-  if(remainder === 0) {
-    return true
-  } else {
-    return false
-  }
-}
+- [ ] Open `divisible.js` in your editor.
 
+```sh
+code .
 ```
 
-```js
-function divisible(dividend, divisor) {
-  let division = dividend / divisor
-  if(division === Math.floor(division)) {
-    return true
-  } else {
-    return false
-  }
-  
-}
+## Create a `divisible` function
 
-```
+- [ ] Declare a function named `divisible` passing in `dividend` and `divisor` as its two arguments.
+- [ ] Within the `divisible` code block, initialize a `remainder` variable and assign it the value of the remainder of your `dividend` and `divisor` arguments. Do this by utilizing the modulus `%` operator.
+- [ ] Within the `divisible` code block, print the value of your `remainder` variable to make sure it is what you expect.
+- [ ] Within the `divisible` code block, write an `if` statement to check if the value of remainder is equal to `0` and if it is then return `true`.
+- [ ] Within the `divisible` code block, write an `else` statement which returns false.
 
-```js
-function divisible(dividend, divisor) {
-  return ! dividend % divisor
-}
+## Call the `divisible` function
 
-```
+- [ ] Outside of the `divisible` function, call `divisible()` and pass two numbers as arguments.
+- [ ] Print the result of calling `divisible()` to the terminal.
 
-Which of these makes the most sense to you?
-Can you think of another way we could solve this problem?
+# Review
+
+In this lab, we have practiced writing functions, using `if...else` conditional logic and utilizing the Remainder `%` operator. The software should:
+
+- Take in two numbers and return the Boolean `true` if the first number is evenly divisible by the second, and `false` if they are not evenly divisible. 
+ 
+
+## Going Further
+
+- How many different ways can you solve this?
+- Try using the following approaches
+  - Equality operator and remainder
+  - Remainder operator only
+  - Ternary operator
