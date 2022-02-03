@@ -1,66 +1,36 @@
 # Git
 
-*git* is a distributed version control tool
+**git** is a distributed version control tool.
 
-used for tracking changes to files
+Developer teams use it to keep track of project changes and switch between different versions.
 
----
+We can track the following:
 
-# What is a Version Control System?
+- A log of changes to the files
+- Including _who_ made each change
+- And _why_ they made that change
 
-It's like a filesystem, plus:
-
-  * a log of changes to the files
-  * including *who* made each change
-  * and *why* they made it
-
----
-  
-# Why is Version Control Important?
-
-* For a dev team?
-* For an individual on that dev team?
-* For a product manager or client?
-* For a sysadmin?
-* For a QA (Quality Assurance) engineer?
-
----
-
-# Installing Git
-
-* Instructions vary based on your operating system
-* MacOS with Homebrew: `brew install git`
-* MacOS without Homebrew: https://git-scm.com/download/mac
-* Windows: https://git-scm.com/downloads/win
-* Linux: https://git-scm.com/download/linux
+How do you think this tool helps developers and their companies?
 
 ---
 
 # Git vs GitHub
 
-[git](https://git-scm.com/book/) is a *distributed version control tool* that was built by Linus Torvalds in 2005 to help him manage the Linux Kernel project
+[GitHub](https://github.com/) is a hub for software versions managed using git. You can think of it as a social network (hub) where people share their code (git).
 
-[GitHub](https://github.com/) is a *centralized collaboration website* that was [started in 2007](https://www.inc.com/30under30/christine-lagorio/github-pj-hyett-chris-wanstrath-2013.html) by Tom Preston-Werner, Chris Wanstrath and P.J. Hyett, and was acquired by Microsoft in 2018
-
-> Does Linus use GitHub? Not much: <https://www.wired.com/2012/05/torvalds-github/>
-
----
-
-# Using Git Locally
-
-Git is a *distributed* version control system, but for this lesson we will use it *locally* (i.e. only on a single computer)
+There are other options than GitHub like GitLab and BitBucket, but GitHub is the most popular and accessible by far.
 
 ---
 
 # Core Concept: Repository
 
-a *repository* (or "repo") contains the version history a collection of files 
+A **repository** (or "repo") contains all of the versions of a project.
 
-in git, a repo comprises all files and subdirectories inside a single "root" directory
+A repo is always held in a single directory.
 
-* the command `git init` "blesses" the current directory and makes it into a repo
+- `git init` (short for initialize) makes the current directory a _repository_ that you can now track.
 
-* the command `git status` describes the state of the current repo
+- `git status` lists the changes that have been tracked in the _repository_.
 
 ---
 
@@ -68,63 +38,62 @@ in git, a repo comprises all files and subdirectories inside a single "root" dir
 
 git has a two-step process for tracking changes to files.
 
-* First, you **add** the changes to the *staging area* (also called the *cache* or the *index*)
+- First, you **add** the changes to the _staging area_ (also called the _cache_ or the _index_)
 
-* Then, you **commit** the changes to the *history* (also called the *log*)
+- Then, you **commit** the changes to the _history_ (also called the _log_)
 
 After a commit, the staging area is cleared, and the cycle continues.
 
-Think of the staging area as a loading dock for a warehouse. Boxes (changes) are put there a few at a time, then moved into the warehouse *en masse*.
+Think of the staging area as a loading dock for a warehouse. Boxes (changes) are put there a few at a time, then moved into the warehouse _en masse_.
 
 ---
 
 # Core Concept: Commit
 
-After *adding* changes to the staging area, you *commit* them to history.
+After `add`ing changes, they are stored in a `staging` area. When ready to save the changes, you `commit` them.
 
-Confusingly, the term "commit" is both a noun and a verb -- you run "git commit" on the command line to create a "git commit" in the history :-(
+When `commit`ing, you always provide a _message_ describing _why_ the changes are there (not a summary).
 
-When you create a commit, you always provide a *message* describing the nature of the changes:
-
-```
-git commit -m 'allow users to change their profile picture'
+```sh
+git commit -m "Allow Users to Change Their Profile Picture"
 ```
 
-Commit messages are important, and should describe **why** you made the changes. Think of them as journal entries -- without them you will be tracking *what* you changed, but not *why* you made the changes.
-
----
-
-# Add vs Commit
-
-Q: Why does git have a two-step process for tracking changes? Why doesn't `git add` just add the changes to the history immediately?
-
-A: This lets you tie several related changes together across several files into a single history entry. That single entry is usually related to a *coherent functional change*, with a descriptive *commit message* and clear purpose. 
-
-Think of "git add" as a *rough draft* and "git commit" as a *published version*. "git commit" means "I'm done working for the moment, and I'm ready to share this chunk of work with the team, and discuss it as a single item".
+Without commit messages, you will be tracking _what_ you changed, but not _why_ you made the changes.
 
 ---
 
 # Commit Hash IDs
 
-Every *commit* has a unique *id* (also known as a *hash*), which is a long string of letters and numbers.
+Every _commit_ has a unique _ID_ (also known as a _hash_), which is a long string of letters and numbers.
 
-    commit d8b95657eebea7083de1a4fb96ba7fb296637342
+`commit d8b95657eebea7083de1a4fb96ba7fb296637342`
 
-Fortunately, git allows you to *abbreviate* a hash by using its first few digits... 
+Fortunately, git allows you to _abbreviate_ a hash by using its first few digits...
 
-...and in fact, git already showed you an abbreviation when you ran `git commit`!
+...and in fact, git shows this when using `git commit`!
 
-    [master (root-commit) d8b9565] shopping list
+`[master (root-commit) d8b9565] shopping list`
 
-Look carefully at the digits inside the brackets -- **`d8b9565`**. They are the *same digits* as the beginning of the full hash above.
-
-> The commit id is generated using a cryptographic algorithm known as "SHA-1 hash", which assures that no two commits will ever have the exact same sequence of digits in their ids. <small><br>(unless someone [tries really hard to force a collision](https://security.googleblog.com/2017/02/announcing-first-sha1-collision.html))</small>
+Look carefully at the digits inside the brackets -- **`d8b9565`**. They are the _same digits_ as the beginning of the full hash above.
 
 ---
 
-# Pushing and Pulling
+# Sharing Code
 
-* Git allows you to *share your code* with other developers.
-* If you have a change you want to share, you use the command `git push` 
-* If someone else has made a change you want to incorporate into your own repository, you use the command `git pull`
-* GitHub.com is a *web site* that allows anyone to create and share git repositories
+- To _upload_ your changes _to_ GitHub, you use the command:
+
+```sh
+git push
+
+# alternatively, to a specific repository and branch
+git push origin master
+```
+
+- To _download_ changes _from_ GitHub, you use the command:
+
+```sh
+git pull
+
+# alternatively, from a specific repository and branch
+git pull origin master
+```
