@@ -1,112 +1,66 @@
 # Hello Friend, Go Away Enemy
 
-## Welcome!
+# Objective
 
-The goal of this lab is to write a program that will accept a name as input from the user through the command line. If the name is one of a pre-determined list of enemies the program should tell the enemy to go away, otherwise it should greet the person by name, and ask for another name, until an enemy name is entered or the user says their name is "bye!"
+## Learning
 
-Start by creating a new file called "hello_frenemy_input.js"
+In this lab, we will be playing with I/O (input/output). We will be utilizing the Node `process.stdin` property and its `.on` event listener to do so. We will also gain further practice with Boolean operators and conditional statements.
 
-To run this file in your terminal, `cd` into the directory containing the file, and enter the command `node hello_frenemy_input.js` to run the file in a NodeJS environment.
+Topics:
 
-## Core Concepts:
+- I/O (input/output)
+- The Node `process.stdin` property and its `.on` event listener.
+- Boolean operators.
+- Conditional statements.
 
-### Input/Output
+## Achieving
 
-Input is the way we interact with our computer, and output is the way it responds to us.
+In this lab, we will be extending our [Hello Frenemy](https://online.uprighted.com/lessons/lab/hello-frenemy) software. We should achieve a terminal program that waits for user input AND outputs a response to the terminal based on that input.
 
-In this lab we will be using the terminal for both input and output. Our goal is to write a program that responds to what we type into the terminal. To do this the program needs to be able to respond asynchronously to our inputs. For now, we're going to use event listeners, and callback functions to do that. However later today we will be learning about some techniques that will make this process significantly easier!
+Your work will result in:
 
-### Conditionals
+- A file named `helloFrenemyInput.js`
+- Within `helloFrenemyInput.js`, a function named `greeter` to handle our greeting logic.
+- Within `helloFrenemyInput.js`, a console log that prompts the user "Who are you?"
+- Within `helloFrenemyInput.js`, a call to our input device `process.stdin` and a `.on` event listener appended to it.
+- Within `process.stdin.on`, a call to `greeter` passing in `data`.
+- A program that handles user input and outputs the "correct" response.
 
-For this lab we'll want to take certain actions under certain conditions, so you may want to review the [Booleans and Control](/lessons/slides/booleans-and-control) lessons.
+# Procedure
 
-We'll also be using the code from our first iteration of "Hello Frenemy" so you may want to open that in a new window to use as a reference.
+## Creating the `helloFrenemyInput.js` file
 
-## Break Down the Problem
+- [ ] Navigate to your `code` folder in the command line.
+- [ ] Use the command `mkdir` to create a new subfolder named `hello-frenemy-input`.
+- [ ] `cd` into `hello-frenemy-input`.
+- [ ] Use the command `touch` to create a new file named `helloFrenemyInput.js`
+- [ ] Open `helloFrenemyInput.js` in your editor.
 
-We want to build a program that does several different things. It accepts input, in the form of typed names, and determines a response to give, then it asks again, until certain exit conditions are reached.
+## Creating the `greeter` function
 
-When building a larger function, or program it can be overwhelming to try and think about the whole process at once. Try to break the program down into small, actionable steps, and complete each step in turn.
+- [ ] Reference either the [Hello Frenemy](https://online.uprighted.com/lessons/lab/hello-frenemy) instructions or your previously created `helloFrenemy.js` for how to set up the `greeter` function.
 
-Let's start by defining the function, I'm going to call it `greeter` but you can use any name you want. We'll use this to deal with any user input so it will need to take in the user input as an argument.
+## Printing "Who are you?" to the console
+- [ ] After `greeter`, place a log that asks the user "Who are you?".
 
-Because we're dealing with user input we will need to set up an event listener on our terminal that listens for a data entry event. Our terminal is our standard input device, and we can reference it with `process.stdin` and we can use it to listen for input by setting up an *event handler*
+## Creating the `process.stdin.on` property with event listener
 
-```js
-function greeter(name) {
-  //We can use our code from the previous version of "Hello Frenemy" here
-}
+- [ ] Within `helloFrenemyInput.js` (but below `greeter`), declare a call to our terminal's input with `process.stdin`.
+- [ ] At the end of `process.stdin`, attach the event listener `.on`.
+- [ ] Invoke `.on` with parentheses; inside of the parentheses, first: inform the event listener of what we are listening for, 'data'. Second: pass in an anonymous callback function to trigger when the event occurs.
+- [ ] Within the callback function's code block, invoke `greeter` and pass in our `data`.
+- [ ] On the end of `data`, first call the `.toString()` method to ensure it is a String data type.
+- [ ] After `.toString()`, chain `.trim()`. 
+- [ ] Add another log to again prompt the user who they are.
 
-process.stdin.once('data', function (data){
-  // More code will go here
-})
-```
+# Review
 
-`process.stdin.once` is our `event listener` while the string `'data'` represents the type of event we're listening for, and the anonymous callback function will be called when the event is triggered.
+In this lab, we should have increased the complexity of our `Hello Frenemy` software to now utilize I/O (input/output). The software should:
 
-## Greet a Single Name
+- Accept the user's name input into the terminal and output the correct response based on whether or not they: are a friend, are an enemy, or are saying "bye!".
 
-Let's start by greeting a single name. We'll first need to ask a user for their name. Since the computer doesn't know exactly when the user will type their name in we'll need to use a the *callback function* in our event listener to call our `greeter` function, and pass in the name
+## Going Further
 
-```js
-console.log("Who are you?")
-
-process.stdin.once('data', (data) => {
-  greeter(data)
-})
-```
-
-We can then use the variable defined as the parameter to `greeter` to craft a custom response for the user.
-
-```js
-console.log("Hello, " + name + "!");
-```
-
-## Speak Friend, and Enter
-
-Greeting people is all well and good, but what if someone *evil* like Voldemort, Sauron, Humperdinck, Moriarty, or Vader came along? We probably wouldn't want to greet them.
-
-Make a conditional statement so that your program tells any of your enemies to "go away!" and greets anyone else by name.
-
-## When in Doubt `console.log` it Out
-
-If you run into any bugs a `console.log` is quite useful for making sure variables are actually what you expect them to be, or you are getting into a certain logic block. Use `console.log`s liberally, but remember to clean them up after you've built the program to avoid spurious outputs.
-
-## Repeat Until Complete
-
-We want our program to ask for names, until we tell it to stop. We could nest a ton of conditionals inside each other and hope our user gets bored and goes away before they hit the end of our logic chain, but that sounds highly inefficient and extremely tedious so let's just change our event listener from `.once` to `.on`. Now it will call our function on _every_ data entry event, rather than just the first one
-
-## Try it Out
-
-Run your function and try it out. If it doesn't work quite right the first time, don't worry! Debugging is a part of the development process. Read any error messages you're getting, add in some `console.log`s to check your data, and try and figure out what went wrong.
-
-Here's one way we could build this program:
-
-```js
-function greeter(name) {
-    if (name === "Voldemort" || name === "Sauron" || name === "Humperdinck" || name === "Moriarty" ||name === "Vader"){
-      consolo.log("Go, away!")
-      process.exit()
-    } else if(name === "bye!") {
-      console.log("Goodbye!")
-      process.exit()
-    } else {
-      console.log("Hello, " + name.trim() + "!")
-    }
-}
-
-console.log("Who are you?")
-
-process.stdin.on('data' function(data) {
-  greeter(data.toString())
-  console.log("Who are you?")
-})
-```
-
-## Make it Better
-
-If you want to take this project further try some of the following challenges:
-
-- Capitalize the names when you greet them
-- Don't allow enemies to sneak in by using odd capitalization. e.g. "morIARty"
-- What if someone enters their full name? e.g. "Darth Vader"
+- Did you complete Going Further on the original [Hello Frenemy](https://online.uprighted.com/lessons/lab/hello-frenemy)?
+- Inform users of the "bye!" command to exit the program.
+- Continue the conversation. What if the program followed up with "How are you?"
