@@ -56,7 +56,7 @@ Throughout this course, you will learn about:
 
 # Technical Requirements
 
-See the [Installfest](/week-1/articles/installfest) project for more instructions.
+See the [Installfest](/lessons/written/installfest) project for more instructions.
 
 Software
 
