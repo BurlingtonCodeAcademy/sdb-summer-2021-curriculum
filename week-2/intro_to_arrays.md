@@ -161,10 +161,10 @@ To remove a value from the end of an array you can use the `.pop` method
 - `.pop` returns the item that was removed. THis means you can use it for variable assignments!
 
 ```js
-let fruits = ["apple", "banana", "cherry"];
+let fruits = ["apple", "banana", "tangerine"];
 let lastFruit = fruits.pop();
 fruits; // => ["apple", "banana"]
-lastFruit; // => "cherry"
+lastFruit; // => "tangerine"
 ```
 
 ---
