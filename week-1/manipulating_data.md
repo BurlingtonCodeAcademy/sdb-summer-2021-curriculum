@@ -191,7 +191,7 @@ Values can be combined, split up, or changed using **operators**.
 - POWER (`**`)
 - DOT (`.`)
 - ASSIGNMENT (`=`)
-- COMPARISON (`===`, )
+- COMPARISON (`===` )
 
 An operator _sends a message_ to the value after it:
 
