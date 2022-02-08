@@ -17,7 +17,7 @@ Topics
 
 ## Achieving
 
-In this lab, we will be achieving a piece of software that takes a string as an argument and returns a capitalized version of that string.
+In this lab, we will be achieving a piece of software that takes a word or phrase as an argument and returns a capitalized version of that string.
 
 Your work will result in:
 
@@ -61,7 +61,7 @@ code .
 
 ## Create a `capitalize` function
 
-- [ ] Declare a function named `capitalize` passing in `'string'` as it's argument.
+- [ ] Declare a function named `capitalize` passing in `string` as it's argument.
 - [ ] Within the `capitalize` code block, initialize a `firstLetter` variable and assign it the value of our string's first index.
 - [ ] Within the `capitalize` code block, initialize a `restOfWord` variable and assign it the value of the rest of our strings indexes.
 - [ ] Within the `capitalize` code block, make the `firstLetter` variable uppercase, make the `restOfWord` variable lowercase, concatenate the resulting strings and assign them to a `fullWord` variable.
@@ -69,7 +69,7 @@ code .
 
 ## Call the `capitalize` function
 
-- [ ] Below our `capitalize` code block, call `capitalize()` and pass in a string as an argument that you want to capitalize
+- [ ] Below our `capitalize` code block, call `capitalize()` and pass in a word or phrase as an argument that you want to capitalize
 
 # Review
 
