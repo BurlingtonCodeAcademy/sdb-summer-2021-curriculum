@@ -64,7 +64,7 @@ let coolNumber = 1;
 // => undefined
 
 let coolNumber = coolNumber + 2;
-// => SyntaxError: Identifier 'x' has already been declared
+// => SyntaxError: Identifier 'coolNumber' has already been declared
 
 coolNumber = coolNumber + 2; // <= no "let", "const", or "var" this time
 // => 3 
