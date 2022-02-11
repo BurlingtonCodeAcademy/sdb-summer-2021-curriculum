@@ -53,7 +53,7 @@ let abby = {
 
 ---
 
-# An Object is a Lookup Table
+# An Object is a Dictionary
 
 An object is useful for putting many similar things together.
 
@@ -72,7 +72,7 @@ let states = {
 
 ---
 
-# Getting Object Properties
+# Accessing Object Values Using Properties
 
 You can get the properties of an object with either *dots* or *square brackets*:
 
@@ -83,7 +83,7 @@ You can get the properties of an object with either *dots* or *square brackets*:
 | `states.ma` | `states['ma']` | `'Massachusetts'` |
 | `states.ny` | `states['ny']` | `'New York'`      |
 
-Both syntaxes are useful in different situations. When you know what variable you want to use 
+Both syntaxes are useful in different situations and result in the same value.
 
 ```javascript
 states['vt']  // 'Vermont'
@@ -144,7 +144,9 @@ let material = 'brick'
 
 # An Object is a Data Structure
 
-Objects are good for a lot more than mere one-to-one maps. They allow you to design *data structures* that are as complicated and as deeply nested as you can imagine...
+Objects can be used as more than a dictionary.
+
+They allow you to design **data structures** -- tools for organizing and storing many related values.
 
 ```javascript
 let alice = {
@@ -160,49 +162,52 @@ let alice = {
 }
 ```
 
+What is the value of `alice.homeAddress.street`?
+
 ---
 
 # Accessing the Inner Objects
 
 Given the object from the previous slide, the value of `alice.homeAddress.street` is `'12 Maple St.'`
 
-> Note: The above shows the essence of [JSON](/lessons/slides/json):
-> a syntax for representing data structures containing primitive values,
-> including nested objects and arrays.
+Can you write this without using *dot syntax*?
+
+> Note: This format is also known as [JSON](/lessons/slides/json), though there are minor differences.
+> JSON is JavaScript Object Notation.
 
 ---
 
-# `Object.keys`
+# Object Methods: How to Access Just the Object's Keys
 
-`Object.keys` is a special function that:
+`Object.keys` is a special *method*. `Object.keys()`
 
   * takes any object as an argument
-  * returns an array
-  * containing that object's keys
+  * so that `Object.keys` can return an array of its keys.
 
 Example:
 
-```javascript
+```js
+let states = { ca: 'California', ma: 'Massachusetts', ny: 'New York' };
+
 Object.keys(states)  //=> [ 'CA', 'MA', 'NY' ]
 ```
 
 ---
+# Object Methods: How to Access Just the Object's Values
 
-# Accessing All the Properties
+Just `Object.keys` gives you an array of all keys, we can use `Object.values` to give us an array of all the values.
 
-You aren't always going to be working with objects that you created. In web development you will often be fetching objects from elsewhere on the internet, and using them in your programs.
+```js
+let states = { ca: 'California', ma: 'Massachusetts', ny: 'New York' };
 
-* `Object.keys` gives you an array of all keys
-* You can use the array to access the values of all keys on an object
-* useful for debugging
-* useful as another method of iterating over an object
-* useful for checking a property exists on the object
+Object.values(states)  //=> [ 'California', 'Massachusetts', 'New York' ]
+```
 
 ---
 
-# All keys are strings, even nulls
+# Object Keys Are Strings
 
-* In a JavaScript object, keys are strings that should also be valid variables
+* In a JavaScript object, keys are strings that need to follow the [rules for variable names](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Variables#an_aside_on_variable_naming_rules).
 
 * **Beware** of using these as keys, since they get converted to strings in unexpected ways:
   * `null`
@@ -213,9 +218,7 @@ You aren't always going to be working with objects that you created. In web deve
 
 ---
 
-# `delete`
-
-To remove a key-value pair from an object, use the keyword `delete`:
+# Removing Key-Value Pairs From Objects With `delete`
 
 ```js
 states = {
@@ -224,43 +227,32 @@ states = {
   ny: 'New York'
 }
 
-// { ca: 'California', ma: 'Massachusetts', ny: 'New York' }
-
 delete states.ma
 
-// Returns true
-
-states
-
-// { ca: 'California', ny: 'New York' }
+// states is now { ca: 'California', ny: 'New York' }
 ```
 
 ---
 
-# Fake delete
+# Need to Keep the Key? An Alternative Strategy to Deleting
 
-The preferred way of removing an object's values in JavaScript is to nullify it. We can do this by setting the value to `null` or `undefined`.
+The preferred way of removing an object's values in JavaScript is to nullify it. We can do this by setting the value to `null`.
 
 ```js
-states.ca = null
+let states = { ca: "California", ny: "New York" }
+states.ca = null 
+// states is now { ca: null, ny: "New York" }
 
-states.ny = undefined
+let stateAbbrevs = Object.keys(states) 
+// stateAbbrevs is [ 'ca', 'ny' ]
 
-states
-// { ca: null, ny: undefined }
-
-let stateAbbrevs = Object.keys(states)
-
-for (let abbrev of stateAbbrevs) {
-  console.log(states[abbrev])
-}
 ```
 
-> This only removes the *value*, but not the *key*, from the property list.
+> Why might this be a preferred method of deletion?
 
 ---
 
-# More About JS Objects
+# Extra Reading About Objects
 
 * Eloquent JavaScript: [Chapter 4](https://eloquentjavascript.net/04_data.html)
 
