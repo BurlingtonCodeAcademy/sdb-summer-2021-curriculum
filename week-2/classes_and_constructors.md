@@ -122,7 +122,6 @@ Remember that there are no rules about calling functions within another function
 
 We can use a function to take data in a different format than the kind our class may need. This allows us to process it accordingly before trying to use it.
 
-**factory function**
 
 ```javascript
 function circleFromDiameter(diameter) {
@@ -130,7 +129,7 @@ function circleFromDiameter(diameter) {
 }
 ```
 
-The above is called a "factory function" since it constructs objects for you, based on your specifications.
+The above is called a **factory function** since starts the *construct*ion process for you, based on your specifications.
 
 ---
 
