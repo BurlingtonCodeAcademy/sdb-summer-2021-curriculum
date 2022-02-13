@@ -1,6 +1,14 @@
 # Object Instance Methods
 
-A method is a *function* attached to an *object* as a *property*. One of the main benefits of using objects is to create a predictable abstraction. Since objects maintain their own state, and behavior we can 
+A **method** is a *function* attached to an *object* as a *property*. 
+
+We can use objects to represent *things* from real life, 
+and we can use their methods to represent *actions* those things can do. 
+
+For example,
+```js
+dog.speak()
+```
 
 ---
 
@@ -22,35 +30,55 @@ Let's set up a simple object, with a method that prints a little message.
 * Give `dog` 3 properties, a `name`, a `color`, and `speak`
   * `name`, and `color` will be strings
   * `speak` will be our method
-* When called `speak` will print `"Bark!"` to the console
+* When called, `speak` will print `"Bark!"` to the console.
 
 ---
 
-# Passing Arguments to Methods
+# Syntax for Passing Arguments to Methods
 
-Since methods are just functions we can pass them arguments in the exact same way.
+Because methods are functions, we use them in the same way.
 
-Just pass the argument between the parentheses of the method call as you would for any function
+`objectName.methodName(argument)`
 
 ---
 
 # Using Properties
 
-We can access and use our object's properties from inside itself using dot or square bracket notation as we would to access properties from outside the object
+We know we can access values within objects using this syntax:
 
-While we can call the object by name from inside itself it's not an ideal pattern
+`objectName.keyName`  
 
-* It looks sloppy
-* It doesn't preserve encapsulation
-* It makes it easier to introduce bugs into your program
+But what if we are still inside the object we are defining? For example,
 
-It's better to use the keyword `this` to access the object your method's attached to.
+```js
+let human = {
+  height: `5'2"`,
+  armspan: /* use height value here */
+  noseLength: `3"`,
+  earLength: /* use noseLength here */
+}
+```
 
 ---
 
-# Methods Can Access Object State
+# `this` Example 
 
 `this` is a magic word that means "this object I'm in *right now*"
+
+```js
+let human = {
+  height: `5'2"`,
+  armspan: this.height,
+  noseLength: `3"`,
+  earLength: this.noseLength
+}
+
+console.log(human.armspan)   // `5'2"`
+```
+
+---
+
+# `this` Example 2
 
 ```js
 let rectangle = {
@@ -61,45 +89,62 @@ let rectangle = {
   }
 }
 
-rectangle.height   //=> 10
-rectangle.area()   //=> 80
+console.log( rectangle.height )   // 10
+console.log( rectangle.area() )   // 80
 ```
 
 ---
 
-# Using `this`
+# `this` Practice
 
-Let's go back to our `dog` object and adjust our speak method so that it tells us a little more about our specific object.
+Let's go back and edit our dog object now to use this skill:
 
-- In the console log where we have the string `"Bark!"` let's change the string to say the dog's name and color
-  - To reference the object we're on we'll use the `this` keyword, and then access the property we want
-  - so if we replace the string `"Bark!"` with `"My name is " + this.name + " and I am a " this.color + " dog."`
-  - We now have a talking dog!
+* Where we log `"Bark!"`, change the string to say the *dog's* `name` and `color`.
+* Remember to use the `this` key word instead of the object's variable name.
+
+What's the result? Share and compare.
 
 ---
 
 # `this` and Binding
 
-The keyword `this` is *bound* to the context in which it is *called*. If you're calling the method through the object using dot notation (as you normally would), the context is *that object.*
+The keyword `this` is *bound* to the context in which it is *called*.
 
-If you detach the method, then the `this` keyword becomes *unbound*. This can cause issues because the global object usually doesn't have the properties your method is looking for.
+Using dot notation to access the method from the object means the context is *that object.*
 
----
+```
+dog.speak()
+^^^--------------- dog is the context
+```
 
-# Fat Arrow Functions
-
-Fat arrow functions bind `this` to the context in which they are *defined*. This can make it easier to know what exactly you're referencing with `this`
-
-Also remember: "When in doubt `console.log` it out."
-
-If your method is not behaving as expected try `console.log`ing what `this` is inside your method.
+> Note: Arrow functions work differently.
 
 ---
 
-# Extending objects on the fly
+# `this` and Binding Cont.
 
-Since JavaScript is a *dynamic* language,
-you can add methods to *any object*.
+Fat arrow functions `() => { }` bind `this` to the context in which they are *defined*. This can make it easier to know what exactly you're referencing with `this`.
+
+Also remember: "When in doubt, `console.log` it out."
+
+
+```js
+let dog = {
+  ^^^--------------- dog is the context
+  speak: () => console.log(`Bark!`)
+}
+dog.speak()
+```
+
+Understanding the nuance of `this` and binding is not expected right now.
+
+Just be sure `console.log` what `this` is inside your method to be sure of its value.
+
+---
+
+# Adding to the Object After Creating It
+
+We can add methods and properties to objects even after we've already made them.
 
 
 ```js
@@ -107,6 +152,7 @@ let rectangle = {
     height: 10,
     width: 8,
 }
+
 rectangle.area()   //=> TypeError: rectangle.area is not a function
 
 rectangle.area = function() {
@@ -115,5 +161,5 @@ rectangle.area = function() {
 rectangle.area()   //=> 80
 ```
 
-* remember, `this` means "this object I'm in *right now*" which in this case is the rectangle
-* `this.height` on the *inside* of the object means the same as `rectangle.height` on the *outside*
+* What is `this` in the above example?
+* Does `this.height` on the *inside* of the object mean the same as `rectangle.height` on the *outside*?
