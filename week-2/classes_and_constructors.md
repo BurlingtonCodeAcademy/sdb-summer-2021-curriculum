@@ -1,157 +1,128 @@
-# the `class` keyword
+# Classes
 
-In 2015, JavaScript introduced the `class` keyword which is syntactic sugar on top of JavaScript's existing prototype system. 
+In 2015, JavaScript introduced the `class` keyword.
 
-This new `class` syntax is much easier to understand than the previous system.
+**Classes** are a [special kind of function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes). Like functions, you can make them using declarations or expressions, but we will focus on the declaration style.
 
-```javascript
-class Circle {
-  circumference() {
-    return Math.PI * this.radius * 2;
+The purpose of a class is to generate a specific object you want.
+
+---
+
+# Class Syntax
+
+```js
+class Pizza {
+  constructor(diameter, type) {
+    this.diameter = diameter;
+    this.type = type;
   }
-  area() {
-    return Math.PI * this.radius * this.radius;
+
+  bake(){
+    console.log('Your pizza will be ready in 5 minutes!')
   }
 }
 ```
 
+What about this syntax is familiar? What is new?
+
 ---
 
-# Use it like this:
+# Instantiating Classes
+
+To **instantiate** is to create an **instance** of a class. This means we are using the class to construct *one* specific object.
 
 ```javascript
-let circleInstance = new Circle();  // create a new Circle instance
-circleInstance.radius = 2;          // set its radius to 2
-circleInstance.area();              // call the area method, which
-                            // returns 12.566370614359172 
+let myPepperoniPizza = new Pizza(14, 'pepperoni');  // create a new Pizza instance
+myPepperoniPizza.diameter = 16;                     // set its diameter to 2
+myPepperoniPizza.bake();                            // call the bake method, which returns 'Your pizza will be ready in 5 minutes!'
+                            
 ```
-
-* A Note On Spelling:
-  * "Circle" with a capital C is the constructor
-  * In JavaScript class names are generally capitalized
-  * All other variable names are camel cased
-  * This makes it easier for us as the programmer, but the computer doesn't care
-  * It's the standard naming convention, so always capitalize your class names
 
 [MDN: classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
 ---
 
-# Stay classy, JavaScript
+# When and Why to Use Classes
 
-This is the first time we've seen classes in JavaScript
+Classes *construct* objects.
 
-Classes are for making lots of objects with the same methods, but different data
+We use them for repeatedly making the same kind of object where the details might vary.
 
-* A *class* defines a **type** of object.
-* An *instance* is an **individual** object of that type.
-* Each instance has *it's own* state
-
-> For example, there are many houses, but my house is yellow.
+* A *class* defines a category of object -- all humans.
+* An *instance* is *one* object of that type -- one specific human.
+* Each instance has *its own* data -- you have unique DNA.
 
 ---
 
-## The Cookie Analogy:
+# Constructors and `new`
 
-  * class ~= cookie cutter
-  * instance ~= cookie
-  * instance data ~= icing and sprinkles
-
----
-
-# Constructors and "new"
-
-* A constructor is a **method on a class** that's called when you use the *new* keyword
-* It's the very first method that's ever called on that particular instance
-
----
-
-## What `new` does, in detail:
-
-  * makes a new empty object
-  * sets the object's class
-  * sets `this` to point to the new instance
-  * calls the constructor function
-  * returns a new object instance
-
----
-
-# Constructors are for Initialization
-
-the principle of *Complete Construction* says that after the constructor executes, the object is in a *valid* state
-
-in practice, this means "pass all initial values into the constructor"
-
----
-
-## A Better Circle:
+* Using the `new` keyword tells JavaScript to invoke the `constructor` *method* within a *class*.
+* This is the method that actually *constructs* the object.
 
 ```js
-class Circle {
-  constructor(radius) {
-    this.radius = radius;
-  }
-  circumference() {
-    return Math.PI * this.radius * 2;
-  }
-  area() {
-    return Math.PI * this.radius * this.radius;
-  }
-}
+let myPizza = new Pizza(14, 'pepperoni')
 ```
 
-Use it like this:
-
-```js
-let circle = new Circle(2);  // create a new Circle instance with radius 2
-circle.area(); // call the area method, which returns 12.566370614359172
-```
+> [Mozilla Developer Network | new operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)
 
 ---
 
-## Q: Why is this better?
+# Constructors and `new` Cont.
 
-A: because it preserves *encapsulation* -- the idea that an object should be responsible for setting its own properties
-
-Encapsulation:
-
-  * Prevents accidental reassignment
-  * Allows consistent and predictable outcomes
-  * Preserves the state of the data
+What exactly does `new` do?
+  
+[Investigate and discuss.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new#description)
 
 ---
 
-# Constructors are for Validation
+# Practice: Making a Circle Class
 
-constructors are a great place to *validate* your values 
+> 1. Use a class to make a circle.  
+> 2. Create an instance.
+> 3. Log the area and circumference return values.
+> 4. When done, submit your answer.
 
+Constraints: Your circle must
+
+* have a radius as its parameter in the constructor.
+* have a method of calculating the circumference.
+* have a method of calculating the area.
+
+---
+
+# Validating Classes
+
+**Validating** input means making sure the data is acceptable and [throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw)ing if it's not.
+
+A good time to validate data is in the constructor, *before* initializing values in `this`.
+
+For example:
 ```javascript
-class Circle {
-    constructor(radius) {
-        if (radius <= 0) {
-            throw('radius must be a positive number')
+class MyClassName {
+    constructor(parameter) {
+        if (parameter !== someValueIWant) {
+            throw "Your parameter doesn't equal something I want! Boo hiss!" // sends an "exception"
         }
-        this.radius = radius;
+        this.parameter = parameter;
     }
 ```
 
 ---
 
-# Guard Clauses
+# Practice: Validating Your Pizza
 
-* that `if` statement is known as a "guard clause"
-  * it guards against bad values entering your algorithm
-* validation is a valuable feature in program designs
-  * it lets you *write less code* in other methods, confident that you don't have to check for bad data or boundary conditions
-  * You can catch bugs when they are introduced rather than waiting for something to go wrong
+> Challenge: Make a pizza class that does *not* allow you to set pineapple as the type.
+> You may use the slides and your notes. DM your answer to an instructor via Discord.
 
 ---
 
-# Factory Town
+# Instantiating Classes in Functions
 
-Sometimes one constructor just isn't enough.
+Remember that there are no rules about calling functions within another function's block, even when using special ones like classes.
 
-When the constructor accepts different parameters from the ones that you have on hand, you could define a *factory function* like this:
+We can use a function to take data in a different format than the kind our class may need. This allows us to process it accordingly before trying to use it.
+
+**factory function**
 
 ```javascript
 function circleFromDiameter(diameter) {
@@ -180,47 +151,49 @@ The factory method works *exactly the same way* as the factory function, but
  
 # Static Factory Methods 
 
-To make a *factory method* attached to a class in JavaScript, use the [`static`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static) keyword:
+A `static` property or method is one that we can only use with the class itself, *not instances.*
 
 ```javascript
 class Circle {
-  static fromDiameter(diameter) {
+  static createCircleUsingDiameterInfo(diameter) {
     return new Circle(diameter / 2);
   }
+
   constructor(radius) {
     if (radius <= 0) {
-        throw('radius must be a positive number')
+      throw 'Radius must be a positive number';
     }
     this.radius = radius;
-  }
-  
-  area() {
-    return Math.PI * this.radius * this.radius;
   }
 }
 ```
 
 ---
 
-# Using Factory Methods
+# Practice: Static Factory Methods
 
-Factory methods are useful for when you want to be able to generate an object based on different parameters, or if you want to create a default instance if no data is supplied.
+| Code | Output |
+|-|-|
+|<img src ="https://res.cloudinary.com/btvca/image/upload/v1644792273/curriculum/factoryMethod_uaawek.png" width="60%" /> |<img src ="https://res.cloudinary.com/btvca/image/upload/v1644792271/curriculum/factoryMethodOutput_iakgju.png" width="60%" />|
 
-We could use the factory method we defined before to generate circles from their diameter, rather than the radius, and call it like this:
 
-```javascript
-let diameterCircle = Circle.fromDiameter(4)
-```
+---
+# When and Why to Use Factory Methods
 
-> Note that (lowercase "c") `circle.fromDiameter()` does **not** work. **Static methods are attached to classes**, not instances, and classes are defined with **capitalized** names.
+Factory methods allow us to consistently change the format of the data used to create an instance, like when we want to use a diameter instead of a radius.
+
+You know it's time to use a factory method when you want to create multiple instances from a class using data it does not originally support.
+
+What happens if you try to invoke a static method from an instance instead of the class itself? Try it and see!
 
 ---
 
 # Class Inheritance
 
-All objects inherit the methods, and properties defined on their class. Usually a constructor will be used to allow you to dynamically assign the values of the properties when you create a new object instance, but if you hard code the values on the class then those values will also be inherited by the class.
+Classes give their properties and methods to the objects they create. The properties are attached in the constructor.
 
+This means we don't need to rewrite `getArea` or `getCircumference` every time we create a circle object from the Circle class.
 
-By setting the methods as properties of the class and not setting them in the constructor we are taking advantage of inheritance to pass those methods to every object that is created by our class without having to redefine them each time.
+Using the `static` keyword to prevents inheritance for properties and methods. 
 
-If we don't want a method, or property to be inherited by the class's objects we can use the `static` keyword to prevent it from being passed down. This is commonly done with factory methods.
+The circle objects we make do not inherit the `createCircleUsingDiameterInfo` method.
