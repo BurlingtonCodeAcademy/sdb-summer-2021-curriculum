@@ -1,90 +1,69 @@
 # Cake factory
 
-## Welcome!
+## Objective
 
-In this lab we will be creating a class that generates objects that represent cakes! Our cakes will each have 3 properties, the flavor of the cake, the flavor of the frosting, and what (if any) decorations it has. We'll also be attaching a method to the class so that we can print a description of our cake to the terminal. We'll also be creating a factory function that will generate a default cake. Go ahead and create a new file called `cake.js`
+In this lab we will be creating a class that generate objects that each represent a different cake. The cakes will each have three properties, the flavor of the cake, the flavor of the frosting, and what decorations it has, if any.
 
-## Setting up the Class
+## Learning
 
-The first thing we'll need to do in cake.js is define our class with the `class` keyword, and give it a name. In JavaScript there is a naming convention that class names are always capitalized. While there is nothing in the language that will prevent lowercase class names it will confuse fellow developers, and may even be the wrong color in your text editor depending on what syntax highlighter you're using. Let's call our class `Cake`
+We will create multiple properties and a method on our new class utilizing a class constructor.
 
-```js
-class Cake {
+Topics:
 
-}
-```
+- Class and class constructor.
+- Creating and using class methods.
+- Object construction.
 
-## Construct It
+### Links
 
-We want our class to have 3 different properties we can dynamically set on objects. To create *instance data* for our objects we'll need to set up a `constructor` method on our class. This special method will be called when we generate a new object and can be used to set the values of the properties on that object. If we ran the following code:
+- [MDN Creating Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [MDN Class Tutorial](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 
-```js
-let myCake = new Cake("chocolate", "caramel", "sprinkles")
-```
+## Achieving
 
-`myCake` would be an object that looks like this:
+In this lab, we will create a piece of software that creates cakes of the `Cake` class. We will utilize our `describe` `Cake` class method to print information about the cakes to the console.
 
-```js
-myCake = {
-  flavor: "chocolate",
-  icing: "caramel",
-  decoration: "sprinkles"
-}
-```
+Your work will result in:
 
-We can define a `constructor` method as we would define any other method inside the class, but it **must** be called `constructor`. Also, while methods are just functions, they are not defined with the `function` keyword, just name them
+- The `cake.js`file.
+- `Cake` class and constructor.
+- `describe` `Cake` class method.
+- Three new `Cake` objects.
+- Multiple invocations of our `describe` method to print information about the cakes to the console.
 
-Our `constructor` should take three arguments:
-- `flavor`
-- `icing`
-- `decoration`
+## Procedure
 
-Inside the constructor we can assign the arguments to the properties on the objects by using the `this` keyword, and the assignment operator. e.g. `this.flavor = flavor`
+### Create the `cake.js` file
 
-## Check Your Object
+- [ ] Create a new file named `cake.js` and open it in your editor.
 
-Now that you've got the constructor set up, let's make sure that the objects have the data we expect them to.
+### Construct the `Cake` class
 
-Generate a new object by generating a new instance of the `Cake` class. You can use the `new` keyword to trigger the constructor by calling the class, and passing in any arguments it expects:
+- [ ] Define a class named `Cake`
+- [ ] Within Location's code block, create a constructor that takes `flavor`, `icing`, and `decoration` as its arguments.
+- [ ] Within the constructor's code block, map: `this.flavor` to `flavor`, `this.icing` to `icing`, and `this.decoration` to `decoration`.
 
-```js
-let myCake = new Cake("chocolate", "caramel", "sprinkles")
-```
+### Create the `describe` `Cake` class method
 
-If you `console.log` the `myCake` variable defined above it should look something like this:
+- [ ] Outside of the constructor's code block but within the `Cake` class, create a `describe` method that takes a `number` as its parameter.
+- [ ] `describe` should contain a console log that utilizes `flavor`, `icing`, `decoration`, and `number` in a description of the cake.
 
-```
-{
-  flavor: "chocolate",
-  icing: "caramel",
-  decoration: "sprinkles"
-}
-```
+### Define three new `Cake` class objects
 
-## Attaching a Method
+- [ ] Create three new Cake objects. Their name and their property values passed to the constructor are your choice, but they should correlate with the keys of the properties (`flavor`, `icing`, `decoration`).
 
-Let's create a method that will print a nice description of our cake. Let's name the method `describe`, and when you call it, it should print out a string in the format "It is a FLAVOR cake, with ICING frosting, and DECORATION "
+### Invoke the `describe`method
 
-* Given the previously created `myCake` object
-  * When calling `myCake.describe()`
-  * Then you should get "It is a chocolate cake, with caramel frosting, and sprinkles" printed to the console.
+- [ ] Invoke the `describe` method on all three of your new cakes.
 
-Remember you can access the properties on an object, from inside that object, with the `this` keyword
+## Review
 
-## Cake Factory
+In this lab, we created the `Cake` class and constructor that creates Objects with multiple properties and a method. The software should:
 
-a "factory function" is a function that creates new objects from a class. They are often set up to generate a default instance, or allow a broader variety of inputs to generate a previously set up class.
-
-Factory functions are just normal functions that `return` a `new` instance of a class, passing in modified arguments, or a default set of arguments.  Create a factory function that takes no arguments itself, but always returns a default vanilla cake with chocolate icing, and no decorations.
-
-## Test It Out
-
-Generate a few different cakes with different *instance data* as well as a default cake. Call the `.describe` method on each cake. Do you get what you expect?
+- Have multiple new Objects of the `Cake` class that print their description to the terminal when the software is run.
+- The description should utilize `flavor`, `icing`, `decoration`, and `number`.
 
 ## Going Further
 
-- What if someone omitted one of the arguments to the constructor?
-  - can you supply a default value?
-  - can you warn the user if they don't enter anything, or enter something that's not a string?
-- Could you add a method that allows you to (virtually) eat a slice of the cake?
-  - and changes the description when there are no slices left?
+- Create the `eat` method that accepts the `slice` parameter. Print to the console a description that utilizes `flavor` and `slice`. Invoke `eat` beneath the invocations of `describe`.
+- What if not every cake had all four properties? Set up error handling to have default values when the values are not given to the constructor and/or method.
