@@ -6,6 +6,7 @@ We can use objects to represent *things* from real life,
 and we can use their methods to represent *actions* those things can do. 
 
 For example,
+
 ```js
 dog.speak()
 ```
@@ -53,7 +54,7 @@ But what if we are still inside the object we are defining? For example,
 ```js
 let human = {
   height: `5'2"`,
-  armspan: /* use height value here */
+  armSpan: /* use height value here */
   noseLength: `3"`,
   earLength: /* use noseLength here */
 }
@@ -68,12 +69,12 @@ let human = {
 ```js
 let human = {
   height: `5'2"`,
-  armspan: this.height,
+  armSpan: function () { return this.height },
   noseLength: `3"`,
-  earLength: this.noseLength
+  earLength: function () { return this.noseLength }
 }
 
-console.log(human.armspan)   // `5'2"`
+console.log(human.armSpan)   // `5'2"`
 ```
 
 ---
@@ -112,9 +113,9 @@ The keyword `this` is *bound* to the context in which it is *called*.
 
 Using dot notation to access the method from the object means the context is *that object.*
 
-```
+```js
 dog.speak()
-^^^--------------- dog is the context
+//^^^--------------- dog is the context
 ```
 
 > Note: Arrow functions work differently.
@@ -127,12 +128,12 @@ Fat arrow functions `() => { }` bind `this` to the context in which they are *de
 
 Also remember: "When in doubt, `console.log` it out."
 
-
 ```js
 let dog = {
-  ^^^--------------- dog is the context
-  speak: () => console.log(`Bark!`)
+// ^^^--------------- dog is the context
+  speak: function () { console.log(`Bark!`) }
 }
+
 dog.speak()
 ```
 
@@ -146,19 +147,19 @@ Just be sure `console.log` what `this` is inside your method to be sure of its v
 
 We can add methods and properties to objects even after we've already made them.
 
-
 ```js
 let rectangle = {
-    height: 10,
-    width: 8,
+  height: 10,
+  width: 8,
 }
 
-rectangle.area()   //=> TypeError: rectangle.area is not a function
+rectangle.area() //=> TypeError: rectangle.area is not a function
 
 rectangle.area = function() {
-     return this.height * this.width;
+  return this.height * this.width;
 }
-rectangle.area()   //=> 80
+
+rectangle.area() //=> 80
 ```
 
 * What is `this` in the above example?
