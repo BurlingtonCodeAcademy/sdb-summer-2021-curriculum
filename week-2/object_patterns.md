@@ -1,71 +1,76 @@
-# Lookup Tables
+# Lookup Tables AKA Dictionaries AKA Hash Maps
 
 A lookup table is an object that is used to map strings to other values.
 
-In the object the string you are expecting is used as the key (because all keys on an object are strings), and the value you want to match.
+The search is used as a key in the object, and the result for that search term is the corresponding value.
 
 Lookup tables are useful in many situations, such as:
 
-- mapping abbreviations to full words
-- mapping strings to variables
-- extending allowable user input
+* searching abbreviations to find full words
+* keeping track of your program's work by mapping an item from a list to the output
+  * you can use this to avoid repeat work
+* efficiently processing user input
 
 ---
 
-# Mapping strings to variables
-
-One of the most common uses for a lookup table is to match a string (usually some form of user input) to a variable.
-
-If we had a program that accepts a poet's name, and prints the title of a poem by that poet it might look something like this:
+# Lookup Table Example and Practice
 
 ```js
-let poetLookup = {
-  "Robert Frost": "Stopping by Woods on a Snowy Evening",
-  "Shel Silverstein": "Falling Up",
-  "Sylvia Plath": "The Bell Jar"
+
+function getPoemTitle (authorUserSelected) {
+  
+  let poemTitlesByAuthor = {
+    "Robert Frost": "Stopping by Woods on a Snowy Evening",
+    "Shel Silverstein": "Falling Up",
+    "Sylvia Plath": "The Bell Jar"
+  };
+
+  return poemTitlesByAuthor[authorUserSelected];
 };
 
-function printTitle(userInput) {
-  console.log(poetLookup[userInput])
-};
+console.log(getPoemTitle('Sylvia Plath'))
 ```
+
+> Try making a function that gets a song from a list of musicians and song titles and send it via DM in Discord.
 
 ---
 
 # State Machines
 
-A state machine is a system with a number of defined 'states'. The system can only be in one state at a time, and with defined rules to 'transition' between states.
+A **state machine** is a system with a number of defined 'states'. The system can only be in one **state** at a time and has rules that determine how it 'transitions' between states.
 
-At their simplest a state machine is an object, with the top level keys referencing the current state, and the values of those keys being an array of allowable transitions.
+An object is one kind of state machine. The keys reference the current state, and the values of those keys are the allowable transitions.
 
-They also use a function to determine if they can change to a certain state, and prevent invalid state changes.
+They also use a function to determine if they can change to a certain state while preventing invalid state changes.
 
 ---
 
 # State Machine Example: Traffic Light
 
-![traffic light](https://res.cloudinary.com/btvca/image/upload/v1574445209/curriculum/traffic-light_saqe87.jpg)
 
 1. How many states? What are their names?
 2. Can it be in more than one state at a time?
 3. What are the rules for transitioning between states?
 
-<small>image by [katerha](https://www.flickr.com/photos/katerha/6919352910)
-</small>
+<figure>
+  <img src="https://res.cloudinary.com/btvca/image/upload/v1574445209/curriculum/traffic-light_saqe87.jpg" />
+  <figcaption>image by <a href="https://www.flickr.com/photos/katerha/6919352910">katerha</a></figcaption>
+</figure>
 
 ---
 
-# State Transition Diagram: Traffic Light
+# State Machine Example: Traffic Light Cont.
 
 ```
-[G] -> [Y] -> [R] <--> [FR]
- ^             |
-  \___________/
+[🟢] → [🟡] → [🔴] ↤↦ [⚠️]
+  ↖⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽⎽」 
+
 ```
 
-* green can transition to yellow
-* yellow can transition to red
-* red can transition to *either* flashing red, or green
+* Green can transition to yellow
+* Yellow can transition to red
+* Red can transition to *either* a warning to yield or back to green
+* The warning to yield can transition back to Red.
 
 ---
 
@@ -77,8 +82,8 @@ The first step when creating a state machine is to set up an object that will ho
 let states = {
   green: ["yellow"],
   yellow: ["red"],
-  red: ["green", "flashing red"],
-  'flashing red': ["red"]
+  red: ["green", "yield"],
+  yield: ["red"]
 }
 ```
 
