@@ -31,11 +31,13 @@ What about this syntax is familiar? What is new?
 
 To **instantiate** is to create an **instance** of a class. This means we are using the class to construct *one* specific object.
 
-```javascript
-let myPepperoniPizza = new Pizza(14, 'pepperoni');  // create a new Pizza instance
-myPepperoniPizza.diameter = 16;                     // set its diameter to 2
-myPepperoniPizza.bake();                            // call the bake method, which returns 'Your pizza will be ready in 5 minutes!'
-                            
+```js
+// create a new Pizza instance
+let myPepperoniPizza = new Pizza(14, 'pepperoni');
+// set its diameter to 2
+myPepperoniPizza.diameter = 16;
+// call the bake method, which returns 'Your pizza will be ready in 5 minutes!'
+myPepperoniPizza.bake();                               
 ```
 
 [MDN: classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
@@ -60,7 +62,7 @@ We use them for repeatedly making the same kind of object where the details migh
 * This is the method that actually *constructs* the object.
 
 ```js
-let myPizza = new Pizza(14, 'pepperoni')
+let myPizza = new Pizza(14, 'pepperoni');
 ```
 
 > [Mozilla Developer Network | new operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)
@@ -97,15 +99,19 @@ Constraints: Your circle must
 A good time to validate data is in the constructor, *before* initializing values in `this`.
 
 For example:
-```javascript
+
+```js
 class MyClassName {
-    constructor(parameter) {
-        if (parameter !== someValueIWant) {
-            throw "Your parameter doesn't equal something I want! Boo hiss!" // sends an "exception"
-        }
-        this.parameter = parameter;
+  constructor(parameter) {
+    if (parameter !== someValueIWant) {
+      // throws an "Error" with a "message"
+      throw "Your parameter doesn't equal something I want! Boo hiss!";
     }
+    this.parameter = parameter;
+  }
 ```
+
+[MDN: Errors](https://developer.mozilla.org/en-US/docs/web/javascript/reference/global_objects/error) | [MDN: Exception Handling](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#exception_handling_statements)
 
 ---
 
@@ -122,10 +128,9 @@ Remember that there are no rules about calling functions within another function
 
 We can use a function to take data in a different format than the kind our class may need. This allows us to process it accordingly before trying to use it.
 
-
-```javascript
+```js
 function circleFromDiameter(diameter) {
-    return new Circle(diameter / 2);
+  return new Circle(diameter / 2);
 }
 ```
 
@@ -137,17 +142,17 @@ The above is called a **factory function** since starts the *construct*ion proce
 
 For convenience and code organization, factory functions are often attached to the *class* -- **not the instance** -- of the objects they create.
 
-| Factory Function | Factory Method |
-|---|---|
+| Factory Function                | Factory Method                   |
+|---------------------------------|----------------------------------|
 | `let c = circleFromDiameter(2)` | `let c = Circle.fromDiameter(2)` |
 
 The factory method works *exactly the same way* as the factory function, but
 
-* the factory function is in the *global namespace*
-* the factory method is in the *class namespace* so it's more clear that it is meant to create one of *this class* of objects
+* The factory function is in the *global namespace*
+* The factory method is in the *class namespace* so it's more clear that it is meant to create one of *this class* of objects
 
 ---
- 
+
 # Static Factory Methods 
 
 A `static` property or method is one that we can only use with the class itself, *not instances.*
@@ -172,11 +177,11 @@ class Circle {
 # Practice: Static Factory Methods
 
 | Code | Output |
-|-|-|
+|------|--------|
 |<img src ="https://res.cloudinary.com/btvca/image/upload/v1644792273/curriculum/factoryMethod_uaawek.png" width="60%" /> |<img src ="https://res.cloudinary.com/btvca/image/upload/v1644792271/curriculum/factoryMethodOutput_iakgju.png" width="60%" />|
 
-
 ---
+
 # When and Why to Use Factory Methods
 
 Factory methods allow us to consistently change the format of the data used to create an instance, like when we want to use a diameter instead of a radius.
