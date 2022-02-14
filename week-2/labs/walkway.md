@@ -1,99 +1,92 @@
 # Walkway
 
-## Welcome!
+## Objective
 
-In this lab we will be creating a program that represents a trip to the store and back. The purpose of this lab is to get more experience using state machines, and lookup tables together to handle transitions between objects.
+In this lab we will create a program that represents a trip to the store and back.
 
-THe first thing we'll want to do is create a new JS file to write our code in. Create a new file called `walkway.js`.
+## Learning
 
-## Creating Locations
+In this lab, we will be utilizing [state machines](https://en.wikipedia.org/wiki/Finite-state_machine) with lookup tables to handle transitions between Objects.
 
-We are trying to create a program to represent a walk to the store, and back. This means we will need at least three distinct states for our program to be in. Let's create three objects to represent *home*, the *walkway*, and the *store*.
+We will create these Objects utilizing a [Class constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes).
 
-Each object should have:
+Topics:
 
-* A `name` property with a the name of the location as a string for its value
-* A `description` property with a brief description of the area
-* Feel free to get creative, and have fun with these
+- Class construction
+- Objects
+- State machines
+- Lookup tables
 
-## Track Your Location
+### Links
 
-To know where we can go we need to know where we currently are. Create a global variable to track which location you're in. `currentLocation` seems like a good variable name to me.
+- [Finite State Machines on Wikipedia](https://en.wikipedia.org/wiki/Finite-state_machine)
+- [MDN Creating Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [MDN Class Tutorial](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 
-Set this variable equal to your `home` object.
+## Achieving
 
-## Setting up the State Machine
+In this lab, we will create a piece of software that represents a trip to the corner store and back. This software will transfer the user between different states ("locations") and only allow state transitions between certain states.
 
-Now that we've got a few different states our program can be in, and a way to track our current location let's work on the logic to change our current location.
+Your work will result in:
 
-We don't want to be able to change our current location from `home` directly to `store`. Instead we should need to go from `home` to `walkway` to `store` and vice versa to get back. In order to prevent *invalid transitions* we can build a *state machine* that will handle changing the `currentLocation` for us.
+- The `walkway.js`file.
+- `Location` class constructor.
+- Three Objects of the `Location` class.
+- Variable that represents our initial state.
+- Lookup table that maps representative strings to their Objects.
+- State machine that maps states to the states they will accept in string format.
+- Console log describing the narrative setup.
+- `moveLocation` function that contains `if...else` logic to check if state transitions are valid within the state machine.
+- Multiple invocations of `moveLocation` to verify our states are transitioning correctly.
 
-Define a function, I think `moveLocation` is a good name for this function, that will:
+## Procedure
 
-* Take a *new location* as its argument
-* Check the current location
-* Determine if the current location can transfer to the new location using the following rules:
-  * `home` can only change to `walkway`
-  * `walkway` can change to either `home` or `store`
-  * `store` can only change to `walkway`
-* If the new location *is* a valid transition:
-  * Print "Moving from *currentRoom* to *newRoom*" and the new room's description
-  * And reassign `currentRoom` to the new room
-* Otherwise just print "Invalid state transition attempted"
+### Create the `walkway.js` file
 
-## Test It Out
+- [ ] Create a new file named `walkway.js` and open it in your editor.
 
-To test out our program we can call our function, passing in `walkway` as the argument.
+### Construct the `Location` class
 
-```js
-moveLocation(walkway)
-```
+- [ ] Define a class named `Location`
+- [ ] Within `Location`'s code block, create a constructor that takes `name` and `description` as its arguments.
+- [ ] Within the constructor's code block, map `this.name` to `name` and `this.description` to `description`.
 
-Then run the file with the command `node walkway.js`. If all goes well We should see something like:
+### Define the `Location` Class Objects
 
-```
-Moving from Home to Walkway
+- [ ] Create a new `home` Object of the Location class. Pass in the name of the location and the description of the location to the constructor.
+- [ ] Repeat this process for two more Objects: `sidewalk` and `store`.
 
-A Small cobblestone path stretches before you. You know the store is just down the road...
-```
+### Define the `locationCurrent` variable and the `locationLookUp` lookup table
 
-We can test it further by calling our `moveLocation` function sequentially, passing in our next destination.
+- [ ] Create the `locationCurrent` variable and assign it the value "home". This represents our initial state.
+- [ ] Create the `locationLookUp` table. This will be an Object consisting of `key: value` pairs wherein the key is a String that matches the _exact_ names of our Objects.
 
-```js
-moveLocation(walkway)
-moveLocation(store)
-```
+### Define the `locationStates` state machine and printing the opening scenario
 
-Which should print:
+- [ ] Create the `locationStates` state machine. This will be an Object consisting of `key: value` pairs wherein the key is a state and the value is an array that contains its possible transitions as Strings.
+- [ ] Create a console log that informs the user of the opening scene. "You are at your house."
 
-```
-Moving from Home to Walkway
+### Create the `moveLocation` function
 
-A Small cobblestone path stretches before you. You know the store is just down the road...
+- [ ] Create the function `moveLocation` that accepts the parameter of `newLocation`.
+- [ ] Inside of `moveLocation`, set up an `if` statement whose conditional logic checks if `locationStates[locationCurrent]` includes `newLocation`.
+- [ ] Inside of this `if` statement, set `locationCurrent` to now be `newLocation`.
+- [ ] Inside of this `if` statement, console log the `name` and `description` of `locationCurrent` by checking it in `locationLookUp` using bracket notation.
+- [ ] Outside of this `if`, `else` console log a message informing the user they cannot go from `locationCurrent` to `newLocation`.
 
-Moving from Walkway to Store
+### Invoke the `moveLocation()` function
 
-You find yourself in a small corner store. The walkway leading home is outside.
-```
+- [ ] Invoke `moveLocation` multiple times. Include states that should transition successfully and states that will fail to test your code.
 
-## Fail Properly
+## Review
 
-We should also check that our `moveLocation` function *prevents invalid state changes*. To do this we can comment out the call to `moveLocation(walkway)` and run the program again.
+In this lab, we have practiced utilizing state machines combined with lookup tables to manipulate Objects. The software should:
 
-It should now print
-
-```
-Invalid state transition attempted
-```
-
-And if you `console.log` out `currentLocation` you should see the `home` object.
-
-## There, and Back Again
-
-Call the function 4 times passing `walkway`, then `store`, then `walkway`, then `home` to print a nice little store about a trip to the store and back again when you run the file.
+- Transition between successful states and inform users of the new state and its description.
+- If a transition fails, inform users that those states do not transition to each other.
+- Utilize narrative as a metaphor for what process is occurring.
 
 ## Going Further
 
-- Add more "rooms"
-- Rather than moving through the story automatically, write a function that makes the transitions happen according to user input
-- How could we make `moveLocation` a method on the location objects themselves, rather than a global function?
+- Build out your narrative with more locations.
+- Add more properties to the constructor for Objects to possess.
