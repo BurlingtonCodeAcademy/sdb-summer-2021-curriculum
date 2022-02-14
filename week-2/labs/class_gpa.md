@@ -1,56 +1,68 @@
 # Class GPA
 
-Please create a new file called `gpa.js`, and type in the following code
-(which defines a `grades` object and calls a `gpa` function):
+## Objective
 
-```javascript
-let grades = {
-  midterm: 3.3,
-  project: 4.0,
-  final: 3.2
-}
+In this lab we will calculate an average GPA score based on multiple grade values within an object.
 
-console.log('The GPA is ' + gpa(grades));
-```
+## Learning
 
-In this lab we will be practicing accessing, and using an object's properties by creating a function that takes an object as its argument, and calculates an average GPA based on the values in the object. For now we can assume that the object will only have 3 properties `midterm`, `project`, `final`, the values of which are all numbers, and that all the grades carry equal weight.
+We will practice creating an Object with more complex properties and then utilizing that Object in a function. We will also utilize the `.forEach()` Array method.
 
-## Define the Function
+Topics:
 
-Before we can run this program we'll need to define our `gpa` function. Our function will only expect 1 argument, and it will expect that argument to be an object.
+- Objects with multiple sub-Object properties
+- The `Object.keys()` method
+- The `.forEach()` Array method
+- Accessing Object properties utilizing bracket notation.
 
-```js
-function gpa(object) {
+## Achieving
 
-}
-```
+In this lab, we will be creating software that can receive a series of grades as an Object and will return a weighted overall grade.
 
-For now we can assume the properties of that object are `midterm`, `project`, and `final`. Use the `object` to get the average of those three values and `console.log` it.
+Your work will result in:
 
-Test out the function by calling it, passing in your `grades` object as the argument, and running `node gpa.js` in the console.
+- The file `gpa.js`.
+- The `grades` Object; its properties will contain sub-Objects.
+- The `gpa` function that receives an Object such as `grades` and produces a weighted GPA. This can be accomplished utilizing the `Object.keys` method and the `forEach` Array method.
 
-The average grade should come out to 3.5
+## Procedure
 
-## Weight the Grades
+### Create `gpa.js`
 
-But what if the grades were not all weighted equally? What if the `final` grade was worth twice as much as the other 2 grades?
+- [ ] Create `gpa.js` and open it in your editor.
 
-Let's change our data structure so that we can add a weight to our grades. To do this we'll change the values of our properties from *numbers* into *objects* each of which will contain a `grade`, and a `weight` property.
+### Construct the `grades` Object
 
-Add all the *grades* multiplied by their *weight* together, and then divide by the sum total of the weights to get the weighted average.
+- [ ] Construct an Object named `grades`.
+- [ ] Within `grades`'s code block, create three entries: `midterm`, `project`, and `final`.
+- [ ] The value of these entries should be a sub-Object that contains two `key: value` pairs: `grade` and `weight` whose values are Numbers that represent a single decimal point grade. The `weight` on `midterm` and `project` should be `1` and the `weight` on `final`, `2`.
 
-## What Keys?
+### Create the `gpa()` function
 
-Now I'm going to throw another curve ball at you. You can no longer count on the object being the specific object defined in our program. We need to make a function that can handle *any* object with *any number* of properties.
+- [ ] Create a function named `gpa` that accepts the parameter `object`.
+- [ ] Within `gpa`'s code block, create the variable `gradesToWeight` whose value is `object` passed to the `Object.keys()` method.
+- [ ] Create two variables whose value is `0`: `gradeSum` and `weightSum`.
+- [ ] Call the `forEach` array method on `gradesToWeight`. The anonymous callback function should have the parameter of `key`.
+- [ ] Within the scope of the callback function, redefine `gradeSum` with a new equation. To access the correct `key: value` pair, combine `object` and `key` in bracket notation.
+- [ ] Utilizing the bracket notation, multiply the `grade` by `weight` values and add back `gradeSum`.
+- [ ] Utilizing the same bracket notation, redefine `weightSum` as an equation that adds the `weight` value to `weightSum`.
+- [ ] Outside the scope of the `forEach` method but within the scope of the `gpa` function, create the variable `weightedGrade` and have its value be `gradeSum` divided by `weightSum`.
+- [ ] Below `weightedGrade`'s definition, print it to the console.
 
-We can still assume the values of our properties will be objects with `grade` and `weight` properties, but we can no longer assume the top level keys of our object will have the same names
+### Invoke the `gpa()` Function
 
-## Object.keys(object)
+- [ ] Beneath the definition of the `gpa` function, invoke it and pass in `grades` as its argument.
 
-`Object.keys` is a special method that takes an object as an argument, and returns an array of all the keys on that object. You can *iterate* over this array to access the object *at each key*.
+## Review
 
-This is a good way of making our programs more flexible so the function isn't tied to a specific object.
+In this lab, we created a piece of software that can calculate a weighted GPA based on a set of grades it receives as an Object.
 
-## Test It Out
+The software should:
 
-Try defining several different `grades` objects and passing each into your `gpa` function. Run the program, and check your averages.
+- Receive an Object that contains multiple sub-Objects. In this scenario, it is the `grades` Object that has three sub-Objects: `midterm`, `project`, and `final`. These three sub-Objects should have the `key: value` pairs of `grade` and `weight`.
+- With this Object, utilize the `Object.keys()` method and the `forEach()` Array method to produce a weighted grade point average.
+- This weighted grade point average should print to the console.
+
+## Going Further
+
+- Set the program up to receive all values necessary for the `grades` Object as input to the console. Assign the values to the interior of `grades` as appropriate.
