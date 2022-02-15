@@ -1,34 +1,69 @@
 # Object-Oriented Design
 
-There are quite a few object oriented programming languages out there, and while they don't have the same syntax they all share a common set of design principles which they must adhere to.
+There are many object-oriented languages. While they differ in their syntax they all share a common set of design principles.
 
-JavaScript is not one of these languages, but it does borrow a few things from them so we can use some principles of object oriented design to help make our code more organized, more efficient, and easier to maintain.
+JavaScript is an object-oriented language, and a functional language, and a procedural language. It is known as a multi-paradigm language.
 
-Since JS is not a purely object oriented these principles are less like rules and more like guidelines.
-
-While design principles are useful tools don't let them get in they way of making your program work.
+Since JavaScript is not purely object-oriented, these principles act more like guidelines.
 
 ---
 
-# Principles of OO Design
+## Object-Oriented Principles
 
-Object oriented languages are built on several core principles which we can apply to our JavaScript code
+Object-oriented languages are built on core principles.
 
-- encapsulation of data and behavior
-- pointers
-- privacy of data
-
----
-
-# Encapsulation
-
-"Encapsulation of data and behavior" is really just a fancy way of saying "object"
-
-BUT there are some guidelines we want to keep in mind when creating objects if we're trying to follow OO design principles
+- Encapsulation of an Object's **data** and **behavior**, by exposing an interface.
+- Abstraction of complexity, by hiding **implementation details**.
+- Inheritance of common behavior, from a **parent Class** that **shares methods**.
+- Polymorphism of behavior, by responding to **messages by name** and **argument type**.
 
 ---
 
-# The Single Responsibility Principle
+## Encapsulation
+
+Encapsulation is the act of keeping data within an object as properties, and using methods to access that data.
+
+There are some guidelines to keep in mind when using Objects that follow object-oriented design.
+
+---
+
+## Encapsulation Example
+
+By using the `.describe()` method of the `dog`, you are accessing the data within the dog by using its **public API**. This is opposed to going **inside** the dog and getting the data for yourself.
+
+```js
+const fido = {
+  name: 'fido',
+  color: 'brown',
+  describe () { 
+    return `Hello! My name is ${this.name} and I am ${this.color}.`
+  }
+}
+
+// RECOMMENDED
+console.log(fido.describe());
+
+// DISCOURAGED
+console.log(`Hello! My name is ${fido.name} and I am ${fido.color}`);
+```
+
+---
+
+## Encapsulation Question
+
+> Why would you want to use the public API of the dog object, instead of reaching inside the object the the data you may need?
+
+Example code from prior slide:
+
+```js
+console.log(fido.describe());
+
+console.log(`Hello! My name is ${this.name} and I am ${this.color}`);
+```
+
+---
+
+## Single Responsibility Principle
 
 Each object should have limited, clearly defined responsibilities.
 
@@ -36,19 +71,19 @@ Each object should have limited, clearly defined responsibilities.
 
 This makes it easier to know *where* in the code to look when you want to add a feature or fix a bug.
 
-It helps to *increase cohesion* and *reduce coupling*... If there are two objects with related (but separate) responsibilities, you can change the implementation of one without affecting the other. 
+It helps to *increase cohesion* and *reduce coupling*... If there are two objects with related (but separate) responsibilities, you can change the implementation of one without affecting the other.
 
 Objects can communicate through the same stable *interface* without regard for the *implementation*.
 
 ---
 
-# Shallow Hierarchies
+## Shallow Hierarchies
 
-OO systems rely on pointers, so there's a risk of confusing designs, including:
+Object-Oriented systems can , so there's a risk of confusing designs, including:
 
-  * deep hierarchies
-  * parallel hierarchies
-  * cycles
+- Deep hierarchies
+- Parallel hierarchies
+- Cycles
 
 It's best if dependencies are *one-way* and hierarchies are *shallow*.
 
@@ -56,7 +91,7 @@ This means you should try to limit *nesting* and *inheritance* as much as possib
 
 ---
 
-# Classes, Hierarchy, and Inheritance
+## Classes, Hierarchy, and Inheritance
 
 Classes are a key component of OO Design in JavaScript. They allow you to create many objects with shared behavior, but different data. You can even generate child classes with the `extends` keyword to create children with additional, separate behaviors.
 
@@ -66,7 +101,7 @@ Beware of generating too many children from a single class, or too many generati
 
 ---
 
-# Privacy of Data
+## Data Privacy
 
 To be truly object oriented an object should be entirely self contained. The only interface it has to the outside world should be in the form of arguments to a method, though it can reference its own properties with the `this` keyword.
 
@@ -76,115 +111,103 @@ Unfortunately this is not something JavaScript enforces. So we, as the programme
 
 ---
 
-# Object-Oriented JavaScript
+## Definition of an Object
 
-JavaScript is a hybrid of (at least) three styles:
+An object:
 
-* procedural
-* functional
-* object-oriented
-
-In this lesson we explore how JavaScript implements *object-oriented* language features.
-
----
-
-# Definition of an Object
-
-An object...
-
-* *encapsulates* state and behavior
-    * *state* aka data, properties, variables
-    * *behavior* aka functions, methods, messages
-    * *encapsulation* means "put similar things together; keep dissimilar things apart"
-* responds to *messages* through an *interface*
-  * a *message* corresponds to a *method* (mostly)
+- *Encapsulates* state and behavior
+  - *State* aka data, properties, variables
+  - *Behavior* aka functions, methods, messages
+  - *Encapsulation* means to "put similar things together; keep dissimilar things apart"
+- Responds to *messages* through an *interface*
+  - a *message* corresponds to a *method* (mostly)
 
 ---
 
-# Pure Object-Oriented Programming
+## Pure Object-Oriented Programming
 
-* In pure OO, a method only directly uses two sources of non-local data
-    * parameters of the method
-    * properties of the method's own object
-    * cf. the Law Of Demeter (more on this later)
-* All other data are manipulated via *messages* sent to other objects (aka *method calls*)
+In pure object-oriented design, an object only uses two sources of data
+
+- Parameters to methods when they are invoked
+- Properties of the method's own object, meaning the object `this` references
+- All processing is performed by sending **messages** to other objects, as collaborators
 
 ---
 
-# Pure Object-Oriented Example
+## Pure Object-Oriented Example
 
-```javascript
-let rectangle = {
-    height: 10,
-    width: 8,
-    area: function() {
-        return this.height * this.width;
-    }
+```js
+const rectangle = {
+  height: 10,
+  width: 8,
+  area () {
+    return this.height * this.width;
+  }
 }
 
-let a = rectangle.area()
+function showArea(shape) {
+  return `The area is: ${shape.area()}`;
+}
+
+console.log(showArea(rectangle));
 ```
 
-the above code follows OO rules since it only accesses data held inside `rectangle` via the magic pointer `this`, and returns a new value, not a live reference to internal state
+> The above code only accesses data inside `rectangle` using the keyword `this`, and returns a new value, not a reference to the object's state.
 
 ---
 
-# Using an Object, But Not Object-Oriented
+## Procedures using Objects
 
-Using the `rectangle` object from the previous slide, the following code is **not** object-oriented...
+The following code is **not** object-oriented, but uses the `rectangle` object
 
-```javascript
-let p = calculatePerimeter(rectangle);
-
-function calculatePerimeter(rectangle) {
-  return rectangle.height * 2 + rectangle.width * 2;
+```js
+const rectangle = {
+  height: 10,
+  width: 8,
+  area () {
+    return this.height * this.width;
+  }
 }
+
+function showPerimeter(rectangle) {
+  return `The perimeter is: ${rectangle.height * 2 + rectangle.width * 2}`;
+}
+
+console.log(showPerimeter(rectangle));
 ```
 
-...since `height` and `width` are owned by `rectangle`, not by the `calculatePerimeter` function
+> The `height` and `width` are **owned** by `rectangle`, not by the `showPerimeter` function
 
 Q: How would an OO design calculate the rectangle's perimeter?
 
 ---
 
-# Pure Object-Oriented Example (Cont.)
+## Procedures using Objects Solution
 
-instead, an OO design would add `perimeter` as a *method*, so `rectangle.perimiter()` would access properties with `this`, perform the calculation, and return the correct value:
+Add a `perimeter` **method**, so `rectangle.perimeter()` would access properties with `this`, perform the calculation, and return the value.
 
 ```javascript
-rectangle.perimeter = function() {
-  return this.height * 2 + this.width * 2
+const rectangle = {
+  height: 10,
+  width: 8,
+  area () {
+    return this.height * this.width;
+  }
+  perimeter () {
+    return this.height * 2 + this.width * 2;
+  }
 }
 
-let p = rectangle.perimeter()
+console.log(rectangle.perimeter());
 ```
 
 ---
 
-# Object vs. Object
+## The Linguistic Metaphor for Objects
 
-* In JS, an "object" is just a hash
-  * a hash is just an unordered collection
-  * not very object-oriented
-* To be object-oriented you need to add a few things
-  * the "`this`" variable
-  * constructors and `new`
-  * inheritance (via prototypes (`__proto__` or `Type.prototype` or `class`))
-  * privacy (aka *data hiding* or *encapsulation*)
+Objects are **data structures** that hold **state** and **behavior** together.
 
----
-
-# The Linguistic Metaphor for Objects
-
-One way to think about objects: 
-
-Objects are *things* that can be *described* and can *do* things, or...
-
-  * Objects are nouns
-    * (things)
-  * Methods are verbs
-    * (actions, behaviors, or imperative messages ("Sit! Good dog."))
-  * Attributes are adjectives
-    * (a property that describes a particular thing)
-  * Classes are categories
-    * (a noun that describes a *type* of thing, not a thing itself)
+- Objects are nouns, and represent things
+- Methods are verbs, and represent actions
+- Properties are adjectives, they describe the **noun**
+- Classes are categories, something that describes a **type** of thing, not a thing itself
