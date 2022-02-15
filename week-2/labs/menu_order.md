@@ -54,7 +54,7 @@ Your work will result in:
 
 ### Build the method `order`
 
-- [ ] The `orderPlaced` will be coming in as a String of multiple items. Create a function `orderSplit` to hold the result of splitting `orderPlaced` into an Array with each item its own index.
+- [ ] The `orderPlaced` will be coming in as a String of multiple items. Create a variable `orderSplit` to hold the result of splitting `orderPlaced` into an Array with each item its own index.
 - [ ] Create a `sum` variable to contain our order sum, starting at `0`.
 - [ ] Set up a `for...let` iteration loop. It will need to iterate over every `item` of `orderSplit`.
 - [ ] Within the code block of the `for...let` loop, reassign `sum` to be `sum` plus the cost of the item.
