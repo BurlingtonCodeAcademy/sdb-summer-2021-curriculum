@@ -15,13 +15,13 @@ We will be represent the following menu within an object:
 
 ## Learning
 
-In this lab, we will be practicing creating an Object with an attached method. We will also practice with the `for...let` iteration syntax.
+In this lab, we will be practicing creating an Object with an attached method. We will also practice with the `for...of` iteration syntax.
 
 Topics:
 
 - Objects.
 - Object methods.
-- `for...let` Array iteration.
+- `for...of` Array iteration.
 
 ## Achieving
 
@@ -31,7 +31,7 @@ Your work will result in:
 
 - A file named `order.js`.
 - Within the `order.js` file, a `menu` Object with `order` method.
-- The usage of `for...let` Iteration inside of `order` that prints our order's sum to the console.
+- The usage of `for...of` Iteration inside of `order` that prints our order's sum to the console.
 
 ## Procedure
 
@@ -56,8 +56,8 @@ Your work will result in:
 
 - [ ] The `orderPlaced` will be coming in as a String of multiple items. Create a variable `orderSplit` to hold the result of splitting `orderPlaced` into an Array with each item its own index.
 - [ ] Create a `sum` variable to contain our order sum, starting at `0`.
-- [ ] Set up a `for...let` iteration loop. It will need to iterate over every `item` of `orderSplit`.
-- [ ] Within the code block of the `for...let` loop, reassign `sum` to be `sum` plus the cost of `this` item.
+- [ ] Set up a `for...of` iteration loop. It will need to iterate over every `item` of `orderSplit`.
+- [ ] Within the code block of the `for...of` loop, reassign `sum` to be `sum` plus the cost of `this` item.
 - [ ] After the loop completes, print the `sum` variable.
 
 ### Call the method `menu.order()`
