@@ -57,7 +57,7 @@ Your work will result in:
 - [ ] The `orderPlaced` will be coming in as a String of multiple items. Create a variable `orderSplit` to hold the result of splitting `orderPlaced` into an Array with each item its own index.
 - [ ] Create a `sum` variable to contain our order sum, starting at `0`.
 - [ ] Set up a `for...of` iteration loop. It will need to iterate over every `item` of `orderSplit`.
-- [ ] Within the code block of the `for...of` loop, reassign `sum` to be `sum` plus the cost of `this` item.
+- [ ] Within the code block of the `for...of` loop, reassign `sum` to be `sum` plus the cost of the item from the menu. You will need bracket notation here.
 - [ ] After the loop completes, print the `sum` variable.
 
 ### Call the method `menu.order()`
