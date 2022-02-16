@@ -45,7 +45,7 @@ Your work will result in:
 
 ### Create the `describe` `Cake` class method
 
-- [ ] Outside of the constructor's code block but within the `Cake` class, create a `describe` method that takes a `number` as its parameter.
+- [ ] Outside of the constructor's code block but within the `Cake` class, create a `describe` method.
 - [ ] `describe` should contain a console log that utilizes `flavor`, `icing`, and `decoration`, in a description of the cake.
 
 ### Define three new `Cake` class objects
