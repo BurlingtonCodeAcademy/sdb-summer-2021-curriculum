@@ -64,7 +64,10 @@ Your work will result in:
 ### Define the `locationStates` state machine and printing the opening scenario
 
 - [ ] Create the `locationStates` state machine. This will be an Object consisting of `key: value` pairs wherein the key is a state and the value is an array that contains its possible transitions as Strings.
-- [ ] Create a console log that informs the user of the opening scene. "You are at your house."
+
+### Inform the user of the opening scene
+
+- [ ] Create a console log that informs the user of the opening scene. "You are at your house." This will not be inside of a function.
 
 ### Create the `moveLocation` function
 
