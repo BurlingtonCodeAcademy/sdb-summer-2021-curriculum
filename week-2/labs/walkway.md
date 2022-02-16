@@ -61,7 +61,7 @@ Your work will result in:
 - [ ] Create the `locationCurrent` variable and assign it the value "home". This represents our initial state.
 - [ ] Create the `locationLookUp` table. This will be an Object consisting of `key: value` pairs wherein the key is a String that matches the _exact_ names of our Objects.
 
-### Define the `locationStates` state machine and printing the opening scenario
+### Define the `locationStates` state machine
 
 - [ ] Create the `locationStates` state machine. This will be an Object consisting of `key: value` pairs wherein the key is a state and the value is an array that contains its possible transitions as Strings.
 
