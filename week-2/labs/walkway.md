@@ -92,4 +92,4 @@ In this lab, we have practiced utilizing state machines combined with lookup tab
 ## Going Further
 
 - Build out your narrative with more locations.
-- Add more properties to the constructor for Objects to possess.
+- Add more properties to the constructor for Location class Objects to possess.
