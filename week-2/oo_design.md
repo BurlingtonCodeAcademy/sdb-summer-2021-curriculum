@@ -13,13 +13,13 @@ Since JavaScript is not purely object-oriented, these principles act more like g
 Object-oriented languages are built on core principles.
 
 - Encapsulation of an Object's **data** and **behavior**, by exposing an interface.
-- Abstraction of complexity, by hiding **implementation details**.
 - Inheritance of common behavior, from a **parent Class** that **shares methods**.
+- Abstraction of complexity, by hiding **implementation details**.
 - Polymorphism of behavior, by responding to **messages by name** and **argument type**.
 
 ---
 
-## Encapsulation
+## Encapsulation Definition
 
 Encapsulation is the act of keeping data within an object as properties, and using methods to access that data.
 
@@ -63,70 +63,66 @@ console.log(`Hello! My name is ${this.name} and I am ${this.color}`);
 
 ---
 
-## Single Responsibility Principle
+## Inheritance Definition
 
-Each object should have limited, clearly defined responsibilities.
+Classes are a key component of Object-Oriented Design. Child classes **inherit** behavior using the `extends` keyword. This allows objects created from one class to use the behavior of another class.
 
-> Do one thing, and do it well.
+In this relationship one class is a **child** and the other class is the **parent**.
 
-This makes it easier to know *where* in the code to look when you want to add a feature or fix a bug.
-
-It helps to *increase cohesion* and *reduce coupling*... If there are two objects with related (but separate) responsibilities, you can change the implementation of one without affecting the other.
-
-Objects can communicate through the same stable *interface* without regard for the *implementation*.
+```js
+class Tomato extends Fruit { ... }
+```
 
 ---
 
-## Shallow Hierarchies
+## Inheritance Example
 
-Object-Oriented systems can , so there's a risk of confusing designs, including:
+Classes are a key component of Object-Oriented Design. Child classes inherit behavior using the `extends` keyword.
 
-- Deep hierarchies
-- Parallel hierarchies
-- Cycles
+```js
+class Animal {
+  constructor(name, color) { 
+    this.name = name;
+    this.color = color; 
+  }
 
-It's best if dependencies are *one-way* and hierarchies are *shallow*.
+  sleep() { return `${name} is going to sleep ... `}
 
-This means you should try to limit *nesting* and *inheritance* as much as possible, and your objects shouldn't rely on any outside data. They can send and receive messages but shouldn't care where the messages are coming from, or going to.
+  describe() {
+    return `Hi there, I am ${name}, my color is ${color}!`;
+  }
+}
 
----
+class Dog extends Animal {
+  constructor(name, color) { 
+    // uses the parent class constructor
+    super(name, color)
+  }
 
-## Classes, Hierarchy, and Inheritance
-
-Classes are a key component of OO Design in JavaScript. They allow you to create many objects with shared behavior, but different data. You can even generate child classes with the `extends` keyword to create children with additional, separate behaviors.
-
-When setting up child classes keep in mind that a child should be able to do anything its parent can do, and then some.
-
-Beware of generating too many children from a single class, or too many generations of children. The computer will understand it just fine, but it will quickly become confusing for our squishy, meat brains.
-
----
-
-## Data Privacy
-
-To be truly object oriented an object should be entirely self contained. The only interface it has to the outside world should be in the form of arguments to a method, though it can reference its own properties with the `this` keyword.
-
-Objects should never reference, or access other object's properties in a purely object oriented model.
-
-Unfortunately this is not something JavaScript enforces. So we, as the programmer, need to be disciplined about it when we are writing the code.
-
----
-
-## Definition of an Object
-
-An object:
-
-- *Encapsulates* state and behavior
-  - *State* aka data, properties, variables
-  - *Behavior* aka functions, methods, messages
-  - *Encapsulation* means to "put similar things together; keep dissimilar things apart"
-- Responds to *messages* through an *interface*
-  - a *message* corresponds to a *method* (mostly)
+  describe() {
+    // *overrides* the parent describe method
+    return `A ${color} colored dog named ${name} says Woof!`;
+  }
+}
+```
 
 ---
 
-## Pure Object-Oriented Programming
+## Inheritance Questions
 
-In pure object-oriented design, an object only uses two sources of data
+- Why do you think Inheritance may be useful?
+
+- Why do you think Inheritance may be complex?
+
+- What alternatives to Inheritance can you imagine?
+
+---
+
+## Abstraction Definition
+
+Abstraction is the act of hiding complexity, often this is by moving the complexity behind an object's methods.
+
+Ideally, an object only uses two sources of data.
 
 - Parameters to methods when they are invoked
 - Properties of the method's own object, meaning the object `this` references
@@ -134,62 +130,90 @@ In pure object-oriented design, an object only uses two sources of data
 
 ---
 
-## Pure Object-Oriented Example
+## Abstraction Example
+
+The code uses a method of `rectangle` to access the internal object state.
 
 ```js
-const rectangle = {
-  height: 10,
-  width: 8,
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
   area () {
     return this.height * this.width;
   }
 }
 
+const shape = new Rectangle(10, 8);
+
 function showArea(shape) {
-  return `The area is: ${shape.area()}`;
+  return `The shape's area is: ${shape.area()}`;
 }
-
-console.log(showArea(rectangle));
 ```
-
-> The above code only accesses data inside `rectangle` using the keyword `this`, and returns a new value, not a reference to the object's state.
 
 ---
 
-## Procedures using Objects
+## Abstraction Counter Example
 
-The following code is **not** object-oriented, but uses the `rectangle` object
+The following code is **not** Abstracted, complexity is present by manipulating the object directly, instead of using its methods.
 
 ```js
-const rectangle = {
-  height: 10,
-  width: 8,
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
   area () {
     return this.height * this.width;
   }
 }
+
+const shape = new Rectangle(10, 8)
 
 function showPerimeter(rectangle) {
   return `The perimeter is: ${rectangle.height * 2 + rectangle.width * 2}`;
 }
-
-console.log(showPerimeter(rectangle));
 ```
-
-> The `height` and `width` are **owned** by `rectangle`, not by the `showPerimeter` function
-
-Q: How would an OO design calculate the rectangle's perimeter?
 
 ---
 
-## Procedures using Objects Solution
+## Abstraction Questions
+
+- How could a method be created on `Rectangle` to abstract the complexity?
+
+> The `height` and `width` are **owned** by `rectangle`, not by the `showPerimeter` function.
+
+```js
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+  area () {
+    return this.height * this.width;
+  }
+}
+
+const shape = new Rectangle(10, 8)
+
+function showPerimeter(rectangle) {
+  return `The perimeter is: ${rectangle.height * 2 + rectangle.width * 2}`;
+}
+```
+
+---
+
+## Abstraction Question Solution
 
 Add a `perimeter` **method**, so `rectangle.perimeter()` would access properties with `this`, perform the calculation, and return the value.
 
-```javascript
-const rectangle = {
-  height: 10,
-  width: 8,
+```js
+class Rectangle {
+  constructor (height, width) {
+    this.height = height;
+    this.width = width;
+  }
   area () {
     return this.height * this.width;
   }
@@ -198,8 +222,50 @@ const rectangle = {
   }
 }
 
+const shape = new Rectangle(10, 8)
+
 console.log(rectangle.perimeter());
 ```
+
+---
+
+## Polymorphism Definition
+
+**Polymorphism** is a complicated word for a simple idea. It means that Objects should respond to **messages** based on the **messages names** alone.
+
+All **child classes** must respond to all the same **messages** as the **parent class**.
+
+When two objects respond to the same **messages**, meaning the names of **properties** and **methods**, they are said to be **polymorphic**, and therefore share the same **shape**.
+
+## Polymorphism Example
+
+```js
+class Fruit {
+  constructor (hasSeeds, flavor) {
+    this.hasSeeds = hasSeeds; 
+    this.flavor = flavor;
+  }
+  describeFlavor() { ... }
+}
+
+class Tomato extends class Fruit { ... }
+class Avocado extends class Fruit { ... }
+
+tomato.describeFlavor()  // "tangy and sweet"
+tomato.hasSeeds          // true
+avocado.describeFlavor() // "rich and savory"
+avocado.hasSeeds         // true
+```
+
+---
+
+## Polymorphism Question
+
+- Why would it be useful for different objects to respond to the same messages?
+
+- How could you use Polymorphism to make your programs simpler?
+
+- If an object looks like a duck, and quacks like a duck, can we consider it a duck?
 
 ---
 
@@ -207,7 +273,9 @@ console.log(rectangle.perimeter());
 
 Objects are **data structures** that hold **state** and **behavior** together.
 
-- Objects are nouns, and represent things
-- Methods are verbs, and represent actions
-- Properties are adjectives, they describe the **noun**
+When considering how to name objects, properties, and methods, use the following mental model.
+
+- Objects are nouns, and represent things in the program
+- Methods are verbs, and represent actions the objects do
+- Properties are adjectives, they describe the object as a **noun**
 - Classes are categories, something that describes a **type** of thing, not a thing itself
