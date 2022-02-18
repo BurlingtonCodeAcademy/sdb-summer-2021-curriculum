@@ -75,9 +75,9 @@ class Tomato extends Fruit { ... }
 
 ---
 
-## Inheritance Example
+## Inheritance Example Step-1
 
-Classes are a key component of Object-Oriented Design. Child classes inherit behavior using the `extends` keyword.
+Using Classes allows for another class to inherit behavior.
 
 ```js
 class Animal {
@@ -92,12 +92,24 @@ class Animal {
     return `Hi there, I am ${name}, my color is ${color}!`;
   }
 }
+```
+
+---
+
+## Inheritance Example Step-2
+
+ Child Classes inherit behavior using the `extends` keyword.
+
+```js
+class Animal { ... } // from prior slide
 
 class Dog extends Animal {
   constructor(name, color) { 
     // uses the parent class constructor
     super(name, color)
   }
+
+  // .sleep() comes from the parent class
 
   describe() {
     // *overrides* the parent describe method
@@ -168,21 +180,18 @@ class Rectangle {
     return this.height * this.width;
   }
 }
-
 const shape = new Rectangle(10, 8)
-
 function showPerimeter(rectangle) {
   return `The perimeter is: ${rectangle.height * 2 + rectangle.width * 2}`;
 }
+showPerimeter(shape);
 ```
 
 ---
 
 ## Abstraction Questions
 
-- How could a method be created on `Rectangle` to abstract the complexity?
-
-> The `height` and `width` are **owned** by `rectangle`, not by the `showPerimeter` function.
+- Could a method be created on `Rectangle` to abstract the perimeter calculation complexity?
 
 ```js
 class Rectangle {
@@ -206,7 +215,7 @@ function showPerimeter(rectangle) {
 
 ## Abstraction Question Solution
 
-Add a `perimeter` **method**, so `rectangle.perimeter()` would access properties with `this`, perform the calculation, and return the value.
+Add a `perimeter` **method**, so that `rectangle.perimeter()` accesses the `height` and `width` properties using `this`, performs the calculation, and returns the value.
 
 ```js
 class Rectangle {
@@ -221,9 +230,7 @@ class Rectangle {
     return this.height * 2 + this.width * 2;
   }
 }
-
 const shape = new Rectangle(10, 8)
-
 console.log(rectangle.perimeter());
 ```
 
@@ -236,6 +243,8 @@ console.log(rectangle.perimeter());
 All **child classes** must respond to all the same **messages** as the **parent class**.
 
 When two objects respond to the same **messages**, meaning the names of **properties** and **methods**, they are said to be **polymorphic**, and therefore share the same **shape**.
+
+---
 
 ## Polymorphism Example
 
@@ -259,7 +268,7 @@ avocado.hasSeeds         // true
 
 ---
 
-## Polymorphism Question
+## Polymorphism Questions
 
 - Why would it be useful for different objects to respond to the same messages?
 
@@ -269,7 +278,7 @@ avocado.hasSeeds         // true
 
 ---
 
-## The Linguistic Metaphor for Objects
+## Using a Linguistic Metaphor for Objects
 
 Objects are **data structures** that hold **state** and **behavior** together.
 
