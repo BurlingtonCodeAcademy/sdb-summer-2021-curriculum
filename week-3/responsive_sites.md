@@ -1,26 +1,40 @@
-# Responsive Layout
+# CSS Responsive Layout
 
-* "Responsive" means that the layout *changes* and responds based on the width of the screen
+* **Responsive** means that the layout **changes** and responds based on the width of the screen
 * This allows for specific layouts for mobile phones, tablets, screen readers, and more
-* Layouts can be redered conditionally based on:
-    * Screen size
-    * Pixel density
-    * Screen orientation
-    * Height/Width Ratio i.e. 11:9
+* Layouts can be rendered conditionally based on:
+  * Screen size
+  * Pixel density
+  * Screen orientation
+  * Height/Width ratio
 
 Why might this be important?
 
 ---
 
-# What is Responsive Development?
+## What is Responsive Development?
 
 * Responsive development is a technique that displays content well regardless of the device it is being viewed on
 * This concept is increasingly important, not all users are desktop browsers
-* In 2017 and 2018 more than 50% of web traffic was from mobile devices
+* In 2017 and 2018 more than 50% of web traffic was from mobile devices, and that trend is only increasing.
 
 ---
 
-# Responsive Layout: Media Queries
+## Responsive Units of Measurement
+
+The easiest way to start making your sites mobile responsive is by using units of measurement that can change, especially for widths.
+
+* Percentages - `50%`
+* Viewport width - `vw`
+* Viewport height - `vh`
+* Root element font-size - `rem`
+* Parent font-size - `em`
+
+Why might width be more important than height when making sites responsive?
+
+---
+
+## Responsive Layout: Media Queries
 
 * CSS3 introduced media queries, which allow developers to apply CSS properties to devices which match rules
 * Media queries are the backbone of front-end responsive development with HTML and CSS
@@ -28,13 +42,13 @@ Why might this be important?
 
 ---
 
-# Mobile Device Simulator
+## Mobile Device Simulator
 
 ![Mobile Device Simulation Screenshot](https://res.cloudinary.com/btvca/image/upload/v1574445189/curriculum/mobile-device-simulation_zlrmgj.png "Mobile Device Simulation Screeenshot")
 
 ---
 
-# Documentation Links
+## Documentation Links
 
 [Link: Firefox Responsive Design Mode](https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode "Firefox Responsive Design Mode")
 
@@ -42,22 +56,19 @@ Why might this be important?
 
 ---
 
-# Using Media Queries
+## Using Media Queries
 
 * Media Queries (`@media (some_condition) { }`) cause different CSS rules to be applied on different screens
 
 This CSS will make our `.nav` element position relative when the media type is `print`
 
 ```css
-
 // Default position layout
-
 .nav {
   position: absolute;
 }
 
 // Print media only layout
-
 @media print {
   .nav {
     position: relative;
@@ -67,7 +78,7 @@ This CSS will make our `.nav` element position relative when the media type is `
 
 ---
 
-# Media Features
+## Media Features
 
 Each feature is a characteristic of the **user-agent**
 
@@ -84,16 +95,15 @@ Each feature is a characteristic of the **user-agent**
 
 ---
 
-# Media Query Conditionals - AND
+## Media Query Conditionals - AND
 
 Only change the layout to `position: relative;` when
 
-  * The media is `screen`
-  * AND
-  * The screen width is greater than or equal to 768 pixels
+* The media is `screen`
+* AND
+* The screen width is greater than or equal to 768 pixels
 
 ```css
-
 @media screen and (min-width:768px) {
   .nav {
     position: relative;
@@ -103,18 +113,17 @@ Only change the layout to `position: relative;` when
 
 ---
 
-# Media Query Conditionals - OR
+## Media Query Conditionals - OR
 
 NOTE: OR is the `,` (comma) in a Media Query
 
 Only change the layout to `position: relative;` when
 
-  * The media is `screen`
-  * OR
-  * The screen width is greater than or equal to 768 pixels
+* The media is `screen`
+* OR
+* The screen width is greater than or equal to 768 pixels
 
 ```css
-
 @media screen, (min-width:768px) {
   .nav {
     position: relative;
@@ -124,7 +133,7 @@ Only change the layout to `position: relative;` when
 
 ---
 
-# Mobile-First Development
+## Mobile-First Development
 
 * Developing mobile first means to start styling out your web page for a mobile device, and then modify the layout for a desktop browser
 * The result of this is modifying your CSS as screen sizes increase, rather than modifying your CSS as screen sizes decrease
