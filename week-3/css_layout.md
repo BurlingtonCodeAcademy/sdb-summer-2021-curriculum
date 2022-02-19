@@ -93,13 +93,11 @@ There are 4 commonly-used position properties in CSS. These further help to posi
 
 ---
 
-# Wrapper DIVs
+# Wrapping
 
-In order to make content layout work in CSS, you often need to introduce *wrapper divs*.
+The CSS you can apply is contingent upon the HTML structure. To keep content together, you will need to **wrap** elements with another new element.
 
-For example, when you have an image with its own caption, and you want them to appear *together* and also have the caption positioned *relative to the image*.
-
-In this instance you would want to create a `<div>` (or possibly a `<figure>` tag if you want to use semantic HTML5 tags) that would *wrap around* aka *contain* your image, and text elements.
+To make an image with a caption you need a `figure` element to *wrap* around the `img` and `figcaption` elements.
 
 ```html
 <figure>
@@ -109,40 +107,3 @@ In this instance you would want to create a `<div>` (or possibly a `<figure>` ta
 ```
 
 ---
-
-# Floats
-
-* Floats, to say the least, are weird and can be frustrating.
-* It used to be that floats were the only way to achieve specific layouts using CSS, especially:
-  * stacking left-to-right or right-to-left
-  * forcing an element to be as wide as its contents, not as wide as its parent
-
----
-
-# Floating 
-
-| Float Properties |
-|------------------|
-| left             |
-| right            |
-
-* Applying the style `float:left;` to an element will force that element to the left side of the container, and all other elements will 'wrap' around it.
-
-![CSS Float Property Illustration](https://patriciasdesignsite.files.wordpress.com/2015/01/text-wrap_031.jpg "Illustration of text-wrapping with CSS float")
-
-> TIP: applying `clear: both` to an element will make it skip down the page past *all* floats, left and right.
-
----
-
-# Float Explanation Video
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xara4Z1b18I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-> YouTube user: tobyonline; Published on Dec 19, 2013; https://youtu.be/xara4Z1b18I
-
----
-
-# Floats (Advice)
-
-* For a long time, floats were the backbone of page layout using CSS.
-* recent developments have allowed developers to use new CSS properties to achieve the same result much more easily
-* the `float` property should only be used for wrapping text around images, which was its original purpose
