@@ -1,104 +1,104 @@
 # Hello HTML!
 
-## Welcome!
+## Objective
 
-In this lab we will be building out a website using HTML. Ultimately we want it to have the same basic layout of the rough wireframe below, but for now let's focus on getting the content on the page!
+## Learning
+ 
+In this lab, we will be learning the basics of HTML. We will be focusing on HTML semantic tags and link tags. We will also utilize Emmet Abbreviations: shortcut key combinations that autofill content for us. Lastly, we will install the Live Server extension in order to easily view our work in the browser.
 
-Create a new directory named "hello-html" and inside that directory create a file named `index.html`. This will be our homepage. The name `index.html` is actually significant, and your homepage should **always** be named `index.html`.
+Topics:
 
-## Using Emmet Abbreviations
+- HTML
+- HTML semantic tags
+- HTML `<a href>` tag links
+- VSCode Emmet Abbreviations
+- VSCode Extensions
 
-When we're in VSCode we have access to a Emmet Abbreviations which are certain key combinations that auto-fill content. To create an empty HTML template you can type an exclamation point <kbd>!</kbd> and then hit the <kbd>Tab</kbd> key in any HTML file.
+## Achieving
 
-## Let's Add Content!
+In this lab, we will create a basic website using HTML. It will have a layout, placeholder content, and multiple pages connected by `<a href>` links.
 
-We will now add some text to our first web page! Inside of the `<body>` tag, let's add the following text:
+Your work will result in:
 
-```
-Hello, world!
-```
+- A website created with HTML.
+- A website laid out utilizing semantic div tags.
+- A website that has placeholder content.
+- A website that has multiple pages navigable by `<a href>` links.
 
-So it looks something like this:
+## Procedure
+
+### Creating `hello-html` and `index.html`
+
+- [ ] Create a directory named `hello-html`.
+- [ ] Inside of `hello-html`, create a file named `index.html`.
+
+### Using the `!` HTML Emet Abbreviation
+
+- [ ] Inside of `index.html`, type `!` and press `Enter`.
+- [ ] This should create an empty HTML template for you to use.
+
 ```html
 <!DOCTYPE html>
-<html>
-  <head>
-  </head>
-  <body>
-    Hello, world!
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    
+</body>
 </html>
 ```
 
-> *Don't worry if there's more content in the `head` of your document. That's just metadata about your page, and it' better to have it than not*
+### Installing the Live Server Extension
 
-## Use a VSCode Extension to View the Page
+- [ ] In VScode, navigate to your extensions and search Live Server. The correct extension is the first result.
+- [ ] Install Live Server.
+- [ ] Close VSCode and then reopen it again.
+- [ ] Along the bottom bar on the right side, you should now have a button that says 'Go Live'.
+- [ ] Click the 'Go Live' button to launch your website locally. It's important to note that you should only click the 'Go Live' button when you are in `index.html`.
 
-There are several plugins for VSCode designed to help you serve static webfiles. Let's use one to make viewing our webpage a little easier.
+### Creating our HTML Layout
 
-* Go ahead and click the "Extensions" (or press <kbd>ctrl</kbd> + <kbd>shift</kbd> + X)
-* Search for 'Live Server' and install the extension of that name developed by Ritwick Dey.
-* Close and reopen VSCode.
-* You should now have a button in the lower right corner of VSCode that says 'go live'
-* Click it to launch your site (locally at least)
+- [ ] Your tags to create this layout will live inside of the `<body>` tag pair. This is true for every website you build.
+- [ ] Your `<title>` tag should contain the name of the page. (Home, in this case).
+- [ ] In our website, we will need the following semantic div tags: `<header>`, `<nav>`, and `<main>`. Be sure to include their closing tag.
 
-## Inspect The File With Chrome
+### Filling out placeholder content
 
-* In your browser, open the "Developer Tools" window
-  * On Mac - `⌘ + Shift + C`
-  * On Windows / Linux - `Ctrl + Shift + C` or `F12`
-  * Or: *right click* on the page and select 'inspect'
-* If it isn't clear, find and click on the elements tab
-* Notice how the HTML tags are displayed
-* You can do this for **any website** to examine how it is structured
-  * or to change its colors, or remove ads, etc...
-  * Note that this only changes the page for you, and only while you're on that page. Refreshing the page will clear all changes.
+- [ ] `<header>` Should contain a title for the page.
+- [ ] `<nav>`Should contain at least three`<a href>`s that will navigate to other pages on the site. Leave them blank for now.
+- [ ] `<main>` Should contain placeholder text and `<img>`s.
+- [ ] To generate placeholder text in VSCode, type `lorem100` and push `Enter`. This will generate 100 words of placeholder text. You can change 100 to be whatever amount of words you want. `lorem5000` is also valid.
+- [ ] To access placeholder images, here are a few options to try: [Lorem Flickr](https://loremflickr.com/), [Placekitten](https://placekitten.com/). [Lorem Picsum](https://picsum.photos/).
 
-## Block Out the Sections
+### Creating multiple pages
 
-Let's start laying out our web page. HTML tags will stack on top of each other so the first step to laying out our webpage is to block out our main sections *in the order we want them to appear on the page*.
+- [ ] In the same directory as `index.html`, create another file named `about.html`
+- [ ] In `about.html`, use the emet abbreviation again to generate the necessary HTML boiler plate.
+- [ ] Inside of `<body>`, put in a `<p>` tag to inform us of which page we are on (About, in this case.)
+- [ ] Create two more pages in the exact fashion you created `about.html`. These are your unique invention and should have unique names.
+- [ ] Don't forget to change the `<title>` tag content to reflect which page the user is on.
 
-We're going to need a *header* section, a *nav* section, and a section for our *main* content. You could use *div* tags to represent these, but [more modern HTML5 tags](https://developer.mozilla.org/en-US/docs/Web/HTML/Element#content_sectioning) will be more accessible, and more readable for both humans and bots.
+### Linking to our new pages
 
-## Add Content
+- [ ] Back in `index.html`,  return to the `<a href>`s in `<nav>`.
+- [ ] For the first `<a href>`, point the link to `/about.html`. Name this link "About".
+- [ ] Fill out the other two `<a href>`s so that they correspond to the two additional pages that you created.
 
-In the header section add a title that says something along the lines of "Home Page"
+## Review
 
-In your navigation section add a single anchor tag that we will use to link to the about page. Don't forget to put some text in it, or nothing will show up!
+The software should:
 
-In the main section add an image, and some text
+- Have a Home page the user lands on.
+- The home page should contain the `<header>`, `<nav>`, and `<main>` semantic divs filled out with placeholder content.
+- Have multiple pages that can all be navigated to via the links in `<nav>`.
 
-## Placeholder Content
+## Going Further
 
-When mocking out a site design you often won't want to use or create a bunch of image files, text blocks, or other types of media. Luckily for us there are a lot of sites for placeholder content (especially images).
-
-Sites like:
-
-* [placekitten](https://placekitten.com/)
-* [placecage](https://www.placecage.com/)
-* [fillmurray](https://www.fillmurray.com/)
-* And many more...
-
-## Lorem Ipsum
-
-You can easily generate placeholder text by using *lorem ipsum* which is ungrammatical latin dummy text often used to mock out content. The emmet abbreviation for generating lorem ipsum text is the word "lorem" followed by the number of words you need. e.g. if you typed `lorem250` and then hit <kbd>Tab</kbd> you would get 250 words of placeholder text.
-
-There are also many different [lorem ipsum generators](https://loremipsum.io/ultimate-list-of-lorem-ipsum-generators/) you can use to spice up your placeholder text. Try a few out, and have fun with it!
-
-## Linking Pages
-
-To link multiple pages together we will first need to make another page. In the same directory that your `index.html` file lives in create a new file called `about.html`. Create a shell for your html file and add a heading to the page.
-
-To link to the about page from the home page you will need to add an *href* to the `<a>` tag in your nav bar:
-
-`<a href="/about.html">About</a>`
-
-Clicking the word "About" in your browser should take you to the about page.
-
-Add a link on the about page that will take you back to the home page as well.
-
-> Linking to just "/" should take you back to the home page.
-
-## Going Further: Styling the Page
-
-To add some simple styles to your page you can use a `<style>` tag, and then write some CSS to modify the way certain tags are displayed on the page. We will be covering CSS in much greater depth later this week, but if you want to spruce up your page a bit you can reference [this documentation](https://developer.mozilla.org/en-US/docs/Web/CSS) and start playing around with some of the basic concepts.
+- Add `<a href>`s to your additional pages that allow the user to navigate back to the Home page.
+- Add different placeholder content to your additional pages. Utilize different semantic tags than those initially given.
+- Style your `<a href>`s to appear as buttons rather than links. You can research **inline styles** to do this. This will be bringing in CSS.
+- Style all of your semantic tags utilizing inline styles.
