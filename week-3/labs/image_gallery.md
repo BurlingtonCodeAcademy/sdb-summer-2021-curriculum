@@ -1,59 +1,74 @@
 # Image Gallery
 
-## Welcome!
+## Objective
 
-The purpose of this lab is to get a little more comfortable with grid by making a responsive gallery of thumbnail images. Lets first start by creating an HTML file and a CSS file that is linked to the HTML file
+### Learning
 
-Here's a [great Grid guide.](https://css-tricks.com/snippets/css/complete-guide-grid/)
+In this lab, we will put what we have learned about the CSS grid layout to use. We will also begin to practice with responsive units of measurement and responsive design. This will also require the continued practice of styling with CSS and referencing another wireframe. 
 
-## Wireframe
+Topics:
 
-Try drawing out your own wireframe that includes the following elements:
+- Utilizing a given wire frame.
+- CSS styling.
+- CSS grid layout.
+- Responsive CSS units of measurement & responsive design.
 
-- A title, centered on the top of the page
-- 20 image thumbnails in a 4x5 grid
-- Each thumbnail should be the same size
-    - and fit entirely in it's grid cell.
+### Achieving
 
-## Block Out the Content
+In this lab, we will utilize a given wire frame to style our website with CSS according to its guidelines. We will also need to utilize responsive units of measurement in order for our website to scale correctly no matter the height and width of the browser window.
 
-Block out the main sections of your page as drawn in your wireframe.
+Your work will result in:
 
-- Try to consider which elements need to be in each section.
+- A website that closely matches the given wire frame.
 
-- Try to put things in the general order you want them to appear on the page.
+## Procedure
 
-## Placeholder Images
+### Creating the `image-gallery` directory and `index.html`
 
-Here are some sites that we can use for free placeholder images:
+- [ ] Create a directory named `image-gallery` and `cd` into it.
+- [ ] Create a file named `index.html`via `touch`.
 
-- [fillMurray](http://www.fillmurray.com/)
-- [placeCage](https://www.placecage.com/)
-- [placeKitten](https://placekitten.com/)
-- [placeBeard](https://placebeard.it/)
-- [loremFlickr](https://loremflickr.com/)
+### Creating the `styles` subdirectory and `styles.css`
+- [ ] Inside of `image-gallery`, create a new directory named `styles`.
+- [ ] Inside of `styles`, create a new filed named `styles.css`
+- [ ] `styles.css` is where all of your CSS will be written.
 
-## Create the Grid Container and its layout
+### Linking `styles.css` to `index.html`
+- [ ] Inside of `index.html`, you will need to link your stylesheet.
+- [ ] You will find information on how to do this at the following link: [Freecodecamp's How to Link CSS to HTML](https://www.freecodecamp.org/news/external-css-stylesheets-how-to-link-css-to-html-and-import-into-head/).
+- [ ] In the `src` attribute for the link, you will need to route your link through the `styles` subfolder to reach `styles.css`.
 
-Creating a grid container defines the element as a container and establishes a new grid formatting context for its contents.
+### Opening the wireframe
 
-The 4 most important steps to setting up a grid container and its layout
+- [ ] Click the following link to open the wire frame: [Figma Wire Frame](https://www.figma.com/file/4aMSQ25zzEVDr3l3yq1FVc/image-gallery?node-id=0%3A1).
+- [ ] **Note:** This wireframe is not "pixel perfect" so don't stress having it match dimensions exactly. We are looking to capture the spirit of the wireframe.
 
-1. Create the grid container element and declare its display as grid
+### Understanding the wireframe
 
-```css
-.container {
-    display: grid;
-}
-```
+- [ ] This wireframe has similar areas to the one you used during the Hello Styles lab.
+- [ ] `<header>` matches IMAGE GALLERY NAME.
+- [ ] `<nav>` matches the LINK areas that contain four links.
+- [ ] The large image placeholder (the white box with diagonal lines) is your hero image. 'Hero' is a design term for an over sized banner or image that is prominent on a page.
+- [ ] The six smaller image placeholders represent the gallery on the page.
+- [ ]  `<footer>` corresponds to FOOTER SITE INFORMATION.
 
-2. Within that container element, define its tracks use grid-template properties
-3. Place child elements _within_ the container
-4. Specify the gaps with grid gap properties
+### Styling the divs
 
-## Making it Responsive
+- [ ] You will need to again utilize CSS properties and CSS selectors in order to style this website.
+- [ ] You will also need to utilize the CSS grid layout model to keep your hero image and your gallery images centered and aligned.
+- [ ] In order for your website to be responsive, you will have to utilize responsive units instead of `px`. Some you can research and play with are: `rem`, `em`, `vw`, `vh`, and `%`s.
+- [ ] As a reminder, here are a few options for placeholder images: [Lorem Flickr](https://loremflickr.com/), [Placekitten](https://placekitten.com/). [Lorem Picsum](https://picsum.photos/)
 
-CSS Grid was built with responsiveness in mind so lets make the image gallery responsive!
-You won't even need media queries!
+## Review
 
-[Here's a good guide for making your grid responsive.](https://css-tricks.com/look-ma-no-media-queries-responsive-layouts-using-css-grid/)
+In this lab, we have translated a wireframe to a website utilizing CSS.
+
+The software should:
+
+- Be a styled website whose design matches that presented in the wireframe.
+
+## Going Further
+
+- Customize the colors on the website.
+- Import fonts and utilize them.
+- Use CSS grid to layout the links in the `<nav>`.
