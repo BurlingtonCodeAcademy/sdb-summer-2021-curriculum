@@ -3,11 +3,11 @@
 When setting up flexboxes and grids here are a couple things to keep in mind:
 
 * While grids and flexboxes can be used to alter the natural flow of your HTML, it's better to use them to *enhance* it instead
-* Beware if `div`itis: nesting `div`s in `div`s in `div`s in `div`s in `div`s etc.
-  * Keep in mind Bob's "rule of 3": anything beyond 3 levels of nesting gets confusing very fast
-  * This can be relaxed a little for HTML, but it's still something to keep in mind.
-* Not everything needs to be a flexbox or a grid, try to get it laid out using the normal flow of your HTML
-  * *then* add flexboxes, and/or grids *only where necessary*
+* Using semantic HTML prevents `div`itis -- using too many `div`s within `div`s within `div`s within `div`s.
+  * Rule of 3: Try to not nest anything more than 3 levels deep.
+* Use the layout of the DOM *first* and flexbox/grid to *adapt* that natural flow when needed.
+  * Add flexboxes, and/or grids *only where necessary*
+  * Keeps your work clean and easier to edit/debug
 
 ---
 
