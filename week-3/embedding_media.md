@@ -183,14 +183,19 @@ Flash used allow for web animations, but there are now better options.
 
 HTML5 defines a standard `<video>` tag
 
-  * Use the `<video>` tag when you are hosting your own video media file (on your web server or a CDN)
+  * Use the `<video>` tag when you are hosting your own video media file (on your web server or a CDN).
+  * Video hosting sites like YouTube, and Vimeo have their own rules and sample code which you should find and copy into your HTML file.
 
-  * video hosting sites like YouTube, and Vimeo have their own rules and sample code which you should find and copy into your HTML file
+```html
+<video controls>
+  <source src="myVideo.webm" type="video/webm">
+  <source src="myVideo.mp4" type="video/mp4">
+  <p>Your browser doesn't support HTML5 video. Here is
+     a <a href="myVideo.mp4">link to the video</a> instead.</p>
+</video>
+```
 
-> **Tip**: you can automatically start playing the video when the page loads; to be polite you should also mute the volume, like this: `<video muted=true autoplay=true src='/videos/yelling-man.mp4'>`
-
-* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
-* https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content
+[MDN Video Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) | [MDN Video Tutorial](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)
 
 ---
 
@@ -203,6 +208,17 @@ HTML5 also has a prebuilt `<audio>` tag that you can use to embed your local aud
 * `controls` Adding this attribute with no value will display playback controls to the user
 * `loop` Another boolean attribute that repeats the audio indefinitely when set to `true`
 * `muted` Yet another boolean attribute. It mutes your audio when set to `true`
+
+```html
+<audio controls>
+  <source src="myAudio.mp3" type="audio/mpeg">
+  <source src="myAudio.ogg" type="audio/ogg">
+  <p>Your browser doesn't support HTML5 audio. Here is
+     a <a href="myAudio.mp3">link to the audio</a> instead.</p>
+</audio>
+```
+
+[MDN Audio Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) | [MDN Audio Tutorial](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Video_and_audio_content)
 
 ---
 
