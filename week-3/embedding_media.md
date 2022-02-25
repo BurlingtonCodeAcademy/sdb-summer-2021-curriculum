@@ -53,51 +53,49 @@ Or, if the user moves their location on an embedded Google Map, your app could b
 
 # Image Types
 
-There are many different types of images:
-* svg
-* png
-* ptg
-* psd
+There are several different types of images:
+
 * jpg
-* and the list goes on...
+* png
+* svg
+* gif
+* and many more
 
-Let's focus on a few of the common types of images you'll find around the web; JPGs (or JPEGs), PNGs, and SVGs.
-
----
-
-# jpeg/jpg
-
-* One of the most common image types
-* relatively small file size
-* limited features
-* no transparency
-* pixel based (raster) image type
-* rectangular in shape
-
-> Note: JPGs and JPEGs are the same type of image, however when embedding them in your page you will need to make sure you are using the correct file extension otherwise your site won't be able to locate the image. Also **case matters!**
+The following slides will focus on a few of the common types of images found around the web.
 
 ---
 
-# png
+# JPEG/JPG
+
+* Common image type
+* Small file size
+* Lossy compression
+* No transparency allowed
+* Raster based (pixel) image type
+* Rectangular in shape
+
+> Note: JPGs and JPEGs are the same type of image, however when embedding them in your page you will need to make sure you are using the correct file extension otherwise your site won't be able to locate the image.
+
+---
+
+# PNG
 
 * Similar in size to JPGs (though often slightly larger)
-* pixel based (raster) image type
-* supports transparent
-* rectangular in shape
+* Pixel based (raster) image type
+* Supports transparent
+* Rectangular in shape
 
 > Note: While PNGs can *appear* to be irregular in shape they are not, transparent sections will still block users from interacting with any content behind them
 
 ---
 
-# svg
+# SVG
 
-SVG stands for **standard vector graphic**
+SVG stands for **Scalable Vector Graphic**
 
-* VERY small file size
-* vector based image type
-* scales indefinitely
-* can be irregular in shape
-* Only covers the exact area it appears to cover
+* Small file size
+* Vector based image type
+* Scales indefinitely
 
 ---
 
@@ -105,13 +103,13 @@ SVG stands for **standard vector graphic**
 
 `<iframe>` means "inline frame"
 
-
 ```html
-<iframe id="inlineFrameExample"
-    title="Inline Frame Example"
-    width="300"
-    height="200"
-    src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
+<iframe 
+  id="inlineFrameExample"
+  title="Inline Frame Example"
+  width="300"
+  height="200"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
 </iframe>
 ```
 
@@ -129,8 +127,8 @@ SVG stands for **standard vector graphic**
 Refused to display 'http://www.burlingtoncodeacademy.com/' in a frame because it set 'X-Frame-Options' to 'sameorigin'.
 ```
 
-  * some web servers (e.g. Wordpress) set these headers *on* by default
-  * other web servers (e.g. Apache) set these headers *off* by default
+  * Some web servers (e.g. Wordpress) set these headers *on* by default
+  * Other web servers (e.g. Apache) set these headers *off* by default
 
 **Beware** giving foreign JavaScript access to your page contents and user-input data
 
@@ -164,17 +162,19 @@ Let's add a video to our hello-html site! Open up YouTube and find a short video
 
 # Embedding Flash
 
+Adobe Flash has been retired, and is no longer supported. Do not use it.
+
 ![R I P Flash](https://res.cloudinary.com/btvca/image/upload/v1574445198/curriculum/rip-flash_gzmwcj.png)
 
 ---
 
 # Modern Animations
 
-Flash used to be the way to create web animations, but now we have better options
+Flash used allow for web animations, but there are now better options.
 
 * `<canvas>` elements using JavaScript
 * Pure CSS animations
-* The JavaScript animation api
+* The JavaScript animation API
 * Third party animation frameworks such as [Snap SVG](http://snapsvg.io/)
 
 ---
@@ -196,7 +196,7 @@ HTML5 defines a standard `<video>` tag
 
 # Embedding Audio
 
-HTML5 also has a prebuilt `<audio>` tag that you can use to embed your local audio files into your web pages. There are several key attributes for audio elements.
+HTML5 also has a prebuilt `<audio>` tag that you can use to embed your local audio files into your web pages.
 
 * `src` Like with all other forms of media the `src` attribut tells your tag where the actual audio file lives
 * `autoplay` Accepts a boolean value, when set to `true` it will begin playback as soon as it can
@@ -208,13 +208,12 @@ HTML5 also has a prebuilt `<audio>` tag that you can use to embed your local aud
 
 # Embedding Maps
 
-
 ```html
 <iframe id="inlineFrameExample"
-    title="Inline Frame Example"
-    width="300"
-    height="200"
-    src="https://www.openstreetmap.org/export/embed.html?bbox=-73.2130900,44.4749000,-73.2102500,44.4772200&layer=mapnik">
+  title="Inline Frame Example"
+  width="300"
+  height="200"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-73.2130900,44.4749000,-73.2102500,44.4772200&layer=mapnik">
 </iframe>
 ```
 
