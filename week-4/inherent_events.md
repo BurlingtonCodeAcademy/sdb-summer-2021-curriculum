@@ -1,187 +1,139 @@
-# Inherent Events
+# Built-In Events
 
-While the main way of making a page interactive is to manually add event listeners to elements, some elements have inherent behavior for certain events.
+Up until now, we've manually added event listeners to enable interactivity.
 
-Most notably:
+However, some tags expect to be interactive:
 
-* buttons
-* anchor tags
-* forms
-
----
-
-# Buttons
-
-`<button>` elements have some inherent `onclick` behavior.
-
-It's fairly unobtrusive and just alters the button's styles so it looks like it get pressed in.
+- buttons
+- anchors
+- forms
 
 ---
 
-# Anchors
+## Buttons
 
-* Anchor tags have an inherent `onclick` property to help with their main purpose; linking to other locations.
-* *internal anchors* are linked to `id` properties on the page
-* when linking to an *inner anchor*, use the # character to distinguish *external anchors* from *internal anchors*)
+`<button>` elements listen for `onclick` events.
+
+This is how the browser knows to change the button's styling to appear like it's being pushed down when someone clicks.
+
+---
+
+## Anchors
+
+- `<a>` elements listen for `onclick` events so it knows when to send you to the linked location.
+
+> Note: We can link to other pages or other spots within the same page.
+
+---
+
+## Internal Anchors
+
+- We've used links that send you to different pages, but what about farther down the same page?
+- We can use the `id` attribute of elements to use `<a>` to send us to a different part _of the same page_.
+- We use the `id selector #` in the `href` attribute to do this.
 
 ```html
-<a href='#stuff'>here is my stuff</a>
-<a href='#things'>here are my things</a>
-...
+<a href="#pizza">🍕</a>
+<a href="#burger">🍔</a>
 
-<h2 id='stuff'>My Stuff</h2>
-...
-<h2 id='things'>My Things</h2>
+<h2 id="pizza">Clicking 🍕 sends you here.</h2>
+
+<p>Content in between gets skipped, since that's the point.</p>
+
+<h2 id="things">Clicking 🍔sends you here.</h2>
 ```
 
 ---
 
-# Anchor links
+## Forms
 
-* Anchor tags create links to a linkable location
-    * Within the same page, using an `#someId` selector
-    * Other pages within the site, using relative paths `href="/somePage.html"`
-    * External webpages, using a full URL `href="https://www.example.com"`
+`<form>` tags listen for `onsubmit` events to know when to send your form input somewhere.
+
+`onsubmit` events trigger the following behaviors:
+
+- The browser redirects to the URL from the `action` attribute.
+  - `<form action="https://example.com">`
+  - If no `action` attribute exists, it refreshes the page.
+- It attaches a **query string** to the `action` URL
+
+  - The key/value pairs being the `name` of each input, and the `value` for that input.
+
+  > [Query strings allow you to save information like you would in an object but in a string instead.](https://en.wikipedia.org/wiki/Query_string)
+
+---
+
+## Forms Cont.
+
+`<form>` tags are used to group `<input>` tags together.
 
 ```html
-<a href="/about">About Me</a>
-```
-
----
-
-# Forms `onsubmit`
-
-When the submit button on a form is clicked the form element itself emits a "submit" event which does several things:
-
-* It redirects to the URL set as the `action` property on the form
-  * If no `action` property exists it will refresh the current page
-* It attaches a query parameter to your URL
-  * The key/value pairs being the `name` of each input, and the value for that input.
-
----
-
-# Forms contain inputs
-
-a `<form>` is an HTML element that contains input elements
-
-  * when the user enters data into these input elements
-  * and clicks the "Submit" button
-  * then the browser will wrap up all those values and send it to the server
-
-[MDN: form](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)
-
----
-
-# Form Example
-
-```html
-<form method='post'>
-  Name: <input type='text' name='name' value='Alice'>
-  <br />
-  Password: <input type='password' name='password'>
-  <br />
-  <input type='submit'>
+<form>
+  <label>
+    First Name:
+    <input type="text" name="first-name" />
+  </label>
 </form>
 ```
 
-<form method='post'>
-  Name: <input type='text' name='name' value='Alice' />
-  <br />
-  Password: <input type='password' name='password' />
-  <br />
-  <input type='submit' />
-</form>
+- The browser listens for typing in these inputs.
+- When `onsubmit` is triggered, the browser collects the data from these `<input>`s.
+
+[MDN: form](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form)<br/>
+[Accessible form builder](https://accessify.com/tools-and-wizards/accessibility-tools/quick-form-builder/)
 
 ---
 
-# Forms are semantic
+## Form Example
 
-* a form wraps *input* elements for submission
-  * but may also *include* or *be included within* other styled elements
-* most of the time your `<form>` element will correspond to a block element (viz. the border of the form)
-  * but by default `<form>` is an *inline* element
-  * and instead of making it a block element, it's usually better to wrap it in a `div` 
-  * and apply styles to the wrapper and leave the `form` alone
+Take a few minutes to explore the various parts of this form and what they do:
 
----
+<https://replit.com/team/education-team/forms-example>
 
-# Form attributes
-
-```html
-<form method='get' action='/login'>
-```
-
-* `method` corresponds to the *first word* in the HTTP protocol
-  * "GET" is the standard (default) method; there are also POST, PUT, HEAD, DELETE, [etc.](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)
-* `action` is the server path to submit the form to
-  * if it's blank then it uses the *same path as the current page* (which is usually not what you want)
+> Remember to reference W3Schools or MDN for any tags you don't recognize.
 
 ---
 
-# Form Methods: GET vs. POST
+## Forms and HTTP
 
-* `GET` means "return me a page (based on these parameters)"
-* `POST` means "take these parameters (and return me a page)"
+You may have noticed `method="POST"` in the previous example.
 
-Basically, `GET` is for *reading* and `POST` is for *writing*
+**HTTP** is HyperText Transfer _Protocol_, meaning the rules we follow when we transfer text data.
 
-but that distinction is often blurry
+- `method` is what we are doing witht the data
+  - GET - asking to read data
+  - POST - saving data
+  - PUT - editing data
+  - DELETE - deleting data
+- `action` is the URL we submit data to
 
-Also,
-
-  * `GET` sends all parameters via the *request URL*
-  * `POST` sends some or all parameters via the *request body*
-
----
-
-# Form elements
-
-```html
-<form method='GET' action='/search'>
-  <label>Search by Author: <input type="search" name="author"></label>
-  <input type='submit' value='Search'>
-</form>
-```
-
-* `<label>` marks some text as belonging to a certain input element
-* `<input name='q' type='search'>` is a text field
-  * (that removes line breaks and may look different)
-* `<input type='submit' value='Search'>` is a **button** whose **label** is the string "Search"
-  * (yes, the names are confusing; the submit button goes way back to HTML 1.0)
-
-There are many more types of form elements (or "widgets") that let the user enter data in a wide variety of formats.
+Combined, we can send data to other sites and tell those sites what we want them to do with said data.
 
 ---
 
-# Intercepting forms with JavaScript
+## Using JavaScript with Forms
 
-* your JavaScript code can add a *submit event handler*
-  * also known as "onsubmit"
-* this function will be called after the user clicks "Submit"
-  * but before the data is sent to the server
-* this lets you *modify* the data sent to the server, or execute code *before* sending the data to the server, or just *cancel* the server call altogether
-* if you intend a form to only be used by JavaScript, do one or both of these: 
-  * `<form href='#'>` in your HTML
-  * `event.preventDefault();` in your JS event handler
+- We can use JavaScript to add _submit handler_ function.
+- This function will be invoked when the `onsubmit` event fires.
+  - i.e. the user clicks "Submit"
+- The `Event` and its data is passed to your _submit handler_ function as an argument _before_ being sent to a server.
+- This lets you modify data, execute other code, or _cancel_ the submission.
+- When using JavaScript with a form, you may want to stop the automatic refresh behavior by doing one of these:
+  - `<form href="#">` in your HTML
+  - `event.preventDefault();` as the first line in your _submit handler_ block.
 
 ---
 
-# Form submission: how does it work?
-
-![client-server illustration](https://developer.mozilla.org/files/4291/client-server.png)
+## Form submission: how does it work?
 
 1. The user enters some values into the form elements
-2. **Either**...
-  * the user clicks "Submit"
-  * or the user presses <kbd>Enter</kbd> in a text field
-  * or JavaScript calls `form.submit()` on the form DOM element
-3. The client sends an HTTP request
-  * including parameters like `?item=apple&submit=Search`
+2. The form begins to submit as a result of one of these behaviors:
+
+- clicking "Submit"
+- pressing <kbd>Enter</kbd> while in a text field
+- or JavaScript calls `form.submit()` on the form DOM element
+
+3. The user's computer (**client**) sends an HTTP request
+
+- The data from the form is included as a **query string** like `?item=apple&submit=Search`
 
 ---
-
-# Forms as Input
-
-Forms are a great way to accept user input in your webpages. The simplest way to handle user input is to create a form with an `<input type="text" />` element, and an `<input type="submit" />` element.
-
-When the form is submitted you use JavaScript to read the value of the text field, and do whatever manipulations, or actions you need to do based on that input.
