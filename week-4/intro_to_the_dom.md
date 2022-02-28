@@ -1,6 +1,6 @@
 # The DOM
 
-- Document Object Model
+- DOM stands for Document Object Model
   - Document - HTML page
   - Object - HTML elements and comments that the browser calls **Nodes** (not like node.js)
   - Model - Arranging them to make sense
@@ -11,7 +11,7 @@
 
 ---
 
-# The BOM
+## The BOM
 
 - BOM stands for Browser Object Model
 - the global `window` variable has lots of nice properties
@@ -34,7 +34,7 @@
 
 ---
 
-## The `document`
+## The Global `document`
 
 The current page is always available via the _global variable_ named `document`.
 
@@ -52,7 +52,7 @@ In addition to providing many useful _functions_, it also provides some _propert
 
 ---
 
-## The `window`
+## The Global `window`
 
 All of the global "built-in" functions and variables you've used and made thus far actually exist in the `window` object.
 
@@ -68,7 +68,7 @@ window.parseInt("123"); // thing
 
 ---
 
-## Using JS to Get Elements from the DOM
+## Find Elements within the DOM
 
 ```js
 let allTheParagraphs = document.getElementsByTagName("p");
@@ -93,7 +93,7 @@ We will discuss parts of this in more detail in future slides.
 
 ---
 
-## Including JavaScript Files in your HTML
+## Include JavaScript within HTML
 
 ```html
 <script>
@@ -112,13 +112,15 @@ The `script` tag may appear in the `head` or in the `body`. Scripts are executed
 
 ## DOM Queries
 
-To access the elements on our page, and bring them into JavaScript we can use a special set of methods on the `document` object called DOM queries
+To access elements on the page from JavaScript, there are special methods on the `document` object called DOM queries
 
-- `getElementsByTagName()`
-- `getElementsByClassName()`
-- `getElementById()`
-- `querySelector()`
-- `querySelectorAll()`
+```js
+document.getElementsByTagName()
+document.getElementsByClassName()
+document.getElementById()
+document.querySelector()
+document.querySelectorAll()
+```
 
 ---
 
@@ -132,13 +134,13 @@ let element = document.getElementById(id);
 console.log(element);
 ```
 
-<https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById>
+[MDN - getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById)
 
 ---
 
 ## Finding an Element by CSS Selector
 
-You can select items from the DOM the same way you would in CSS to apply styles.
+Select elements from the DOM the same way you would in CSS to apply styles.
 
 ```js
 let element = document.querySelector("main div.preview > p");
@@ -146,13 +148,13 @@ let element = document.querySelector("main div.preview > p");
 
 This returns the first `<p>` that is a direct child of any `<div class='preview'>` that is in `<main>`.
 
-<https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector>
+[MDN - querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector)
 
 ---
 
 ## Using an Element
 
-Once you find an element (using `getElementById` or any other way), you can start attaching behavior, or modifying its attributes.
+After finding an element using `getElementById`, start attaching behavior, or modifying its attributes.
 
 ```js
 let header = document.getElementById("header");
@@ -161,7 +163,7 @@ let text = header.textContent;
 
 There is also a property called `innerText` but it's confusing and implemented differently in different browsers.
 
-<https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent>
+[MDN - textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
 
 ---
 
@@ -181,7 +183,7 @@ let target = document.getElementById("someElement");
 
 let paragraph = document.createElement("p");
 paragraph.textContent =
-  “If you cannot solve a problem, then there is an easier problem you can solve: find it. 
+  “If you cannot solve a problem, then there is an easier problem you can solve: find it.
   - George Polya” ;
 
 target.appendChild(paragraph);
@@ -193,8 +195,8 @@ target.appendChild(paragraph);
 
 The Element class inherits from the Node class, but that does not mean they are identical.
 
-- <https://developer.mozilla.org/en-US/docs/Web/API/Node>
-- <https://developer.mozilla.org/en-US/docs/Web/API/Element>
+- [MDN - Node](https://developer.mozilla.org/en-US/docs/Web/API/Node)
+- [MDN - Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)
 
 For instance, `attributes` is a property of an Element, but `childNodes` is a property of a Node.
 
@@ -204,7 +206,7 @@ For instance, `attributes` is a property of an Element, but `childNodes` is a pr
 
 Elements are the most common Nodes; here are some others kinds of Nodes:
 
-- Document, Element, Text, Comment, CDATASection, ProcessingInstruction, DocumentFragment, DocumentType, Notation, Entity, EntityReference
+- `Document`, `Element`, `Text`, `Comment`, `CDATASection`, `ProcessingInstruction`, `DocumentFragment`, `DocumentType`, `Notation`, `Entity`, `EntityReference`
 
 All of them have their own properties that are specific to them and not part of the general Node class.
 
