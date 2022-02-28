@@ -1,142 +1,93 @@
-# Timer
+# Timer Lab
 
-## Welcome!
+A mission Countdown Timer
 
-In this lab we will be practicing DOM scripting, and setting up event handlers by creating a simple timer that counts down from 2 minutes, and sends an alert when finished.
+## Objective
 
-## Timing functions
+Understand how to use the browser's `window` object to create a timer to execute a callback function after a period of time, or on an interval of time.
 
-Timing functions are a special type of event listener that listens for timing events. Unlike most events these are not dependant on user interaction, but will fire a preset amount of time after the function was called
+## Learning
 
-In JavaScript we have two timing functions
-* `setTimeout`
-* `setInterval`
+In this lab, we will be practicing with basic DOM scripting. We will utilize the `setTimeout` and `setInterval` Web API timers. We will also need to utilize HTML.
 
-## setTimeout
+Topics:
 
-The built-in function `setTimeout` sets up a callback.
+- DOM Scripting.
+- The Web API  `setTimeout` timer.
+- The Web API `setInterval` timer with `clearInterval`.
+- HTML.
 
-You call it with two parameters:
+## Achieving
 
-  1. a callback function (let's call it F)
-  2. a number of milliseconds (let's call it N)
+In this lab, we will want to create a MISSION COUNTDOWN.
 
-`setTimeout` returns *immediately*, but also sets up a hidden timer
+Your work will result in:
 
-after approximately N milliseconds, F gets *called back*
+- A website that displays a MISSION COUNTDOWN title.
+- A button with the text GET READY? that starts the timeout timer.
+- A header that displays GET READY... that changes to READY! when the time out is complete.
+- A button with the text START COUNTDOWN that starts the interval timer.
+- When START COUNTDOWN is clicked, an interval timer appears on the page that countdowns from 5 to 1.
+- After 1 in the interval timer, the display changes to GO!
 
-Try this now:
+## Procedure
 
-```javascript
-function later() {
-  console.log("See you later...");
-  setTimeout( alligator, 1000 );
-}
-function alligator() {
-  console.log("Alligator!")
-}
-later();
-```
+### Setting up the HTML
 
-[MDN: setTimeout documentation](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
+- [ ] This page will need a few of elements:
+- [ ] A `<h1>` with the text MISSION COUNTDOWN.
+- [ ] A `<button>` with the text GET READY? and the id "start-timeout".
+- [ ] A `<h2>` with the id of "timeout-display" that is initially empty.
+- [ ] A `<button>` with the text START COUNTDOWN and the id "start-interval".
+- [ ] A `<h2>` with the id of "interval-display" that is initially empty.
+- [ ] You will need to import `script.js` into `index.html`.
 
-## setInterval
+### Getting our DOM elements with `getElementById`
 
-`setTimeout` has a sibling named `setInterval`
+- [ ] In `script.js`, utilize the DOM selector `getElementById` to grab our four element nodes and assign them to individual variables.
 
-It works a lot like `setTimeout` but is a little more complicated.
+### Assigning our event listeners
 
-After calling `setInterval`, JavaScript will call your callback *again and again forever* until you *clear* the timer.
+- [ ] Utilizing the variable you assigned the DOM selector to, append `.addEventListener()` to the "start-timeout" button. We will need to complete this step again for the "start-interval" button.
+- [ ] `addEventListener()` takes two arguments: the event and the function that represents the event that will occur.
+- [ ] The event should be 'click' and the callback functions will be described below.
 
-For example:
+### Creating our callback function to the 'start-timeout' `addEventListener`
 
-```javascript
-function countDownFrom(num) {
-    let intervalId = setInterval(tick, 1000);
+- [ ] The first thing that needs to happen is the `textContent` of our "timeout-display" changes to "Getting ready..."
+- [ ] Then, create a variable to hold our `setTimeout` timer.
+- [ ] Refer to the syntax of `setTimeout` here: [MDN setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+- [ ] The first argument passed to `setTimeout` is a callback function that represents what happens once the timer expires.
+- [ ] When the timer expires, we want the `textContent` of "timeout-display" to change to "READY"
+- [ ] We want the timer to expire in 5 seconds which is the second argument passed to `setTimeout`. It should be passed in as milliseconds.
 
-    function tick() {
-        console.log(num);
-        num = num - 1;
-        if (num <= 0) {
-            console.log('Blastoff!');
-            clearInterval(intervalId);
-        }
-    }
-}
-countDownFrom(10);
-```
+### Creating our callback function to the 'start-interval' `addEventListener`
 
-https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval
+- [ ] The first thing that needs to happen is the creation of a `count` variable that starts at `5`.
+- [ ] Then, create a variable to hold our `setInterval` timer.
+- [ ] Refer to the syntax of `setInterval` here: [MDN setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)
+- [ ] The first argument passed to `setInterval` is a callback function that represents what happens every time the delay or interval occurs.
+- [ ] Inside of this callback function, we want the `textContent` of "interval-display" to decrement.
+- [ ] Set up an `if` statement to catch when count is less than 0.
+- [ ] Inside of this `if` statement, change the `textContent` to be "GO!"
+- [ ] Inside of this `if` statement, utilize `clearInterval` and pass in the variable that holds the `setInterval` timer.
+- [ ] The second argument passed to `setInterval` is the time in milliseconds we want the delay or interval to be. We want it to be 1 second.
 
-## setInterval or setTimeout?
+## Review
 
-When you want something to happen again and again on a fixed delay, you need to choose between `setInterval` and `setTimeout`.
+In this lab, we utilized the `setTimeout` and `setInterval` timers to achieve two different kinds of display to the user.
 
-`setInterval` is a bit more powerful but also a bit more complicated.
+The software should:
 
-Note that anything you do with `setInterval` could instead be implemented using `setTimeout`, as long as your callback **calls `setTimeout` again** recursively, like this:
+- Be a website that displays a MISSION COUNTDOWN title.
+- Have a button with the text GET READY? that starts the timeout timer.
+- Have a header that displays "Getting ready..." when GET READY? is clicked, that changes to READY! when the time out is complete.
+- Have a button with the text START COUNTDOWN that starts the interval timer.
+- When START COUNTDOWN is clicked, an interval timer appears on the page that countdowns from 5 to 1.
+- After 1 in the interval timer, the display changes to GO!
 
-```javascript
-function countDownFrom(num) {
-    setTimeout(tick, 1000);
+## Going Further
 
-    function tick() {
-        console.log(num);
-        num = num - 1;
-        if (num <= 0) {
-          console.log('Blastoff!');
-        } else {
-          setTimeout(tick, 1000);
-        }
-    }
-}
-countDownFrom(10);
-```
-
-This design decision comes down to personal style and preference. Which makes more sense to you? Which will better fit your needs?
-
-## Create the Page
-
-To create a web page with some attached JavaScript we should first set up a new directory to hold our files. I will refer to this directory as "timer" from now on.
-
-Inside "timer" create a new `index.html` file. Remember the name "index.html" is significant! On this page create an empty `div` with the id "timer"
-
-## Link the JavaScript
-
-We could create a `script` tag on our page, and write our JavaScript directly inside it, but that wouldn't be very organized. Instead we should create a dedicated JS file where we will write all our JavaScript, and link it to our page with a `script` tag using the `src` attribute to point to our JS file.
-
-## Counting Seconds
-
-Counting down every second is a fairly simple procedure. We can set a `timeOut` or `setInterval` function and tell it to fire after, or every (depending on which function you used) 1000 milliseconds.
-
-We should also set a variable that we can decrement each time our timing callback fires.
-
-* create a global variable named `count` and set it's initial value to 120
-* set up your event handler function to decrement `count` by 1 every time it's called
-  * until `count` is 0
-  * for now just `console.log` count, we'll put it on the page in a little bit
-* set up a timing function that will call your event handler every second
-  * until `count` is 0
-
-## Displaying seconds
-
-To display our seconds on the page we will need a location we can write the data to.
-
-* in your JavaScript use a DOM query to create a reference to the `div` with an `id` of `"timer"`
-* instead of `console.log`ing count in your event handler, replace the div's *text content* with the current value of count
-
-## Counting Minutes
-
-Now that we have a timer that counts down 120 seconds let's format it so that it looks a bit nicer. Let's have it start at 2 minutes, and count down from there.
-
-There are 60 seconds in a minute, so we need to have a number of minutes equal to our seconds divided by 60.
-
-The number of seconds left in each minute would be the *remainder* of our total count divided by 60
-
-Separate your minutes and seconds into two variables and draw both these values in the "timer" div with a colon between them, e.g. `1:37` for a count of 97.
-
-## Left Padded Zeros
-
-When the seconds get into the single digits things might start looking a little bit funky.
-
-Adding left padded 0s to numbers can be surprisingly tricky. Don't be afraid to convert your numbers into strings either through *string concatenation* or by using a method such as `.toPrecision`
+- Right now, you can click the buttons multiple times which will create multiple timers and cause a bug in your page. How can you disable the buttons so users can only click them at the appropriate times?
+- Can you change the text colors so that it is red when the user is waiting and green when the user is ready to go?
+- Feel free to practice your CSS and style this page further.
