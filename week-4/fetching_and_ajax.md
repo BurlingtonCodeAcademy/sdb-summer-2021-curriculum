@@ -46,13 +46,13 @@ AJAX stands for **Asynchronous JavaScript And XML**.
 
 ## What Makes Ajax Possible?
 
-Ajax isn’t a technology. It’s really several technologies, each flourishing in its own right, coming together in powerful new ways. Ajax incorporates:
+Ajax is not a single technology. It is really several technologies, each flourishing in its own right, coming together in powerful new ways. Ajax incorporates:
 
-- standards-based presentation using **HTML and CSS**
-- dynamic display and interaction using the Document Object Model
-- data interchange and manipulation using **JSON**
-- asynchronous data retrieval using **Fetch**
-- and JavaScript binding everything together.
+- Standards-based presentation using **HTML and CSS**
+- Dynamic display and interaction using the Document Object Model
+- Data interchange and manipulation using **JSON**
+- Asynchronous data retrieval using **Fetch**
+- JavaScript binding everything together
 
 > This collaboration allows web applications to meaniningfully compete with desktop applications.
 
@@ -60,9 +60,9 @@ Ajax isn’t a technology. It’s really several technologies, each flourishing 
 
 ## Fetching Data
 
-- JavaScript has a built-in tool called **fetch** that allows us to make `GET` requests.
-- A **GET request** is when we ask another computer for information or files.
-- Every time you visit a site, you make a `GET` request.
+- JavaScript has a built-in tool called **fetch** that allows us to make `GET` requests to a server
+- A **GET request** is when we ask another computer for information or files
+- Every time you visit a site, you make a `GET` request to the server
 - Make a `GET` request to this address to see the response:
   - <https://jsonplaceholder.typicode.com/posts/1>
 
@@ -108,7 +108,7 @@ let blogText = response.text();
 
 When there is a chance of an error being `thrown`, we want to `catch` it.
 
-```javascript
+```js
 try {
   let response = await fetch(
     "https://jsonplaceholder.typicode.com/posts/NO-POST-AVAILABLE-HERE"
@@ -123,9 +123,11 @@ try {
 }
 ```
 
-## <https://replit.com/team/education-team/fetch-error-catch>
+## Fetch Error Lab
 
-# JSON
+<https://replit.com/team/education-team/fetch-error-catch>
+
+## JSON
 
 - JSON is JavaScript Object Notation.
 - It's the most common format for sending information via requests.
