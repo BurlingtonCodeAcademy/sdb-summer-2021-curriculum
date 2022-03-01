@@ -62,11 +62,23 @@ The _query_ is `?category=folk&date=1977` and the _query parameters_ are:
 
 ---
 
-## Queries Cont.
-
-google.com/search?<span style="color: green;">q=search+term+here</span><span style="color: pink;">&client=safari</span><span style="color: blue;">&source=hp</span><span style="color: orange;">&ei=-q8dYtzgFteqqtsP4My7kA8</span><span style="color: purple;">&iflsig=AHkkrS4AAAAAYh2-CkSzCp-mn5nVyQmW52EWqnjRaD1P</span><span style="color: red;">&ved=0ahUKEwjcxdjzl6T2AhVXlWoFHWDmDvIQ4dUDCAw</span><span style="color: cyan;">&uact=5&oq=search+term+here</span>
+## Queries Continued
 
 Let's examine this Google Search query.
+
+`google.com/search?q=search+term+here&client=safari&source=hp&ei=-q8dYtzgFteqqtsP4My7kA8&iflsig=AHkkrS4AAAAAYh2-CkSzCp-mn5nVyQmW52EWqnjRaD1P&ved=0ahUKEwjcxdjzl6T2AhVXlWoFHWDmDvIQ4dUDCAw&uact=5&oq=search+term+here`
+
+```txt
+google.com/search?
+  q=search+term+here
+  &client=safari
+  &source=hp
+  &ei=-q8dYtzgFteqqtsP4My7kA8
+  &iflsig=AHkkrS4AAAAAYh2-CkSzCp-mn5nVyQmW52EWqnjRaD1P
+  &ved=0ahUKEwjcxdjzl6T2AhVXlWoFHWDmDvIQ4dUDCAw
+  &uact=5&oq=search+term+here
+```
+
 
 ---
 
@@ -75,8 +87,8 @@ Let's examine this Google Search query.
 Any "special" characters in a URL are "escaped" (encoded) as hexadecimal using [percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding)
 
 - space becomes `+` or `%20`
-- - becomes `%2B`
-- % becomes `%25`
+- `-` becomes `%2B`
+- `%` becomes `%25`
 - Other punctuation marks
 - Non-ASCII Unicode characters
 
