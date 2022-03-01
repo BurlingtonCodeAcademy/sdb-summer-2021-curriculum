@@ -1,179 +1,137 @@
 # URLs
 
-* **U**niform
-* **R**esource
-* **L**ocator
+- **U**niform
+- **R**esource
+- **L**ocator
+
+[What is a URL | MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
 
 ---
 
-# URL Diagram
+## URL Subparts
 
-![complex url](https://res.cloudinary.com/btvca/image/upload/v1574445171/curriculum/complex_url_yb9fbh.png)
-
-(via [DoePud](https://doepud.co.uk/blog/anatomy-of-a-url))
+![URL diagram](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL/mdn-url-all.png)
 
 ---
 
-# URL Breakdown
+## Scheme
 
-`protocol://host:port/path?query#fragment`
-
-Some parts are optional, namely the `port`, `path`, `query` and `fragment`, but if they exist they *must* be in the order layed out here. e.g. The fragment *must always be the last part* of the URL
-
----
-
-# Protocol
-
-* `http` - the basics
-* `https` - "S" means "Secure"
-* `file` - local filesystem
+- `http` - the basics
+- `https` - "S" means "Secure"
+- `file` - local filesystem
 
 many others...
 
 ---
 
-# Host
+## Domain
 
-in `http://www.example.com`
+`www.example.com`
 
-the host is `www.example.com`
-
-the host is a *domain name* 
-
-the browser will use that name to locate the host server, using DNS (*domain name service*) to translate from text to an *IP address*, then use *TCP/IP* to connect to that host and begin an *HTTP* session
+> The domain indicates which Web server is being requested. Usually this is a domain name, but an IP address may also be used (but this is rare as it is much less convenient).
 
 ---
 
-# Port
+## Port
 
-in `http://localhost:8080`
+http://localhost:**8080**
 
-8080 is a *port number*
-
-it identifies the *HTTP service* running on the server
-
-the default port for HTTP is 80 (but developers often run servers on other ports, especially on their local machine)
+> The technical "gate" used to access the resources on the web server. It is usually omitted if the web server uses the standard ports of the HTTP protocol (80 for HTTP and 443 for HTTPS). Otherwise, it is mandatory.
 
 ---
 
-# Path
+## Path
 
-in `http://musical-notes.com/bands/heart`
+musical-notes.com<b>/bands/heart</b>
 
-the path is `/bands/heart`
-
-the path helps the *service* locate the specific *resource* that the client wants
-
-(this is the "R" in "URL")
-
-the final part of the path ("heart") is called the *slug* and is used for search engine optimization (SEO)
+> The path to the resource on the server. A path like this used to represent a physical file location on the server. Nowadays, servers handle it, and it does not really have any physical reality.
 
 ---
 
-# Queries
+## Queries
 
-in `http://musical-notes.com/bands/search?heart`
+The _query_ is `?category=folk&date=1977` and the _query parameters_ are:
 
-the path is `/bands/search`
+- `&` to separate parameters from each other
+- `=` to separate individual parameter names from values
 
-the query is `?heart`
-
-> this was the original way to do searches on the Web, but was soon enhanced...
-
----
-
-# Query Parameters
-
-Query Parameters use the same URL slot as normal queries, but use a particular format to encode multiple parameters into a single string
-
-*Inside* the query string, URLs use *delimiters*:
-
-  * `&` to separate parameters from each other 
-  * `=` to separate individual parameter names from values
-
-The *query* is `?category=folk&date=1977` and the *query parameters* are:
-
-|name|value|
-|---|---|
-|category|`folk`|
-|date|`1977`|
+| name     | value  |
+| -------- | ------ |
+| category | `folk` |
+| date     | `1977` |
 
 ---
 
-# Percent Encoding
+## Queries Cont.
 
-any funky characters in a URL are "escaped" (encoded) as hexadecimal using [percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding)
+google.com/search?<span style="color: green;">q=search+term+here</span><span style="color: pink;">&client=safari</span><span style="color: blue;">&source=hp</span><span style="color: orange;">&ei=-q8dYtzgFteqqtsP4My7kA8</span><span style="color: purple;">&iflsig=AHkkrS4AAAAAYh2-CkSzCp-mn5nVyQmW52EWqnjRaD1P</span><span style="color: red;">&ved=0ahUKEwjcxdjzl6T2AhVXlWoFHWDmDvIQ4dUDCAw</span><span style="color: cyan;">&uact=5&oq=search+term+here</span>
 
-"funky" includes...
+Let's examine this Google Search query.
 
-* space (which turns into `+` or `%20`)
-* plus signs (`%2B`) and percent signs (`%25`)
-* some other punctuation marks
-* non-ASCII Unicode characters
+---
+
+## URL Encoding
+
+Any "special" characters in a URL are "escaped" (encoded) as hexadecimal using [percent-encoding](https://en.wikipedia.org/wiki/Percent-encoding)
+
+- space becomes `+` or `%20`
+- - becomes `%2B`
+- % becomes `%25`
+- Other punctuation marks
+- Non-ASCII Unicode characters
 
 e.g. `http://example.com/引き割り.html`
+
 becomes `http://example.com/%E5%BC%95%E3%81%8D%E5%89%B2%E3%82%8A.html`
 
 ---
 
-# Query Parameter Encoding
+## URL Encoding with Query Parameters
 
-Combining query parameter encoding and percent-encoding can lead to some confusing URLs. For instance...
+Combining query parameter encoding and percent-encoding can lead to complex URLs.
 
-in `http://musical-notes.com/bands/search?category=80%27s+Rock+Bands&page=2`
+URL: `http://musical-notes.com/bands/search?category=80%27s+Rock+Bands&page=2`
 
-the query is `?category=80%27s+Rock+Bands&page=2`
+Query: `?category=80%27s+Rock+Bands&page=2`
 
-* the first parameter is `category=80%27s+Rock+Bands`
-* the `%27` means "apostrophe"
-* the `+` means "space"
+Query Parameter: `category=80%27s+Rock+Bands`
 
-so the decoded query parameters are
+- `%27` becomes `'`
+- `+` becomes a space
 
-|name|value|
-|---|---|
-|category|`80's Rock Bands`|
-|page|`2`|
-
->...it's confusing but it makes sense if you break it down
+| name     | value             |
+| -------- | ----------------- |
+| category | `80's Rock Bands` |
+| page     | `2`               |
 
 ---
 
-# reading Query Parameters
+## Accessing Query Parameters in JavaScript
 
-`document.location.search` returns the URL's query string (everything after the `?`) as a single string
+`document.location.search` returns the URL's query string.
 
-yes, "**search**" is the wrong name for this field `:-(`, but "search" and "query" are pretty synonymous, so it's not so bad
+Remember, `search` is a synonym for `query`.
 
-unfortunately, you need to parse the string into parameters, decoding `?x=1&y=2` into the object `{x: 1, y: 2}`
+This does not parse the string into an object for you.
+`?x=1&y=2` ==/==> `{x: 1, y: 2}`
 
-fortunately, there is a standard JS API object to help you, named [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
+Instead, you can use [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) to do that for you.
 
 ```js
 let params = new URLSearchParams(document.location.search);
-let name = params.get('name');
+let name = params.get("name");
 ```
 
 ---
 
-# fragment
+## Anchors
 
-in the URL `http://example.com/users/alex#profile`
+example.com/users/alex<b>#profile</b>
 
-`#profile` called the *fragment* or *anchor* 
-
-the fragment is a hint to the *browser* and is **not** sent to the server with the rest of the URL
-
-in normal pages, it asks the browser to scroll to a location *inside* the document, after the page has loaded
-
-in Single-Page Apps (SPAs) it is used to determine which pseudo-page to display
+- Anchors lead to another part of the resource itself. It acts as a sort of "bookmark" inside the resource.
+- HTML: the browser will scroll to the point where the anchor is defined.
+- Video or Audio: the browser will try to go to the time the anchor represents.
+- The part after the #, also known as the fragment identifier, is never sent to the server with the request.
+- You can access this data by itself using `document.location.hash`.
 
 ---
-
-# Reading the Anchor Fragment
-
-`document.location.hash` returns the URL's *fragment* (everything after the `#`) as a string
-
-Normal web pages use the anchor to *scroll* to an element with a matching `id` or `name` attribute
-
-Single-Page Apps use the anchor to *redraw* the page and call it "routing"
