@@ -10,7 +10,7 @@
 
 ## URL Subparts
 
-![URL diagram](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL/mdn-url-all.png)
+<img src="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL/mdn-url-all.png" width="100%" />
 
 ---
 
