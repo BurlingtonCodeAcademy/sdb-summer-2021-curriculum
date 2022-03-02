@@ -1,53 +1,63 @@
 # Passing Data
 
-## Welcome!
+## Objective
 
-In this lab we will be looking at how we can use the URL to send data to programs, and pass information between different web pages. To do this we will be building a form that allows you to set a number of names, and then redirects you to a page that greats everyone in the party.
+Extend the [Hello Frenemy WWW Lab](https://online.uprighted.com/lessons/written/hello-frenemy-www) and refactor it to utilize conditional routing and URL parameters.
 
-Create a new directory with two html files, one for your home page, which should be named `index.html` and one that we will use to display a greeting to your users, which I will refer to as `greeting.html`. Each of these pages should have a linked JS file.
+## Learning
 
-In `index.html` create a form that a user can type their name into. We'll be expanding this form later, but for now it only needs a single input field.
+In this lab, we will practice conditionally routing a user and utilizing information passed in the URL. All topics described in Hello Frenemy WWW will be utilized along with the following new ones.
 
-## Reading URLs
+Topics:
 
-Every URL is made of several parts. The protocol, and domain name make up the heart of the URL, and those are what we mostly see when surfing the web. Together they make up the address of the page, and look like this: `http://www.example.com/path`
+- `document.location` Location Object.
+- `URLSearchParams` interface and the `.get()` method.
 
-In general those parts of the URL tell your browser what computer to look on, and which file to look for to show you the website. They are responsible for navigation on the web. There are other parts of the URL which can be used to pass data, usually to determine what to show on the page, such as search results. These parts are the hash, and the query.
+## Achieving
 
-## The Hash
+In this lab, when a user enters their name, they will either be told to "Go away!" OR be routed to a new page that greets them by name. Their name should be appended as a parameter in the URL so that the new page can access it.
 
-The Hash was originally designed for *internal navigation*. It was designed to be used as an href value to jump to a section of the current page.
+Your work will result in:
 
-If you want to try out this functionality go ahead and generate a block of lorem ipsum text below your nav bar. The goal is to make the page scrollable so that you can jump to a different section of it, so don't be stingy with the text! Below the text add an element to use as a target. Any element will do, but we'll need to give it an id. If we use an empty `div` and give it an id of "bottom" we can use it as the target of our link, and nothing will appear on the page. Go back to the nav bar, and add an anchor tag with an href equal to a hash and the id of your target. `<a href="#bottom">Jump to Bottom</a>` will create a clickable link that will jump to the element `<div id="bottom"></div>`. Don't forget to put some text in your anchor tag, otherwise you'll have nothing to click on.
+- A simple website that uses conditional logic to determine whether or not a user gets access to a new page.
 
-Because the hash doesn't change or reload our page we can also use it to send messages to a JavaScript program. Be aware that if there is an ID on the page that matches the hash you will jump to that section of the page!
+## Procedure
 
-## Reading the Hash
+### Refactoring the file structure
 
-We can access the hash (or any part of the URL) in JavaScript through the `document` object
+- [ ] Update the file name `script.js` to be `index.js` and update the import in `index.html`.
+- [ ] Create two new files: `greeting.html` and `greeting.js`.
+- [ ] Import `greeting.js` into `greeting.html`.
+- [ ] Inside of `greeting.html`, create a new `<h2>` with the id of "friend-greeting".
 
-In your JavaScript file `console.log` the `document.location.hash`
+### Refactoring the conditional logic
 
-Add a hash to your URL in the browser and hit enter
+**In order to see changes in the URL as anticipated, you will need to open the Replit browser in its own window. The way to do this is to click the square button with an upward right arrow in the upper right corner of the embedded browser window.**
 
-Look at the your browser's console to see what the value of that hash property is. Notice how it has that "#" at the beginning? We probably don't want that
+- [ ] _This change will need to occur at the point in the code the user is greeted by name._
+- [ ] Remove the change to the "computer-response" `textContent` that greets the user by name.
+- [ ] In its place, use the `document.location` Location Object. See the following link for more detail: [MDN Document.location](https://developer.mozilla.org/en-US/docs/Web/API/Document/location)
+- [ ] Reassign the value of `document.location` to be a concatenation of `/greeting.html?name=` and the "user-input" element value.
+- [ ] Test what occurs now when a user submits the form.
 
-## Strings Never go Away
+### Getting our URL parameters on the new page
 
-Think back to the first week. How could we *slice* off just the part of the string we want? What index number is the *first* character at?
+- [ ] Use a query selector to get reference to the new `<h2>` on `greeting.html`.
+- [ ] Create a new variable `params` and assign to it the construction of `new URLSearchParams()` whose argument is `document.location.search`.
+- [ ] Create a new variable `friendName` and assign to it `params` with the `.get()` method whose argument is 'name'.
+- [ ] Change the text content of the "friend-greeting" element to concatenate a greeting utilizing `friendName`.
 
-## Redirecting
+## Review
 
-To do a redirect in JavaScript we can reassign the `document.location` property to the new path we want to go to. So to go to the "greeting" page we can reassign our location to that path, and attach a hash mark, and the user name that was entered in the form like so: `document.location = "/greeting.html#" + userName`
+In this lab, we refactored a previous lab to have new functionality including conditional routing and URL parameter utilization. 
 
-This will allow us to transfer the name between pages.
+The software should:
 
-* In the JS file for the `index.html` page create an event handler for your form
-* when the form is submitted read the value of the name that was entered, and redirect to the "Greeting" page, passing that name as a hash
-* On the greeting page, read the hash, and create a custom greeting using that name
+- Ask the user their name and provide a form for user input.
+- Either tell the user to "Go away!" or route them to a new page dependent on conditional logic.
+- Pass the user's name as a URL parameter to a new page; the new page should utilize this to greet the user by name.
 
-## The Query
+## Going Further
 
-Hashes are great if we need to send a single piece of information, but they don't handle passing sets of data very well. If we need to send over a more complex data structure with the URL we should probably use a query parameter.
-
-The query parameter is set with a question mark `?`, and consists of key/value pairs defined with equals signs `=`, and separated by ampersands `&`. We can access the query parameter in JS by using `document.location.search`
+- Refer to the 'Going Further' on Hello Frenemy WWW and complete those suggestions.
+- On `greeting.html`, create a new form that represents a mad lib constructor; it should take a past-tense verb and an adjective. Create a new page (`madlib.html`), and pass the friend's name, the past-tense verb, and an adjective in the URL. The new page should display a sentence that utilizes the friend's name, the verb, and the adjective. ("Julie programmed lazily.")
