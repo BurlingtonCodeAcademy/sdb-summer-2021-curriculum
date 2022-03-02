@@ -1,95 +1,74 @@
 # Mock Blog
 
-## Welcome!
+## Objective
 
-In this lab you will create a blog front end with users, and posts pulled from jsonplaceholder.typicode.com containing several different sections:
+In this lab you will create a fake blog with users and posts pulled from <jsonplaceholder.typicode.com> containing several different sections.
 
-* A home page
-* An author page
-* And a blog post page
+## Learning
 
-* On the home page there should be a sidebar with a list of authors
-* When an author's name is clicked it should send you to a page with all the posts by that author.
-* On the homepage there should be a list of all blog posts, displayed by title
-* When a post is clicked it should take you to a dedicated page for that post with the author's name, the title of the post, and the body of the post formatted nicely on the page.
+In this lab, you will be practicing with fetching data from a remote location. You will also be practicing many topics covered in the past two weeks.
 
-> Hint: Create template pages for authors and posts, then use query parameters, or url fragments to determine what data to fetch. This will make it so you don't need 100 very similar pages for each post.
+Topics:
 
-## Creating the Pages
+- Dynamic data display with template pages
+- URL parameters
+- The Document interface and its methods
+- JavaScript Fetch API
 
-Before we start building out the functionality for our site we need to set up the site's architecture.  Create 3 html pages that correspond to the 3 different views on our site; `index.html`, `author.html`, and `post.html`
+## Achieving
 
-We will also want to add some styling to each of these pages. There are two competing opinions in web design about how to organize your styles. Having a master CSS file that contains all the styling for your site, or having a dedicated CSS file for each page. Use the method that feels most comfortable to you. If you do decide to have a master CSS file it is important that you structure the file in a logical manner to make different sections, and page specific styles easy to find.
+In this lab, you will be creating a mock blog that fetches data from a remote location. You will need to dynamically render on template pages by utilizing information passed in the URL. 
 
-Because we want each page to have different functionality we should also create a dedicated JavaScript file for each page.  Create a "script" subdirectory with 3 JS files in them named `index.js`, `author.js`, and `post.js`
+Your work will result in:
 
-You should also create a wire frame for each page to roughly outline how you want the content laid out.
+- A landing page that displays a list of all authors and a list of all posts.
+- When a user clicks on a linked author, it takes them to a page that lists all of the posts they authored.
+- When a user clicks on a linked post, it takes them to a page that displays the content of that post.
+- A dynamically rendered website that uses three HTML documents to display over a hundred pieces of data.
 
-## Fetching JSON
+## Procedure
 
-On the home page we want 2 lists. One with all the authors, and another with all the available posts. To get this data we will need to [fetch](/lessons/slides/fetching-and-AJAX) it from an API so we can load it into the page. We'll be using [JSON Placeholder](http://jsonplaceholder.typicode.com/) as our endpoint to fetch the mock data.
+### Creating the file structure
 
-To get the list of all the authors we'll want to fetch from http://jsonplaceholder.typicode.com/users
+- [ ] You will need the following HTML pages: `index.html`, `author.html`, and `post.html`
+- [ ] You will need to create a `scripts` subdirectory that contains the following JavaScript files: `index.js`, `author.js`, and `post.js`.
+- [ ] The `.js` files should be imported in their respective `.html` files.
+- [ ] You will need to create a `styles` subdirectory. It is your choice if you use one `styles.css` for all three pages OR three css files that are respective to each page.
 
-To get the list of all posts we'll want to fetch from http://jsonplaceholder.typicode.com/posts
+### Setting up your HTML pages
 
-**Visit these locations in your browser *first* to see what the data you're fetching will look like!**
+- [ ] On `index.html`, you will need elements to display the following information: a website title, a list of authors, and a list of all available posts.
+- [ ] On `author.html`, you will need elements to display the following information: all posts by a specific author.
+- [ ] On `post.html`, you will need elelemnts to display the following information: the post title, the post author, and the post content.
 
-Then bring them into your JavaScript files by using the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
+### Setting up your scripts
 
-> Remember: You will need to chain two `.then`s off of your fetch to properly parse the data
+- [ ] On `index.js`, you will need to do the following:
+- [ ] You will need to fetch users and posts from the placeholder data site.
+- [ ] You will need to display the fetched data in the HTML elements on the page.
+- [ ] When the user clicks on an author name, the link takes the user to the author page AND passes the author name to the new page in the URL.
+- [ ] When the user clicks on a post, the link takes the user to the post page AND passes the post ID to the new page in the URL.
+- [ ] On `author.js`, you will need to do the following: 
+- [ ] You will need to grab the author parameter out of the URL and use it to fetch that specific author from the placeholder data site.
+- [ ] You will also need to use the author parameter to fetch the specific posts by a specific author from the placeholder data site.
+- [ ] Both the name of the author and the posts by that author should be displayed on the page.
+- [ ] On `post.js`, you will need to do the following:
+- [ ] You will need to grab the post id parameter out of the URL and use it to fetch that specific post from the placeholder data site. 
+- [ ] You will also need to use the post id parameter AND use dot notation to access the author name of that post within the first fetch.
+- [ ] The name of the author, the title of the post, and the content of the post should be displayed on the page.
 
-## JSON Collections
+## Review
 
-Both of these endpoints serve a JSON Collection, rather than a single JSON object.  You might notice that the JSON Collection looks a lot like an array of objects.
+In this lab, you built out a mock blog website that fetches data from a remote source and dynamically renders it on the page according to URL parameters.
 
-When you bring a JSON collection into JavaScript you can use it just like a normal array.
+The software should:
 
-We're going to want to do something *for each* object in the collection, so let's iterate over the collection, just like we would with a normal array!
+- Have a landing page that displays a list of all authors and a list of all posts.
+- When a user clicks on a linked author, it takes them to a page that lists all of the posts they authored.
+- When a user clicks on a linked post, it takes them to a page that displays the content of that post.
+- Be a dynamically rendered website that uses three HTML documents to display over a hundred pieces of data.
 
-## Working with JSON
+## Going Further
 
-JSON objects are just JavaScript Objects, and we can access their properties in exactly the same ways.
-
-When we're fetching any data we can only use it from inside of the second `.then` because of the ways callbacks, and promises work. Once you're in a promise chain
-
-We don't want to put our JSON objects on the page as is, that would look pretty bad. Try `console.log`ing each object to see the available properties, and extract just the values you need.
-
-## Creating Elements
-
-Now that we have the information we want to put on the page (the author's names, and the post titles). We will need to do this from inside our promise chain, since that is where our data is. More specifically we'll need to write the majority of our code inside the callback function in the second `.then`
-
-We can create new elements using `document.createElement` and passing in the type of element we want to create. Since we are building linkable lists of authors, and titles an `a` element wouldn't be a bad choice. We'll need to assign the call to `document.createElement` to a variable so that we can reference it later on.
-
-To insert text into the element we just created we can manipulate its properties. By assigning the `.textContent` property of the element we just created to the author's name, or the post's title respectively we can put that text into that element.
-
-To set up links to the appropriate page we'll also need to add an `href` property. This should be equal to the page you want to link to and an identifier. IDs tend to make good identifiers because they are generally unique for each entry.
-
-The href for our blog post titles might look something like this: `"/post.html#" + postData.id`
-
-## Appending Elements
-
-To put elements on a web page we will first need a location to put them. If you haven't already, create some container elements on your page to put your lists of author names, and post titles in. Use DOM queries to target those containers, and store them in variables for later use.
-
-we can use the `.appendChild` method to add child elements to our HTML in JavaScript. If we target our container elements, and call `.appendChild` on them, passing in the element we just created as our argument it will put the element on the page.
-
-## Template Pages
-
-We don't want to have to create 100 very similar pages for every post so instead we're going to have our 
-
-What endpoint do we need to fetch from to get an individual post from json placeholder? Visit the site, and figure it out!
-
-We'll talk about URLs, and how to use them to pass data a little later on. For now we're going to use a URL fragment to pass data. URL fragments are always at the end of the URL, and are marked with a hash `#`. We can access them using `document.location.hash`
-
-* `www.example.com/location#data` is a URL with the *path* "/location" and the *hash* "#data"
-* Hashes are useful because they don't change where the path routes to
-
-## Mapping Data
-
-If you look at the post objects you might notice that they don't contain the author's name. How could we get the Author's name using the data contained within the post object?
-
-Now build out the author page. Remember to check what data is available to you, and think about how we could sort our collection of posts based on that data.
-
-## Adding Style
-
-Add some rudimentary styles to lay out the pages, and make them look nice. Set your home page up with the titles of all the posts as the main content, and the authors in a side bar. Style the Author page so that the Author's name is readily apparent, and the article titles are listed below it. Make the post look like a nicely formatted blog post with a bold, underlined title, and the italicize the author's name. Feel free to get creative, and have fun with it!
+- Create your own website design and realize it with CSS on all three pages.
+- Incorporate a navigation bar so that users can return to the landing page from the author or post page.
