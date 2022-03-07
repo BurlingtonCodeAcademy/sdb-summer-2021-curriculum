@@ -1,67 +1,67 @@
-# Name Display
+# React Name Display
 
-## Welcome!
+## Objective
 
-The purpose of this lab is to practice managing state, and setting up controlled inputs. Remember; in React you don't want to directly manipulate the DOM. All page transformations should be done by manipulating your component's state
+To understand how to use the React.js front-end library to create components which automatically update based on changes to the application state.
 
-We are going to create a React component that has a form with two input fields for a first name, and last name. When the form is submitted we will display the full name on the page.
+## Learning
 
-## Setting up React
+In this lab, we will create a small React application that tracks the values of a person's name, and then greets that person by their name along with a friendly message.
 
-Create a new directory named `react-apps`. Inside this directory tun the `npm init -y` command to prepare it for installing dependencies. Then install `create-react-app` using the command `npm install create-react-app`.
+Topics:
 
-Now that we have a location in our file system where we can use `creat-react-app` let's use it to create our "Name Display" application.
+- React State; `useState` and `setState`
+- React Forms; `onChange`
 
-Run the command `npx create-react-app name-display`. This should create a new directory called `name-display`, but it might take several minutes to completely install all the React dependencies. Wait for it to finish then `cd` into that directory, and run the command `npm start` to start your React server, and visit localhost:3000 to see the site.
+## Achieving
 
-## Make it Your Own
+Your work will result in:
 
-Now that we have a working React site let's go into the `src` folder, open up `App.js` and replace the starter code with our own component.
+- A component that displays a person's name, along with a friendly message.
+- A form that allows for input from a human, to enter their full-name.
 
-Delete everything in this file, and create a new class based component named `App`. Don't forget to import the `React` package in this file, and don't forget to export the component!
+## Procedure
 
-The `App` component will need:
+### Create a single component to display a message
 
-- 3 properties in state, initially set to empty strings
-  - `firstName`
-  - `lastName`
-  - `fullName`
-- In the render method it will need:
-  - A form with 3 input elements; Two text inputs, and one submit button
-  - A display area that contains the `fullName` stateful property
+- [ ] Use the `App` component to render (display) a friendly message.
+- [ ] Create a variable within the `App` component to reference your message.
+- [ ] Update the `App` component message to use the variable containing the message.
 
-## See the Name
+### Add a form for a human to enter their full-name
 
-To make sure the name is displaying properly on the page go ahead and hard code a value for your `fullName` property.
+- [ ] Within the `App` component, add a `<form />` child component.
+- [ ] Within the `<form />` component, add three `<input />` child components that will take in the person's first name, middle name, and last name.
+- [ ] Use the `useState` hook to create a variable corresponding to each of the three `<input />` components, and a function that updates that variable when called.
 
-If everything is all set up this name should appear on the page. Change the value of the property in state, and the site should display the new name automatically.
+### Connect the form to the component to update on change
 
-Once you've changed the name a few times, and seen the page update accordingly set it back to an empty string.
+- [ ] Attach an `onChange` event handler to each `<input />` component.
+- [ ] For the value of the `onChange` handler, define an inline Arrow Function that uses the `setSomeVariableName` function corresponding to the `<input />` element that is updated by the human.
 
-# Controlled Inputs
+E.g.
 
-React likes to be in complete control of the DOM using its virtual DOM, so when we start writing code to circumvent React, and directly manipulate the DOM React gets confused, and bugs start to creep into our code.
+```jsx
+  // arrow functions can be defined inline
+  <input onChange={(e) => { setSomeVariableName(e.target.value)}}
+```
 
-To effect changes on the page, even ones as minor as text appearing in a typeable field, we want to be referencing and manipulating our component's state rather than the DOM.
+### Use the `state` variables to compute a message to the human
 
-Input elements that draw their value from state are referred to as "controlled inputs". Let's make our two text inputs controlled inputs.
+- [ ] Use the `someStateVariable`'s that you created above in the component that messages the human by their full name.
+- [ ] Combine the `message` variable and the state variables for the full message.
 
-- Set a `value` property on each input equal to one of your stateful properties (`firstName`, and `lastName`)
-- Set an `onChange` property on each element, and use it to create an event handler
-  - On a change we want to update our stateful property with the *new value* of our *event's target*
+## Review
 
-If this is all set up well we should see the value updating in our text inputs as we type into them, otherwise we won't see any characters no matter how much you type.
+In this lab, we will have created a small React application that tracks the values of a person's name, and then greets that person by their name along with a friendly message.
 
-## Displaying the Name Programmatically
+The software should:
 
-Once we're tracking the values in our text fields we're ready to deal with the form submission.
+- Take in the user's full name in a form
+- Print their full name in a friendly message to the page.
 
-Attach an `onSubmit` property to your `form` element, and create an event handler function that:
+## Going Further
 
-- Prevents the default event behavior
-- Sets the `fullName` property to the value of your `firstName` and `lastName`
-- Clears the form's inputs by *resetting your stateful properties*
+- How you could you extract the inline `onChange` handler functions within the `<input />` components to use a shared `onChange` handler, rather then each using their own?
 
-## Celebrate
-
-Congratulations! You're now manipulating the content on your page by using your Component's state. This is the heart of effecting page transformations, and tracking user interactions in React.
+- Notice how the message updates when the user types new values into the `<input />` components. How could you make the form only update the message when the user **submits** the form?
