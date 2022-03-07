@@ -1,156 +1,211 @@
-# the `state` Object
-
-React components keep track of private data in the `state` object.
-
-- Each instance of a React Component has it's _own state_
-- Stateful data can only be accessed by the component it belongs to
-  - It can only be updated by that instance as well
-- State is used to determine what the component shows
-  - Or how the component is displayed
-  - Or if the component is displayed
-  - Or any other information you want that component to keep track of
-
----
-
-# Updating State
-
-To update the state in React you will want to use the state updating function `setState` passing in an object that has the stateful property you want to update, and the new value.
-
-- Only the properties defined in the update object are changed. All other stateful data is preserved
-- You can access previous state, by passing a callback instead of an object as the argument to `setState`
-  - The argument to that callback function is the previous state
-- In a functional component you can access the `state` object through the `useState` hook. More on that later!
-- You should never directly update the state through reassignment. Ever.
-
----
-
-# `setState` Example
-
-```js
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-}
-```
-
----
-
-# Never Touch the DOM
-
-React expects to be responsible for all content on the page. It uses the differences between the DOM and the VDOM to determine what needs to be updated in each render cycle. If you go in and directly manipulate the DOM React gets very confused, and strange things start happening.
-
-- Modify state to effect changes on the page. **Never directly manipulate the DOM**
-- Use state to display variable data (e.g. a user name). **Never write directly to the DOM**
-- Use state to track user input. **Don't even look at the DOM**
-- Pretty much any time you find yourself using the `document` object in React you should rethink how you're doing things
-  - There are some exceptions, but they are few and far between
-
----
-
-# Controlled Inputs
-
-We want our React components to be responsible for all their own data. We don't want to be storing data on the page directly without React getting notified. `<input>` elements like to store their data on themselves, as a value property which can lead to some unexpected behavior in React.
-
-To get around this we can use _controlled inputs_. We store a value in state, and use that stateful property to determine what the value of our `input` element is. When the input is changed we update the value in state to reflect those changes.
-
----
-
-```js
-class ExampleForm extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      userInput: "",
-    };
-  }
-
-  handleChange(event) {
-    let newValue = event.target.value;
-
-    this.setState({ userInput: newValue });
-  }
-
-  render() {
-    return(
-      <div>
-        <h1>{this.props.title}</h1>
-        <form>
-          <input type="text" onChange={handleChange}    value={this.state.userInput} />
-
-          <input type="submit" />
-        </form>;
-      </div>
-    )
-  }
-}
-```
-
----
-
-# Props, and State
-
-In React there are two sources of data for your components: `props`, and `state`.
-
-- `state` are pieces of data defined on, and maintained by the component
-- `props` are pieces of data that get passed to the component from outside
-
----
-
 # State
 
-- Private data held by the component
-- Can only be read, and modified by the component it belongs to
-- Defined as an object in the constructor
-- Must be modified with the updater method
+- Any data in a component that might change is held in an object called `state` by convention.
+- Examples of data that could change:
+  - Newsfeed posts from an app's users
+  - Logged in username
+  - The number of reactions on a post
+  - Someone's online or offline status
+  - The loading status of a page
 
 ---
 
-# Props
+## What is State For
 
-- Data passed in from outside the component
-- Read only property, cannot be modified from inside the component
-  - Can only be modified where they are passed _from_
-- Like `state` props are unique to the instance of their component
-- Is the argument to your constructor
+React takes care of updating the DOM for us, and one of the most powerful parts of React is that it updates the DOM when data changes.
+
+Because of this, React comes with some built-in tools we can use to let it know **what** data will possibly change, **when** that data does indeed change, and **what** that data is changing to.
 
 ---
 
-# Passing Props
+## How to Make "State"
 
-To pass props to a component we need to *render* the component, and assign the `props` *as if they were html properties on an element*. This is why they're called "`props`."
+You can name `yourState` and `functionToUpdateYourState` whatever you want. The convention is to say `someVariable` and `setSomeVariable`.
 
-If we were to use our `ExampleForm` component from before, passing the `title` prop would look like this
+```jsx
+// in any component file
+import { useState } from "react";
 
-```js
-render() {
-  return (
-    <ExampleForm title="Working With Controlled Inputs" />
-  )
+function yourComponentHere() {
+  const [yourState, functionToUpdateYourState] = useState(null); // yourState is null
+
+  functionToUpdateYourState("new state value"); // yourState is 'new state value' now
 }
 ```
 
-Our `prop` is title, and we're giving it the value `"Working With Controlled Inputs"`
+---
+
+## How to Make "State" Cont.
+
+Let's demystify that syntax from before by pretending to write our own `useState` function:
+
+```js
+// "under the hood"
+function useState(startingData) {
+  function updateState(newData) {
+    startingData = newData;
+  }
+
+  return [startingData, updateState];
+}
+
+// how you use it
+const [startingData, updateState] = useState(null);
+```
+
+> Notice how the return value on line 7 and the variable declaration on line 11 match up.
 
 ---
 
-# Using Props
+## Props
 
-To access `props` in a class based component you can reference `this.props` and then the name of the property you want to access. In the example from before `this.props.title` is how we can access the value `"Working With Controlled Inputs"`
-
-* Prop names are just variable names
-  * They should follow standard JS naming conventions. i.e. camelCase
-* All props passed to a component become keys on the `props` object
-* `props` can be used to share data between components
-* `props` are *defined* when a component is rendered, but *used* in the component's definition
+- We use props to share data, which is sometimes the state, from component to component.
+- Props is **always** an object
+- Props is **read-only**. You cannot reassign it ever.
+- `props` is a convention, not a keyword.
+- `props` are the arguments passed into your function components.
+- You do not _have_ to use `props` in every component.
 
 ---
 
-# Updating the Component
+## How to "Pass" Props
 
-Whenever `props` or `state` change the `componentDidUpdate` lifecycle method gets triggered, and causes the component to be redrawn.
+Because `props` is the data that is shared between components, there is a sender and receiver. For this reason, the phrase "passing props" is used a lot, in the same way we say we "pass an argument" to a function.
 
-In generally you should only update a component by changing props or state. You don't want to manually trigger a rerender if you can avoid it.
+```jsx
+function ParentComponent(){
+  let theValue = "whatever you want"
+  return <ChildComponent theKey={theValue} >
+}
 
-If you are setting state from inside `componentDidUpdate` the state updater should be wrapped in a guard clause because a `setState` will automatically trigger `componentDidUpdate`. If your `setState` is unguarded it gets called during `componentDidUpdate` which calls another `setState`, which triggers `componentDidUpdate`, and now you're trapped in an infinite recursive loop which will break your application.
+// The actual "passing" of props is on line 3
+// We passed the props to the ChildComponent scope where it is now this object:
+// { theKey: theValue }
+```
+
+---
+
+## How to Receive Props
+
+```jsx
+function ParentComponent(){
+  let theValue = "whatever you want"
+  return <ChildComponent theKey={theValue} >
+}
+
+function ChildComponent(props){
+  console.log(props)
+  console.log(props.theKey) //=> theValue ==> "whatever you want"
+}
+```
+
+---
+
+## How to Receive Props Cont.
+
+Why does this work?
+
+```jsx
+// The computer converts this
+<ChildComponent theKey={theValue} >
+```
+
+<br/>
+
+```js
+// into this for you
+React.createElement(ChildComponent, { theKey: theValue }, [
+  ...anyChildComponentsYouWantToInsert,
+]);
+
+// where React.createElement eventually does this for you
+ChildComponent({ theKey: theValue });
+```
+
+> See how your props become an object that is an argument for you component?
+
+---
+
+## Practice Making State and Props
+
+In your replit from before,
+
+1. Add **your name as App's state**
+2. **Pass that data to your HeaderComponent as props**
+3. **Console log your name** from your HeaderComponent (look the in regular dev tools to confirm)
+4. Bonus: **Render your name in your HeaderComponent**
+
+---
+
+## Events: onChange and onSubmit
+
+React's "virtual DOM" process uses something called a SyntheticEvent, a class that mimics DOM events. They work much the same way, but you'll want to use React docs for researching events in addition to W3Schools or MDN.
+
+You can find a list of events that React supports [here](https://reactjs.org/docs/events.html#supported-events).
+
+We will be covering `onChange` and `onSubmit` to prepare you for your next lab.
+
+---
+
+## Events: onChange and onSubmit Cont.
+
+`onChange` and `onSubmit` are critical events for controlling [forms](https://reactjs.org/docs/forms.html)
+
+- We do not _have_ to use events for a person to type into the form. This is built into the browser.
+- We need to control the inputs so that we...
+  - can change other data as the person fills out the form
+  - capture the data before being sent off.
+
+**onChange**: [occurs when the value of an element has been changed](https://www.w3schools.com/jsref/event_onchange.asp), like when someone types in an `<input />`.
+
+```jsx
+// example usage
+<form onSubmit={handleSubmit}>
+  <input onChange={handleChange} />
+</form>
+```
+
+---
+
+## Combining Form Events and State
+
+```js
+function FormComponent() {
+  const [typing, setTyping] = useState(""); // input begins blank
+
+  const handleChange = (e) => {
+    setTyping(e.target.value); // update state with what the person typed
+  };
+  const handleSubmit = () => {
+    console.log(typing); // I can grab this data from state instead of the form itself now
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" onChange={handleChange} value={typing} />
+      {/*                                        IMPORTANT 👆*/}
+      <input type="submit" />
+    </form>
+  );
+}
+```
+
+---
+
+## State, Props, and Forms
+
+**Passing props is not always a good idea.**
+
+The point of using a component is that it can be taking out of the app and used "in isolation," by itself.
+
+If the data and functions that control a form are in a different component, you cannot use the form in isolation.
+
+The state and functions that are vital to interacting with the form should be **in the same component as the form itself**.
+
+---
+
+## Follow Along: Login Form
+
+<https://replit.com/@education-team/basic-login-form>
+
+---
