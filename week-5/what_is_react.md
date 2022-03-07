@@ -1,139 +1,174 @@
-# What is React
+# What React Is
 
-React is a front end, declarative, JavaScript framework that allows you to create modular, dynamic wep applications.
+React.js is a front-end library for building user interfaces. It is maintained by Facebook and a community of individual developers. React can be used in the development of single-page, multi-page, or mobile applications.
 
-React components use babel, and JSX to allow the user to write code that looks a lot like HTML in our JavaScript files
+The primary building block of React is the **Component**. A component is a JavaScript **Function**, or **Class**, that produces HTML, using a syntax called JSX.
 
----
+```jsx
+const MyComponent = () => {
+  return <h1>Hello, world!</h1>;
+}
+```
 
-# Imperative vs Declarative Programming
-
-**Imperative Programming**
-
-- Must tell the computer exactly what to do
-  - Every step of the way
-- Focused on the process rather than the result
-- More direct interaction between programmer, and computer
-
-**Declarative Programming**
-
-- Tell the computer what you want
-  - Let the computer figure out how to build it
-- Focused on the desired result rather than the process
-- Additional layers of abstraction between programmer and computer
+```jsx
+class MyComponent extends React.Component {
+  render() {
+    return <h1>Hello, world!</h1>;
+  }
+}
+```
 
 ---
 
-# Component Oriented Design
+## Why React
 
-React is built around the idea of creating modular components that can be used to construct specific sections of your web page
+1. React helps to make your front-end code more efficient and easier to maintain.
+2. It  helps to build better user interfaces by providing a declarative way of describing how the UI should look and behave.
+3. If you design simple views for each state in your application,
+then React will efficiently update and render just the right components when your data changes.
 
-- Smaller components make more modular pages
-- Larger components can be used to render smaller components
-- Each instance of a component holds its own state
-- We can create multiple instances of a single component
-  - And change their state to repeat *layout* while changing *data*
-
----
-
-# The Component Class
-
-The React Component is a JavaScript class that comes with several pre-built methods that allow us to hook into the React lifecycle. These methods are collectively referred to as *Lifecycle Methods*.
-
-When setting up our own components we will create a new class for that component that *extends* the React Component class.
-
----
-
-# React Components
-
-- Isolated pieces of a website or app
-- Can be passed data from parent components in the form of `props`
-- Can be rendered manually, or programmatically
-- Return JSX
+```jsx
+const Counter = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
 
 ---
 
-# Using Components
+## A React Timer Example
 
-- Typically the `index.js` initiates the components tree from the top level
-- Usually made up of other components
-- Child components are rendered by their parents
-- Parents pass data as props to children
+```jsx
+const Timer = () => {
+  const [seconds, setSeconds] = useState(0);
 
----
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(seconds + 1);
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
 
-# Using Arrays of Components
-
-- Many components can be rendered at once
-- Wrap the components in an array
-- React will iterate over and render each
-- Useful when rendering many of the same component, or sets of data
-
----
-
-# Immutable Components
-
-- Once components are rendered they cannot be updated manually
-- Re-rendering the component is how they are updated
-- Re-renders are triggered when `state` or `props` change
+  return (
+    <p>Timer has been running for {seconds} seconds</p>
+  );
+};
+```
 
 ---
 
-# Granular Render Updates
+## Definition of a React Component
 
-![render performance](https://res.cloudinary.com/btvca/image/upload/v1574445178/curriculum/granular-dom-updates_jyda7g.gif)
-
----
-
-# Component Lifecycle
-
-- Mounting
-- Updating
-- Unmounting
-- Error handling
+- An isolated piece of a website or application, as either a Function or Class.
+- Can receive Data from parent components in the form of `props`. Known as **passing data**.
+- Can be created conditionally.
+- Return HTML in the form of JSX. (JavaScript + XML)
 
 ---
 
-## Mounting
+## React is Component Based
 
-- constructor()
-- static getDerivedStateFromProps()
-- render()
-- componentDidMount()
+React is built around the idea of using modular components to construct specific parts of a web page or application.
 
----
-
-## Updating
-
-- static getDerivedStateFromProps()
-- shouldComponentUpdate()
-- render()
-- getSnapshotBeforeUpdate()
-- componentDidUpdate()
+- Components make sections reusable.
+- Small components can be combined into larger components.
+- Each **instance** of a component can hold its own state
+- Multiple **instances** of a single component can exist on a single page.
 
 ---
 
-## Unmounting
+## Using Components
 
-- componentWillUnmount()
+- Typically the main file (`index.js`) initiates the component tree
+- The top most component is often called `App`, and is Usually made up of other sub-components
+- Child components are **rendered** by parent components.
+- Parent components can pass data as **props** to child components.
+
+```jsx
+const App = () => {
+  const headerTitle = 'A React Example';
+  const bodyContent = 'Some text to read';
+  const copyRight = 'Copyright (c) 2022';
+  return (
+    <main>
+      <Header title={headerTitle} />
+      <Content text={bodyContent} />
+      <Footer legal={copyRight} />
+    </main>
+  );
+};
+```
 
 ---
 
-## Errors
+## Application Components Example
 
-- componentDidCatch()
+Any application can be decomposed into a series of components.
 
----
+![React Component Example](https://reactjs.org/static/9381f09e609723a8bb6e4ba1a7713b46/90cbd/thinking-in-react-components.png)
 
-# Lifecycle Methods Diagram
-
-![react-component-lifecycle](https://res.cloudinary.com/btvca/image/upload/v1574445197/curriculum/react-component-lifecycle_vmdxp1.png)
-
-<http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/>
+The image above is an excerpt from the React.js documentation page [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
 
 ---
 
-# Responding to Events
+## Class Components
+
+A React Class Component is a JavaScript Class that includes several pre-built methods to allow access to the React lifecycle. When using a React Class, you must create a new class that *extends* the React Component class.
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: 'React'
+    };
+  }
+  render() {
+    return (
+      <h1>Hello, {this.state.name}!</h1>
+    );
+  }
+}
+```
+
+---
+
+## Function Components
+
+A React function component is a JavaScript Function that returns a React element in the form of JSX.
+
+```jsx
+const MyComponent = ({ name }) => {
+  return (
+    <h1>Hello, {name}!</h1>
+  );
+};
+
+<MyComponent name='React' />
+```
+
+---
+
+## Class Lifecycle Methods
+
+React Class Components have lifecycle methods that can be used to perform specific tasks.
+
+![react-component-lifecycle](https://res.cloudinary.com/btvca/image/upload/w_1200,c_scale/v1574445197/curriculum/react-component-lifecycle_vmdxp1.png)
+
+The above image is an excerpt from <http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/>
+
+---
+
+## Responding to Events
 
 - Event handling in React is similar to handling DOM events
 - Handler functions can be passed as Props
@@ -151,21 +186,20 @@ When setting up our own components we will create a new class for that component
 
 ---
 
-# Preventing Default Behavior
+## Preventing Default Behavior
 
-- Works in the same way as preventing the default on a normal event
-- Calling `event.preventDefault()` must be done in the handler
+Calling `event.preventDefault()` must be done in the event handler.
 
 ```jsx
-function Link() {
-  function handleClick(event) {
+const Link = () => {
+  const handleClick = (event) => {
     event.preventDefault();
     doSomethingWithTarget(event.target);
   }
 
   return (
     <a href="#" onClick={handleClick}>
-      Click Me React
+      Click Me
     </a>
   );
 }
@@ -173,36 +207,13 @@ function Link() {
 
 ---
 
-# React Events are Synthetic Events
+## React Events are SyntheticEvents
 
 - Events in React are not **real** DOM events
 - They are captured by React and replaced with a Synthetic Event
 - Synthetic Events behave the same across all Browsers, unlike DOM Events
 
----
-
-# Event Properties
-
-| Property               | Return Type    |
-| ---------------------- | -------------- |
-| bubbles                | boolean        |
-| cancelable             | boolean        |
-| currentTarget          | DOMEventTarget |
-| defaultPrevented       | boolean        |
-| eventPhase             | number         |
-| isTrusted              | boolean        |
-| nativeEvent            | DOMEvent       |
-| preventDefault()       | void           |
-| isDefaultPrevented()   | boolean        |
-| stopPropagation()      | void           |
-| isPropagationStopped() | boolean        |
-| target                 | DOMEventTarget |
-| timeStamp              | number         |
-| type                   | string         |
-
----
-
-# Events are Nullified after Handling
+### Events are Nullified after Handling
 
 - After the event handler function is called the event is set to Null
 - This is because SyntheticEvents are reused for other Events
@@ -210,91 +221,29 @@ function Link() {
 
 ---
 
-# Usual Behavior
+## Event Handlers in Class Components
 
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
+- JavaScript classes do not by default `bind` the `this` keyword to the class instance
+- Use an Arrow Function to ensure that `this` is bound to the class instance.
+- Function components do not suffer from this binding  problem.
 
-  setTimeout(function () {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // You can still access and use event properties.
-  this.setState({ eventType: event.type });
-}
-```
-
-[More on SyntheticEvents](https://reactjs.org/docs/events.html)
+**See the next slide for a code example.**
 
 ---
 
-# Binding Event Handlers
+## Bind Handlers with Arrow Functions
 
-- JavaScript classes do not by default `bind` the `this` in ES6 Classes
-- Binding is a normal JavaScript behavior and is very confusing
-- Either use `bind` in the constructor, or use an ES6 Arrow Function
-
----
-
-```javascript
-class Toggle extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isToggleOn: true };
-
-    // Binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {
-    this.setState((prevState) => ({
-      isToggleOn: !prevState.isToggleOn,
-    }));
-  }
-
-  render() {
-    return (
-      <button onClick={this.handleClick}>
-        {this.state.isToggleOn ? true : false}
-      </button>
-    );
-  }
-}
-
-ReactDOM.render(<Toggle />, document.getElementById("root"));
-```
-
-[More about Binding Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind)
-
----
-
-# Binding Event Handlers - Arrow Functions
-
-- Class constructor with `this.function = this.function.bind(this)` are verbose
-- Rewrite the Class property as an arrow function as below
-- Only available when transformed via Babel using `create-react-app` or other
-
----
-
-```javascript
+```jsx
 class LoggingButton extends React.Component {
-  // This syntax ensures `this` is bound within handleClick.
-  // Warning: this is *experimental* syntax.
   constructor(props) {
     super(props);
     this.state = { isToggleOn: true };
   }
-
   handleClick = () => {
     this.setState((prevState) => ({
       isToggleOn: !prevState.isToggleOn,
     }));
   };
-
   render() {
     return (
       <button onClick={this.handleClick}>
