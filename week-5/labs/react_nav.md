@@ -1,5 +1,3 @@
-[Link to GitHub](https://github.com/BurlingtonCodeAcademy/sdb-summer-2021-curriculum/blob/master/week-5/labs/react_nav.md)
-
 # React Router Nav
 
 To practice utilizing documentation for a React library.
