@@ -1,91 +1,53 @@
-# React Nav Bar
+[Link to GitHub](https://github.com/BurlingtonCodeAcademy/sdb-summer-2021-curriculum/blob/master/week-5/labs/react_nav.md)
 
-## Welcome!
+# React Router Nav
 
-The React Router framework is a powerful tool in your arsenal as a developer. It allows you to build React applications (which are always single page web apps) that *behave like multi-page web apps!*
+To practice utilizing documentation for a React library.
 
-Let's practice using React Router by setting up a simple site with a navigation bar that will allow us to jump between different pages as if we were navigating  on a multi-page web app while keeping a consistent header, and nav bar.
+## Learning
 
-## Setting up React
+In this lab, you will be using the React Router library and its components: `BrowserRouter`, `Routes`, `Route`, and `Link`.
 
-Use `create-react-app` to set up a new React application called `react-nav`. Don't forget to remove the starter code in the `App` component!
+- Library documentation
+- React Router
+- `BrowserRouter`, `Routes`, `Route`, and `Link` React Router components.
 
-To bring in React Router run the command `npm install react-router react-router-dom` from inside your `react-nav` directory.
+## Achieving
 
-Create 5 new components, which should all live in separate files:
+In this lab, you will create a navigation bar that, when the user clicks on the links, simulates React as a multi-page application. 
 
-- Header
-- Nav
-- Home
-- About
-- Contact
+Your work will result in:
 
-In the `Home`, `About`, and `Contact` components add some unique content so you can tell them apart.
+- A web page with a navigation bar.
+- When the user clicks links in the navigation bar, it rerenders the page with a different component while simulating the appearance of a multi-page application.
 
-Import all of them into your `App` component. We will also need a few *prebuilt* components from React Router. Namely the `Switch`, `Route`, and `BrowserRouter` components which you can bring in by importing them from `react-nav`
+# Procedure
 
-```jsx
-import {Switch, Route, BrowserRouter} from "react-router-dom"
+- [ ] You will need at least four components in addition to App: a Landing, and three others of your choice.
+- [ ] Imagine your App component as the 'switchboard' for the rest of the application. It will only contain React Router components; there will be no HTML or CSS.
+- [ ] In the App component, reference the following documentation: [React Router v6 Overview](https://reactrouter.com/docs/en/v6/getting-started/overview). In the 'Configuring Routes' code snippet, replicate the nesting syntax of `<BrowserRouter>`, `<Routes>`, and `<Route>`.
+- [ ] In your individual `<Route>`s, you will need to pass two props: `path` and `element`. Path will represent the URL fragment you want that component to be associated with. Element is where you pass in the component.
+```js
+<Route path = "/example" element = {<Example />} />
 ```
+- [ ] In Landing, create your navigation bar. On the same documentation, reference the 'Navigation' section and utilize `<Link>`.
+- [ ] In your individual `<Link>`s, you will need to pass the `to` prop. This prop should match the `path` of the component you want the user to navigate to.
+- [ ] In your three other components, they should: contain unique content to distinguish them from each other, and a `<Link>` that returns the user back to the Landing.
 
-## Getting Ready for Routing
+# Review
 
-In your `App` component use the `BrowserRouter` component to contain all other content on the page. `BrowserRouter` gives the other React Router elements access to the `history` object which is what allows React Router to respect the URL path, and cause your React application to behave like a multi-page web app.
+In this lab, you practiced utilizing a React library and understanding documentation. 
 
-Render your `Head` and `Nav` components at the top of the page and then open up a `Switch` component.
+The software should:
 
-## Using `Switch`
+- Consist of a landing page with a navigation bar.
+- When the user clicks a link in the navigation bar, it simulates navigating to a different page. In reality, React Router is rendering components based on the URL. 
+- Have five components: App, Landing, and three others of your choice. They should all be visually distinguishable from each other.
 
-The `Switch` component should have both an opening and closing tag. **It should *not* be self closing** since we will need to put other components inside the `Switch` component.
+## Going Further
 
-The switch component will limit our routes so that only one route can be displayed at a time.
+- Style your landing page: [Frontend Mentor Huddle Landing Page](https://www.frontendmentor.io/challenges/huddle-landing-page-with-a-single-introductory-section-B_2Wvxgi0). This landing page mock-up is for an imaginary social media application called 'Huddle'. How could you continue the design language of this mock-up on your other components so they all have visual cohesion? You will need the style guide provided in the assets on Frontend Mentor.
 
-Currently our `App` component's return statement should look something like this:
+**OR**
 
-```jsx
-<BrowserRouter>
-  <Header />
-  <Nav />
-  <Switch>
-  </Switch>
-</BrowserRouter>
-```
-
-## Creating Routes
-
-The `Route` component is what allows us to tell our application which component should be displayed for a given path. Let's set up 3 `Route` components inside our `Switch` component (between the opening and closing tags).
-
-
-Each Route component will need 2 properties, `path` and `component`. The `path` should equal a string that is the path you will visit and the `component` is the component you want to be displayed when you visit that path through the URL. We could set up our `Home` component to be displayed when we're at `"/"` like so:
-
-```jsx
-<Route exact path="/" component={Home} />
-```
-
-Note that we also add the `exact` property to this route since it is going to `"/"` and the `Route` will actually match any URL that starts with the desired path unless we give it the `exact` property. The other `Route` components shouldn't need the `exact` property. Go ahead and set up the routes for the other 2 components. Try visiting those paths by starting the app, and putting the routes into the url e.g. `https://localhost:3000/about` to get to the about page.
-
-## Creating the Nav Bar
-
-Having to enter the routes into the address bar isn't exactly the best user experience so lets set up a navigation bar to allow our user to move around our site more easily.
-
-In our `Nav.js` file we will need to import a `Link` component from React Router. Once we've imported our `Link` we can use it to set up... links! They operate in a similar manner to an `a` tag, but are designed to work with React Router, and instead of an `href` property they get a `to` property. We could set up a link to take us back to the home page like so:
-
-```jsx
-<Link to="/">Home</Link>
-```
-
-Set up links going to each of your three pages; Home, About, and Contact.
-
-Style the site, and make it look pretty! Admire your fully armed, and operational multi-page(ish) React application
-
-## The Catch All route
-
-We can also set a `path` on a route to `"*"`. This creates a "catch all" route that will accept *any path*. Since route matching is always top down, and we're using a `Switch` component to only show one component at a time, we can set up a catch all route at the bottom of our switch statement to handle any unexpected paths.
-
-This is commonly used to set up a custom 404 page.
-
-## Taking it Further
-
-What if we wanted to pass props to one of our routed components? The way we've set this up that's currently impossible.
-
-**But** we don't need to set our `component` on the `Route` as a pre-built component. We can instead define a new component *inline* by instead using the `render` property! This will allow us to define an anonymous functional component on our route that returns an initialized component which we *can* pass props to. Go ahead and try this out on one of your routes!
+- In the previously linked documentation, scroll down 'Nested Routes'. See if you can implement them based on the documentation and your own research alone.
