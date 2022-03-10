@@ -21,16 +21,15 @@ Your work will result in:
 
 # Procedure
 
-- [ ] You will need at least four components in addition to App: a Landing, and three others of your choice.
-- [ ] Imagine your App component as the 'switchboard' for the rest of the application. It will only contain React Router components; there will be no HTML or CSS.
-- [ ] In the App component, reference the following documentation: [React Router v6 Overview](https://reactrouter.com/docs/en/v6/getting-started/overview). In the 'Configuring Routes' code snippet, replicate the nesting syntax of `<BrowserRouter>`, `<Routes>`, and `<Route>`.
+- [ ] You will need at least four components: App, and three others of your choice.
+- [ ] In `index.js`, reference the following documentation: [React Router v6 Overview](https://reactrouter.com/docs/en/v6/getting-started/overview). In the 'Configuring Routes' code snippet, replicate the nesting syntax of `<BrowserRouter>`, `<Routes>`, and `<Route>`.
 - [ ] In your individual `<Route>`s, you will need to pass two props: `path` and `element`. Path will represent the URL fragment you want that component to be associated with. Element is where you pass in the component.
 ```js
 <Route path = "/example" element = {<Example />} />
 ```
-- [ ] In Landing, create your navigation bar. On the same documentation, reference the 'Navigation' section and utilize `<Link>`.
+- [ ] In App, create your navigation bar. On the same documentation, reference the 'Navigation' section and utilize `<Link>`.
 - [ ] In your individual `<Link>`s, you will need to pass the `to` prop. This prop should match the `path` of the component you want the user to navigate to.
-- [ ] In your three other components, they should: contain unique content to distinguish them from each other, and a `<Link>` that returns the user back to the Landing.
+- [ ] In your three other components, they should: contain unique content to distinguish them from each other, and a `<Link>` that returns the user back to App.
 
 # Review
 
@@ -40,7 +39,7 @@ The software should:
 
 - Consist of a landing page with a navigation bar.
 - When the user clicks a link in the navigation bar, it simulates navigating to a different page. In reality, React Router is rendering components based on the URL. 
-- Have five components: App, Landing, and three others of your choice. They should all be visually distinguishable from each other.
+- Have four components: App and three others of your choice. They should all be visually distinguishable from each other.
 
 ## Going Further
 
