@@ -1,27 +1,28 @@
 # Overview
 
-Welcome to the server-side!
+Welcome to the backend!
 
-In this slide deck, we will be covering the basic aspects of servers, like what they are and how they relate to viewing your web pages!
+The **backend** refers to code that does not run on the user's computer but instead on the **server**. 
 
----
-
-# What is a server?
-
-*Server* is a term that refers to both hardware and/or software. It is used to define the relationship between the computer a user is interacting with (client) and the distinctly different environment that said user will request information from. So we have several different definitions of "server" and you just to figure out which one we mean by the context. Whether it's:
-
-* The program that actually serves your files
-* The computer that program is running on
+We will be learning about servers and databases, the two main parts of a backend. 
 
 ---
 
-## When dealing with hardware, it: 
+## What is a server?
 
-- is an ordinary computer
-  - *usually* elsewhere
-  - can be the same computer!
-- stores the software that defines behavior
-- contains the components for a website
+- Computer program and/or device 
+- Provides a service to another computer program and its user
+  - The one receiving the service is the client
+
+---
+
+## Server Hardware
+
+- Ordinary computer
+  - *Usually* in a different location
+  - Can be the same computer as the client technically
+- Stores programs that can do a variety of things
+- Store files and data needed to serve websites
   - JavaScript files
   - HTML
   - CSS stylesheets
@@ -29,171 +30,56 @@ In this slide deck, we will be covering the basic aspects of servers, like what 
 
 ---
 
-## When dealing with software, it:
+## Server Software
 
-- understands URLs (AKA web addresses)
-- listens for a *protocol* request
-- responds to request
-- sends response through a *protocol* response
+- Understands URLs 
+- Listens for HTTP requests
+- Sends responses to those requests
+- Often used to conduct behaviors that are not safe to perform on the client-side. 
 
 ---
 
 ## Requests
 
-Servers have uniquely defined rules that determine how they will respond based on a request.
-
-When setting up a server you get to determine what those rules are for a given request, on a given path.
-
----
-
-## The request:
-
-- is sent from the *client* (most often a web browser)
-- is sent to the server via protocol (like HTTP)
-- should be intentional and explicit
-- can contain information from a user's input
-- can be used to:
-  - update a database
-  - navigate a website
-  - retrieve information
-  - and more!
+- Different requests are sent 
+  - _from the client_ 
+  - _to the server_
+  - along different **routes**
+    - "Route" on the backend refers to a URL, just like on the frontend.
+  - carrying information from the client if needed
+- Requests follow HTTP:
+  - POST - **C**reate  
+  - GET - **R**ead 
+  - PUT - **U**pdate 
+  - DELETE - **D**elete
 
 ---
 
 # Responses
 
-Servers have uniquely defined rules that determine how they will respond based on a request. The response:
+Servers **respond** to clients
 
-- is sent by the server
-- sends information back to the *client* (most often a web browser)
-- is typically determined by the request received
-- may carry out an action based on the request
-- contains a status code for general information
+- while following specific rules, determined by the engineer.
+- to send information back to the *client*
+- after carrying out actions warranted by the request 
+  - e.g. updating a database
+- with a status code
   - 200 is `OK`
   - 404 is `Not Found`
   - [and more...](https://http.cat/)
 
 ---
 
-# Headers
 
-When requests and responses are sent between server and browser, additional information is included in *headers*
-
-The header can be loosely categorized based on its context: **request, response, or general**
-
-- **request headers** 
-    - contain information about the client (requester), or what the request is expecting.
-- **response headers** 
-    - contain details about the response, like server location and time.
-- **general headers** 
-    - can be included in both request and responses, but provide no info based on what information is contained.
-
----
-
-# Server-side programming
-
-"Server-side" is meant to describe everything that happens in between a request and a response. 
-
-Server-side code:
-
-- is used to deliver information efficiently
-- is used to keep things secure
-- is versatile
-- is not visible to the *client* (most often a web browser)
-- can be written in a number of programming languages!
-
----
-
-# Server Environment
-
-All code needs to run in some sort of environment, which affects the syntax, and options available to you.
-
-When we are doing DOM Scripting, working with React, or otherwise doing *client-side* coding we are working in the *browser's environment*
-
-*Server-side* JavaScript generally runs in a *Node environment*
-
----
-
-# Welcome Back Node!
-
-If Node.js sounds familiar, that's because we started this course programming in a Node environment!
-
-Now that we're working on the server we're back in a Node environment!
-
----
-
-# Differences Between Node and the Browser
+# Node vs JavaScript Review
 
 * Global Objects
   * `global` v. `browser` or `window`
 * Import/export methods
   * `require` v. `import`
-* Some functions are only available in the browser
-  * Such as `fetch`
+* Different access to APIs
+  * e.g. fetch - browser only
+  * e.g. fs - node only
 
 ---
 
-# Client and Server
-
-The Server and Client sides to your application have separate, but related jobs, and each is useful for specific things.
-
-* Client Side:
-  * Directly interactive
-  * Presents Data to users
-  * Sends requests to the server
-  * Not secure, all data/code is available through the browser
-  * Options depend on browser
-
----
-
-# Server and Client
-
-* Server Side:
-  * Listens for requests from the client, and sends back responses
-  * Not directly accessible from the Client
-  * Secure
-  * Consistent
-
-Together with the front end it makes a full stack application
-
----
-
-# Structuring your Directory
-
-When creating a full stack application, your server file should live at the root level of your project, while all the client side code should live in a dedicated subdirectory; often called `client` or `public`
-
-![directory file structure](https://res.cloudinary.com/btvca/image/upload/v1625660568/basic-server-structure_yt8ow5.png)
-
----
-
-# Setting up Your Client with React
-
-`create-react-app` can be used to easily generate a React front end for your application.
-
-* Create a project directory
-* Inside that directory run `npm init -y`
-* Install any server dependencies, `create-react-app`, and create your server file
-* Still inside the directory run `npx create-react-app client`
-* Now you have a React front end named `client`!
-
-![React server example](https://res.cloudinary.com/btvca/image/upload/v1625589830/client-closed_st2qli.png)
-
----
-
-# React Caveats
-
-* React is a single page web App. All user facing routes should return the `index.html` file
-* `create-react-app` creates a git repo. Git does not like it when you try to put repos in repos
-  * run `rm -rf .git` from inside `client` to remove the interior repo otherwise git will have issues
-  * If the `rf` command doesn't work on a windows machine use `del .git`. Type <kbd>Y</kbd> when prompted
-* React has `production`, and `build` versions. You generally want to serve the `build` version
-  * If you need to have the production version talk to your server you will need to [proxy the requests from React](https://create-react-app.dev/docs/proxying-api-requests-in-development/)
-  * And you will need to have React's development server, and your custom server running at the same time
-
----
-
-# Resources
-
-* [Introduction to the Server Side](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Introduction)
-* [What is a web server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_web_server)
-* [Medium Post](https://medium.com/@BaaniLeen/web-development-series-intro-to-server-side-scripting-fe5626323f92)
