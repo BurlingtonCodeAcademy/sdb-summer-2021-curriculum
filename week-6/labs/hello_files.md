@@ -17,7 +17,7 @@ In this lab, you will create a simple file server using Express.js, use that ser
 ### Create a Server with Express
 
 - [ ] Create a project directory named `hello-files`. Initialize it and install Express.
-- [ ] Create a new file named `server.js`. Reference the instructions on [Hello Express]() to set up the basic server. You will need the instructions under the "Set up your server" and "Open up the connection to a port".
+- [ ] Create a new file named `server.js`. Reference the instructions on [Hello Express](https://online.uprighted.com/lessons/written/hello-express) to set up the basic server. You will need the instructions under the "Set up your server" and "Open up the connection to a port".
 - [ ] Create a new file named `index.html`. Inside, use your Emet abbreviation to create the HTML boiler plate. Have this HTML file display a greeting to the user.
 - [ ] Start the server by running `index.js` using `node`.
 - [ ] Visit your running server at `http://localhost:5000` with a web browser.
