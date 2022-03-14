@@ -1,62 +1,41 @@
 # Serving Files
 
-At its core, HTTP is a *file transfer protocol*.
-
-* the *path* element of a URL is based on a Unix file path
-* most web servers directly map incoming URL paths to filesystem paths
-* because these files are stored on disk on the server, they are called *static files*
-  * to distinguish from *dynamic pages* (aka *routes*) which the server will create on the fly for every request 
-
----
-
-# node-static
-
-In earlier lessons, you may have used the `node-static` package, or the `live-server` VSCode plugin to serve your HTML, JS, CSS, images, etc...
-
-*node-static*, and *live-server* are standalone static file servers built in NodeJS.
-
-They're useful for local development but not great for production deployments since we don't have very much control over them.
+* **Serving** a file refers to sending a file from the backend to the user.
+* **Static**
+    * Files saved on the server computer that do not change in real time.
+* **Dynamic**
+  * Files created on the fly for every request.
 
 ---
 
-# static file server in Express
+# Serving Static Files
+
+In earlier lessons, you may have used the `live-server` VSCode extension to serve your projects before we began learning React.
+
+Live-server is an example of a static file server built into Node.
+
+This tool is useful for local development but not great for production deployments. We don't have very much control over it.
+
+---
+
+# Creating a Static File Server using Express
 
 * Express comes with its own static file server
-* Using it is a one-liner: 
 
 ```js
-app.use(express.static('.'))
+let staticServer = express.static('.')
+app.use( staticServer )
 ```
 
 ---
 
-# index.html
+# Headers: Content-Type  
 
-A little historical note...
-
-* in the early WWW, visiting a directory always showed a list of all the files in that directory
-* this list was called an *index* since it was in alphabetical order and just showed names and other information about files, but not their contents
-* some web servers would look for a special file named `index.html` and if it was present, would serve that file instead of the index
-* these days, most web servers don't show any indexes at all, ever...
-* ...but the default page for a directory is still named **index**.html
-* This is *why* index.html is named *index* -- it is a *replacement* for the automatic default *index* page.
-
-Now open a web browser and visit <http://localhost:5000/> and you will see the contents of `index.html` ("Hello in HTML") even though your request did not contain the words "index" or "html", just the path `/`
-
----
-
-# Content-Type
-
-* files on disk usually have *extensions* that tell you what file type they are
-    * `.html` or `.htm` means HTML
-    * `.js` means JavaScript
-    * `.css` means CSS Stylesheet
-    * etc.
-
-* but URLs often *do not* have extensions
-    * `https://developer.mozilla.org/en-US/docs/Web/JavaScript` is an HTML page but *does not* end in `.html`
-
-* so web servers must read the file type extension and then use the `Content-Type` HTTP header to tell the client what format the file is in
+* files usually tell you what file type they are
+    * e.g. .html, .js, .css
+* URLs often do not do this
+    * `https://developer.mozilla.org/en-US/docs/Web/JavaScript` is a route that serves an HTML page. Notice how it doesn't have `.html` at the end.
+* Web servers must read the file type extension and use the `Content-Type` header on the request to tell the client what format the file is in
     * `text/html` means HTML
     * `application/javascript` means JavaScript
     * `text/css` means CSS Stylesheet
@@ -64,18 +43,7 @@ Now open a web browser and visit <http://localhost:5000/> and you will see the c
 
 ---
 
-# Viewing Headers
-
-**TIP:** open the browser DevTools and click on the Headers sub-tab to see Content-Type and other headers:
+# Headers: Dev Tools
 
 ![headers](https://res.cloudinary.com/btvca/image/upload/v1626093503/content-type_zimyop.png)
 
----
-
-# Match the Route not the File Path
-
-When setting up our links on the front end we want to match the routes we set up on the server, not the actual path to the file.
-
-In the route handler we will tell our server where the file actually lives, but the client side code doesn't need to know that!
-
-This will allow us to more accurately define our site structure so it's representative of the purpose of our pages rather than being bound to the physical location on disk.
