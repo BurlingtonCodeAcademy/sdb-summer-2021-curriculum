@@ -23,7 +23,6 @@ Your work will result in:
 ## Set up your files
 
 - [ ] In the new directory `hello-express`, run `npm init -y` to create a new `package.json`. You can then install Express.
-- [ ] You will need to create a `server.js` file. 
 
 ## Set up your server
 
@@ -49,6 +48,7 @@ app.get('/example', (request, response) => {
     })
 ```
 - [ ] You can test your route by visiting localhost:5000 in the browser.
+- [ ] Did you get this error? `Cannot GET /`. This is caused by an issue with your `GET` route.
 
 ## Set up further `GET` routes
 
