@@ -23,6 +23,7 @@ Your work will result in:
 ## Set up your files
 
 - [ ] In the new directory `hello-express`, run `npm init -y` to create a new `package.json`. You can then install Express.
+- [ ] You will need to create a `server.js` file. 
 
 ## Set up your server
 
