@@ -11,7 +11,7 @@ The "code we run" doesn't have to be complicated. It could be as simple as sendi
 
 ---
 
-# Routing is Simple...
+# Routing Cont.
 
 Many web app server frameworks have complicated systems for routing, but that complexity is not essential.
 
@@ -21,9 +21,9 @@ and most of the fancy framework code is simply to build up a list of matching ru
 
 ---
 
-# ...but don't reinvent the wheel
+# Routing Cont.
 
-Frameworks like Express give you more than the *implementation* of features like routing and parameter passing.
+Libraries like Express give you more than the *implementation* of features like routing and parameter passing.
 
 They also give you an *interface* that will make **your** code easier to read.
 
@@ -67,22 +67,6 @@ app.get('/', (request, response) => response.send('Hello World!'))
 
 ---
 
-# [Express Route Matching Rules](https://expressjs.com/en/guide/routing.html)
-
-* paths can include special characters that are *like* regular expressions
-
-  * `?` "zero or one of these"
-  * `+` "one of more of these"
-  * `*` "zero or more" (but see below)
-  * `()` "these go together"
-* ...but are *not* regular expressions
-  * `.` and `-` are interpreted literally
-  * `:` means "this is a parameter" (see next slide)
-  * `*` means "zero or more characters" (which is `.*` in real regexes)
-* ...or you can use *actual* [regular expressions](https://en.wikipedia.org/wiki/Regular_expression)
-
----
-
 # Parameters in Express
 
 The special character `:` means "this is a [path parameter](./parameters#path_parameters)"
@@ -99,14 +83,34 @@ Express will grab the *value* from the path itself, and assign it to `request.pa
 
 ---
 
-# Route Matching is Top-Down
+# Route Matching 
 
-Express will try to match routes *in the order they are defined* in your JS file.
+Express will try to match routes 
 
-Once it finds the matching route it runs the attached request/response callback function
+- *in the order they are defined* in your JS file.
+- Once it finds the matching route 
+  - runs the attached request/response callback function
+  - and stops looking. 
+  - Any other route handlers that could also match don't run
 
-...and stops looking. So any other route handlers that would also match don't get run.
+---
 
+# Route Matching Cont. 
+```javascript
+// POST /login gets urlencoded bodies
+app.post('/login', function (req, res) {
+  res.send('welcome, ' + req.body.username)
+})
+
+// POST /api/users gets JSON bodies
+app.post('/api/users',  function (req, res) {
+  // create user in req.body
+  res.status(200)
+})
+```
+
+
+<!--
 ---
 
 # Express Middleware
@@ -117,9 +121,8 @@ Once it finds the matching route it runs the attached request/response callback 
 * Tons of 3rd-party and error-handling options
 * And the ability to create, and use your own middleware!
 
----
 
-# Middleware Example
+ # Middleware Example
 
 Example (from [the express guide](http://expressjs.com/en/resources/middleware/body-parser.html)):
 
@@ -153,4 +156,4 @@ function logTime(req, res, next) {
 app.get('/route/', logTime, (req,res)=>{
   res.send("All done!")
 })
-```
+``` -->
