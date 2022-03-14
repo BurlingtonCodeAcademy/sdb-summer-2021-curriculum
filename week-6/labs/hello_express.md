@@ -1,7 +1,5 @@
 # Hello, Express!
 
-## Welcome!
-
 In this lab you will set up your first server in [Express](https://expressjs.com/).
 
 ## Getting Ready for Express!
