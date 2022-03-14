@@ -32,11 +32,6 @@ In this lab, you will create a simple file server using Express.js, use that ser
 ```js
 response.sendFile(__dirname + "/example.html")
 ```
-### Visiting the private file `package.json`
-
-- [ ] Visit the following file `http://localhost:5000/package.json`
-- [ ] Ask yourself: would you want a visitor to view the project's `package.json`? Can you imagine other files you might want to prevent the public from accessing?
-
 ### Limit the Express server to a `public` directory
 
 - [ ] Create a directory named `public` within your project directory.
