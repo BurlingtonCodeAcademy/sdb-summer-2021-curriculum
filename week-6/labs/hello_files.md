@@ -1,125 +1,99 @@
-# Lab: Hello, Files!
+# Lab: Hello File Server
 
-## Welcome!
+## Objective
 
-In this lab we will be creating a server that serves several static HTML files in a multi-page web app. We will be looking at how we can keep our server secure, and focusing on how route matching works.
+To understand how to use the Express.js library to create a back-end file server.
 
-## Static File Server
+## Learning
 
-Create a new Express project dir called `static-server`
+In this lab we will be creating a server that serves any static files, such as HTML, CSS, or JavaScript.
 
-* Create a file called `app.js` and get it ready to serve files with the following setup:
+## Achieving
 
-```js
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 5000
+In this lab, you will create a simple file server using Express.js, use that server to access files on a web host, and then limit the files which are served to only those within a specific folder.
 
-app.use(express.static('.'))
+## Procedure
 
-app.listen(port, () => console.log(`Example app listeningport ${port}!`))
+### Create a Server with Express
+
+- [ ] Create a project directory by running the NPM command below within the `code` directory.
+
+```sh
+npm init -y static-server
+npm add express
 ```
 
-* create a file called `index.html` containing an `h1` element, with the text "Hello, world!"
+- [ ] Add the starter code below to create a static file server.
 
-* in `package.json`, add a start script:
+```js
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 5000
 
-```json
+app.use(express.static('.'));
+app.listen(port, () => console.log(`Server listening on http://localhost:${port}!`));
+```
+
+- [ ] Add an HTML file within the project directory named `index.html`.
+- [ ] Add some simple content to the HTML file, such as the code below.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Example Pave</title>
+  </head>
+  <body>
+    <h1>Hello, Express!</h1>
+  </body>
+</html>
+```
+
+- [ ] Start the server by running `index.js` using `node`.
+- [ ] Visit your running server at `http://localhost:5000` with a web browser.
+
+### Visiting the private file `package.json`
+
+- [ ] Start the server, if it is not already running.
+- [ ] Visit the following file `http://localhost:5000/package.json`
+- [ ] Ask yourself if you would want a visitor to view the project's `package.json`
+
+### Limit the Express server to a `public` directory
+
+- [ ] Create a directory named `public` within your project directory.
+- [ ] Move the `index.html` into the `public` directory.
+- [ ] Update the `index.js` file to limit visitor access to the `public` directory.
+
+```js
+// update the line in the sample code to match
+app.use(express.static('public'))
+```
+
+### Add more files to serve
+
+- [ ] Create at least two more HTML files within the `public` directory.
+- [ ] Link the two new files to the `index.html` using Anchor tags, e.g. `<a href="someFile.html" >`
+- [ ] Visit the other pages by clicking the links from the `index.html` page.
+- [ ] Visit the other pages navigating to them directly by visiting `http://localhost:5000/someOtherPage.html`
+
+## Review
+
+In this lab, you practiced creating an Express back-end server that can send arbitrary files from the server to a browser client. You created a default page for the server to send, as `index.html`, and also created additional files that can be visited from the `index.html` or directly.
+
+## Going Further
+
+- Inspect the `headers` of the response from the server to the client in the browser development tools.
+- What happens if you visit a page that does not exist within the `public` directory?
+- Can you find a way to send a default page to the client, such as a `404.html` instead of an error?
+- What HTTP code should you use as a `header` when sending the `404.html` page?
+- Add a `start` script to the `package.json` file to make it easier to start your server.
+  - Now, start your server with `npm start` instead of `node index.js`.
+
+```js
+// add the following within package.json
 {
   "scripts": {
     "start": "node app.js"
   }
 }
 ```
-
-* launch the web server using `npm start`
-
-* Now open a web browser and visit <http://localhost:5000/>
-
-## The Homepage
-
-You might notice that we haven't set up any routes for our server but it still serves the `index.html` file as our homepage. This is because Express (like many static file servers) if it isn't given a route handler for `"/"` will look for a file named `index.html` in the root level of the directory it's serving from, and send that over by default.
-
-## The Static Directory
-
-The good news: your web server can now serve static files to its clients!
-
-The bad news: Currently we're serving *all* of our files to our web clients, who can now see *any files they like* in your project directory, since we've told our Express app to use the *root level* of our project directory as the static directory.
-
-(This includes your server source code and configuration files, which may include secrets like passwords)
-
-## Hack Your Own Server
-
-open a web browser and visit <http://localhost:5000/package.json>
-
-`package.json` should probably be more secret than that...
-
-You could also see your server file by visiting <https://localhost:5000/app.js>
-
-## Solution: the `public` Directory
-
-To keep server-side code and configuration files secret, most web apps have a *public* directory containing static files.
-
-This is one major difference between *static sites* and full stack *web apps* -- since some of your code runs on your server, and some runs on your client's browser, your project directory structure needs to separate *client-side files* from *server-side files*.
-
-All client-side files, such as HTML, CSS, client-side JavaScript, embedded images, etc. should live in the `public` directory. Any configuration files, server, or database code should exist outside the `public` directory. Furthermore client side JavaScript, and server-side JavaScript operate in different environments (the browser, and Node.js respectively), so some of the options, methods, and functions are different, or don't exist in one environment or the other.
-
-* in your top-level project dir (`static-server`), type `mkdir public` to generate a new subdirectory named `public`
-* in your `app.js`, change the `app.use` line to
-
-```js
-app.use(express.static('public'))
-```
-
-Now you can put HTML, CSS, PNG, and `.js` files inside `/public` where your clients can fetch them as needed, but your users will not be able to access files outside the `public` directory.
-
-* *move* `index.html` from your top-level project dir (`static-server`) to your `public` dir
-* restart your server
-* Now open a web browser and visit <https://localhost:5000/>
-
-# More Pages
-
-Let's see how we can set up some more routes to serve more pages.
-
-* Inside your `public` directory create two new HTML files
-  * `trek.html`
-    * Containing an `h1` which says "To boldly go where no one has gone before!"
-  * `wars.html`
-    * Containing an `h1` which says "May the Force by with you, always...
-* Create two `a` tags in `index.html`. One should have an `href` pointing to `"/startrek"` the other should point to `"/starwars"`
-  * Don't forget to give the anchor tags a little text content so they show up on the page
-
-# Matching the Route to the File
-
-When setting up your request/response route handler functions previously we used the `response.send` method, however this method only sends text, and cannot be used to send files.
-
-If we want to send a full file as our response we need to use the `response.sendFile` method, and give it the *full file path* of the desired file.
-
-To get the full filepath to the directory our server lives in we can use the special variable `__dirname` (double underscore dirname) and then add the relative file path to our HTML to get the full filepath for the file we want to serve.
-
-```js
-response.sendFile(__dirname + "/public/some.html")
-```
-
-The above line of code could by used to serve a file named "some.html"
-
-In your server file (`app.js`) set up two new routes listening for `get` requests on the paths you set up on your anchor tags.
-
-* The path `/startrek` should *get* the `trek.html` file as a response
-* The path `/starwars` should *get* the `wars.html` file as a response.
-
-# 404 Not Found and other status codes
-
-open a web browser and visit <https://localhost:5000/oops/>
-
-if there is an error loading the file (in this case, there is simply no route defined for that path), the server must send the correct *[status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)*
-
-  * (404 means "not found")
-
-> Note: even though there is an error, the server *still returns a body and content-type* for display to the user.
-
-In this case, we just see Express' boring default error page, but it's possible to get [very creative](https://www.canva.com/learn/404-page-design/) with web site error pages.
-
-* Create a page in your "public" directory named 404.html
-* When the user visits any route other than one of your previously assigned routes the 404 page should be displayed.
-* Add some styles to your pages. Make them look nice!
