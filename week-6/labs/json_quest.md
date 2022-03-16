@@ -14,6 +14,8 @@ We will be extending the previous [Creating a JSON](https://online.uprighted.com
 - A webpage with a form that asks the user for their name, quest, and color.
 - The webpage should change its display depending on whether or not the user's answers match the answers in the JSON.
 
+## Procedures
+
 ## Creating the Front End
 
 Your React front end should contain a form that asks the user for the following information: name, quest, and color.
