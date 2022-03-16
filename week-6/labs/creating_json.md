@@ -29,7 +29,7 @@ This boilerplate includes:
 
 ## Creating the JSON
 
-- Create a new subfolder at the top levelc, called `api`.
+- Create a new subfolder at the top level, called `api`.
 - Within `api`, create `answers.json`
 - This JSON should contain the following key-value pairs: name, quest, favorite color.
 - _Think back to a previous project where you were provided a JSON and use that as a reference for syntax_
