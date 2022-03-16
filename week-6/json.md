@@ -1,24 +1,22 @@
-# JSON?
+# JSON
 
-JSON stands for "**J**ava**S**cript **O**bject **N**otation" and is one of the most common ways of sending data around the internet
-
-JSON is a type of text document that is in the shape of a JavaScript object. However there are some restrictions to what kind of data you can put in a JSON object. In general JSON is only used for strings, numbers, and booleans, but mostly strings.
-
-JSON objects can contain arrays of acceptable data types, and other JSON objects as the values for their keys, as well as the data types previously mentioned.
+- JSON stands for "**J**ava**S**cript **O**bject **N**otation"
+- one of the most common ways of sending data around the internet
+- can only contain plain data -- no methods or comments
 
 ---
 
 # Why JSON?
 
-* used for data *sans* behavior
+* used for data *without* behavior
   * saving/loading to disk or database
   * transmitting information across network
 * efficient to parse and compress
-* human-readable, for the most part
-* well-defined rules for whitespace and [character encoding](https://tools.ietf.org/html/rfc7159#section-8)
+* human-readable
+* well-defined rules
   * always Unicode, usually UTF-8
 * very flexible data format
-  * allows arbitrary nesting of arrays and objects (hashes)
+  * allows for endlessly nestable data
 
 ---
 
@@ -47,11 +45,10 @@ JSON objects can contain arrays of acceptable data types, and other JSON objects
 
 # JSON Collections
 
-A JSON file might contain multiple JSON objects. In this case the JSON file will contain an *array* of JSON objects.
-
-A JSON collection looks a lot like a normal JavaScript array, and when we bring it into JavaScript it operates like one too!
-
-You can use any, and all array methods on a JSON collection, including iteration methods.
+- A JSON file might contain multiple JSON objects.
+- It will contain an *array* of JSON objects.
+- Looks and works like a normal JavaScript array
+  - You can use any, and all, array methods on a JSON collection.
 
 ---
 
@@ -82,7 +79,8 @@ You can use any, and all array methods on a JSON collection, including iteration
 
 # Viewing JSON in the Browser
 
-* Its mime-type is `application/json` which most browsers will display all on one line :-(
+* Its mime-type is `application/json` which most browsers will display all on one line
+  * No longer human-readable
 * There are browser extensions that will render it better
   * Chrome: [JSON Viewer](https://github.com/tulios/json-viewer) (click on "Chrome Web Store" button to install)
 
@@ -91,10 +89,9 @@ You can use any, and all array methods on a JSON collection, including iteration
 
 ---
 
-# Viewing JSON in your NodeJS Console
+# Viewing JSON in Node
 
-* JSON *is* JavaScript
-* so if you _copy_ a JSON blob and _paste_ it into the Node REPL it will look like this:
+* You can also _copy_ a JSON blob and _paste_ it into a Node REPL 
 
 ```
 $ node
@@ -117,13 +114,8 @@ $ node
 
 # Parsing JSON in JavaScript
 
-Parsing JSON in JavaScript is easy!
-
-Since JSON objects are based off of JavaScript objects it's simple to translate them into true JavaScript objects.
-
-There is a global `JSON` object in JavaScript that can be used to manipulate JSON data. The `JSON.parse(someJson)` method will translate `someJson` (which would probably be a JSON formatted string) into a JavaScript Object
-
-We can also take a JavaScript object, and turn it into a JSON formatted string with the method `JSON.stringify(someObj)`
+- `JSON.parse(someString)` => from string to object
+- `JSON.stringify(someObject)` => from object to string
 
 ---
 
@@ -158,4 +150,3 @@ let jsonString = JSON.stringify(customObj)
 let customJson = JSON.parse(jsonString)
 ```
 
-Note that the JavaScript objected doesn't need to follow all the rules of JSON. As long as it doesn't have any methods `JSON.stringify` will format it appropriately.
