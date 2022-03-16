@@ -18,6 +18,10 @@ We will be extending the previous [Creating a JSON](https://online.uprighted.com
 
 Your React front end should contain a form that asks the user for the following information: name, quest, and color.
 
+Every input will need an `onChange` event that saves the value of the user input.
+
+The form will need an `onSubmit` that is detailed later on in the lab.
+
 ## Using the API
 
 You will need to import `useEffect` to fetch the data from your local end point. 
