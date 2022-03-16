@@ -1,6 +1,6 @@
 # Lab: Creating a JSON file
 
-We will be creatinga a JSON file to use in our next lab.
+We will be creating a JSON file to use in our next lab.
 
 ## Learning
 
