@@ -39,3 +39,10 @@ This boilerplate includes:
 
 In your server, use a GET method to serve your 'answers.json' file. If you have done this correctly, when you navigate to the server in the browser at the route of the GET, you will see your JSON.
 
+## Outcome 
+
+- A server that serves a JSON file that you created.
+
+## Going Further
+
+- Add multiple values to each key, either as an array or an object. This would allow for multiple names, quests, and favorite colors. 
