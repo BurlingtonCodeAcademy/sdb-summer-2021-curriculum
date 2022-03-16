@@ -32,9 +32,10 @@ This boilerplate includes:
 - Create a new subfolder at the top levelc, called `api`.
 - Within `api`, create `answers.json`
 - This JSON should contain the following key-value pairs: name, quest, favorite color.
+- _Think back to a previous project where you were provided a JSON and use that as a reference for syntax_
 
 
 ## Serving the JSON
 
-In your server, use
+In your server, use a GET method to serve your 'answers.json' file. If you have done this correctly, when you navigate to the server in the browser at the route of the GET, you will see your JSON.
 
