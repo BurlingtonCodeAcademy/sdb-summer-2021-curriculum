@@ -104,8 +104,8 @@ The `client()` method on DataStore:
 The `collection()` method on DataStore:
 
 - acquires a connection to the MongoDB server
-- asks it for the _database_ named `til`
-- then asks for the _collection_ of TIL entries named `facts`
+- asks it for the _database_ named `library`
+- then asks for the _collection_ of TIL entries named `books`
 
 ```javascript
   async collection() {
