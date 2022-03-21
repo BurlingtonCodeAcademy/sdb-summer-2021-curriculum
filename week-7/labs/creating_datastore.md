@@ -1,21 +1,14 @@
 # Lab: Creating a DataStore
 
-## Welcome!
+We will be creating a `class` that will handle all our database transactions to allow us to interact with a Mongo database more easily, efficiently, and consistently. 
 
-In this lab we will be creating a `class` that will handle all our database transactions to allow us to interact with a Mongo database more easily, efficiently, and consistently. We will be using it top set up a simple CLI tool that will allow us to **C**reate new documents, **R**ead, and **U**pdate existing documents, and **D**elete previously created entries to track books in a library.
+We will be using it to set up a CLI tool that will allow us to **C**reate new documents, **R**ead, and **U**pdate existing documents, and **D**elete previously created entries to track books in a library.
 
 Start by making new directory, and initializing it as an npm repository, and installing the `mongodb` drivers.
 
-```
-mkdir mongo_example
-cd mongo_example
-npm init -y
-npm install mongodb
-```
-
 ## Setting up the Connection
 
-Next, create a file called `mongo-client.js`
+Create a file called `mongo-client.js`
 
 This is where we'll configure the _client_, or the _software_ that connects to the server AKA our `DataStore`
 
@@ -28,14 +21,14 @@ const { MongoClient } = require("mongodb");
 const uri = "mongodb://localhost:27017"; //mongodb connects to port 27017 by default
 const client = new MongoClient(uri);
 ```
+This is the 'boilerplate' for interacting with MongoDB.
+
 
 ## Test it Out
 
 Now let's _connect_ to the database `library`, and insert a _document_ into the `books` _collection_
 
 Let's do this with an _asynchronous_ function so we can harness the `await` keyword and keep things in order
-
-like so:
 
 ```javascript
 async function run() {
@@ -54,7 +47,7 @@ run();
 
 Run this file through your terminal with `node mongo-client.js` to insert a single document into your Database.
 
-> Note: This is a bare-bones example that does nothing for error handling. It is simply meant to demonstrate the most basic data flow.
+_This function has no error handling. How would you flesh it out to prevent malformed documents from being inserted?_
 
 ## Building the DataStore
 
@@ -68,7 +61,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 
 ## Setting up the Class
 
-To set up our new class we first need to define a class. Let's call it `DataStore`. This class will need to keep track of where it's connecting, so let's set up a constructor we can use to assign the connection info:
+Let's set up the `DataStore` class. This class will need to keep track of where it's connecting, so let's set up a constructor we can use to assign the connection info:
 
 - The connection URL
 - The currently connected DB (if any)
@@ -86,9 +79,9 @@ class DataStore {
 }
 ```
 
-## `client`
+## DatsStore's`client` Method
 
-The `client()` method on DataStore...
+The `client()` method on DataStore:
 
 - opens a connection to the MongoDB server
 - saves that connection inside an instance variable
@@ -106,7 +99,7 @@ The `client()` method on DataStore...
   }
 ```
 
-## closing time
+## `close` Method on `client`
 
 `client.close()` will tell the driver "I'm done with the database for now"
 
@@ -116,9 +109,9 @@ It's good form to close your connection when you're not using it, to free up res
 
 You can think of `client()` as a one-member connection pool. It keeps the connection open as long as possible, but if it has closed in the meantime, it will create a new one.
 
-## `collection`
+## DataStore's `collection` Method
 
-The `collection()` method on DataStore...
+The `collection()` method on DataStore:
 
 - acquires a connection to the MongoDB server
 - asks it for the _database_ named `til`
@@ -135,7 +128,7 @@ The `collection()` method on DataStore...
 
 It is declared `async` (asynchronous) because the database connection might not currently be open, and the `client()` method might take some time to respond.
 
-## `all`
+## DataStore's`all` Method
 
 The `all()` method on DataStore...
 
@@ -162,7 +155,7 @@ Now that we've got a couple methods set up for connecting to, and reading from o
   - This is Node.js so we'll need to use the `require` method
   - Don't forget to export your `DataStore` with `module.exports = DataStore`
 - Since we are now connecting through our DataStore we no longer need the Mongo drivers in our `mongo-client.js` file
-  - feel free to delete the mongo setup in this file (the import, and connection)
+  - Feel free to delete the mongo setup in this file (the import, and connection)
 
 Then we will replace the contents of your run function with code that:
 
@@ -183,7 +176,7 @@ allBooks.forEach((book) => {
 
 > Note: This will need to happen inside the `run` function, or any other `async` function that you have defined
 
-## `.find`
+## DataStore's `.find` Method
 
 Go back to our `DataStore` and add a new method called `.find` that:
 
@@ -211,7 +204,7 @@ We'll be talking more in depth about query objects a little later this week, but
 - <http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#find>
 - <https://docs.mongodb.com/manual/tutorial/query-documents/>
 
-## `addEntry`
+## DataStore's `addEntry` Method
 
 Create a new method on `DataStore` called `addEntry` that:
 
@@ -229,7 +222,7 @@ Mongo has an algorithm for ensuring that this id is unique across _all other doc
 
 In JavaScript, Mongo defines a _class_ named `ObjectId` that takes an ID string, and parses it as a Mongo Object ID.
 
-## `.findOne`
+## DataStore's `.findOne` Method
 
 Create a new method on your `DataStore` that can find a single item by it's ID field. As with all our other methods we will want this to be an `async` method. It should:
 
@@ -238,7 +231,7 @@ Create a new method on your `DataStore` that can find a single item by it's ID f
 - queries the database for _just that document_
 - returns _a single document_
 
-## Update an Entry
+## DataStore's `updateEntry` Method
 
 Create a new `async` method on `DataStore` called `updateEntry`. This method will take two parameters:
 
