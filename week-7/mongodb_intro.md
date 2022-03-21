@@ -1,21 +1,17 @@
-# Setup
-* Download [MongoDB Community Server](https://www.mongodb.com/try/download/community)
+# Software
 
-This should include MongoDB Compass.
-
-Compass is a GUI, or *graphical user interface*, that simply provides a platform to view your data without the initial need for knowing MongoDB [query syntax](https://docs.mongodb.com/manual/tutorial/query-documents/).
-
-This makes it a great place to start!
+During orientation, we downloaded MongoDB and Mongo Compass.
 
 ---
 
-# MongoDB Overview
+# MongoDB 
 
-* document database (NoSQL)
-* horizontal sharding => can theoretically serve *trillions* of records
-* uses JavaScript for data definition and manipulation
-* built-in map-reduce for dynamic collections
-* indexing on fields by value or free-text search 
+* Document database 
+* Horizontal sharding => can theoretically serve *trillions* of records
+* Uses JavaScript for data definition and manipulation
+* Searchable 
+    * fields by value 
+    * free-text 
 
 > "Mongo is not a toy, although it can be fun to play with." - Josh Burke
 
@@ -23,7 +19,7 @@ This makes it a great place to start!
 
 # Concept: Database
 
-to connect to a database you need a Mongo URI (or URL) identifying the server, port, etc.:
+To connect to a database you need a Mongo URI:
 
 Connection URL format:
 
@@ -31,51 +27,48 @@ Connection URL format:
 mongodb://username:password@host/database
 ```
 
-for example
+Remote:
 
 ```
 mongodb://mydatabasehost.com:27017/example_db
 ```
 
-or (locally)
+Local:
 
 ```
 mongodb://localhost:27017/example_db
 ```
-If no database with the provided name is given, it will default to `test`.
-Note that the term "database" is overloaded: it refers to either:
 
-1. a single MongoDB *process* hosting many data sets
-2. a single MongoDB *data set* containing many related *collections*
+Default databse is "test"
 
 ---
 
 # Concept: Collection
 
-A *collection* holds documents. 
+A **collection** holds documents. 
 
 Many collections can live in a *database*.
-
-This is analogous to a *table* in SQL.
 
 ---
 
 # Concept: Document
 
-In MongoDB, a *document* is essentially a single JavaScript *object*
+In MongoDB, a *document* is viewable in **JSON** or **BSON**.
+- BSON allows for file storage.
 
-Like in a relational database, a document can be *created, read, updated, deleted, indexed, searched for*, ...
+- A document can be *created, read, updated, deleted, indexed, searched for*, etc ...
 
-*Unlike* in a relational database, a document can contain *any* value for its fields, *including arrays and nested objects*.
+- Their fields can contain any values.
 
-This nesting and type-flexibility makes it very appropriate to store whatever JavaScript objects your app uses, without needing to devise a *mapping* between nested objects and joined relational tables.
+- Documents can hold other documents. 
 
 ---
 
 # Drivers
-* MongoDB has its own [query syntax](https://docs.mongodb.com/manual/tutorial/query-documents/) that, while very similar to JavaScript at times, has its own rules and structure! 
+* MongoDB has its own [query syntax](https://docs.mongodb.com/manual/tutorial/query-documents/) that is *similar* to JavaScript.
 
-This allows MongoDB to be used with a number of languages through the use of *drivers*, which are language-specific! For our case, we'll be using MongoDB's **Node.js driver**, because we're JavaScript people, and we're working server side.
+Programming languages use *drivers* to interact with MongoDB. 
+We'll use MongoDB's **Node.js driver**.
 
 [Full list of drivers](https://docs.mongodb.com/drivers/)
 
