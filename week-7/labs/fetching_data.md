@@ -1,28 +1,19 @@
 # Searching the Database
 
-## Welcome!
-
-In this lab we will be setting up a front end React application that will allow the user to interact with a database, with a server acting as the interface between the two. We'll be building this off of the code we wrote for our Data Store lab so that we can hook into the functionality of the `DataStore` class.
+We will be setting up a front end React application that will allow the user to interact with a database, with a server acting as the interface between the two. We'll be building this off of the code we wrote for our Data Store lab so that we can hook into the functionality of the `DataStore` class.
 
 ## Setting up your Directory
 
-* Create a new directory named `react-store` and `cd` into it
-* Create a `server.js` file inside this directory
-* Get ready to install packages by running `npm init -y`
-* install:
-  * `create-react-app`
-  * `mongodb`
-  * `express`
-  * Optionally `dotenv` if you want to connect to an Atlas database
-* run `npx create-react-app client` to create a new React front end
-* `cd` into `client` and run `rm -rf .git` to remove the interior Git repo
-* In the `package.json` file that is *inside `client`* add a proxy property pointing to `"http://localhost:5000"`
-  * Or whatever port you decide to run your Express server on.
-* At the *root level* of your directory create a new `data-store.js` file
+Create a new React app named `react-store`. Install mongodb and express. 
+
+At the root level of the directory, create `server.js` and `data-store.js`.
+
+Optionally, Create a proxy in `package.json`.
+
 
 ## A Note on Reusing DataStore
 
-It can be very tempting to copy and paste when bringing a large file, or chunk of code (such as our `DataStore` class) into a new application. **DON'T!**
+It can be tempting to copy and paste when bringing a large file, or chunk of code (such as our `DataStore` class) into a new application. **DON'T!**
 
 Typing the code out will help you remember the code, and it will allow your brain to make new connections between the code you are writing, and what it's telling the computer to do.
 
@@ -36,16 +27,16 @@ Once you've got the `DataStore` recreated you can import it into your server fil
 
 Let's connect our application to the same database we were using in the previous lab, "library" and the collection "books."
 
-We will also want to do our standard Express setup. Since our front end is React we will want our static server to be bound to `"client/public"` (in dev mode at least). If you've set your React front end to proxy requests to "http://localhost:5000" then we'll also need to make sure our server is listening on port 5000.
+We will also want to do our standard Express setup with boilerplate. Refer to old work for this code!
 
-Once you have the basic setup for your server you are going to want to set up routes for each of your database operations, and you might want to organize these routes by their "jobs."
+Once you have the basic setup for your server you are going to want to set up routes for all database operations, and you might want to organize these routes by their "jobs."
 
 Some routes (usually listening for `get` requests) are used to send data from the server to the client. These are our API endpoints and we want them to send the data from the database as a *JSON response.*
 
 The other type of backend route will be used to send data from the client to the server (usually, but not always over a `post` request). These routes should accept the data from the client, perform whatever database operation they need to, and then *redirect* the user back to `"/"` so that our React front end will refresh itself.
 
-* routes for reading data send the data as a response
-* routes for modifying the documents in our DB redirect to home
+* Routes for reading data send the data as a response
+* Routes for modifying the documents in our DB redirect to home
 
 ## Setting up the Front End
 
