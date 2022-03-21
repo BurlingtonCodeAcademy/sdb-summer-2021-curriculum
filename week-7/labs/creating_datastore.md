@@ -189,8 +189,6 @@ collection.find({
 });
 ```
 
-We'll be talking more in depth about query objects a little later this week, but you can get a head start by reading the docs here:
-
 - <http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#find>
 - <https://docs.mongodb.com/manual/tutorial/query-documents/>
 
