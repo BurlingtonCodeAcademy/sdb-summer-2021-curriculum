@@ -99,16 +99,6 @@ The `client()` method on DataStore:
   }
 ```
 
-## `close` Method on `client`
-
-`client.close()` will tell the driver "I'm done with the database for now"
-
-It's good form to close your connection when you're not using it, to free up resources on both computers...
-
-...but a web server will often keep the connection open between requests, so the next web request won't need to wait for the latency of opening a whole new connection.
-
-You can think of `client()` as a one-member connection pool. It keeps the connection open as long as possible, but if it has closed in the meantime, it will create a new one.
-
 ## DataStore's `collection` Method
 
 The `collection()` method on DataStore:
