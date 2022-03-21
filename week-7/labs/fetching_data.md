@@ -44,7 +44,7 @@ In our React app let's clear out the starter code in `App.js` and start setting 
 
 In the return statement of our component we will first want to make sure that the array of *book objects* exists, and then we will want to transform it into an array of JSX components and put it on the page.
 
-Think about how you want to perform different operations;
+Think about how you want to perform different operations:
 
 * To add a new entry a form could be useful
   * If you don't handle the submit event it will go to the server as a normal HTML form would
