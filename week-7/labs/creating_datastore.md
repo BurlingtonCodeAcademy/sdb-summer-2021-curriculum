@@ -93,7 +93,7 @@ The `client()` method on DataStore:
   async client() {
 
     console.log(`Connecting to ${this.dbUrl}...`)
-    this.dbClient = await MongoClient.conne(this. dbUrl, { useNewUrlParser: true })
+    this.dbClient = await MongoClient.connect(this. dbUrl, { useNewUrlParser: true })
     console.log("Connected to database.");
     return this.dbClient;
   }
