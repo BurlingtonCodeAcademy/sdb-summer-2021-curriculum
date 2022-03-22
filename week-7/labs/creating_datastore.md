@@ -71,7 +71,7 @@ Let's set up the `DataStore` class. This class will need to keep track of where 
 ```js
 class DataStore {
   constructor(dbUrl, dbName, collName) {
-    this.dbURL = dbUrl;
+    this.dbUrl = dbUrl;
     this.dbName = dbName;
     this.collName = collName;
     this.dbClient = null;
