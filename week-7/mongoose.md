@@ -1,25 +1,20 @@
-# Overview
+# Using Mongoose for Schema Validation
 
 When writing to a database, it is often important to ensure the data is as expected.
 
 Enter schema-validation with **Mongoose**. 
 
-[Mongoose](https://mongoosejs.com/) is an object data modeling (ODM) library.
- 
-Or in their words,
-
-        "A straight-forward, schema-based solution to model your application data"
+[Mongoose](https://mongoosejs.com/) is a library that provides "a straight-forward, schema-based solution to model your application data."
 
 ---
 
-# Getting Started
+# Mongoose: Getting Started
 
 * Mongoose replaces the `mongodb` driver
-* Runs `mongodb` queries under the hood
-
-Let's make a new directory named `mongoose-example` and look at how we can set up and use a schema.
+* Runs `mongodb` queries on your behalf
 
 ```
+mkdir mongoose-example
 cd mongoose-example
 npm init -y
 npm install mongoose
@@ -49,7 +44,7 @@ db.on('error', console.error.bind(console, 'connection error:'))
 
 # Concept: Schemas
 
-A database schema outlines the expected structure of the data that will be inserted into a *collection*
+A schema outlines the expected structure of the data that will be inserted into a *collection*
 
 A database schema can also define *methods* on the documents being inserted. 
 
@@ -69,13 +64,7 @@ const studentSchema = new mongoose.Schema({
     current: Boolean
 })
 ```
-
-The `SchemaType` is the 'value' to the right of the `:`, and is by default a *configuration object*.
-
-`String` is supported shorthand for `{type:String}`. Same goes for `Number, Array, Boolean, etc...`
-
-The code above defines a simple schema that expects a certain datatype for the given field.
-A comprehensive list can be found [here](https://mongoosejs.com/docs/guide.html#definition).
+[Setting up your configuration object](https://mongoosejs.com/docs/guide.html#definition).
 
 ---
 
@@ -83,30 +72,31 @@ A comprehensive list can be found [here](https://mongoosejs.com/docs/guide.html#
 
 While the definition of the data's structure is held in the Schema, a *Model* actually handles the work.
 
-* *constructors* built using the *schema*
-* *enforces* definition of schema
+* an object built by Mongoose using the *schema* you made 
+* *enforces* your schema's types (e.g. `String`)
 * creates a collection based on provided name
 * instances of models are documents
 
 ---
 
-# Example Model
-Take our previous schema, `studentSchema`. Let's create a *model* from that schema, and call it `Student`.
+# Using a Schema to Build a Model
 
 ```javascript
+// Student Model
 const Student = mongoose.model('Student', studentSchema)
 
-const paul = new Student({ name: 'Paul', age: 29, hobbies: ['guitar', 'd&d', 'coding'] })
-// call the save() method on a model instance (document) to insert it to the collection 
-paul.save()
+// Fatima Document made from Student Model
+const fatima = new Student({ name: 'Fatima', age: 29, hobbies: ['jumprope', 'd&d', 'coding'] })
+// call the save() method on a model instance to insert it to the collection 
+fatima.save()
 ```
 
 ---
 
-# Document with Error Handling
+# Models and Error Handling
 
 ```javascript
-paul.save((err, paul) => {
+fatima.save((err, fatima) => {
     if (err) {
         return console.error(err)
     } else {
@@ -114,15 +104,12 @@ paul.save((err, paul) => {
     }
 })
 ```
-Think of `Student` as a *Class* with enforcement run by the *Schema* underneath.
-
-We can create an *instance* of the `Student` model like we would any class!
 
 ---
 
 # Models and Collections
 
-* creating an *instance* of a Model makes a document that can be saved to a collection
+* creating an *instance* of a model makes a document that can be saved to a collection
 * that *collection* is is a lower-case, pluralized version of the Model name 
     - Model: `Student`
     - Collection: `students`
