@@ -176,8 +176,6 @@ Go back to our `DataStore` and add a new method called `.find` that:
 
 `.find` when it's used takes a parameter named `query` listing the _fields and values_ as a JS object to match on.
 
-For instance in our `mongo-client.js` file, `collection.find({author: 'alex')` returns all entries whose `author` field is the string `alex`
-
 For more complicated queries, you can use operators like `$gte` (greater than or equal) and `$or`, e.g. this would find all items with 1 or more copies left, but less than 5:
 
 ```js
