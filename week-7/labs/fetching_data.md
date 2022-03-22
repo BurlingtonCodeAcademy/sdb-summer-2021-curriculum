@@ -1,4 +1,5 @@
-# Searching the Database
+
+# LAB: Fetching Data
 
 We will be setting up a front end React application that will allow the user to interact with a database, with a server acting as the interface between the two. We'll be building this off of the code we wrote for our Data Store lab so that we can hook into the functionality of the `DataStore` class.
 
@@ -8,7 +9,11 @@ Create a new React app named `react-store`. Install mongodb and express.
 
 At the root level of the directory, create `server.js` and `data-store.js`.
 
-Optionally, Create a proxy in `package.json`.
+`data-store.js` will be identical to your previously built file.
+
+`server.js` will combine the code written in `mongo-client` with an Express server.
+
+Optionally, create a proxy in `package.json`.
 
 
 ## A Note on Reusing DataStore
@@ -23,34 +28,56 @@ Use your old `DataStore` as a reference, but actually type all the code out manu
 
 ## Setting up the Server
 
-Once you've got the `DataStore` recreated you can import it into your server file to more easily connect to, and communicate with the database.
+The server needs the standard Express boilerplate. It also needs to have `DataStore` imported. You will also need to create a new `DataStore` and name it `collection` just as you did in the previous lab.
 
-Let's connect our application to the same database we were using in the previous lab, "library" and the collection "books."
+Once you have the basic setup for your server you are going to want to set up routes for the following database operations you created in `DataStore`: `find`, `addEntry`, and `update`.
 
-We will also want to do our standard Express setup with boilerplate. Refer to old work for this code!
+These routes will be correlated with database "jobs", and you will have two kinds: GET jobs and POST jobs.
 
-Once you have the basic setup for your server you are going to want to set up routes for all database operations, and you might want to organize these routes by their "jobs."
+_All jobs need to be async_.
 
-Some routes (usually listening for `get` requests) are used to send data from the server to the client. These are our API endpoints and we want them to send the data from the database as a *JSON response.*
+GET jobs send data TO the client FROM the server (database). 
 
-The other type of backend route will be used to send data from the client to the server (usually, but not always over a `post` request). These routes should accept the data from the client, perform whatever database operation they need to, and then *redirect* the user back to `"/"` so that our React front end will refresh itself.
+```js
+app.get("/bringmeallthestuff", async (req, res) => {
+  //find all the stuff in my database
+  
+  //send that stuff to the page
+});
+```
+POST jobs send data TO the server (database) FROM the client. You will need to redirect the user back to the page the form is on; if you do not, they will be left on a blank page.
 
-* Routes for reading data send the data as a response
-* Routes for modifying the documents in our DB redirect to home
+```js
+app.post("/addnewstuff", async (req, res) => {
+  //create new stuff using user input
+  
+  //save the new stuff to the database
+  
+  //redirect the user back to the page they were on
+});
+```
 
 ## Setting up the Front End
 
-In our React app let's clear out the starter code in `App.js` and start setting up our own front end. Let's put a list of all the books in our library on the page. To do this make sure you have an Express route that uses your `DataStore`'s `.all` method to send over a json formatted list of all the books in your database. On the front end (inside a `useEffect` hook) we can fetch that JSON collection, and store it in state.
+In our React front end, let's get the following on the page:
 
-In the return statement of our component we will first want to make sure that the array of *book objects* exists, and then we will want to transform it into an array of JSX components and put it on the page.
+A list of all books currently in our collection.
 
-Think about how you want to perform different operations:
+A form that lets the user add a new book with the same `key:value` pairs as the preexisting books.
 
-* To add a new entry a form could be useful
-  * If you don't handle the submit event it will go to the server as a normal HTML form would
-* How to you want to handle deleting an item?
-  * By clicking a button?
-  * Entering the ID in a form?
-* What about modifying an entry?
-  * How are you going to determine which document to update?
-  * How are you going to determine what fields to update?
+A form that lets the user update a specific book's information.
+
+You will need to connect these front end components to the job routes you previously defined.
+
+## Test It Out!
+
+Use Compass to verify that when the user adds a new book or updates a preexisting one, it changes in the database. You may need to use the refresh feature on Compass, which is a small rotating arrow in the upper left of the side bar.
+
+## Going Further
+
+Add a new method to `DataStore`, `delete`. It will take in an `id` as a parameter. 
+
+On the front end, create a form that allows the user to enter in the TITLE of a book they want to delete. 
+
+Consider this: the method `delete` takes in an `id`, but the user will be inputting a `title`. How would you translate the title to the id to delete the correct book?
+
