@@ -61,11 +61,19 @@ app.post("/addnewstuff", async (req, res) => {
 
 In our React front end, let's get the following on the page:
 
-A list of all books currently in our collection.
+A list of all books currently in our collection. You will need to fetch this from your `find` route and set it to the state `allBooks`. You can use the `map` method on `allBooks` and programmatically place every book on the page.
 
-A form that lets the user add a new book with the same `key:value` pairs as the preexisting books.
+```js
+allBooks.map((book) => {
+<h1>{book.title}</h1>
+<h2>{book.author}</h2>
+}
 
-A form that lets the user update a specific book's information.
+```
+
+A form that lets the user add a new book with the same `key:value` pairs as the preexisting books. This will need a POST method and an action that matches the route on the server.
+
+A form that lets the user update a specific book's information. This will need a POST method and an action that matches the route on the server.
 
 You will need to connect these front end components to the job routes you previously defined.
 
