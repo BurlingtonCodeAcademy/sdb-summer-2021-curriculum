@@ -91,18 +91,17 @@ let action = await ask('Welcome to the robot factory! What do you want to do? (C
 
 ## Assigning User Input
 
-If first we want to bring our robot to life, check that the user has entered "Create" as their command.
+If we want to create a new robot:
+
+* Check that the user has entered "Create" as their command and then begin asking questions.
+* Define variables that correspond to the keys found in our schema; ask the user for what value they want the key to have.
 
 ```javascript
-if (action === 'Create') {}
-```
-
-Next, define variables that correspond to the fields found in our schema and set them to `await ask()` questions in which the answers will be stored. 
-
-```javascript
-let creatorName = await ask('What is your name?   ')
-let robotName = await ask('What is the name of the robot you want to create?   ')
-let robotColor = await ask('What is your robot\'s color(s)?   ')
+ if (action === 'Create') {
+        let creatorName = await ask('Who is the creator?')
+        let robotName = await ask('Designate this robot?')
+        let robotColor = await ask('What color is this robot?')
+        let friend = await ask('Is this robot a friend? Enter Y or N')
 ```
 
 Some of these questions will be conditional based on the robot type. 
