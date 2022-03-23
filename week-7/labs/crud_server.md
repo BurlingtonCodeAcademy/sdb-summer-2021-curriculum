@@ -69,7 +69,7 @@ Now that our data structure is defined by the schema, let's make some data using
 
 **Models** are constructors built using the schema by enforcing the data structure defined there. It creates a collection based on the provided name. Instances of models are called *documents*.
 
-Below, we define our model and set it to the variable name "Robot" by calling the mongoose method `.model()`. We pass to it the name of the collection the model is for (robots), and the schema we want the model to use (robotSchema).
+Below, we define our model and set it to the variable name "Robot" by calling the mongoose method `.model()`. We pass to it the name of the collection the model is for (`'robots'`), and the schema we want the model to use (`robotSchema`).
 
 Here our model name is `Robots`. It uses the `robotSchema` from above. 
 
