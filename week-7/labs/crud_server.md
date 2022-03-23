@@ -71,10 +71,10 @@ Now that our data structure is defined by the schema, let's make some data using
 
 Below, we define our model and set it to the variable name "Robot" by calling the mongoose method `.model()`. We pass to it the name of the collection the model is for (`'robots'`), and the schema we want the model to use (`robotSchema`).
 
-Here our model name is `Robots`. It uses the `robotSchema` from above. 
+Here our model name is `Robot`. It uses the `robotSchema` from above. 
 
 ```javascript
-const Robots = mongoose.model('robots', robotSchema)
+const Robot = mongoose.model('robots', robotSchema)
 ```
 
 ## User Input
@@ -126,10 +126,10 @@ if (friend === 'N') {
 
 Great! We have our user input. Now we'll create a new entry with it. 
 
-Create a variable and use the `new` keyword to create a new instance of the `Robots` model. Here we've named the variable `response` as it holds the responses of the user.
+Create a variable and use the `new` keyword to create a new instance of the `Robot` model. Here we've named the variable `response` as it holds the responses of the user.
 
 ```javascript
- const response = new Robots({
+ const response = new Robot({
     creatorName: creatorName,
     robotName: robotName,
     robotColor: robotColor,
@@ -149,7 +149,7 @@ console.log('Your robot has been created!')
 
 # (R)ead
 
-Next up, the ability to see all items in our Robots collection. 
+Next up, the ability to see all items in our 'robots' collection. 
 
 First, verify user input within our async `start()` function. 
 
@@ -160,7 +160,7 @@ First, verify user input within our async `start()` function.
 Next, we want to await our database connection. We'll be asking it to look for *all* items in our collection using the `.find()` method. Once returned we will store them in a variable that will be printed to the console.
 
 ```javascript
-let allRobots = await Robots.find({})
+let allRobots = await Robot.find({})
 console.log(allRobots)
 ```
 
@@ -176,7 +176,7 @@ First, verify user input within our async `start()` function.
 Again, gathering all of our collection's entries, print them to the terminal.
 
 ```javascript
-let allRobots = await Robots.find({})
+let allRobots = await Robot.find({})
 console.log(allRobots)
 ```
 
@@ -200,7 +200,7 @@ Because our entries are saved as objects we will need to use curly brackets to a
 Like our other methods, it will need to be awaited. Print a message to the user so they know the entry was updated successfully.
 
 ```javascript
-await Robots.updateOne({ _id: updateTarget }, { $set: { [updateField]: update } })
+await Robot.updateOne({ _id: updateTarget }, { $set: { [updateField]: update } })
 console.log('Your robot has been updated!')
 ```
 
@@ -215,7 +215,7 @@ First, verify user input within our async `start()` function.
 Again, gathering all of our collection's entries, print them to the terminal.
 
 ```javascript
-let allRobots = await Robots.find({})
+let allRobots = await Robot.find({})
 console.log(allRobots)
 ```
 
@@ -230,7 +230,7 @@ Now that we have the user input, let's use the `.deleteOne()` method to remove t
 Like our other methods, it will need to be awaited. Print a message to the user so they know the entry was deleted successfully.
 
 ```javascript
-await Robots.deleteOne({ _id: target })
+await Robot.deleteOne({ _id: target })
 console.log('your entry has been deleted')
 ```
 
