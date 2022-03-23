@@ -1,31 +1,24 @@
 # Lab: CRUD Server!
 
-Welcome to the DroidMaker3000! 
+Welcome to the Robot Factory! 
 
-In this lab we will make a program that allows us to **create**, **read**, **update**, and **delete** entries from our Mongoose database, otherwise known as *CRUD*. 
+In this lab we will make a program that allows us to **create**, **read**, **update**, and **delete** entries from our Mongoose database, otherwise known as *CRUD*. This will take the shape of creating a robot factory in our terminal.
 
 ## Getting Started
 
-Create a new directory named `CRUD-example.js` and initialize it as an npm respository. Install the `mongoose` drivers.
-
-```
-mkdir CRUD-example.js
-cd CRUD-example.js
-npm init -y
-npm install mongoose 
-```
+Create a new directory named `CRUD-robot-factory` and initialize it as an npm respository. Install mongoose.
 
 Next, make a new file called `CRUD.js`. Here we will configure the connection to our server by establishing a few key items:
 
- * our Mongoose import by requiring Mongoose
- * using the `.connect()` method, we connect to MongoDB and the server, which is `localhost:27017`
- * initialize a database through the connection constructor, which will be stored in a variable. 
+ * Our Mongoose import by requiring Mongoose
+ * Using the `.connect()` method, we connect to MongoDB and the server, which is `localhost:27017`, and the database, which is `/factory`
+ * Initialize a database through the connection constructor, which will be stored in a variable. 
 
 in `CRUD.js`, add:
 
 ```javascript
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27017/factory');
 const db = mongoose.connection
 ```
 
@@ -49,21 +42,21 @@ function ask(questionText) {
 
 ## Start function and Schema Creation
 
-Now that we have the set up, let's create an async function to ask for user input and await the database connection. 
+Let's create an async function to ask for user input and await the database connection. 
 
 A schema outlines the expected data structure that will be inserted into a *collection*. They are used to create a *model*.
 
-Our droid schema is *defined* by a number of definitions that are based on **SchemaTypes**. As a reminder, the SchemaType is the 'value' to the right of the `:`. The accepted SchemaTypes include `String`, `Number`,`Array`, `Boolean`, and more. A comprehensive list can be found [here](https://mongoosejs.com/docs/guide.html#definition).
+Our robot schema is *defined* by a number of definitions that are based on **SchemaTypes**. As a reminder, the SchemaType is the 'value' to the right of the `:`. The accepted SchemaTypes include `String`, `Number`,`Array`, `Boolean`, and more. A comprehensive list can be found [here](https://mongoosejs.com/docs/guide.html#definition).
 
 ```javascript
 async function start() {
-    const droidSchema = new mongoose.Schema({
-        userName: String,
-        droidName: String,
+    const robotSchema = new mongoose.Schema({
+        creatorName: String,
+        robotName: String,
         color: String,
-        astromech: Boolean,
-        protocol: Boolean,
-        affiliation: number,
+        killer: Boolean,
+        friend: Boolean,
+        serialNumber: Number,
         date: Date
     })
 }
@@ -76,28 +69,29 @@ Now that our data structure is defined by the schema, let's make some data using
 
 **Models** are constructors built using the schema by enforcing the data structure defined there. It creates a collection based on the provided name. Instances of models are called *documents*.
 
-Below, we define our model and set it to the variable name "Droid" by calling the mongoose method `.model()`. We pass to it the name of the collection the model is for, and the schema we want the model to use.
+Below, we define our model and set it to the variable name "Robot" by calling the mongoose method `.model()`. We pass to it the name of the collection the model is for (robots), and the schema we want the model to use (robotSchema).
 
-Here our model name is `Droid`. It uses the `droidSchema` from above. 
+Here our model name is `Robots`. It uses the `robotSchema` from above. 
 
 ```javascript
-const Droid = mongoose.model('Droid', droidSchema)
+const Robots = mongoose.model('robots', robotSchema)
 ```
 
 ## User Input
 
-The idea of CRUD capabilities is to allow a user to take certain actions to manipulate entries in a collection. In this instance we will handle user input by asking the user what action they want to take, passing it through an `if-else` loop, and returning the desired behavior.
+The idea of CRUD capabilities is to allow a user to take certain actions to manipulate entries in a collection. 
 
-Note: This is a bare-bones example that does nothing for error handling. It is simply meant to demonstrate the most basic data flow.
+In this instance we will handle user input by asking the user what action they want to take, passing it through an `if-else` loop, and returning the desired behavior.
+
 
 ```javascript
-let action = await ask('Welcome to the droid maker! What do you want to do? (Create, Read, Update, Delete)   ')
+let action = await ask('Welcome to the robot factory! What do you want to do? (Create, Read, Update, Delete)   ')
 ```
-# CREATE !
+# (C)reate
 
 ## Assigning User Input
 
-If first we want to bring our droid to life, check that the user has entered "Create" as their command.
+If first we want to bring our robot to life, check that the user has entered "Create" as their command.
 
 ```javascript
 if (action === 'Create') {}
@@ -106,73 +100,57 @@ if (action === 'Create') {}
 Next, define variables that correspond to the fields found in our schema and set them to `await ask()` questions in which the answers will be stored. 
 
 ```javascript
-let userName = await ask('What is your name?   ')
-let droidName = await ask('What is the name of the droid you want to create?   ')
-let droidColor = await ask('What is your droid\'s color(s)?   ')
+let creatorName = await ask('What is your name?   ')
+let robotName = await ask('What is the name of the robot you want to create?   ')
+let robotColor = await ask('What is your robot\'s color(s)?   ')
 ```
 
-Some of these questions will be conditional based on the droid type. 
--  If the droid is an astromech, the application should not ask if the droid is a protocol droid, and vice versa. 
-- Regardless of choice, the application should then ask how the droid is affiliated, and a new Date instance should be generated and assigned to the date
+Some of these questions will be conditional based on the robot type. 
+-  If the robot is a friend robot, the application should not ask if the robot is a killer robot, and vice versa. 
+- Regardless of choice, the application should then ask for the robot's serial number, and a new Date instance should be generated and assigned to the date
 -  Don't forget to set those variables outside of the loop, or else they will be lost in scope later on.
 
-Because every field of our schema requires data, you'll need to assign the whichever droid type wasn't chosen to the corresponding boolean value.
+Because every field of our schema requires data, you'll need to assign the whichever robot type wasn't chosen to the corresponding boolean value.
+
+Once the robot type is assigned, you will need to follow up by asking the serial number and creating a date.
 
 ```javascript
-let affiliation
-let protocol
-let date
-
-if (astromech === 'N') {
-    astromech = false
-    protocol = await ask('Is your droid a protocol droid?   ')
-    protocol = true
-    affiliation = await ask('What faction is your droid? 1 for Rebel Alliance, 2 for Empire.   ')
+if (friend === 'N') {
+    friend = false
+    killer = true
+    console.log('Oh no! A killer robot!')
+    serialNumber = await ask('What is the serial number?')
     date = new Date()
-} else if (astromech === 'Y') {
-    astromech = true
-    protocol = false
-    affiliation = await ask('What faction is your droid? 1 for Rebel Alliance, 2 for Empire.   ')
-    date = new Date()
-}
-```
-
-And finally, an else block to catch incorrect input.
-
-```javascript
-else {
-    console.log('That does not compute. Try again!')
-}
 ```
 
 ## Storing User Input
 
 Great! We have our user input. Now we'll create a new entry with it. 
 
-Create a variable and use the `new` keyword to create a new instance of the `Droid` model. Here we've named the variable `response` as it holds the responses of the user.
+Create a variable and use the `new` keyword to create a new instance of the `Robots` model. Here we've named the variable `response` as it holds the responses of the user.
 
 ```javascript
- const response = new Droid({
-    userName: userName,
-    droidName: droidName,
-    droidColor: droidColor,
-    astromech: astromech || null,
-    protocol: protocol || null,
-    affiliation: affiliation,
+ const response = new Robots({
+    creatorName: creatorName,
+    robotName: robotName,
+    robotColor: robotColor,
+    friend: friend || null,
+    killer: killer || null,
+    serialNumber: serialNumber,
     date: date,
 })
 ```
 
-Finally, we will save this new droid and send a message to the console to let our user know. We do so by awaiting the user response with the `await` keyword, using the `.save()` method, and a `console.log()`.
+Finally, we will save this new robot and send a message to the console to let our user know. We do so by awaiting the user response with the `await` keyword, using the `.save()` method, and a `console.log()`.
 
 ```javascript
 await response.save();
-console.log('your droid has been created!')
+console.log('Your robot has been created!')
 ```
 
-# READ !
+# (R)ead
 
-Next up, the ability to see all items in our Droid collection. 
+Next up, the ability to see all items in our Robots collection. 
 
 First, verify user input within our async `start()` function. 
 
@@ -183,11 +161,11 @@ First, verify user input within our async `start()` function.
 Next, we want to await our database connection. We'll be asking it to look for *all* items in our collection using the `.find()` method. Once returned we will store them in a variable that will be printed to the console.
 
 ```javascript
-let allDroids = await Droid.find({})
-console.log(allDroids)
+let allRobots = await Robots.find({})
+console.log(allRobots)
 ```
 
-# UPDATE !
+# (U)pdate
 
 Now that we've seen all of our entries, let's choose one to update!
 
@@ -199,21 +177,21 @@ First, verify user input within our async `start()` function.
 Again, gathering all of our collection's entries, print them to the terminal.
 
 ```javascript
-let allDroids = await Droid.find({})
-console.log(allDroids)
+let allRobots = await Robots.find({})
+console.log(allRobots)
 ```
 
 Next, using the `await ask()` function, get the following input from the user:
  - which entry should be updated
- - which feld should be updated
+ - which field should be updated
  - and what the new value should be
 
 Store each in a variable for later use.
 
  ```javascript
-let updateTarget = await ask('What is the ID of the droid do you want to update?   ')
+let updateTarget = await ask('What is the ID of the robot you want to update?   ')
 let updateField = await ask('What field do you want to update?   ')
-let update = await ask('enter a new value   ')
+let update = await ask('Enter a new value   ')
 ```
 
 Now that we have user input, let's update the entry using the `updateOne()` method. We will pass in the `updateTarget` variable for our entry's `_id`, the `updateField` variable for the key of the value that we want changed, and the `update` variable for the value of what we want changed.
@@ -223,11 +201,11 @@ Because our entries are saved as objects we will need to use curly brackets to a
 Like our other methods, it will need to be awaited. Print a message to the user so they know the entry was updated successfully.
 
 ```javascript
-await Droid.updateOne({ _id: updateTarget }, { $set: { [updateField]: update } })
-console.log('your entry has been updated!')
+await Robots.updateOne({ _id: updateTarget }, { $set: { [updateField]: update } })
+console.log('Your robot has been updated!')
 ```
 
-# DELETE !
+# (D)elete 
 
 Our last capability should be to delete an entry. 
 
@@ -238,8 +216,8 @@ First, verify user input within our async `start()` function.
 Again, gathering all of our collection's entries, print them to the terminal.
 
 ```javascript
-let allDroids = await Droid.find({})
-console.log(allDroids)
+let allRobots = await Robots.find({})
+console.log(allRobots)
 ```
 
 Next, using the `await ask()` function, ask the user which entry to delete, and store the user input in a variable for later use.
@@ -253,11 +231,11 @@ Now that we have the user input, let's use the `.deleteOne()` method to remove t
 Like our other methods, it will need to be awaited. Print a message to the user so they know the entry was deleted successfully.
 
 ```javascript
-await Droid.deleteOne({ _id: target })
+await Robots.deleteOne({ _id: target })
 console.log('your entry has been deleted')
 ```
 
-# LAST STEP !
+# Error handling and ending the program
 
 Because we are operating in an `if-else` loop that validates user input from our async `start()` function, close out the loop by adding a catch-all should the user try using an invalid command. 
 
@@ -276,4 +254,10 @@ And lastly, close out the function with a `process.exit()`. If you haven't decla
 
 # Going Further
 
-You've just built out a command-line interface with full CRUD functionality using a mongoose model. Command line applications run in a Node.js environment just like our Express servers. To take this to the next level you can translate the command line code to an Express server, much like we did in the "DataStore" and "Fetching Data" labs with our `DataStore` class.
+* Think back to Zorkington. How can you loop the program so that, once an action is complete, the user can complete another without rerunning the program?
+
+* What if a user meant to create a friend robot instead of a killer robot? How could you change the logic to ask the user to confirm they intended to make their robot killer?
+
+* Right now, the user has to input the exact id and property in order to update the robot. How could you make this more user friendly? Let the user give the name of the robot to update (instead of the id) AND let them type the property in natural language ("serial number" instead of "serialNumber").
+
+* Translate this lab to an Express server with a React front end, much like we did in the "Fetching Data" lab.
