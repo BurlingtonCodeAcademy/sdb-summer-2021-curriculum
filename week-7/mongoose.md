@@ -109,40 +109,41 @@ fatima.save((err, fatima) => {
 
 # Models and Collections
 
-* creating an *instance* of a model makes a document that can be saved to a collection
-* that *collection* is is a lower-case, pluralized version of the Model name 
+* Creating an *instance* of a model makes a document 
+* Using `.save()` saves that document to a collection
+* That *collection* is a lowercase, pluralized version of the Model name 
     - Model: `Student`
     - Collection: `students`
-* the collection can be queried directly with methods on the Model:
+* The collection can be queried directly with methods from the Model:
     - supports MongoDB query syntax
     - takes a callback for error handling
 
 ---
 
-# Seeing it work
+# Using Model Methods to Make Queries
 
 ```javascript
-Student.find({ name: 'Paul' }, (err, results) => {
+Student.find({ name: 'Fatima' }, (err, results) => {
     if (err) {
         return console.log(err)
     } else {
-        return console.log(results) // => [{name:'Paul, age: 29, ...}]
+        return console.log(results) // => [{name:'Fatima', age: 29, ...}]
     }
 })
 ```
 
-You can also open up **Compass** and what it does with the collection name. 
-You should see `students` under `example_db`, or whatever you ended your connection string with.
+Note: You can still use **Compass** to verify your code is working. 
 
 ---
 
-# Seeing it break
+# Mongoose Validation Errors
 
-Let's try create an instance of the `Student` model, and intentionally give it bad data:
+Let's create a `Student` instance and intentionally give it bad data:
 
-```javascript
-let sam = new Student({name:"Samantha", age:"thirty-two", hobbies:["carpentry", "archery"]})
-sam.save()
-`Student validation failed: age: Cast to Number failed for value "thirty-two" at path "age"`
+```js
+let wei = new Student({ name: "wei", age: "thirty-two", hobbies: ["carpentry", "archery"] })
+
+wei.save()
+
+// `Student validation failed: age: Cast to Number failed for value "thirty-two" at path "age"`
 ```
-It throws an error! It's working!
