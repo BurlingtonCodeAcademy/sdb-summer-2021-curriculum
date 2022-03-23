@@ -53,7 +53,7 @@ async function start() {
     const robotSchema = new mongoose.Schema({
         creatorName: String,
         robotName: String,
-        color: String,
+        robotColor: String,
         killer: Boolean,
         friend: Boolean,
         serialNumber: Number,
