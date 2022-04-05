@@ -24,8 +24,8 @@ These are instructions are called **programs**.
 
 - It's easy to immediately start writing code. Don't. Figure out the instructions needed first.
 - Imagination and scratch paper go a long way when planning.
-- Computers follow **programs** exactly as written.
-- Computers _sometimes_ show **error** messages to help the programmer.
+- Computers follow programs exactly as written.
+- Computers _sometimes_ show error messages to help the programmer.
 - Always **test** _before_ submitting.
 - Mistakes are expected and respected. Try again.
 
@@ -42,48 +42,13 @@ These are instructions are called **programs**.
 
 ---
 
-# What will we learn?
 
-Throughout this course, you will learn about:
+# The Terminal
 
-- Common programmer tools.
-- Common parts of programming languages used to write programs.
-- Thinking like programmers.
-- How to make simple websites.
-- How to make Single Page Applications, i.e. more complex websites.
-
----
-
-# Technical Requirements
-
-See the [Installfest](/lessons/written/installfest) project for more instructions.
-
-Software
-
-- a text editor - VSCode <https://code.visualstudio.com>
-- JavaScript - Node.js <https://nodejs.org>
-- version control software - git version 2.x <https://git-scm.com>
-- open-source sharing site account - GitHub <https://github.com>
-
----
-
-# Technical Requirements cont.
-
-- Heroku
-  - **Sign up** for an account at <https://signup.heroku.com>
-  - **Install** the _Heroku Command Line Interface_ (CLI) at <https://devcenter.heroku.com/articles/heroku-cli>
-- Postman
-- MongoDB and Compass
-
-- Please stop right now and check
-- If you do not have these, let us know!
-
----
-
-# Introducing: The Command Line!
-
-- We use the **Command Line** application to tell the computer _commands_.
-  - AKA _console_ or _terminal_ or _command prompt_ or _shell_
+- We use the **Terminal** application to tell the computer commands.
+  - The terminal gives us a **command line** that is managed by a **shell**.
+  - The **console** in your browser is a kind of terminal. 
+  - *command line*, *console*, *shell*, and *terminal* are often use interchangeably. 
 - Some apps only exist in the terminal and are seemingly invisible.
   - These are _CLI_ (Command Line Interface) applications.
 - Some display a window for the user to interact with.
@@ -94,15 +59,15 @@ Software
 
 # Directories
 
-- _Directories_ AKA _folders_ organize items into groups
+- **Directories** are folders on your computer
 - directories can contain
-  - _files_
-  - other _directories_
-- We can use _the command line_ to navigate and manipulate _directories_ and their contents.
+  - files
+  - directories
+- We can use the command line to navigate and manipulate directories and their contents.
 
 ---
 
-# Where am I?
+# Navigation
 
 - The terminal is always referencing some directory, as if it were inside that folder.
 - This helps it make sense of commands.
@@ -116,7 +81,7 @@ Software
 
 # The Path
 
-The command line is very dependant on the file path. Here are a few key directional commands in the command line:
+The command line is very dependant on the file **path**. Here are a few key directional commands in the command line:
 
 - `.` means "this directory I'm currently inside of"
 - `..` means "the directory containing the directory I'm currently inside of"
@@ -127,7 +92,7 @@ The command line is very dependant on the file path. Here are a few key directio
 
 ---
 
-# Basic Commands (Unix)
+# Basic Commands
 
 - "Print Working Directory"
   - command: `pwd`
@@ -146,17 +111,9 @@ The command line is very dependant on the file path. Here are a few key directio
 
 ---
 
-# Basic Commands (DOS)
+# Opening Programs
 
-- `cd` ("change dir") -- With no directory, it lists the current directory. Otherwise, it changes to the specified directory
-- `dir` ("directory") -- shows the contents of the current directory
-- `mkdir` ("make dir") -- creates a new subdirectory inside the current directory
-
-> These apply to Windows / DOS / PowerShell
-
----
-
-# Running Programs
+When you "open" an app, you usually click an icon. But what about CLI programs?
 
 To run a program in the terminal, use a preset key word followed by the file or directory name.
 
@@ -168,7 +125,7 @@ Example:
 
 ---
 
-# JS in the CLI
+# JavaScript in the Terminal
 
 When we installed Node, we gave ourselves the ability to use JavaScript in the terminal.
 
