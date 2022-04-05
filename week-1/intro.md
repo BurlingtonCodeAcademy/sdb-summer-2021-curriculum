@@ -34,9 +34,9 @@ These are instructions are called **programs**.
 # Programming Languages
 
 - Every program is written in a **language**:
-  - anyone can make a computer language
-  - different languages are good at different things
-  - the manual is called **documentation**. Read it.
+  - Anyone can make a computer language
+  - Different languages are good at different things
+  - The manual is called **documentation**. Read it.
 - Computer languages are not ambiguous. Specific words mean specific things.
 - We will be learning JavaScript, HTML, and CSS -- the languages designed to build the web.
 
@@ -60,7 +60,7 @@ These are instructions are called **programs**.
 # Directories
 
 - **Directories** are folders on your computer
-- directories can contain
+- Directories can contain
   - files
   - directories
 - We can use the command line to navigate and manipulate directories and their contents.
@@ -88,7 +88,7 @@ The command line is very dependant on the file **path**. Here are a few key dire
 - `/another-directory` means "look for a directory named `another-directory` inside of the current directory
   - Paths can also be chained to go through multiple subdirectories
   - e.g. `/another-directory/further-down`
-  - when `cd`ing into subdirectories hitting <kbd>Tab</kbd> will autofill the directory name after typing at least one character
+  - When `cd`ing into subdirectories hitting <kbd>Tab</kbd> will autofill the directory name after typing at least one character
 
 ---
 
@@ -135,4 +135,4 @@ This lets us run JavaScript files and test out ideas quickly.
 - You can check that Node is installed with the command `node --version`
   - If Node **is NOT** installed, this error is shown: `node is not recognized as an internal or external command`
   - Typing `node` by itself and hitting <kbd>Return</kbd> will start Node inside your terminal
-  - to exit, hit <kbd>CTRL-C</kbd> twice
+  - To exit, hit <kbd>CTRL-C</kbd> twice
