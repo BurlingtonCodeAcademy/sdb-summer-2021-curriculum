@@ -1,42 +1,59 @@
-# Image Wrapping
+# Objective
 
-## Welcome!
+## Learning
 
-In this lab we will be playing around with floats to do text some wrapping around images, and a simple 2 column layout
+In this lab, we will put what we have learned about the CSS float property to practice. We will also again use CSS properties and selectors.
 
-In a new subdirectory create a new `index.html` file
+Topics:
 
-## Wireframe
+- Utilizing a given wire frame.
+- CSS styling.
+- CSS properties and selectors.
+- CSS float.
 
-![Two column wireframe](https://res.cloudinary.com/btvca/image/upload/v1624230990/floating-img-wireframe_xjqf2g.png)
+## Achieving
 
-## Create an Outline
+In this lab, we will utilize a given wire frame to style our website with CSS according to its guidelines.
 
-The easiest way to start creating a page is to block out the main sections you will need, then fill in the content, and finally style the page a section at a time.
+Your work will result in:
 
-For this page we're going to want a *header* section which will contain our page's title, and a *main* section that will contain 2 articles which we will eventually stack side-by-side.
+- A website that closely matches the given wire frame.
 
-## Fill in Content
+# Procedure
 
-* In your header add a title to the page. Make it big, and bold.
+## Linking `styles.css` to `index.html`
+- [ ] Inside of `index.html`, you will need to link your stylesheet.
+- [ ] You will find information on how to do this at the following link: [Freecodecamp's How to Link CSS to HTML](https://www.freecodecamp.org/news/external-css-stylesheets-how-to-link-css-to-html-and-import-into-head/).
+- [ ] In the `src` attribute for the link, you will need to route your link through the `styles` subfolder to reach `styles.css`.
 
-* Each article will need an image, and some text. 500 words of lorem ipsum should be sufficient for the text, though you should feel free to add more.
+## Opening the wireframe
 
-* Your images shouldn't be much more than 300px wide
+- [ ] Click the following link to open the wire frame: [Figma Wire Frame](https://www.figma.com/file/X3A44p0vurtx0IYdIWoD6U/floating-images?node-id=0%3A1).
+- [ ] **Note:** This wireframe is not "pixel perfect" so don't stress having it match dimensions exactly. We are looking to capture the spirit of the wireframe.
 
-## Style Your Page
+## Understanding the wireframe
 
-There are several ways to attach styles to your web page. The most straightforward, but least organized way of doing so would be to add a `<style>` tag to your HTML
+- [ ] This wireframe has similar areas to the one you used during the Hello Styles lab.
+- [ ] `<header>` matches ARTICLE TITLE.
+- [ ] The two white boxes with black diagonal lines are images.
+- [ ]  `<section>` corresponds to FLOATING TEXT.
 
-If you want to keep things a bit more organized you can create a separate CSS file and link it to your page
+## Styling the divs
 
-* through a `<link>` tag with an `href` property pointing to your CSS file, and a `rel=stylesheet` property
-* through a `<style>` tag with an `@import` statement pointing to your CSS file
+- [ ] You will need to again utilize CSS properties and CSS selectors in order to style this website.
+- [ ] You will also need to utilize the CSS float property in order to acheive the text wrapping around the image.
+- [ ] As a reminder, here are a few options for placeholder images: [Lorem Flickr](https://loremflickr.com/), [Placekitten](https://placekitten.com/). [Lorem Picsum](https://picsum.photos/)
 
-Use your styles to apply the following changes to the html:
+# Review
 
-* center the title
-* wrap the text around the images in your articles
-* Put the articles side by side, with a little space between them, and even distance from each edge
+In this lab, we have translated a wireframe to a website utilizing CSS.
 
-Check the wireframe for a (rough) visual representation of the desired page layout.
+The software should:
+
+- Be a styled website whose design matches that presented in the wireframe.
+
+## Going Further
+
+- Customize the colors on the website.
+- Import fonts and utilize them.
+- Create more pages that utilize the float property for text and images.
