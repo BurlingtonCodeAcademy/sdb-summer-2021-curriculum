@@ -281,3 +281,16 @@ __ Note: Only do this if it was not installed along with MongoDB in the previous
 ### Github SSH Setup
 
 Setup and test using Class Notes Repository.
+
+### Credentials & Credly
+
+Introduce Credly and credential process
+
+### Questions, Comments & Concerns
+
+Outline process of submitting to question dropbox
+
+### Loom
+
+Introduce and download Loom... everyone make a short video about any topic they want?
+
