@@ -300,13 +300,13 @@ After we've generated a new SSH Key we can then add it to our Github account. We
 
 Lastly we'll check to make sure everything is working properly by following Github's protocol.
 
-[Testing Your SSH Key(https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
+[Testing Your SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
 
-### Credentials & Credly
+## Credentials & Credly
 
 Introduce Credly and credential process
 
-### Questions, Comments & Concerns
+## Questions, Comments & Concerns
 
 Outline process of submitting to question dropbox
 
