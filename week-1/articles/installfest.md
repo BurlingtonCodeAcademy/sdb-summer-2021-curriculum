@@ -278,9 +278,29 @@ __ Note: Only do this if it was not installed along with MongoDB in the previous
 3. Run the installer from your Downloads folder
 4. Accept the default values for installation location and options
 
-### Github SSH Setup
+## Github SSH Setup
 
 Setup and test using Class Notes Repository.
+
+In order to push/pull code to/from Github we need to setup what are called SSH Keys. There's nobody better suited to walk you through this than Github itself...
+
+### Generating an SSH Key
+
+Click the link below and follow the steps to generate an SSH key. Be mindful of what Operating System the steps pertain to. To change which steps you are following you can select your OS at the top of the page. The first step on Windows should be "Open Terminal" and the first Mac step should be "Open Git Bash".
+
+[Generating a New SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+### Adding a new SSH Key
+
+After we've generated a new SSH Key we can then add it to our Github account. We'll make us of Github's instructions here as well. Make sure you select the correct OS and follow the "Web Browser" instructions.
+
+[Adding a New SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+### Testing the SSH Key
+
+Lastly we'll check to make sure everything is working properly by following Github's protocol.
+
+[Testing Your SSH Key(https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
 
 ### Credentials & Credly
 
@@ -290,7 +310,9 @@ Introduce Credly and credential process
 
 Outline process of submitting to question dropbox
 
-### Loom
+## Loom
 
 Introduce and download Loom... everyone make a short video about any topic they want?
+
+
 
