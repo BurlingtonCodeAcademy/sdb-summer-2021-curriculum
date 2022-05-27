@@ -6,28 +6,42 @@ We will use several tools during class, please see the instructions for installi
 
 Please note that we can support students using the following operating systems:
 
-- Windows 10+
-- Apple MacOS Mojave 10.14+
+* Windows 10+
+* Apple MacOS Mojave 10.14+
 
 ## Online User Accounts (Applicable to all Operating Systems)
 
 ### Github User Account
 
 1. Visit the Github Signup page at <https://github.com/join>
-2. Create a user account and select a unique user name.
+2. Create a user account and select a unique user name. Keep in mind that potential employers will be looking at your user name. You can keep it fun but make sure that it is professional.
 3. **Optional**: Read about [Getting started with Github](https://docs.github.com/en/github/getting-started-with-github)
 
-#### Heroku User Account
+### Heroku User Account
 
 For the Heroku Command Line Tools to work correctly you will need a Heroku user account.
 
-1. Visit https://signup.heroku.com/
+1. Visit <https://signup.heroku.com/>
 2. Create a new user account
 3. **Optional**: Read about [Getting started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+
+### Loom
+
+1. Visit the Loom Signup page [Signup for Loom](https://www.loom.com/signup)
+2. Signup with your preferred method of login
+3. For the question "What do you plan to use Loom for?" you can just say "For education" or "For personal use". This won't affect your experience and is only for Loom's own data.
+4. Next you'll be able to name your workspace. Name this whatever you want but keep it professional.
+5. On the "Who do you collaborate with?" you can click "not now". You don't need to add any team members to your workspace.
+6. Finally, you'll be prompted to either install the Loom Chrome Extension or download the Loom Desktop App. Either method of recording a Loom is fine and it's your choice which method you want to use.
+
+Please take some time before class on Monday to try recording a Loom to test that everything is working correctly. You can talk about anything you want in it (a fun fact about you, a topic you're passionate about, WHATEVER). Once you've recorded something send the link to Matt through Discord.
+
+---
 
 ## Windows Installation
 
 The instructions below will walk you through installing the following tools:
+**NOTE** These instructions are for Windows users specifically. Mac users will follow the instructions further down the page.
 
 1. Node.js JavaScript Engine
 2. Git Version Control System
@@ -38,10 +52,12 @@ The instructions below will walk you through installing the following tools:
 
 ### Node.js JavaScript Engine
 
-1. Visit the Node.js® homepage at <https://nodejs.org/en/>
+1. Visit the Node.js homepage at <https://nodejs.org/en/>
 2. Click and download the installer for the **Current** version
 3. Run the managed installer from your Downloads folder
 4. Select the default options for installation location and packages
+
+[Video Installation Guide for Node.js on Windows](https://www.loom.com/share/57f2b35af8a74a3e98f4c8d2f4a63e6d)
 
 ### Git Version Control System
 
@@ -53,11 +69,15 @@ The instructions below will walk you through installing the following tools:
 4. Select the default options
 5. Check to see if Git Bash was installed correctly by searching for the program and running it
 
-### Visual Studio Code Text Editor
+[Video Installation Guide for Git on Windows](https://www.loom.com/share/4203d924c7f64a838fa6bdbf04cbb6b2)
 
-**NOTE**: The tool we are going to use is `Visual Studio Code` which is a free open-source editor with a strong developer community, made by Microsoft. 
+[How to Change Git Bash's Startup Directory](https://www.loom.com/share/6db91910958c4f69b8eb6422cb828cb6)
 
-This is a different tool than `Microsoft Visual Studio` which is a non-free proprietary tool for enterprise software teams. 
+### Visual Studio Code Text Editor - Windows
+
+**NOTE**: The tool we are going to use is `Visual Studio Code` which is a free open-source editor with a strong developer community, made by Microsoft.
+
+This is a different tool than `Microsoft Visual Studio` which is a non-free proprietary tool for enterprise software teams.
 
 **Please make sure to download and install the correct tool, [Visual Studio Code](https://code.visualstudio.com/)**
 
@@ -65,6 +85,8 @@ This is a different tool than `Microsoft Visual Studio` which is a non-free prop
 2. Run the installer, accepting the default options
 3. Run the VS Code Application from the start menu or shortcut.
 4. **Optional**: Read the [Node.js in VS Code Tutorial](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)
+
+[Video Installation Guide for VS Code on Windows](https://www.loom.com/share/fe504d064a0946b48ab8607017f84e36)
 
 #### Helpful VS Code Extensions for Node.js
 
@@ -77,29 +99,30 @@ The following extensions for VS Code are helpful, but optional. You can learn ho
 
 #### MongoDB Service
 
-1. Visit the MongoDB installation page at <https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/>
-2. Download the MongoDB Community Server at: <https://www.mongodb.com/try/download/community>
-3. Run the installer from your Downloads folder
-4. Choose the "Complete" setup type from the installation wizard
-5. On the "Service Configuration" pane, select "Run Service as Network Service User"
+1. Download the MongoDB Community Server at: <https://www.mongodb.com/try/download/community>
+2. Run the installer from your Downloads folder
+3. Choose the "Complete" setup type from the installation wizard
+4. On the "Service Configuration" pane, select "Run Service as Network Service User"
+
+[Video Installation Guide for MongoDB on Windows](https://www.loom.com/share/23f358e7221048748b433e4f5fd8c83a)
 
 #### MongoDB Compass
 
 **NOTE**: MongoDB Compass is usually installed automatically when MongoDB Community Edition is installed via the official installer. Only follow the instructions below if something goes wrong during the Community Edition installer and Compass failed to install.
 
-1. Visit the MongoDB Compass installation instructions <https://docs.mongodb.com/compass/master/install/>
-2. Download MongoDB Compass from <https://www.mongodb.com/try/download/compass>
-3. Run the installer from your Downloads folder
-4. Accept the default values for installation location and options
+1. Download MongoDB Compass from <https://www.mongodb.com/try/download/compass>
+2. Run the installer from your Downloads folder
+3. Accept the default values for installation location and options
 
 ### Heroku Command Line Tools Installation Steps
 
-1. Visit the Heroku Command Line Tools documentation page at <https://devcenter.heroku.com/articles/heroku-cli>
-2. Download the installer for Windows at <https://cli-assets.heroku.com/heroku-x64.exe>
-3. Run the installer from your Downloads folder and accept the default options, you may be asked to login to Heroku, so if you have not yet signed up for the service, do so.
-4. Login to the Heroku service from the command-line tool by running the command below in a terminal window, you will need an active user account prior to running this command.
+1. Download the installer for Windows at <https://cli-assets.heroku.com/heroku-x64.exe>
+2. Run the installer from your Downloads folder and accept the default options, you may be asked to login to Heroku, so if you have not yet signed up for the service, do so.
+3. Login to the Heroku service from the command-line tool by running the command below in a terminal window, you will need an active user account prior to running this command.
 
         heroku login
+
+[Video Installation Guide for Heroku CLI on Windows](https://www.loom.com/share/0a971312e35f4a0eb289cf3e41631269)
 
 ---
 
@@ -119,28 +142,28 @@ You will also be show how to sign up for a user account on the following service
 1. GitHub
 2. Heroku
 
-### Visual Studio Code Text Editor
+### Visual Studio Code Text Editor - MacOS
 
-**NOTE**: The tool we are going to use is `Visual Studio Code` which is a free open-source editor with a strong developer community, made by Microsoft. 
+**NOTE**: The tool we are going to use is `Visual Studio Code` which is a free open-source editor with a strong developer community, made by Microsoft.
 
-This is a different tool than `Microsoft Visual Studio` which is a non-free proprietary tool for enterprise software teams. 
+This is a different tool than `Microsoft Visual Studio` which is a non-free proprietary tool for enterprise software teams.
 
 **Please make sure to download and install the correct tool, [Visual Studio Code](https://code.visualstudio.com/)**
 
 1. Download the Installer <https://code.visualstudio.com/download>
 2. Expand the Application within your `Downloads` folder.
 3. Move the `Visual Studio Code.app` package to your `/Applications` directory
-3. Run the VS Code Application from the `/Applications` directory, **do not run it from within your `Downloads` folder** as you will not be able to use all the features
-4. Add VS Code to your Dock by right-clicking on the icon to bring up the context menu and choosing Options, Keep in Dock
-5. Install the `code` command-line tool by performing the following
-      * Open VS Code if you have not yet done so.
-      * Open the `Command Palette` by typing the following <kbd>CMD</kbd>-<kbd>SHIFT</kbd>-<kbd>P</kbd>
-      * Type `install code command` and then typing <kbd>RETURN</kbd>
-      * You may be asked to confirm you want to install the `code` command
-      * See the [official documentation for additional help](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
-6. **Optional**: Read the [Node.js in VS Code Tutorial](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)
+4. Run the VS Code Application from the `/Applications` directory, **do not run it from within your `Downloads` folder** as you will not be able to use all the features
+5. Add VS Code to your Dock by right-clicking on the icon to bring up the context menu and choosing Options, Keep in Dock
+6. Install the `code` command-line tool by performing the following
+    * Open VS Code if you have not yet done so.
+    * Open the `Command Palette` by typing the following <kbd>CMD</kbd>-<kbd>SHIFT</kbd>-<kbd>P</kbd>
+    * Type `install code command` and then typing <kbd>RETURN</kbd>
+    * You may be asked to confirm you want to install the `code` command
+    * See the [official documentation for additional help](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+7. **Optional**: Read the [Node.js in VS Code Tutorial](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)
 
-#### Helpful VS Code Extensions for Node.js
+#### Helpful VS Code Extensions for Node.js - MacOS
 
 The following extensions for VS Code are helpful, but optional. You can learn how to install extensions [from the official documentation](https://code.visualstudio.com/docs/editor/extension-marketplace).
 
@@ -160,8 +183,8 @@ Follow the instructions below to install the tools required to be able to use ad
         xcode-select --install
 
 2. In the dialog box, click the **Install** button
-4. You may be asked to enter your user login password
-3. Wait several minutes for the download and installation to complete
+3. You may be asked to enter your user login password
+4. Wait several minutes for the download and installation to complete
 
 ### MacOS Homebrew
 
@@ -171,7 +194,7 @@ These instructions are for recent versions of MacOS (MacOS v10.14 Mojave or newe
 
 #### Install Homebrew
 
-1. Visit https://brew.sh
+1. Visit <https://brew.sh>
 2. Find the section labeled "Install Homebrew"
 3. Copy the **entire line** beneath "Install Homebrew"
 4. Open a **Terminal.app** window and paste the copied text
@@ -179,7 +202,7 @@ These instructions are for recent versions of MacOS (MacOS v10.14 Mojave or newe
 
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-4. Enter your password and hit <kbd>Return</kbd> as prompted, **you will not see the characters as you type your password**, this is default behavior in command-line applcations.
+6. Enter your password and hit <kbd>Return</kbd> as prompted, **you will not see the characters as you type your password**, this is default behavior in command-line applications.
 
 ### Node.js (JavaScript)
 
@@ -203,7 +226,6 @@ We prefer to use the `brew` command to install Node.js. If you have not yet inst
 
 If you cannot install Homebrew or have a problem installing Node.js using Homebrew, you can instead use the Node.js foundation installation steps.
 
-
 1. Visit the Node.js homepage at <https://nodejs.org/en/>
 2. Version v16.1.x **Current** is preferred (the button on the right side)
 3. Check that a version of Node.js is installed
@@ -215,7 +237,7 @@ If you cannot install Homebrew or have a problem installing Node.js using Homebr
 
         v16.1.0
 
-### Git Version Control System
+### Git Version Control System - MacOS
 
 #### Git Command Line Tool
 
@@ -253,11 +275,11 @@ The version control tool Git is installed when you completed the command `xcode-
 
 ### MongoDB and Compass
 
-MongDB and it's GUI Compass will be used later in the course when we dive in to databases.
+MongoDB and it's GUI App Compass will be used later in the course when we dive in to databases.
 
 Check the documentation on [this page](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) for Mac install instructions.
 
-#### MongoDB Service
+### MongoDB Service - MacOS
 
 1. Run the following commands one after the other in your terminal to install mongoDB
 
@@ -270,9 +292,9 @@ Check the documentation on [this page](https://docs.mongodb.com/manual/tutorial/
 
 3. If you run into any issues please let one of our instructors know
 
-#### MongoDB Compass Graphical Interface
+### MongoDB Compass Graphical Interface
 
-__ Note: Only do this if it was not installed along with MongoDB in the previous step. 
+**Note:** Only do this if it was not installed along with MongoDB in the previous step.
 
 1. Visit the MongoDB Compass installation instructions <https://docs.mongodb.com/compass/master/install/>
 2. Download MongoDB Compass from <https://www.mongodb.com/try/download/compass>
@@ -281,13 +303,11 @@ __ Note: Only do this if it was not installed along with MongoDB in the previous
 
 ## Github SSH Setup
 
-Setup and test using Class Notes Repository.
-
 In order to push/pull code to/from Github we need to setup what are called SSH Keys. There's nobody better suited to walk you through this than Github itself...
 
 ### Generating an SSH Key
 
-Click the link below and follow the steps to generate an SSH key. Be mindful of what Operating System the steps pertain to. To change which steps you are following you can select your OS at the top of the page. The first step on Windows should be "Open Terminal" and the first Mac step should be "Open Git Bash".
+Click the link below and follow the steps to generate an SSH key. Be mindful of what Operating System the steps pertain to. To change which steps you are following you can select your OS at the top of the page. The first step on Mac should be "Open Terminal" and the first Windows step should be "Open Git Bash".
 
 [Generating a New SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 
@@ -303,14 +323,4 @@ Lastly we'll check to make sure everything is working properly by following Gith
 
 [Testing Your SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
 
-## Credentials & Credly
-
-Introduce Credly and credential process
-
-## Questions, Comments & Concerns
-
-Outline process of submitting to question dropbox
-
-## Loom
-
-Introduce and download Loom... everyone make a short video about any topic they want?
+[Generating and Adding a New SSH Key on Windows](https://www.loom.com/share/92149b64a4c84081b698f18ad963874b)
