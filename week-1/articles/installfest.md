@@ -14,10 +14,10 @@ Please note that we can support students using the following operating systems:
 ### Github User Account
 
 1. Visit the Github Signup page at <https://github.com/join>
-2. Create a user account and select a unique user name.
+2. Create a user account and select a unique user name. Keep in mind that potential employers will be looking at your user name. You can keep it fun but make sure that it is professional.
 3. **Optional**: Read about [Getting started with Github](https://docs.github.com/en/github/getting-started-with-github)
 
-#### Heroku User Account
+### Heroku User Account
 
 For the Heroku Command Line Tools to work correctly you will need a Heroku user account.
 
@@ -25,9 +25,21 @@ For the Heroku Command Line Tools to work correctly you will need a Heroku user 
 2. Create a new user account
 3. **Optional**: Read about [Getting started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
+### Loom
+
+1. Visit the Loom Signup page [Signup for Loom](https://www.loom.com/signup)
+2. Signup with your preferred method of login
+3. For the question "What do you plan to use Loom for?" you can just say "For education" or "For personal use". This won't affect your experience and is only for Loom's own data.
+4. Next you'll be able to name your workspace. Name this whatever you wan't but try to keep it professional.
+5. On the "Who do you collaborate with?" you can click "not now". You don't need to add any team members to your workspace.
+6. Finally, you'll be prompted to either install the Loom Chrome Extension or download the Loom Desktop App. Either method of recording a Loom is fine and it's your choice which method you want to use.
+
+---
+
 ## Windows Installation
 
 The instructions below will walk you through installing the following tools:
+**NOTE** These instructions are for Windows users specifically. Mac users will follow the instructions further down the page.
 
 1. Node.js JavaScript Engine
 2. Git Version Control System
@@ -303,14 +315,4 @@ Lastly we'll check to make sure everything is working properly by following Gith
 
 [Testing Your SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
 
-## Credentials & Credly
 
-Introduce Credly and credential process
-
-## Questions, Comments & Concerns
-
-Outline process of submitting to question dropbox
-
-## Loom
-
-Introduce and download Loom... everyone make a short video about any topic they want?
