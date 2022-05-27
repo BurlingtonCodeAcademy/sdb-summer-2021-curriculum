@@ -5,12 +5,13 @@ Welcome to your  software program!
 We will use several tools during class, please see the instructions for installing the specific tools you will need based on your operating system.
 
 Please note that we can support students using the following operating systems:
-  - Windows 10+
-  - Apple MacOS Mojave 10.14+
 
-### Online User Accounts (Applicable to all Operating Systems)
+- Windows 10+
+- Apple MacOS Mojave 10.14+
 
-#### Github User Account
+## Online User Accounts (Applicable to all Operating Systems)
+
+### Github User Account
 
 1. Visit the Github Signup page at <https://github.com/join>
 2. Create a user account and select a unique user name.
@@ -313,6 +314,3 @@ Outline process of submitting to question dropbox
 ## Loom
 
 Introduce and download Loom... everyone make a short video about any topic they want?
-
-
-
