@@ -5,8 +5,25 @@ Welcome to your  software program!
 We will use several tools during class, please see the instructions for installing the specific tools you will need based on your operating system.
 
 Please note that we can support students using the following operating systems:
-  - Windows 10+
-  - Apple MacOS Mojave 10.14+
+
+- Windows 10+
+- Apple MacOS Mojave 10.14+
+
+## Online User Accounts (Applicable to all Operating Systems)
+
+### Github User Account
+
+1. Visit the Github Signup page at <https://github.com/join>
+2. Create a user account and select a unique user name.
+3. **Optional**: Read about [Getting started with Github](https://docs.github.com/en/github/getting-started-with-github)
+
+#### Heroku User Account
+
+For the Heroku Command Line Tools to work correctly you will need a Heroku user account.
+
+1. Visit https://signup.heroku.com/
+2. Create a new user account
+3. **Optional**: Read about [Getting started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
 ## Windows Installation
 
@@ -14,15 +31,10 @@ The instructions below will walk you through installing the following tools:
 
 1. Node.js JavaScript Engine
 2. Git Version Control System
-3. Visual Studio Code Text Editor
-4. Cmder Terminal Emulator
+3. Git Bash Terminal Emulator
+4. Visual Studio Code Text Editor
 5. MongoDB and Mongo Compass GUI
 6. Heroku Command-line Tools
-
-You will also be show how to sign up for a user account on the following services:
-
-1. GitHub
-2. Heroku
 
 ### Node.js JavaScript Engine
 
@@ -39,12 +51,7 @@ You will also be show how to sign up for a user account on the following service
 2. Click on the link for Windows
 3. Run the installer from your downloads folder
 4. Select the default options
-
-#### Github User Account
-
-1. Visit the Github Signup page at <https://github.com/join>
-2. Create a user account and select a unique user name.
-3. **Optional**: Read about [Getting started with Github](https://docs.github.com/en/github/getting-started-with-github)
+5. Check to see if Git Bash was installed correctly by searching for the program and running it
 
 ### Visual Studio Code Text Editor
 
@@ -66,17 +73,6 @@ The following extensions for VS Code are helpful, but optional. You can learn ho
 * [Prettier - Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 * [Visual Studio IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 
-### Cmder Terminal Emulator
-
-1. Visit <https://cmder.net>
-2. Click "Download Full"
-3. Save the ZIP file and unzip it into your *home directory* or into `C:\cmder`
-  * if your username is `Alice` you should now have `C:\Users\Alice\cmder\Cmder.exe`
-4. **Right**-click `Cmder` and select "Create Shortcut"
-5. **Click and Drag** that shortcut to the desktop
-6. **Double-click** the shortcut to open the terminal
-7. Press <kbd>Win</kbd>-<kbd>Alt</kbd>-<kbd>P</kbd> (or select "Settings..." from the window's menu) and make sure the "startup task" is set to `{cmd::Cmder as Admin}`
-
 ### MongoDB and Mongo Compass
 
 #### MongoDB Service
@@ -96,17 +92,7 @@ The following extensions for VS Code are helpful, but optional. You can learn ho
 3. Run the installer from your Downloads folder
 4. Accept the default values for installation location and options
 
-### Heroku Command Line Tools
-
-#### Heroku User Account
-
-For the Heroku Command Line Tools to work correctly you will need a Heroku user account.
-
-1. Visit https://signup.heroku.com/
-2. Create a new user account
-3. **Optional**: Read about [Getting started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-
-#### Heroku Command Line Tools Installation Steps
+### Heroku Command Line Tools Installation Steps
 
 1. Visit the Heroku Command Line Tools documentation page at <https://devcenter.heroku.com/articles/heroku-cli>
 2. Download the installer for Windows at <https://cli-assets.heroku.com/heroku-x64.exe>
@@ -246,23 +232,7 @@ The version control tool Git is installed when you completed the command `xcode-
 
           git version 2.30.0
 
-#### Github User Account
-
-1. Visit the Github Signup page at <https://github.com/join>
-2. Create a user account and select a unique user name.
-3. **Optional**: Read about [Getting started with Github](https://docs.github.com/en/github/getting-started-with-github)
-
 ### Heroku Command Line Tools
-
-#### Heroku User Account
-
-For the Heroku Command Line Tools to work correctly you will need a Heroku user account.
-
-1. Visit https://signup.heroku.com/
-2. Create a new user account
-3. **Optional**: Read about [Getting started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-
-#### Heroku Command Line Tools Installation Steps
 
 1. Visit the Heroku Command Line Tools documentation page at <https://devcenter.heroku.com/articles/heroku-cli>
 2. Install the tolls for MacOS by running the command below in a Terminal.app window
@@ -308,3 +278,39 @@ __ Note: Only do this if it was not installed along with MongoDB in the previous
 2. Download MongoDB Compass from <https://www.mongodb.com/try/download/compass>
 3. Run the installer from your Downloads folder
 4. Accept the default values for installation location and options
+
+## Github SSH Setup
+
+Setup and test using Class Notes Repository.
+
+In order to push/pull code to/from Github we need to setup what are called SSH Keys. There's nobody better suited to walk you through this than Github itself...
+
+### Generating an SSH Key
+
+Click the link below and follow the steps to generate an SSH key. Be mindful of what Operating System the steps pertain to. To change which steps you are following you can select your OS at the top of the page. The first step on Windows should be "Open Terminal" and the first Mac step should be "Open Git Bash".
+
+[Generating a New SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+
+### Adding a new SSH Key
+
+After we've generated a new SSH Key we can then add it to our Github account. We'll make us of Github's instructions here as well. Make sure you select the correct OS and follow the "Web Browser" instructions.
+
+[Adding a New SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+### Testing the SSH Key
+
+Lastly we'll check to make sure everything is working properly by following Github's protocol.
+
+[Testing Your SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection)
+
+## Credentials & Credly
+
+Introduce Credly and credential process
+
+## Questions, Comments & Concerns
+
+Outline process of submitting to question dropbox
+
+## Loom
+
+Introduce and download Loom... everyone make a short video about any topic they want?
