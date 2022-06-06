@@ -48,11 +48,11 @@ These instructions are called **programs**.
 - We use the **Terminal** application to tell the computer commands.
   - The terminal gives us a **command line** that is managed by a **shell**.
   - The **console** in your browser is a kind of terminal. 
-  - *command line*, *console*, *shell*, and *terminal* are often use interchangeably. 
+  - *command line*, *console*, *shell*, and *terminal* are often used interchangeably. 
 - Some apps only exist in the terminal and are seemingly invisible.
   - These are _CLI_ (Command Line Interface) applications.
 - Some display a window for the user to interact with.
-  - These _GUI_ (Graphical User Interface) applications.
+  - These are _GUI_ (Graphical User Interface) applications.
 - Developers use the _terminal_ for its ease-of-access, speed, and power.
 
 ---
