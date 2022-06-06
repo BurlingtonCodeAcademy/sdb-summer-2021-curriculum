@@ -14,7 +14,7 @@ Let's get started!
 
 **Code** is a _tool_ used to give the computer _instructions_ to later follow.
 
-These are instructions are called **programs**.
+These instructions are called **programs**.
 
 **Coding is writing.**
 
