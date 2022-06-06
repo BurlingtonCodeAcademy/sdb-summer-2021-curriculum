@@ -82,3 +82,9 @@ After it's been defined the function can be used like so:
 ```js
 randomNum(1, 10) // will return a random number between 1 and 10 inclusive on both ends
 ```
+
+## Going Further
+
+If you finish all other steps feel free to challenge yourself by:
+
+Creating a function which takes two arguments that represent two sides of a triangle and returns the hypotenuse of that triangle.
