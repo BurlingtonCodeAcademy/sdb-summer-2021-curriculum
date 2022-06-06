@@ -6,7 +6,7 @@ The purpose of this lab is to help you get  little more comfortable interacting 
 
 In this lab you will set up the basic directory structure you will use to keep your code organized throughout this class, and you will write, and run a JavaScript program on your local machine.
 
-Go ahead and open your terminal now. On a Mac it will be an application called "terminal." On a PC, if you followed the installfest instructions, you should have an application called "cmder" as your terminal. If you are having any issues with the terminal let your teacher know, I can help! 
+Go ahead and open your terminal now. On a Mac it will be an application called "terminal." On a PC, if you followed the installfest instructions, you should have an application called "Git Bash" as your terminal. If you are having any issues with the terminal let your teacher know, we can help! 
 
 ## Where Am I?
 
