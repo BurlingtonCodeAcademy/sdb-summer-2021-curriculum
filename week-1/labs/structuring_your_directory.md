@@ -25,7 +25,7 @@ In your home directory you should have quite a few other directories. "Directory
 
 One of the directories that lives inside your home directory should be called "Documents." Let's move ourselves into that directory.
 
-You can change directories with the command `cd` followed by the name of the directory you want to enter. To move int "Documents" we would type `cd Documents` You can also hit the <kbd>Tab</kbd> key to autocomplete directory names after you type a few characters.
+You can change directories with the command `cd` followed by the name of the directory you want to enter. To move into "Documents" we would type `cd Documents` You can also hit the <kbd>Tab</kbd> key to autocomplete directory names after you type a few characters.
 
 To move to the containing directory with the command `cd ..` the `..` tells the terminal to go up one level from its current location.
 
