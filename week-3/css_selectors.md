@@ -45,7 +45,7 @@ All CSS selectors have a level of specificity which is used to determine which s
 
 # the !important Property
 
-The `!important` property can be added to any style to apply that style on the specified typ of element no matter what. Styles tagged with `!important` will always overwrite any other styles, even inline styles.
+The `!important` property can be added to any style to apply that style on the specified type of element no matter what. Styles tagged with `!important` will always overwrite any other styles, even inline styles.
 
 Because of this `!important` should be used sparingly.  Using `!important` is almost never the correct way for you to apply a style. It should only be used as a method of last resort.
 
