@@ -1,42 +1,67 @@
-# Modal Display
+# React Modal
 
-Let's create a simple modal popup using the power of conditional rendering!  Modal boxes are used all over the web, and are essentially a popup display. You see them quite often with image galleries where you can click a preview thumbnail, and the full size image opens as a popup, or to alert the user of some information, or prompt them to take some action.
+## Objective
 
-A modal is a type of display element that sits on top of the page, and blocks interaction with other elements on the page until it is closed.
+To understand how to conditionally render the contents of a modal and how to pass a function as props to a child component. Modals are pop-ups that are typically dynamically rendered.
 
-## Setting up the App
+## Learning
 
-Inside your `react-apps` directory (the location where you installed `create-react-app`) create a new React application . It might take a couple of minutes for everything to install, but once it's all set up `cd` into the new directory, and open VSCode. Clear out the `return` statement of the `App` component.
+In this lab, we will practice with using React to conditionally render elements on the page. We will need to pass props (both a state and a function) to do so.
 
-In your `App` component create a button that we wil use to open our modal dialog box.
+Topics:
 
-## Creating the Modal
+- React conditional rendering
+- React props
 
-Create a new file called `Modal.js` and inside this file set up a new React functional component called `Modal` which should:
+## Achieving
 
-- Cover the entire page with a semitransparent background when displayed
-- Have a central opaque area with the text "Hello! I am a modal!"
-- Have a button that we will use to close the modal
-- Sit on top of everything else on the page
+Your work will result in:
 
-Import your `Modal` component into `App.js` and render it through the `App` component.
+- A webpage with a 'Open Modal' button.
+- When the button is clicked, a semi-transparent modal pops up that covers the original content. It should inform the user it is a modal, and contain a 'Close Modal' button.
+- When 'Close Modal' is clicked, the modal disappears and only the original content remains.
 
-Currently our `Modal` component should be the only thing we can interact with on the page (though we might see other elements on the page through the semitransparent background). This isn't quite the behavior we want from our modal. We only want it to appear when we click the "open modal" button, and we want it to go away when we click the "close modal" button. So let's set up that functionality!
+## Procedure
 
-## Conditional Rendering
+### Setting up the components
 
-The first step is getting the modal off the page, so let's use our `useState` hook in the `App` component to create a new stateful property named `modalOpen` and the accompanying updater function `setModalOpen`. Set it with an initial value of `false`
+- [ ] Create a new file, `Modal.jsx`. Set up `Modal.jsx` as you would any other new component. 
 
-Use one of the conditional rendering techniques we discussed earlier today to display `Modal` if `modalOpen` is true, otherwise display nothing.
+_In `App.jsx`_
 
-Use the `setModalOpen` function to set the `modalOpen` property to `true` when it's clicked.
+- [ ] Ensure you have the Modal component imported.
+- [ ] Create the `modalState` state variable and have it set initially to `false`.
+- [ ] Create a function named `handleClick`.
+- [ ] Within `handleClick`, set up the following conditional logic: if `modalState` is true, `setModalState` to false. Else, `setModalState` to true.
+- Now, in the return statement, set up the following:
+- Within `<main>`, a button that has an onClick event set to the `handleClick` function and has the text "Open modal".
+- Below the button, a paragraph of placeholder text.
+- Below the paragraph, render `<Modal />`. Pass it two props: `modalState` and `handleClick`.
 
-Now we can open our modal, but what about closing it?
+_In `Modal.jsx`_
 
-## Passing Props
+-  [ ] Ensure the Modal function accepts the parameter of `props` AND that `Modal.css` is imported.
+-  [ ] Inside of your Modal function, the first line will be a conditional if statement that checks if `props.modalState` is true.
+-  [ ] **Inside of the if statement's code block**, set up a `return()` statement that contains the following:
+-  [ ] A `<main>` element with an id of `modal-background`.
+-  [ ] A `<section>` element with an id of `modal-content`; it should contain "I am a modal!"
+-  [ ] A `<button>` within `<section>`with the `onClick` event of `props.handleClick` and the text "Close modal."
+-  [ ] **Outside of the if statement's code block**, set up a `return()` statement that contains the following:
+-  [ ] A `<div>` with an inline `style` of `display:"none"`.
 
-Since the "close modal" button is set up on our `Modal` component we will need to pass our updater function from `App` to `Modal` as a prop. When the "close modal" button is clicked use that prop to set your `modalOpen` property to `false`.
 
-Try opening and closing the modal a few times.
+## Review
 
-You can now use the power of modals to create your own highly customizable alerts, and prompts!
+In this lab, we will have created a page that contains buttons to open and close a modal. 
+
+The software should:
+
+- Have placeholder text and an "Open Modal" button.
+- When the "Open Modal" button is clicked, new elements appear on the page that inform the user that this is a modal; it also contains a "Close Modal" button.
+- When the "Close Modal" button is clicked, the new elements disappear and the page returns to its original state.
+
+## Going Further
+
+- Many modals you come across on the Internet do not utilize a "Close" button but close when you click on the background. How could you implement an `onClick` event to do this?
+- Many modals you come across on the Internet pop up upon page load. How would you change the conditional logic and buttons to acheive this?
+- This modal is not styled. Try incorporating this [frontendmentor challenge](https://www.frontendmentor.io/challenges/order-summary-component-QlPmajDUj) so your modal is now an order summary. You will need to import the image assets and the fonts into replit.
