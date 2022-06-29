@@ -6,7 +6,7 @@ Get introduced to React by creating a one-page application.
 
 ## Learning
 
-In this lab, you will recreate the classic Holy Grail layout in React.
+In this lab, you will recreate the classic [Holy Grail layout](https://en.wikipedia.org/wiki/Holy_grail_(web_design)) in React.
 
 Topics:
 
