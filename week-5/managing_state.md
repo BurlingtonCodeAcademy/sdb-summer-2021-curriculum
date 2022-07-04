@@ -126,17 +126,6 @@ ChildComponent({ theKey: theValue });
 
 ---
 
-## Practice Making State and Props
-
-In your replit from before,
-
-1. Add **your name as App's state**
-2. **Pass that data to your HeaderComponent as props**
-3. **Console log your name** from your HeaderComponent (look the in regular dev tools to confirm)
-4. Bonus: **Render your name in your HeaderComponent**
-
----
-
 ## Events: onChange and onSubmit
 
 React's "virtual DOM" process uses something called a SyntheticEvent, a class that mimics DOM events. They work much the same way, but you'll want to use React docs for researching events in addition to W3Schools or MDN.
@@ -201,11 +190,5 @@ The point of using a component is that it can be taking out of the app and used 
 If the data and functions that control a form are in a different component, you cannot use the form in isolation.
 
 The state and functions that are vital to interacting with the form should be **in the same component as the form itself**.
-
----
-
-## Follow Along: Login Form
-
-<https://replit.com/@education-team/basic-login-form>
 
 ---
