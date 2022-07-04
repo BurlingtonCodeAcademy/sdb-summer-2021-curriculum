@@ -1,81 +1,81 @@
-# Class to Functional Conversion
+# React Dark and Light Mode
 
-## Welcome!
+## Objective
 
-The purpose of this lab is to get you more familiar with functional React Components, and the parallels between them and class based Components by having you convert a class based component to a functional Component.
+To understand how to use the React.js front-end library to switch the style of a webpage from a light theme to a dark theme.
 
-## Hello Again Name Display
+## Learning
 
-Let's build off of an application we've already created. Go ahead and get back into the `name-display` lab we created previously. Run through it, and re-familiarize yourself with the way it behaves, and the code that makes it all work.
+In this lab, we will create a small React application that is able to use a component to switch the style of other components within the page. You will use inline styles, and then optionally understand how to add a `.someClassName` to react components to use CSS style sheets.
 
-We'll be creating a new component to put onto the page that will have the same elements and behavior, but will be written as a functional component instead of a class based component
+Topics:
 
-## The Component Tree
+- React State; `useState` and `setState`.
+- React Style; `style` and `className`props.
+- Passing `props` to child components.
+- React and CSS
 
-Create a new JS file in your `src` folder for your new component. I will refer to this component as `FunkyName` from now on, and will refer to the file as `FunkyName.js`.
+## Achieving
 
-The component tree is a general term to describe the relationship between components, and which components render which other components. Currently our site has an `index` component found in `index.js` which renders our `App` component so our component tree is fairly simple:
+Your work will result in:
 
-```
-index
-|
-React.StrictMode
-|
-App
-```
+- A website whose styles can be changed by clicking a button.
 
-Look into `index.js` to see how it's rendering `App`.
+## Procedure
 
-We can display our `FunkyName` component instead of our `App` component by replacing `<App />` in our `index` component with `FunkyName`. To do this we will first need to import `FunkyName` into `index.js` by using the es6 browser import syntax `import FunkyName from "./FunkyName.js"`. Then we can replace the `App` component in `index`'s return statement with the `FunkyName` component.
+### Create the child components
 
-## Extracting the Render Method
+- [ ] The first thing you need to do is create three new files: `Header.jsx`, `Content.jsx`, and `Footer.jsx`. These will need to contain functional components that have the parameter of `props`. Reference `App.jsx` for what you need to set these up.
+- [ ] `Header.jsx` should contain a `<h1>` title, and an image.
+- [ ] `Content.jsx` should contain some `<p>` components with text.
+- [ ] `Footer.jsx` should contain the author's name, and the date.
 
-An oversimplification of React Functional components is that they are essentially the `render` method of a class based component.
+### Place the three child components within the parent App
 
-A functional component is a named function that takes `props` as it's only argument and returns some JSX. Then we can use this component in the exact same way we would a class based component; by importing it where we need it, and putting it into JSX syntax. Under the hood *functional components are compiled the same as class based components* so they behave the same way on the browser.
+- [ ] We will need to import our child components into `App.jsx`. We will also need to place them in `App`'s return statement.
+- [ ] In the return statement, these three components will need to be wrapped in a div with a style prop of `styleMode`.
 
-If we want our `FunkyName` component to render the same elements that `App` currently renders we can extract the return statement of our `render` method in `App` and use that as the return value for `FunkyName`
+### Create inline style objects
+- [ ] We wil need two objects, `darkMode` and `lightMode` that contain styles within. `darkMode` should set the background color to black and the font color to white. `lightMode` should set the background color to white and the font color to black.
 
-**But don't copy and paste!** Some aspects will change when moving from a class based to a functional component. We lose access to all our lifecycle methods, and our `setState` method so we need to remove any references to the state object or `this`. Instead we will use some variables, and a special type of function called a "hook" to access state.
+### Create the `styleMode` state
 
-## Hooks in Brief
+- [ ] Create a new state variable named `styleMode` with an initial state of `lightMode`.
 
-In functional components you don't have access to any of the lifecycle methods, or any other React class based methods, but we still don't want to directly manipulate the DOM so we need some way to access `state`. This is where hooks come in.
+### Add the mode switching button
 
-Hooks allow us to *hook into* the React lifecycle events from a functional component. We will be using the `useState` hook to track, and manage our new component's state.
+- [ ] Add a `<button>` element above the `<Header />` that toggles `styleMode`'s state.
+- [ ] This button will need an `onClick` event that sets the current style. The callback function passed to `onClick` will need to use conditional logic to check `styleMode`and use `setStyleMode()` to change it to the opposite of what it currently is.
 
-The first step to using `useState` is to import it from react
+### Passing props to child components
 
-  - `import {useState} from 'react'`
-
-Next we will set up two variables, for each stateful property using array destructuring, and `useState`
-
-  - `const [property, setProperty] = useState(initialValue)`
-
-This creates a property in state, with an initial value, and an updater function. We can then use our `setProperty` function to update our state.
-
-We could set up a controlled input using the values from the call to `useState` like so:
-
-```jsx
-<input
-  type="text"
-  value={property}
-  onChange={(evt) => {setProperty(evt.target.value)}}
-/>
+- [ ] In `<Header />`,`<Content />`, `<Footer />`, we will need to pass `styleMode` as a prop to these components.
+```js
+<Example exampleProp = {exampleProp} />
 ```
 
-`setProperty` takes the new value we want to set as `property` in our state.
+### Using props in our child components
 
-> Note: That there is no `this` keyword as we are not in a class, and so `this` will not point to what you want it to.
+- [ ] In our three components, we will need a `<div>` that wraps all the other elements within the return statement. This `<div>` will have a style prop of `props.styleMode`.
 
-## Putting it Back Together
+### Test the button!
 
-To rebuild the functionality of our name display we'll need to bring our stateful properties back in by using the `useState` hook to set up our three properties `firstName`, `lastName`, and `fullName` along with the updater functions for those properties.
+- [ ] When you click your button, the style of the page should toggle between your two style objects.
 
-Each call to `useState` can be used to set a single stateful property, and updater function so we will need to call `useState` 3 times to set up these variables.
+## Review
 
-In your render, instead of going through your `state` object to access the value of the property you can just use the variable directly. To update it you use the updater function which replaces `this.setState`
+In this lab, we created a `styleMode` state and passed it as a prop to child components in order to toggle between dark and light mode on our page.
 
-## Test it Out
+The software should:
 
-Once you've changed the way the program is tracking and maintaining state, and replaced the `App` component with `FunkyName` in your `index.js` run the file, and watch in amazement as it does the exact same thing as before. But with a functional component!
+- Be a website with three different components, `<Header />`, `<Content />`, `<Footer />` rendering on the page.
+- Pass a `styleMode` state as a prop to the the child components.
+- Have the style of the child components changed dynamically utilizing `props`.
+
+## Going Further
+
+- How could you leverage a CSS file with existing declarations? Could you apply a CSS `class` to the JSX components?
+
+- What would be a downside to applying inline-styles to a React component? Remember that `style` is a prop, and props in React are immutable. What happens when you change them?
+
+> Hint: to add a class to a component, use the prop name `className` instead of the reserved word `class`. Remember that JSX runs within JavaScript.
