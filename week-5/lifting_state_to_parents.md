@@ -8,11 +8,11 @@
 
 ---
 
-# Follow Along: Boiling Point Calculator
+# Code Along: Fahrenheit to Celsius
 
-We are going to make a boiling point calculator together.
+See lifting state to parents in action with this fahrenheit to celsius conversion app.
 
-<https://replit.com/team/education-team/lifting-up-state>
+https://replit.com/@SDB-june-2022/fahrenheit-to-celsius
 
 ---
 
