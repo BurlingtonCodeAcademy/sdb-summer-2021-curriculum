@@ -36,7 +36,7 @@ app.use(express.urlencoded({extended: true}))
 
 > The argument to `.urlencoded` is an *options object* and we will get a warning in the console without it.
 
-You should also set up a route listening for a `get` request at the path `"/first-word"` that sends a form as it's response. The form should have a `method` property assigned to `"POST"` and an action of `"/second-word"`. This form should also contain a text input with a `name` property assigned to whatever type of word it is (adjective, noun, verb, etc.), and a submit button. For example purposes I will assume the input has a name of `noun`
+You should also set up a route listening for a `get` request at the path `"/first-word"` that sends the result of form inputs as it's response. The form should have a `method` property assigned to `"POST"` and an action of `"/second-word"`. This form should also contain a text input with a `name` property assigned to whatever type of word it is (adjective, noun, verb, etc.), and a submit button. For example purposes I will assume the input has a name of `noun`
 
 You should feel free to send this form over either by creating it on the server and sending it via a `.send` method, or by creating an HTML file in the public directory that contains this form, and sending that over with the `.sendFile` method. It would also improve the user experience to set a placeholder value on your text input saying what type of word you expect, and/or a label for that input.
 
