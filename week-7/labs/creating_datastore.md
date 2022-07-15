@@ -1,261 +1,189 @@
-# Lab: Creating a DataStore
+# Lab: Constructing a Library
 
-We will be creating a `class` that will handle all our database transactions to allow us to interact with a Mongo database more easily, efficiently, and consistently. 
+## Objective
 
-We will be using it to set up a CLI tool that will allow us to **C**reate new documents, **R**ead, and **U**pdate existing documents, and **D**elete previously created entries to track books in a library.
+To practice Create, Read, Update, Delete functionality with MongoDB `mongosh` methods.
 
-Start by making new directory, and initializing it as an npm repository, and installing the `mongodb` drivers.
+## Learning
 
-## Setting up the Connection
+In this lab, we will practice constructing a class with methods in order to use MongoDB functionality on a database and collection.
 
-Create a file called `mongo-client.js`
+Topics:
 
-This is where we'll configure the _client_, or the _software_ that connects to the server AKA our `DataStore`
+- Classes and class construction
+- MongoDB connection
+- MongoDB `mongosh` methods
 
-The server, in this case, is `localhost:27017`
+## Achieving
 
-in `mongo-client.js`, add:
+Your work will result in:
 
-```javascript
-const { MongoClient } = require("mongodb");
-const uri = "mongodb://localhost:27017"; //mongodb connects to port 27017 by default
-const client = new MongoClient(uri);
-```
-This is the 'boilerplate' for interacting with MongoDB.
+- A terminal application that, when run, performs various `mongosh` methods on a `books` collection in a `library` database.
 
+## Procedure
 
-## Test it Out
+## Creating And Scaffolding The Program
 
-Now let's _connect_ to the database `library`, and insert a _document_ into the `books` _collection_
+- [ ] Create a new directory `constructing-library` and initialize it with NPM.
+- [ ] Install `mongodb` in the new directory.
+- [ ] Create two files, `Library.js` and `client.js`.
 
-Let's do this with an _asynchronous_ function so we can harness the `await` keyword and keep things in order
+## Construct The `Library` Class
 
-```javascript
-async function run() {
-  await client.connect();
-  const database = client.db("library");
-  const collection = database.collection("books");
-  await collection.insertOne({
-    title: "Eloquent Javascript",
-    author: "Marijn Haverbeke",
-    copies: 1,
-  });
-  await client.close();
-}
-run();
-```
-
-Run this file through your terminal with `node mongo-client.js` to insert a single document into your Database.
-
-_This function has no error handling. How would you flesh it out to prevent malformed documents from being inserted?_
-
-## Building the DataStore
-
-The `DataStore` class acts as a repository for your database. It hides the details of connecting and talking to MongoDB from its callers, and exposes methods for adding and searching for documents in a database.
-
-This class will be able to be used from both a web app and a command-line app, so let's create a new file for it named `data-store.js`. We will need to bring in some mongo drivers for our `DataStore` to use.
+- [ ] Import `MongoClient` and `ObjectId` from "mongodb" in `Library.js`
+- [ ] Set up the `Library` class and constructor. The constructor will take the following parameters: `dbUrl`, `dbName`, and `collName`.
+- [ ] Bind the parameters to the constructor with the `this` keyword.
+- [ ] You will also bind the variable `dbClient` to `this` and initialize it as empty.
 
 ```js
-const { MongoClient, ObjectId } = require("mongodb");
-```
-
-## Setting up the Class
-
-Let's set up the `DataStore` class. This class will need to keep track of where it's connecting, so let's set up a constructor we can use to assign the connection info:
-
-- The connection URL
-- The currently connected DB (if any)
-- The DB name
-- And the Collection name
-
-```js
-class DataStore {
-  constructor(dbUrl, dbName, collName) {
-    this.dbUrl = dbUrl;
-    this.dbName = dbName;
-    this.collName = collName;
-    this.dbClient = null;
-  }
+class Library {
+    constructor(dbUrl, dbName, collName) {
+      this.dbUrl = dbUrl;
+      this.dbName = dbName;
+      this.collName = collName;
+      this.dbClient;
+      
+    }
 }
 ```
 
-## DatsStore's`client` Method
+## Create The Async `client` Method
 
-The `client()` method on DataStore:
-
-- opens a connection to the MongoDB server
-- saves that connection inside an instance variable
-- reuses the saved connection if possible
-
-> The MongoDB driver calls this connection object a _client_, hence why we name this method `client`, but it's not a _browser_. Our server will be a client of Mongo even while it's a server to other clients.
-
-```javascript
-  async client() {
-
-    console.log(`Connecting to ${this.dbUrl}...`)
-    this.dbClient = await MongoClient.connect(this.dbUrl, { useNewUrlParser: true })
-    console.log("Connected to database.");
-    return this.dbClient;
-  }
-```
-
-## DataStore's `collection` Method
-
-The `collection()` method on DataStore:
-
-- acquires a connection to the MongoDB server
-- asks it for the _database_ named `library`
-- then asks for the _collection_ of TIL entries named `books`
-
-```javascript
-  async collection() {
-    const client = await this.client();
-    const db = client.db(this.dbName);
-    const collection = db.collection(this.collName);
-    return collection;
-  }
-```
-
-It is declared `async` (asynchronous) because the database connection might not currently be open, and the `client()` method might take some time to respond.
-
-## DataStore's`all` Method
-
-The `all()` method on DataStore...
-
-- connects to the _collection_
-- asks it for a _cursor_
-
-A cursor is like an iterator for databases.
-
-```javascript
-  async all() {
-    let collection = await this.collection()
-    return collection.find({});
-  }
-
-```
-
-If you know you've only got a few results, you can call `cursor.toArray()`, which fetches all the results up front, then puts them all into an array. But it's usually cleaner and safer to use the cursor itself.
-
-## Using our Class
-
-Now that we've got a couple methods set up for connecting to, and reading from our database let's bring it into our `mongo-client.js` file, set it up and use it with JavaScript.
-
-- Import the `DataStore` class from `data-store.js`
-  - This is Node.js so we'll need to use the `require` method
-  - Don't forget to export your `DataStore` with `module.exports = DataStore`
-- Since we are now connecting through our DataStore we no longer need the Mongo drivers in our `mongo-client.js` file
-  - Feel free to delete the mongo setup in this file (the import, and connection)
-
-Then we will replace the contents of your run function with code that:
-
-- Creates our new interface for our database and connects to a `"books"` collection
+- [ ] Within the `Library` class, create a new async method `client`.
+- [ ] Insert a console log to let the user know they are connecting to `dbUrl`.
+- [ ] Pass in `this.dbUrl` to the `connect` method on `MongoClient` and reassign the value to `this.dbClient`.
+- [ ] Insert a console log to inform the user their connection was successful.
+- [ ] Return `this.dbClient`
 
 ```js
-let collection = new DataStore("mongodb://localhost:27017", "library", "books");
+    async client() {
+        console.log(`Connecting to ${this.dbUrl}...`)
+        this.dbClient = MongoClient.connect(this.dbUrl)
+        console.log("Connected to database.");
+        return this.dbClient;
+      }
 ```
 
-- Prints to the terminal all the books in our `books` collection
+## Create The Async `test` Method
+
+- [ ] Beneath the async `client` method, create a new async method called `test`.
+- [ ] Await `this.client()` and assign it to the client variable.
+- [ ] Use the `close` method on client.
 
 ```js
-let allBooks = await collection.all();
-allBooks.forEach((book) => {
-  console.log(book);
-});
+async test() {
+        const client = await this.client()
+        client.close()
+      }
 ```
 
-> Note: This will need to happen inside the `run` function, or any other `async` function that you have defined
+## Set Up And Test Your Connection
 
-## DataStore's `.find` Method
+- [ ] In `client.js`, import `Library`.
+- [ ] Create a new variable `collection` and instantiate a new `Library`, passing in three arguments: the local connection string, "library", and "books".
+- [ ] Invoke the `test` method on `collection`.
+- [ ] If your connection is successful, you should see the console logs created in the `client` method in your `Library` constructor.
 
-Go back to our `DataStore` and add a new method called `.find` that:
+```bash
+Connecting to mongodb://127.0.0.1:27017...
+Connected to database.
+```
 
-- accepts a parameter named `query`
-- connects to the _collection_
-- returns a cursor with all matching documents
-
-`.find` when it's used takes a parameter named `query` listing the _fields and values_ as a JS object to match on.
-
-For more complicated queries, you can use operators like `$gte` (greater than or equal) and `$or`, e.g. this would find all items with 1 or more copies left, but less than 5:
+## Create The Async `collection` Method
+ 
+- [ ] Beneath the async `test` method, create a new async method called `collection`.
+- [ ] Await `this.client()` and assign it to the client variable.
+- [ ] Pass in `this.dbName` to the `db` method on `client` and assign it to a variable named `db`.
+- [ ] Pass in `this.collName` to the `collection` method on `db` and assign it to a variable named `collection`.
+- [ ] Return `collection`
 
 ```js
-collection.find({
-  copies: {
-    $gte: 1,
-    $lt: 5,
-  },
-});
+      async collection() {
+        const client = await this.client();
+        const db = client.db(this.dbName);
+        const collection = db.collection(this.collName);
+        return collection;
+      }
 ```
 
-- <http://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#find>
-- <https://docs.mongodb.com/manual/tutorial/query-documents/>
+## Populate the Collection
 
-## DataStore's `addEntry` Method
+- [ ] In Compass, create at least three documents to represent the books in your `books` collection.
+- [ ] These books should have the following key value pairs: `title`, `author`, and `copies`.
 
-Create a new method on `DataStore` called `addEntry` that:
-
-1. retrieves the _collection_ object
-2. inserts a single data entry into it
-3. returns the new ID that Mongo chose, in case we need it later
-
-## `_id`
-
-Every time you insert a document into a MongoDB collection, Mongo adds a field named `_id` with a _unique_ value.
-
-This id is _not_ a normal integer! It's a long string with a hex code inside it.
-
-Mongo has an algorithm for ensuring that this id is unique across _all other documents_ in itself (and probably inside every other MongoDB database in the universe too).
-
-In JavaScript, Mongo defines a _class_ named `ObjectId` that takes an ID string, and parses it as a Mongo Object ID.
-
-## DataStore's `.findOne` Method
-
-Create a new method on your `DataStore` that can find a single item by it's ID field. As with all our other methods we will want this to be an `async` method. It should:
-
-- accept a string `id` as a parameter
-- turns the string `id` into a Mongo `ObjectId`
-- queries the database for _just that document_
-- returns _a single document_
-
-## DataStore's `updateEntry` Method
-
-Create a new `async` method on `DataStore` called `updateEntry`. This method will take two parameters:
-
-- The ID of the target document (as a string)
-- An update object
-
-The `.updateOne` method on a Mongo collection takes two arguments, the "filter" which is a database query that targets a document, we will be using the ID for this, and a update object. The update object only needs to contain the key/value pairs you want to change. So If we had an object with and ID of `"60f5e2608f5ef1330f9b841e"` we could use MongoDB's `.updateOne` method like so:
-
-```js
-collection.updateOne(
-  //This is our query to target the document
-  { _id: ObjectId("60f5e2608f5ef1330f9b841e") },
-  //This variable holds the update to be applied
-  updateObj
-);
+```json
+{
+  "title": "Eloquent Javascript",
+  "author": "Marijn Haverbeke",
+  "copies": 1
+}
 ```
 
-**But** you will need to wrap the key/value pair(s) you want to update in an atomic `$set` operator so our `updateObj` would look like this if we wanted to change our document's `name` property to `"New Name"`:
 
-```js
-let updateObj = { $set: { name: "New Name" } };
-```
+> **You are now ready to begin working with the `mongosh` methods on your collection.**
 
-## Building Out the Client
+## Create The Async `allBooks` Method
 
-Let's extend the `run` function to make it a little more interactive. Let's set it up so we can interact with our application through the command line.
+- [ ] Create the async `allBooks` method on `Library`.
+- [ ] Await `this.collection()` and assign it to a `collection` variable.
+- [ ] Return the result of the `find` method on `collection`, passing in an empty object as its argument.
+- [ ] In `client.js`, await and test the result of this method and assign it to the variable `allBooks`.
+- [ ] On `allBooks`, utilize the `forEach` method to print each book to the console.
+- [ ] *This method should display all documents in the `book` collection.*
 
-- Define an `ask` function as we did in the first week of this course
-- When the `run` function gets called _ask_ the user what they want to do
-- Depending on the user input, perform a database operation
-  - and ask if they'd like to perform another operation
-- Add a section to your logic to handle each of the database operations we set up in our `DataStore`
+## Create The Async `findOneBook` Method
+
+- [ ] Create the async `findOneBook` method on `Library` with the parameter of `id`.
+- [ ] Pass in `id` to `ObjectId` and assign it to the variable `docId`.
+- [ ] Await `this.collection()` and assign it to a `collection` variable.
+- [ ] Return the result of the find method on collection, passing in `docId` as the argument.
+- [ ] In `client.js`, await the result of the method passing in the `_id` string from a document in the collection and assign it to the variable `findOneBook`.
+- [ ] On `findOneBook`, utilize the `forEach` method to print the book to the console.
+- [ ] *This method should display one book whose _id matches the value passed in*.
+
+## Create The Async `findManyBooks` Method
+
+- [ ] Create the async `findBooks` method on `Library` with the parameter of `query`.
+- [ ] Await `this.collection()` and assign it to a `collection` variable.
+- [ ] Return the result of `find` method on `collection`, passing in `query` as its argument.
+- [ ] In `client.js`, await and test the result of the method, referring to the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/) for the query syntax to pass as the argument. The key value pairs on the documents are valid querys. Assign the result to the `findManyBooks` variable.
+- [ ] On `findManyBooks`, utilize the `forEach` method to print each book to the console.
+- [ ] *This method should display all documents in the `books` collection that match the query.*
+
+## Create The Async `addBook` Method
+- [ ] Create the async `addBook` method on `Library` with a parameter of `info`.
+- [ ] Await `this.collection()` and assign it to a `collection` variable.
+- [ ] Pass in `info` to the `insertOne` method on `collection` and await the result.
+- [ ] Console log a message to the user informing them their book was successfully added.
+- [ ] Test the result of this method in `client.js`, referring to the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/) for the format syntax to pass as the argument. The new book should have the same key value pairs as the original books.
+- [ ] *This method should insert a new document 'book' into the `books` collection.*
+
+## Create The Async `changeBook` Method
+- [ ] Create the async `changeBook` method on `Library` with two parameters, id and newInfo.
+- [ ] Pass in id to `ObjectId` and assign it to the `mongoId` variable.
+- [ ] Create a new object that utilizes the `$set` update operator as its key and newInfo as its value. Assign it to the `infoObj` variable. Refer to the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/operator/update/set/) if needed.
+- [ ] Await `this.collection()` and assign it to a `collection` variable.
+- [ ] Await the result of the `updateOne` method on `collection`. The first argument will set the `_id` key to `mongoId` as its value within an object, the second argument will be `infoObj`.
+- [ ] Console log a message to the user informing them their book was successfully updated.
+- [ ] Await and test the result of this method in `client.js`. The first argument should be the id string of the document you want to change, and the second argument should be an object containing the key you want to change with its new value.
+- [ ] *This method should update the targeted properties on the targeted document.*
+
+## Create The Async `removeBook` Method
+
+- [ ] Create the async `removeBook` method on `Library` with the parameter id. 
+- [ ] Pass in id to `ObjectId` and assign it to the `mongoId` variable.
+- [ ] Await `this.collection()` and assign it to a `collection` variable.
+- [ ] Await the result of the `deleteOne` method on `collection`, passing in as argument an object containing `_id` as a key and `mongoId` as a variable.
+- [ ] Console log a message to the user informing them their book was successfully removed.
+- [ ] Await and test the result of this method in `client.js`, passing in the id string of the document you want to remove.
+- [ ] *This method should remove the targeted document from the collection and database.*
+
 
 ## Going Further
 
-Currently our DataStore class can handle several read operations, and a single create operation. Build it out more so that there are methods for:
-
-- Inserting several documents at once
-- Deleting an existing document
-
-Create sections of your front end logic to handle these operations
+- The `addBook` method accepts any info, regardless if it matches the shape of the other documents. How could you prevent this?
+- The `updateBook` method will have various bugs dependent upon the user mistake. How can you prevent the following:
+    - If the id is incorrect, Node will either throw an error or give a false acceptance message.
+    - If there is no key given to update, Node will throw an error.
+    - If the key does not exist on the given document, a new key value pair will be created on the document along with a false acceptance message.
+- If multiple methods are invoked in the program, they each deliver a successful connection message. How can you print the successful connection message only once per program execution?
