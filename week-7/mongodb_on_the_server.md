@@ -90,8 +90,8 @@ async function dbConnect() {
 app.post('/create', async (req, res) => {
   let newUser = req.body
   let userColl = await dbConnect()
-  userColl.insertOne(newUser)
-  connection.close()
+  await userColl.insertOne(newUser)
+  client.close()
   res.redirect('/')
 })
 ```
