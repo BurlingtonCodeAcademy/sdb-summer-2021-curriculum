@@ -66,7 +66,7 @@ const { MongoClient } = require('mongodb')
 Set up your `client` variable in the root level of your server file so it's accessible from any other functions that need it.
 
 ```js
-let client = new MongoClient(`mongodb:localhost://localhost:27017`);
+let client = new MongoClient(`mongodb://localhost:27017`);
 
 async function dbConnect() {
 
