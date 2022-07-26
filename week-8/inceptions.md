@@ -179,7 +179,7 @@ Then select a spokesperson to share your result with the group. If time allows, 
 
 > Consensus is hard; concise consensus is a miracle.
 
-Here are some [mission statements from 50 non-profit organizations](https://topnonprofits.com/examples/nonprofit-mission-statements/), sorted from shortest to longest. See how much more poignant the short ones are!
+Here are some [mission statements from 50 non-profit organizations](https://topnonprofits.com/mission-statements/), sorted from shortest to longest. See how much more poignant the short ones are!
 
 ---
 
