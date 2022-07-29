@@ -34,7 +34,7 @@ For the Heroku Command Line Tools to work correctly you will need a Heroku user 
 5. On the "Who do you collaborate with?" you can click "not now". You don't need to add any team members to your workspace.
 6. Finally, you'll be prompted to either install the Loom Chrome Extension or download the Loom Desktop App. Either method of recording a Loom is fine and it's your choice which method you want to use.
 
-Please take some time before class on Monday to try recording a Loom to test that everything is working correctly. You can talk about anything you want in it (a fun fact about you, a topic you're passionate about, WHATEVER). Once you've recorded something send the link to Matt through Discord.
+Please take some time before class on Monday to try recording a Loom to test that everything is working correctly. You can talk about anything you want in it (a fun fact about you, a topic you're passionate about, WHATEVER). Once you've recorded something send the link to an Instructor through Discord.
 
 ---
 
