@@ -15,7 +15,7 @@ We will be creating a JSON file to use in our next lab.
 
 ## Setting up your files
 
-You will need to create a new React app that contains a server file at the top level.
+Create a new folder called **creating-json** in your **labs** folder. Initialize your project there with `npm init -y`.
 
 ## Creating the Express server
 
