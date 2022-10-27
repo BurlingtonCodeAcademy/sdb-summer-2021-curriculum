@@ -4,7 +4,7 @@ We will be extending the previous [Creating a JSON](https://online.uprighted.com
 
 ## Learning
 
-- React and React forms.
+- Forms.
 - Fetching from a local API.
 - Using fetched data to conditionally render information to the user.
 
@@ -18,15 +18,15 @@ We will be extending the previous [Creating a JSON](https://online.uprighted.com
 
 ## Creating the Front End
 
-Your React front end should contain a form that asks the user for the following information: name, quest, and color.
+Your front end should contain a form that asks the user for the following information: name, quest, and color.
 
-Every input will need an `onChange` event that saves the value of the user input.
+Every input will need an `change` event that saves the value of the user input.
 
-The form will need an `onSubmit` that is detailed later on in the lab.
+The form will need an `submit` that is detailed later on in the lab.
 
 ## Using the API
 
-You will need to import `useEffect` to fetch the data from your local end point. 
+You will need to use `fetch` to get the data from your local end point. 
 
 This fetch will be set up identically to how you learned in Week 4.
 
