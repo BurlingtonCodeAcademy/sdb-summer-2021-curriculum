@@ -1,11 +1,11 @@
 
 # LAB: Fetching Data
 
-We will be setting up a front end React application that will allow the user to interact with a database, with a server acting as the interface between the two. We'll be building this off of the code we wrote for our Data Store lab so that we can hook into the functionality of the `DataStore` class.
+We will be setting up a DOM-based front-end application that will allow the user to interact with a database, with a server acting as the interface between the two. We'll be building this off of the code we wrote for our Data Store lab so that we can hook into the functionality of the `DataStore` class.
 
 ## Setting up your Directory
 
-Create a new React app named `react-store`. Install mongodb and express. 
+ Install mongodb and express. 
 
 At the root level of the directory, create `server.js` and `data-store.js`.
 
@@ -13,7 +13,7 @@ At the root level of the directory, create `server.js` and `data-store.js`.
 
 `server.js` will combine the code written in `mongo-client` with an Express server.
 
-Optionally, create a proxy in `package.json`.
+Create a client folder inside that will store your front-end files.
 
 
 ## A Note on Reusing DataStore
@@ -59,14 +59,13 @@ app.post("/addnewstuff", async (req, res) => {
 
 ## Setting up the Front End
 
-In our React front end, let's get the following on the page:
+In our front end, let's get the following on the page:
 
-A list of all books currently in our collection. You will need to fetch this from your `find` route and set it to the state `allBooks`. You can use the `map` method on `allBooks` and programmatically place every book on the page.
+A list of all books currently in our collection. You will need to fetch this from your `find` route. You can use the `map` method on `allBooks` and programmatically place every book on the page. Do this utilizing the DOM to create each element for each instance of your books.
 
 ```js
 allBooks.map((book) => {
-<h1>{book.title}</h1>
-<h2>{book.author}</h2>
+// DOM code to create each instance
 }
 
 ```
@@ -85,7 +84,7 @@ Use Compass to verify that when the user adds a new book or updates a preexistin
 
 Add a new method to `DataStore`, `delete`. It will take in an `id` as a parameter. 
 
-On the front end, create a form that allows the user to enter in the TITLE of a book they want to delete. 
+On the front end, create a form that allows the user to enter in the TITLE of a book they want to delete. Remember that DOM does not refresh automatically. What's appended must be removed or it will stay on the page.
 
 Consider this: the method `delete` takes in an `id`, but the user will be inputting a `title`. How would you translate the title to the id to delete the correct book?
 
