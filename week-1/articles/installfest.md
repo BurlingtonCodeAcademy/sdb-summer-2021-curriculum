@@ -17,13 +17,6 @@ Please note that we can support students using the following operating systems:
 2. Create a user account and select a unique user name. Keep in mind that potential employers will be looking at your user name. You can keep it fun but make sure that it is professional.
 3. **Optional**: Read about [Getting started with Github](https://docs.github.com/en/github/getting-started-with-github)
 
-### Heroku User Account
-
-For the Heroku Command Line Tools to work correctly you will need a Heroku user account.
-
-1. Visit <https://signup.heroku.com/>
-2. Create a new user account
-3. **Optional**: Read about [Getting started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
 
 ### Loom
 
@@ -48,7 +41,7 @@ The instructions below will walk you through installing the following tools:
 3. Git Bash Terminal Emulator
 4. Visual Studio Code Text Editor
 5. MongoDB and Mongo Compass GUI
-6. Heroku Command-line Tools
+
 
 ### Node.js JavaScript Engine
 
@@ -88,7 +81,7 @@ This is a different tool than `Microsoft Visual Studio` which is a non-free prop
 
 [Video Installation Guide for VS Code on Windows](https://www.loom.com/share/fe504d064a0946b48ab8607017f84e36)
 
-#### Helpful VS Code Extensions for Node.js
+#### Helpful VS Code Extensions
 
 The following extensions for VS Code are helpful, but optional. You can learn how to install extensions [from the official documentation](https://code.visualstudio.com/docs/editor/extension-marketplace).
 
@@ -114,15 +107,6 @@ The following extensions for VS Code are helpful, but optional. You can learn ho
 2. Run the installer from your Downloads folder
 3. Accept the default values for installation location and options
 
-### Heroku Command Line Tools Installation Steps
-
-1. Download the installer for Windows at <https://cli-assets.heroku.com/heroku-x64.exe>
-2. Run the installer from your Downloads folder and accept the default options, you may be asked to login to Heroku, so if you have not yet signed up for the service, do so.
-3. Login to the Heroku service from the command-line tool by running the command below in a terminal window, you will need an active user account prior to running this command.
-
-        heroku login
-
-[Video Installation Guide for Heroku CLI on Windows](https://www.loom.com/share/0a971312e35f4a0eb289cf3e41631269)
 
 ---
 
@@ -134,13 +118,12 @@ The instructions below will walk you through installing the following tools:
 2. Apple Command Line Tools
 3. Homebrew package manager
 4. Node.js JavaScript Engine
-5. Heroku Command-line Tools
-6. MongoDB and Mongo Compass GUI
+5. MongoDB and Mongo Compass GUI
 
-You will also be show how to sign up for a user account on the following services:
+You will also be shown how to sign up for a user account on the following services:
 
 1. GitHub
-2. Heroku
+
 
 ### Visual Studio Code Text Editor - MacOS
 
@@ -163,7 +146,7 @@ This is a different tool than `Microsoft Visual Studio` which is a non-free prop
     * See the [official documentation for additional help](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
 7. **Optional**: Read the [Node.js in VS Code Tutorial](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)
 
-#### Helpful VS Code Extensions for Node.js - MacOS
+#### Helpful VS Code Extensions - MacOS
 
 The following extensions for VS Code are helpful, but optional. You can learn how to install extensions [from the official documentation](https://code.visualstudio.com/docs/editor/extension-marketplace).
 
@@ -254,24 +237,6 @@ The version control tool Git is installed when you completed the command `xcode-
 
           git version 2.30.0
 
-### Heroku Command Line Tools
-
-1. Visit the Heroku Command Line Tools documentation page at <https://devcenter.heroku.com/articles/heroku-cli>
-2. Install the tolls for MacOS by running the command below in a Terminal.app window
-
-        brew tap heroku/brew && brew install heroku
-
-3. Confirm that the Heroku command-line tools are installed by running the command below
-
-        heroku --version
-
-4. You should see something like the following output, any version above `v7.50.0` is fine
-
-        heroku/7.54.0 darwin-x64 node-v12.21.0
-
-5. Login to the Heroku service from the command-line tool by running the command below, you will need an active user account prior to running this command.
-
-        heroku login
 
 ### MongoDB and Compass
 
