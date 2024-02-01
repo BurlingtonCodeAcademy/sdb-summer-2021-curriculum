@@ -36,15 +36,6 @@ button.addEventListener("click", () => {
 
 > NOTE: Using arrow functions for event handlers is a **good idea**, since they will restore `this` to the same object as when the listener was added.
 
----
-
-## Exercise: Make a Button Count
-
-Let's write an event listener together:
-
-> <https://replit.com/team/education-team/dom-scripting-exercise>
-
----
 
 ## Referencing Event Handlers in Event Listeners
 
