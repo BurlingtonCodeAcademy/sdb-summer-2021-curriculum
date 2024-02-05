@@ -122,13 +122,6 @@ try {
   alert(errorFromResponse);
 }
 ```
-
----
-
-## Fetch Error Lab
-
-<https://replit.com/team/education-team/fetch-error-catch>
-
 ---
 
 ## JSON

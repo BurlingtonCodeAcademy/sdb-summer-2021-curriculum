@@ -80,17 +80,6 @@ let elementsWithButtonClass = document.querySelectorAll(".button");
 
 let firstElementWithButtonClass = document.querySelector(".button");
 ```
-
----
-
-## Practice
-
-Take a few minutes to practice grabbing and manipulating DOM elements.
-
-<https://replit.com/team/education-team/dom-manipulation-practice>
-
-We will discuss parts of this in more detail in future slides.
-
 ---
 
 ## Include JavaScript within HTML
