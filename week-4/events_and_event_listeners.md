@@ -106,15 +106,6 @@ If you have already defined an event handler function, you can attach it by refe
   </div>
 </div>
 ```
-
----
-
-## Bubbling Example
-
-Let's see bubbling in action:
-
-<https://replit.com/team/education-team/event-bubbling>
-
 ---
 
 <img src ="https://res.cloudinary.com/btvca/image/upload/v1574445173/curriculum/eventflow_nyx1zw.svg" width="700px" alt="event flow diagram referenced in the docs">

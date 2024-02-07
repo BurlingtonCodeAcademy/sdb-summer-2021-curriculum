@@ -83,16 +83,6 @@ This is how the browser knows to change the button's styling to appear like it's
 
 ---
 
-## Form Example
-
-Take a few minutes to explore the various parts of this form and what they do:
-
-<https://replit.com/team/education-team/forms-example>
-
-> Remember to reference W3Schools or MDN for any tags you don't recognize.
-
----
-
 ## Forms and HTTP
 
 You may have noticed `method="POST"` in the previous example.

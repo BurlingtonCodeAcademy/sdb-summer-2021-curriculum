@@ -94,9 +94,3 @@ render(
   document.getElementById("root")
 );
 ```
-
----
-
-## Practice: Making Pokemon Pages
-
-<https://replit.com/team/education-team/react-router>
